@@ -21,13 +21,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "lint": "yarn lint:js src && yarn lint:style",
+    "lint:js": "eslint -c .eslintrc.js --cache --cache-location=.cache/eslint --ext .js,.jsx,.ts,.tsx --report-unused-disable-directives",
+    "lint:fix": "yarn lint:js src --fix",
+    "lint:style": "stylelint 'src/**/*.scss'",
+    "lint:check-error": "yarn lint:js src --quiet",
+    "lint-staged": "lint-staged"
   },
   "browserslist": {
     "production": [
@@ -39,6 +39,35 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.3.1",
+    "eslint": "^8.26.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-custom": "*",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-cypress": "^2.11.3",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "lint-staged": "^12.3.3",
+    "prettier": "^2.7.1",
+    "stylelint": "^14.0.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-prettier": "^2.0.0",
+    "typescript": "^4.7.4"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "yarn lint:js src"
     ]
   }
 }

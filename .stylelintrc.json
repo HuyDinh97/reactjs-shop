@@ -1,0 +1,14 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"],
+  "plugins": ["stylelint-scss"],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "selector-class-pattern": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+    "font-family-name-quotes": null,
+    "selector-id-pattern": null
+  },
+  "ignoreFiles": ["**/*.tsx", "**/*.jsx", "**/*.ts", "**/*.js"]
+}

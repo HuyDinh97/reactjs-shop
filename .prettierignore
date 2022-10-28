@@ -1,0 +1,8 @@
+# Ignore artifacts:
+node_modules
+public
+
+# Ignore old files
+**/*.json
+**/*.html
+**/*.css
