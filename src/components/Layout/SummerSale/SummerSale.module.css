@@ -1,0 +1,72 @@
+#app { height: 100% }
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper_height {
+  height: 500px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.slide_1 {
+  position: absolute;
+  top: 52%;
+  left: 77%;
+  transform: translate(-50%, -50%);
+  border: 0;
+  text-shadow: 1px 1px 1px black;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: smaller;
+  font-weight: lighter;
+}
+
+h2 {
+  font-weight: bold !important;
+}
+
+.button {
+  background-color: #eb3d32;
+  border-radius: var(--bs-border-radius-pill)!important;
+  border: none;
+  color: white;
+  padding: 10px 25px 10px 25px;
+  font-size: 16px !important;
+  font-weight: bold !important;
+}

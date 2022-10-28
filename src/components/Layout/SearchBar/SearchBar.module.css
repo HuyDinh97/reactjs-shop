@@ -1,0 +1,83 @@
+.searchBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1% 0 1% 0;
+  border-bottom: 1px solid gray;
+  border-color: lightgrey;
+}
+
+.search_Btn {
+  color: white;
+  height: 55px;
+  border: none;
+  width: 200px;
+  background-color: #eb3d32;
+}
+
+.search_Box {
+  height: 55px;
+  border-color: lightgrey;
+  border: 1px solid lightgrey;
+}
+
+.btn-primary {
+  background-color: yellow;
+}
+
+.cart {
+  display: flex;
+}
+
+.cart_button {
+  background-color: white;
+}
+
+.cart_toggle {
+  display: flex !important;
+  align-items: center;
+  color: #eb3d32;
+}
+
+
+
+img {
+  padding: 0 10px 0 10px;
+}
+
+.padding_lr {
+  padding: 0 10px 0 10px;
+}
+
+button:first-child:active {
+  border-color: white !important;
+}
+
+.badge {
+  background-color: #eb3d32 !important;
+  border-radius: 50% !important;
+  position: relative !important;
+  transform: translate(-50%,-50%)!important;
+}
+
+.space_between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.cart_view_cart {
+  background-color: #eb3d32;
+  border-radius: var(--bs-border-radius-pill)!important;
+  border: none;
+  color: white;
+  padding: 5px 20px 5px 20px;
+}
+
+.cart_total_price {
+  color: #f16b62;
+}
