@@ -78,6 +78,7 @@ module.exports = {
       'warn',
       {
         devDependencies: [
+          '**/*.test.js',
           '**/*.test.ts',
           '**/*.test.tsx',
           '**/test-utils.tsx',

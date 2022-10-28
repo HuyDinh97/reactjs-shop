@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="G:\HuyHoc\ReactJS\reactjs-shop\src\components\Layout\SearchBar\SearchBar.test.js">
+    <testCase name="Should search input render" duration="44"/>
+  </file>
+</testExecutions>
