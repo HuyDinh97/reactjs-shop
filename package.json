@@ -20,7 +20,7 @@
     "test": "jest --coverage",
     "eject": "react-scripts eject",
     "lint": "yarn lint:js src && yarn lint:style",
-    "lint:js": "eslint -c .eslintrc.js --cache --cache-location=.cache/eslint --ext .js,.jsx,.ts,.tsx --report-unused-disable-directives",
+    "lint:js": "eslint -c .eslintrc.js --cache --cache-location=.cache/eslint --ext .js,.jsx,.ts,.tsx --report-unused-disable-directives src",
     "lint:fix": "yarn lint:js src --fix",
     "lint:style": "stylelint 'src/**/*.scss'",
     "lint:check-error": "yarn lint:js src --quiet",
