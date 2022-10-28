@@ -24,7 +24,8 @@
     "lint:fix": "yarn lint:js src --fix",
     "lint:style": "stylelint 'src/**/*.scss'",
     "lint:check-error": "yarn lint:js src --quiet",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "collectCoverage": "yarn lcov-result-merger '**/*lcov.info*' 'coverage.info' --prepend-source-files"
   },
   "browserslist": {
     "production": [
@@ -68,6 +69,7 @@
     "jest": "^29.1.2",
     "jest-environment-jsdom": "^29.1.2",
     "jest-sonar-reporter": "^2.0.0",
+    "lcov-result-merger": "^3.3.0",
     "lint-staged": "^12.3.3",
     "prettier": "^2.7.1",
     "stylelint": "^14.0.1",
