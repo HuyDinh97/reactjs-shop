@@ -7,11 +7,15 @@
   border-color: lightgrey;
 }
 
+.searchSection {
+  display: flex;
+}
+
 .search_Btn {
   color: white;
   height: 55px;
   border: none;
-  width: 200px;
+  width: 122px;
   background-color: #eb3d32;
 }
 
