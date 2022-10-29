@@ -12,15 +12,11 @@ function SearchBar() {
       <div>
         <img src={logo} alt="Logo" />
       </div>
-      <div>
-        <span>
-          <input className={classes.search_Box} data-testid="search-input" />
-        </span>
-        <span>
-          <button type="button" className={classes.search_Btn}>
-            Search
-          </button>
-        </span>
+      <div className={classes.searchSection}>
+        <input className={classes.search_Box} data-testid="search-input" />
+        <button type="button" className={classes.search_Btn}>
+          Search
+        </button>
       </div>
       <div>
         <Dropdown className={classes.cart_button}>
