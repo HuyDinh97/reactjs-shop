@@ -11,10 +11,12 @@ function Layout(_props) {
   return (
     <div>
       <Header />
-      <main className={classes.main}>
+      <div className={classes.main}>
         <SearchBar />
         <Categories />
-        <SummerSale />
+      </div>
+      <SummerSale />
+      <main className={classes.main}>
         <Advertising />
         <Product name="POPULAR PRODUCT" />
         <Product name="BEST SELLER" />
