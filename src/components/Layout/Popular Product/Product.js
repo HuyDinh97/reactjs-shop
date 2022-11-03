@@ -17,7 +17,7 @@ import classes from './Product.module.css';
 function PopularProduct({ name }) {
   const swiperRef = useRef();
   return (
-    <div className={classes.mg_top}>
+    <div className={classes.mg_4}>
       <Row className={classes.mg_bot}>
         <Col xs lg="2" />
         <Col className={classes.Product_title}>
