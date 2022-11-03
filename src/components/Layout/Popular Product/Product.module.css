@@ -6,8 +6,7 @@ body {
 }
 
 body {
-  background: #eee;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 14px;
   color: #000;
   margin: 0;
@@ -77,8 +76,8 @@ body {
   margin-right: 0.5rem;
 }
 
-.mg_top {
-  margin-top: 2rem;
+.mg_4 {
+  margin-top: 4rem!important;
 }
 
 .mg_bot {

@@ -14,7 +14,7 @@ function SummerSale() {
       <SwiperSlide>
         <img src={slide1} alt="slide" />
         <div className={classes.slide_1}>
-          <h2>SUMMER SALE</h2>
+          <h1>SUMMER SALE</h1>
           <p>Get up to 50% off your shopping items tomorrow!</p>
           <button type="button" className={classes.button}>
             Shop Now
@@ -23,8 +23,8 @@ function SummerSale() {
       </SwiperSlide>
       <SwiperSlide>
         <img src={slide2} alt="slide" />
-        <div className={classes.slide_1}>
-          <h2>SUMMER SALE</h2>
+        <div className={classes.slide_2}>
+          <h1>SUMMER SALE</h1>
           <p>Get up to 50% off your shopping items tomorrow!</p>
           <button type="button" className={classes.button}>
             Shop Now
@@ -33,8 +33,8 @@ function SummerSale() {
       </SwiperSlide>
       <SwiperSlide>
         <img src={slide3} alt="slide" />
-        <div className={classes.slide_1}>
-          <h2>SUMMER SALE</h2>
+        <div className={classes.slide_3}>
+          <h1>SUMMER SALE</h1>
           <p>Get up to 50% off your shopping items tomorrow!</p>
           <button type="button" className={classes.button}>
             Shop Now

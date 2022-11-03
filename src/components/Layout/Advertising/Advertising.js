@@ -9,7 +9,7 @@ import classes from './Advertising.module.css';
 
 function Advertising() {
   return (
-    <Row className={classes.mg_2}>
+    <Row className={classes.mg_4}>
       <Col>
         <img src={Ads1} alt="ADS" />
       </Col>
