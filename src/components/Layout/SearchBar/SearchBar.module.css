@@ -17,10 +17,13 @@
   border: none;
   width: 122px;
   background-color: #eb3d32;
+  font-weight: 500;
 }
 
 .search_Box {
   height: 55px;
+  width: 300px;
+  padding-left: 40px;
   border-color: lightgrey;
   border: 1px solid lightgrey;
 }
