@@ -13,7 +13,11 @@ function SearchBar() {
         <img src={logo} alt="Logo" />
       </div>
       <div className={classes.searchSection}>
-        <input className={classes.search_Box} data-testid="search-input" />
+        <input
+          className={classes.search_Box}
+          data-testid="search-input"
+          placeholder="Search Product..."
+        />
         <button type="button" className={classes.search_Btn}>
           Search
         </button>
