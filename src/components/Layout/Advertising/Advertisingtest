@@ -1,9 +1,0 @@
-// import React from 'react';
-// import { render, screen } from '@testing-library/react';
-// import '@testing-library/jest-dom';
-// import Advertising from './Advertising';
-
-// test('should Advertising render correctly', () => {
-//   render(<Advertising />);
-//   expect(screen).toBeInTheDocument();
-// });
