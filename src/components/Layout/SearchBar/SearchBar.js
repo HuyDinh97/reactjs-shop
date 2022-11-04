@@ -40,7 +40,8 @@ function SearchBar() {
 
           <Dropdown.Menu className={classes.dropdown_menu}>
             <div>
-              <div className={classes.cart_Item}>
+              No items in this cart!
+              {/* <div className={classes.cart_Item}>
                 <img src={cartItem1} alt="cartItem" />
                 <p>product name</p>
                 <div>X</div>
@@ -49,7 +50,7 @@ function SearchBar() {
                 <img src={cartItem2} alt="cartItem" />
                 <p>product name</p>
                 <div>X</div>
-              </div>
+              </div> */}
             </div>
             <div className={classes.space_between}>
               <span>Total</span>

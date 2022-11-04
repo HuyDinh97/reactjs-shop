@@ -1,7 +1,9 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
 import Ads1 from './picture/offer-banner-1.jpg';
+
 import Ads2 from './picture/offer-banner-2.jpg';
 import Ads3 from './picture/offer-banner-3.jpg';
 
@@ -9,7 +11,7 @@ import classes from './Advertising.module.css';
 
 function Advertising() {
   return (
-    <Row className={classes.mg_4}>
+    <Row className={classes.mg_2}>
       <Col>
         <img src={Ads1} alt="ADS" />
       </Col>
