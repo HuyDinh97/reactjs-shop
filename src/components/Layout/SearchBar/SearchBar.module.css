@@ -70,6 +70,8 @@ button:first-child:active {
 .space_between {
   display: flex;
   justify-content: space-between;
+  padding: 20px 0 20px 0;
+  font-size: large;
 }
 
 .center {
@@ -83,8 +85,34 @@ button:first-child:active {
   border: none;
   color: white;
   padding: 5px 20px 5px 20px;
+  font-weight: 500;
 }
 
 .cart_total_price {
   color: #f16b62;
+}
+
+.dropdown_menu {
+  height: auto;
+  padding: 20px !important;
+  width: max-content;
+  transform: translate(-115px, 46px) !important;
+
+}
+
+.cart_Item {
+  display: flex;
+  align-items: center;
+}
+
+.cart_Item img {
+  width: 40%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.cart_Item p {
+  padding-left: 10px;
+  padding-right: 10px;
+  width: -webkit-fill-available;
 }
