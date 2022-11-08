@@ -6,6 +6,7 @@ import Categories from './Categories/Categories';
 import SummerSale from './SummerSale/SummerSale';
 import Product from './Popular Product/Product';
 import Advertising from './Advertising/Advertising';
+import Banner from './Banner/Banner';
 
 function Layout(_props) {
   return (
@@ -19,6 +20,7 @@ function Layout(_props) {
       <main className={classes.main}>
         <Advertising />
         <Product name="POPULAR PRODUCT" />
+        <Banner />
         <Product name="BEST SELLER" />
       </main>
     </div>
