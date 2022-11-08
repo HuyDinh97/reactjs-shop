@@ -4,6 +4,17 @@ module.exports = {
   coveragePathIgnorePatterns: ['/node_modules/'],
 
   transformIgnorePatterns: ['node_modules/(?!uuid)/'],
+  transform: {
+    '\\.tsx?$': 'ts-jest',
+    '\\.jsx?$': 'babel-jest', // if you have jsx tests too
+  },
+  globals: {
+    'ts-jest': {
+      tsConfig: ' pathToYourTsConfigFile',
+    },
+  },
+  // eslint-disable-next-line no-dupe-keys
+  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\](?!lodash-es/).+\\.js$'],
 
   modulePathIgnorePatterns: ['<rootDir>/build'],
   moduleDirectories: ['node_modules', 'src'],

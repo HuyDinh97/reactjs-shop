@@ -2,4 +2,8 @@
 <testExecutions version="1">
   <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Popular Product\Product.test.js">
   </file>
+  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\SearchBar\SearchBar.test.js">
+    <testCase name="Should search input render" duration="78"/>
+    <testCase name="Should show cart dropdown" duration="233"/>
+  </file>
 </testExecutions>
