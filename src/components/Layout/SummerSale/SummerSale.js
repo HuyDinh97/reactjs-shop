@@ -4,9 +4,10 @@ import { Pagination } from 'swiper';
 import slide1 from './sales/slider-img-1.jpg';
 import slide2 from './sales/slider-img-2.jpg';
 import slide3 from './sales/slider-img-3.jpg';
+import 'swiper/swiper-bundle.min.css';
+import 'swiper/swiper.min.css';
+
 import classes from './SummerSale.module.css';
-import 'swiper/css';
-import 'swiper/css/pagination';
 
 function SummerSale() {
   return (
