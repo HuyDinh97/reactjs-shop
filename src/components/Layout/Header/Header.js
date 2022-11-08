@@ -23,9 +23,15 @@ function Header() {
         </div>
         <div className={classes.header_user}>
           <ul>
-            <li className={classes.header_border_end}>Login</li>
-            <li className={classes.header_border_end}>Wishlist</li>
-            <li>My Acount</li>
+            <li className={classes.header_border_end}>
+              <a href="/">Login</a>
+            </li>
+            <li className={classes.header_border_end}>
+              <a href="/">Wishlist</a>
+            </li>
+            <li>
+              <a href="/">My Acount</a>
+            </li>
           </ul>
         </div>
       </div>
