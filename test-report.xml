@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\SummerSale\SummerSale.test.js">
-    <testCase name="should Summer Sale render correctly" duration="148"/>
+  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Advertising\Advertising.test.js">
+    <testCase name="should Advertising render correctly" duration="30"/>
   </file>
 </testExecutions>
