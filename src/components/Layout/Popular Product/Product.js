@@ -5,9 +5,9 @@ import { Navigation } from 'swiper';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+import 'swiper/swiper-bundle.min.css';
+import 'swiper/swiper.min.css';
+
 import product1 from './Product/product-img-1.jpg';
 import product2 from './Product/product-img-2.jpg';
 import product3 from './Product/product-img-3.jpg';
