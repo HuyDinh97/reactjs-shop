@@ -116,3 +116,8 @@ h1 {
   font-size: 16px !important;
   font-weight: bold !important;
 }
+
+span {
+  background-color: #eb3d32 !important;
+  padding: 8px;
+}
