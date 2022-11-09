@@ -9,6 +9,11 @@
   font-weight: bold;
 }
 
+.swiper-pagination-bullet {
+  background-color: #eb3d32 !important;
+  padding: 8px;
+}
+
 .swiper-slide {
   text-align: center;
   font-size: 18px;
@@ -115,9 +120,4 @@ h1 {
   padding: 10px 25px 10px 25px;
   font-size: 16px !important;
   font-weight: bold !important;
-}
-
-span {
-  background-color: #eb3d32 !important;
-  padding: 8px;
 }
