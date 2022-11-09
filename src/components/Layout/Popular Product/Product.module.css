@@ -92,3 +92,7 @@ body {
   align-items: center;
 }
 
+svg polyline {
+  stroke: white;
+}
+
