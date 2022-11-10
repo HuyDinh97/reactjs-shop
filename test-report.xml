@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="G:\HuyHoc\ReactJS\reactjs-shop\src\components\Layout\SearchBar\SearchBar.test.js">
-    <testCase name="Should search input render" duration="44"/>
+  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js">
+  </file>
+  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Categories\Categories.test.js">
+    <testCase name="should Header render correctly" duration="49"/>
   </file>
 </testExecutions>

@@ -1,7 +1,9 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
 import Ads1 from './picture/offer-banner-1.jpg';
+
 import Ads2 from './picture/offer-banner-2.jpg';
 import Ads3 from './picture/offer-banner-3.jpg';
 

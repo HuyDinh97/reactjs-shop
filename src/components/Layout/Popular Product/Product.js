@@ -1,16 +1,17 @@
 import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { GrNext, GrPrevious } from 'react-icons/gr';
+import { Navigation } from 'swiper';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Navigation } from 'swiper';
-import Product1 from './Product/product-img-1.jpg';
-import Product2 from './Product/product-img-2.jpg';
-import Product3 from './Product/product-img-3.jpg';
-import Product4 from './Product/product-img-4.jpg';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+
+import 'swiper/swiper-bundle.min.css';
+import 'swiper/swiper.min.css';
+
+import product1 from './Product/product-img-1.jpg';
+import product2 from './Product/product-img-2.jpg';
+import product3 from './Product/product-img-3.jpg';
+import product4 from './Product/product-img-4.jpg';
 
 import classes from './Product.module.css';
 
@@ -51,28 +52,28 @@ function PopularProduct({ name }) {
         className=""
       >
         <SwiperSlide>
-          <img src={Product1} alt="product" />
+          <img src={product1} alt="product" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={Product2} alt="product" />
+          <img src={product2} alt="product" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={Product3} alt="product" />
+          <img src={product3} alt="product" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={Product4} alt="product" />
+          <img src={product4} alt="product" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={Product1} alt="product" />
+          <img src={product1} alt="product" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={Product2} alt="product" />
+          <img src={product2} alt="product" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={Product3} alt="product" />
+          <img src={product3} alt="product" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={Product4} alt="product" />
+          <img src={product4} alt="product" />
         </SwiperSlide>
       </Swiper>
     </div>

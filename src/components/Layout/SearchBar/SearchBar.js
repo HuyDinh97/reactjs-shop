@@ -3,7 +3,6 @@ import Badge from 'react-bootstrap/Badge';
 import Dropdown from 'react-bootstrap/Dropdown';
 import logo from './logo/logo.png';
 import cartIcon from './logo/cart-icon.png';
-
 import classes from './SearchBar.module.css';
 
 function SearchBar() {
@@ -36,8 +35,20 @@ function SearchBar() {
             <span>$0</span>
           </Dropdown.Toggle>
 
-          <Dropdown.Menu>
-            <div>No items in this cart!</div>
+          <Dropdown.Menu className={classes.dropdown_menu}>
+            <div>
+              No items in this cart!
+              {/* <div className={classes.cart_Item}>
+                <img src={cartItem1} alt="cartItem" />
+                <p>product name</p>
+                <div>X</div>
+              </div>
+              <div className={classes.cart_Item}>
+                <img src={cartItem2} alt="cartItem" />
+                <p>product name</p>
+                <div>X</div>
+              </div> */}
+            </div>
             <div className={classes.space_between}>
               <span>Total</span>
               <span className={classes.cart_total_price}>$0</span>
