@@ -3,9 +3,9 @@
 }
 
 .Col {
-  padding: 0;
+  padding: 0 !important;
 }
 
 .Col img {
-  padding: 0;
+  padding: 0 !important;
 }
