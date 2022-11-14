@@ -27,10 +27,10 @@ function CustomerComment() {
                   />
                 </div>
                 <div>
-                  <p>asdasdasdasdasd</p>
+                  <p className={classes.user_comment}>asdasdasdasdasd</p>
                 </div>
                 <div>
-                  <p>- William Genske</p>
+                  <p className={classes.user_name}>- William Genske</p>
                 </div>
               </div>
             </div>
