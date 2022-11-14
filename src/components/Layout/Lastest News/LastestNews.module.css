@@ -2,6 +2,7 @@
   margin-top: 4rem!important;
 }
 
+
 .block_news {
   width: 22rem;
   text-align: center;
@@ -11,3 +12,22 @@
   font-style: italic;
   color: #eb3d32;
 }
+
+.text_overflow {
+  white-space: pre;
+  inline-size: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #6c757d;
+  font-weight: 400;
+  font-size: unset;
+}
+
+.LastestNewsBtn {
+  border: none;
+  color: #eb3d32;
+  background-color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+

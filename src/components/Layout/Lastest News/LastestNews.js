@@ -21,7 +21,13 @@ function LastestNews() {
             Posted by
             <span className={classes.comment_count}> admin - 2 Comments</span>
           </Card.Subtitle>
-          <Card.Text>aaaa</Card.Text>
+          <Card.Text className={classes.text_overflow}>
+            Bootstrap includes a few general use CSS transitions that can be
+            applied to a number of components.
+          </Card.Text>
+          <a className={classes.LastestNewsBtn} href="/">
+            READ MORE
+          </a>
         </Card.Body>
       </Card>
     </div>
