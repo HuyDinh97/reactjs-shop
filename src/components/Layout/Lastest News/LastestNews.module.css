@@ -2,6 +2,9 @@
   margin-top: 4rem!important;
 }
 
+.mg_4 img {
+  padding: 0;
+}
 
 .block_news {
   width: 22rem;
@@ -31,3 +34,6 @@
   font-weight: 500;
 }
 
+.Box_News {
+  display: flex;
+}
