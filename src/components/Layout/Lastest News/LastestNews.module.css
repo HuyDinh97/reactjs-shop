@@ -1,3 +1,13 @@
 .mg_4 {
   margin-top: 4rem!important;
 }
+
+.block_news {
+  width: 22rem;
+  text-align: center;
+}
+
+.comment_count {
+  font-style: italic;
+  color: #eb3d32;
+}
