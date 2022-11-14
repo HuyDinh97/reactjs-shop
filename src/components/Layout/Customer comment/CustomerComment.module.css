@@ -13,3 +13,7 @@
   margin-left: 10%;
   display: flex;
 }
+
+.quote_w {
+  width: 50px!important;
+}

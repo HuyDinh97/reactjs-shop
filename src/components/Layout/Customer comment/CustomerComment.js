@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
 import customerImg from './image/client-img-1.png';
+import quoteImg from './image/icons8-quote-left-48.png';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 
@@ -17,7 +18,21 @@ function CustomerComment() {
               <div>
                 <img src={customerImg} alt="img" />
               </div>
-              <div>s</div>
+              <div>
+                <div>
+                  <img
+                    className={classes.quote_w}
+                    src={quoteImg}
+                    alt="quoteImg"
+                  />
+                </div>
+                <div>
+                  <p>asdasdasdasdasd</p>
+                </div>
+                <div>
+                  <p>- William Genske</p>
+                </div>
+              </div>
             </div>
           </div>
         </SwiperSlide>
