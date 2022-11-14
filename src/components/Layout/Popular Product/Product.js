@@ -4,6 +4,7 @@ import { GrNext, GrPrevious } from 'react-icons/gr';
 import { Navigation } from 'swiper';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import TitleUnderline from './TitleUnderline';
 
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
@@ -21,9 +22,7 @@ function PopularProduct({ name }) {
     <div className={classes.mg_4}>
       <Row className={classes.mg_bot}>
         <Col xs lg="2" />
-        <Col className={classes.Product_title}>
-          <div className={classes.Underline}>{name}</div>
-        </Col>
+        <TitleUnderline name={name} />
         <Col className={classes.Product_button} xs lg="2">
           <button
             type="button"

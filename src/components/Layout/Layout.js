@@ -8,6 +8,7 @@ import Product from './Popular Product/Product';
 import Advertising from './Advertising/Advertising';
 import Banner from './Banner/Banner';
 import CustomerComment from './Customer comment/CustomerComment';
+import LastestNews from './Lastest News/LastestNews';
 
 function Layout(_props) {
   return (
@@ -24,6 +25,7 @@ function Layout(_props) {
         <Banner />
         <Product name="BEST SELLER" />
         <CustomerComment />
+        <LastestNews />
       </main>
     </div>
   );

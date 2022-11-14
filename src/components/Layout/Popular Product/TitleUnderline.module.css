@@ -1,0 +1,23 @@
+.Product_title {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.Underline {
+  font-size: 30px;
+  display: inline-block;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.Underline::before {
+  content: "";
+  position: absolute;
+  width: 42%;
+  height: 9px;
+  bottom: 9px;
+  left: 31%;
+  border-bottom: 3px solid #f24432;
+}
