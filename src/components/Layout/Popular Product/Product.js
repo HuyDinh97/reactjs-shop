@@ -91,11 +91,407 @@ function PopularProduct({ name }) {
               </div>
             </a>
           </div>
-          <div>
-            <div>Variable product1</div>
-            <div>
-              <span>$ 90.00</span>
-              <span>$ 78.00</span>
+          <div className="card-body d-flex justify-content-center my-2 mb-2 flex-column">
+            <div className={classes.product_name}>
+              <a href="/">Variable product1</a>
+            </div>
+            <div className={classes.product_price}>
+              <span className="mx-2 fs-6 fw-semibold">
+                <s className={classes.gray_price}>$ 90.00</s>
+              </span>
+              <span className="mx-2 fs-6 fw-semibold">$ 78.00</span>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className={classes.apperance}>
+            <a href="/">
+              <div
+                className={classes.product_img}
+                // eslint-disable-next-line react/forbid-dom-props
+                style={{
+                  background: `url(${product1})`,
+                }}
+              >
+                <div className={classes.hide}>
+                  <div className={classes.opacity_layer}>
+                    <div>
+                      <button
+                        className="border-0 search-btn-color fs-6 fw-semibold px-4 py-2 rounded-pill"
+                        type="button"
+                      >
+                        Add to cart
+                      </button>
+                    </div>
+                    <div className={classes.opacity_icon}>
+                      <span>
+                        <HiHeart />
+                      </span>
+                      <span>
+                        <BsFillEyeFill />
+                      </span>
+                      <span>
+                        <TbRefresh />
+                      </span>
+                    </div>
+                  </div>
+                  <div className={classes.white_overlay} />
+                </div>
+              </div>
+            </a>
+          </div>
+          <div className="card-body d-flex justify-content-center my-2 mb-2 flex-column">
+            <div className={classes.product_name}>
+              <a href="/">Variable product1</a>
+            </div>
+            <div className={classes.product_price}>
+              <span className="mx-2 fs-6 fw-semibold">
+                <s className={classes.gray_price}>$ 90.00</s>
+              </span>
+              <span className="mx-2 fs-6 fw-semibold">$ 78.00</span>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className={classes.apperance}>
+            <a href="/">
+              <div
+                className={classes.product_img}
+                // eslint-disable-next-line react/forbid-dom-props
+                style={{
+                  background: `url(${product1})`,
+                }}
+              >
+                <div className={classes.hide}>
+                  <div className={classes.opacity_layer}>
+                    <div>
+                      <button
+                        className="border-0 search-btn-color fs-6 fw-semibold px-4 py-2 rounded-pill"
+                        type="button"
+                      >
+                        Add to cart
+                      </button>
+                    </div>
+                    <div className={classes.opacity_icon}>
+                      <span>
+                        <HiHeart />
+                      </span>
+                      <span>
+                        <BsFillEyeFill />
+                      </span>
+                      <span>
+                        <TbRefresh />
+                      </span>
+                    </div>
+                  </div>
+                  <div className={classes.white_overlay} />
+                </div>
+              </div>
+            </a>
+          </div>
+          <div className="card-body d-flex justify-content-center my-2 mb-2 flex-column">
+            <div className={classes.product_name}>
+              <a href="/">Variable product1</a>
+            </div>
+            <div className={classes.product_price}>
+              <span className="mx-2 fs-6 fw-semibold">
+                <s className={classes.gray_price}>$ 90.00</s>
+              </span>
+              <span className="mx-2 fs-6 fw-semibold">$ 78.00</span>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className={classes.apperance}>
+            <a href="/">
+              <div
+                className={classes.product_img}
+                // eslint-disable-next-line react/forbid-dom-props
+                style={{
+                  background: `url(${product1})`,
+                }}
+              >
+                <div className={classes.hide}>
+                  <div className={classes.opacity_layer}>
+                    <div>
+                      <button
+                        className="border-0 search-btn-color fs-6 fw-semibold px-4 py-2 rounded-pill"
+                        type="button"
+                      >
+                        Add to cart
+                      </button>
+                    </div>
+                    <div className={classes.opacity_icon}>
+                      <span>
+                        <HiHeart />
+                      </span>
+                      <span>
+                        <BsFillEyeFill />
+                      </span>
+                      <span>
+                        <TbRefresh />
+                      </span>
+                    </div>
+                  </div>
+                  <div className={classes.white_overlay} />
+                </div>
+              </div>
+            </a>
+          </div>
+          <div className="card-body d-flex justify-content-center my-2 mb-2 flex-column">
+            <div className={classes.product_name}>
+              <a href="/">Variable product1</a>
+            </div>
+            <div className={classes.product_price}>
+              <span className="mx-2 fs-6 fw-semibold">
+                <s className={classes.gray_price}>$ 90.00</s>
+              </span>
+              <span className="mx-2 fs-6 fw-semibold">$ 78.00</span>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className={classes.apperance}>
+            <a href="/">
+              <div
+                className={classes.product_img}
+                // eslint-disable-next-line react/forbid-dom-props
+                style={{
+                  background: `url(${product1})`,
+                }}
+              >
+                <div className={classes.hide}>
+                  <div className={classes.opacity_layer}>
+                    <div>
+                      <button
+                        className="border-0 search-btn-color fs-6 fw-semibold px-4 py-2 rounded-pill"
+                        type="button"
+                      >
+                        Add to cart
+                      </button>
+                    </div>
+                    <div className={classes.opacity_icon}>
+                      <span>
+                        <HiHeart />
+                      </span>
+                      <span>
+                        <BsFillEyeFill />
+                      </span>
+                      <span>
+                        <TbRefresh />
+                      </span>
+                    </div>
+                  </div>
+                  <div className={classes.white_overlay} />
+                </div>
+              </div>
+            </a>
+          </div>
+          <div className="card-body d-flex justify-content-center my-2 mb-2 flex-column">
+            <div className={classes.product_name}>
+              <a href="/">Variable product1</a>
+            </div>
+            <div className={classes.product_price}>
+              <span className="mx-2 fs-6 fw-semibold">
+                <s className={classes.gray_price}>$ 90.00</s>
+              </span>
+              <span className="mx-2 fs-6 fw-semibold">$ 78.00</span>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className={classes.apperance}>
+            <a href="/">
+              <div
+                className={classes.product_img}
+                // eslint-disable-next-line react/forbid-dom-props
+                style={{
+                  background: `url(${product1})`,
+                }}
+              >
+                <div className={classes.hide}>
+                  <div className={classes.opacity_layer}>
+                    <div>
+                      <button
+                        className="border-0 search-btn-color fs-6 fw-semibold px-4 py-2 rounded-pill"
+                        type="button"
+                      >
+                        Add to cart
+                      </button>
+                    </div>
+                    <div className={classes.opacity_icon}>
+                      <span>
+                        <HiHeart />
+                      </span>
+                      <span>
+                        <BsFillEyeFill />
+                      </span>
+                      <span>
+                        <TbRefresh />
+                      </span>
+                    </div>
+                  </div>
+                  <div className={classes.white_overlay} />
+                </div>
+              </div>
+            </a>
+          </div>
+          <div className="card-body d-flex justify-content-center my-2 mb-2 flex-column">
+            <div className={classes.product_name}>
+              <a href="/">Variable product1</a>
+            </div>
+            <div className={classes.product_price}>
+              <span className="mx-2 fs-6 fw-semibold">
+                <s className={classes.gray_price}>$ 90.00</s>
+              </span>
+              <span className="mx-2 fs-6 fw-semibold">$ 78.00</span>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className={classes.apperance}>
+            <a href="/">
+              <div
+                className={classes.product_img}
+                // eslint-disable-next-line react/forbid-dom-props
+                style={{
+                  background: `url(${product1})`,
+                }}
+              >
+                <div className={classes.hide}>
+                  <div className={classes.opacity_layer}>
+                    <div>
+                      <button
+                        className="border-0 search-btn-color fs-6 fw-semibold px-4 py-2 rounded-pill"
+                        type="button"
+                      >
+                        Add to cart
+                      </button>
+                    </div>
+                    <div className={classes.opacity_icon}>
+                      <span>
+                        <HiHeart />
+                      </span>
+                      <span>
+                        <BsFillEyeFill />
+                      </span>
+                      <span>
+                        <TbRefresh />
+                      </span>
+                    </div>
+                  </div>
+                  <div className={classes.white_overlay} />
+                </div>
+              </div>
+            </a>
+          </div>
+          <div className="card-body d-flex justify-content-center my-2 mb-2 flex-column">
+            <div className={classes.product_name}>
+              <a href="/">Variable product1</a>
+            </div>
+            <div className={classes.product_price}>
+              <span className="mx-2 fs-6 fw-semibold">
+                <s className={classes.gray_price}>$ 90.00</s>
+              </span>
+              <span className="mx-2 fs-6 fw-semibold">$ 78.00</span>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className={classes.apperance}>
+            <a href="/">
+              <div
+                className={classes.product_img}
+                // eslint-disable-next-line react/forbid-dom-props
+                style={{
+                  background: `url(${product1})`,
+                }}
+              >
+                <div className={classes.hide}>
+                  <div className={classes.opacity_layer}>
+                    <div>
+                      <button
+                        className="border-0 search-btn-color fs-6 fw-semibold px-4 py-2 rounded-pill"
+                        type="button"
+                      >
+                        Add to cart
+                      </button>
+                    </div>
+                    <div className={classes.opacity_icon}>
+                      <span>
+                        <HiHeart />
+                      </span>
+                      <span>
+                        <BsFillEyeFill />
+                      </span>
+                      <span>
+                        <TbRefresh />
+                      </span>
+                    </div>
+                  </div>
+                  <div className={classes.white_overlay} />
+                </div>
+              </div>
+            </a>
+          </div>
+          <div className="card-body d-flex justify-content-center my-2 mb-2 flex-column">
+            <div className={classes.product_name}>
+              <a href="/">Variable product1</a>
+            </div>
+            <div className={classes.product_price}>
+              <span className="mx-2 fs-6 fw-semibold">
+                <s className={classes.gray_price}>$ 90.00</s>
+              </span>
+              <span className="mx-2 fs-6 fw-semibold">$ 78.00</span>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className={classes.apperance}>
+            <a href="/">
+              <div
+                className={classes.product_img}
+                // eslint-disable-next-line react/forbid-dom-props
+                style={{
+                  background: `url(${product1})`,
+                }}
+              >
+                <div className={classes.hide}>
+                  <div className={classes.opacity_layer}>
+                    <div>
+                      <button
+                        className="border-0 search-btn-color fs-6 fw-semibold px-4 py-2 rounded-pill"
+                        type="button"
+                      >
+                        Add to cart
+                      </button>
+                    </div>
+                    <div className={classes.opacity_icon}>
+                      <span>
+                        <HiHeart />
+                      </span>
+                      <span>
+                        <BsFillEyeFill />
+                      </span>
+                      <span>
+                        <TbRefresh />
+                      </span>
+                    </div>
+                  </div>
+                  <div className={classes.white_overlay} />
+                </div>
+              </div>
+            </a>
+          </div>
+          <div className="card-body d-flex justify-content-center my-2 mb-2 flex-column">
+            <div className={classes.product_name}>
+              <a href="/">Variable product1</a>
+            </div>
+            <div className={classes.product_price}>
+              <span className="mx-2 fs-6 fw-semibold">
+                <s className={classes.gray_price}>$ 90.00</s>
+              </span>
+              <span className="mx-2 fs-6 fw-semibold">$ 78.00</span>
             </div>
           </div>
         </SwiperSlide>

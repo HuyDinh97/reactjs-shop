@@ -7,7 +7,6 @@ body {
 }
 
 body {
-  font-family: 'Times New Roman', Times, serif;
   font-size: 14px;
   color: #000;
   margin: 0;
@@ -90,7 +89,7 @@ svg polyline {
 .white_overlay {
   position: absolute;
   width: 100%;
-  height: 89%;
+  height: 85%;
   background-color: white;
   opacity: 50%;
   top: 0%;
@@ -110,7 +109,8 @@ svg polyline {
 
 .product_img {
   height: 350px;
-  background-repeat: 'no-repeat' !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
   display: flex;
   justify-content: center;
 }
@@ -130,4 +130,32 @@ svg polyline {
   background-color: #363f4e;
   border-radius: 20px;
   padding: 5px;
+}
+
+.product_name {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+
+.product_name a {
+  color:#000;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.product_name a:hover {
+  color: #eb3d32;
+}
+
+.product_price {
+  color: #eb3d32;
+  display: flex;
+  justify-content: center;
+}
+
+.gray_price {
+  color: gray;
 }
