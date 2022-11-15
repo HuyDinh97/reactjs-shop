@@ -58,8 +58,6 @@ function PopularProduct({ name }) {
                 // eslint-disable-next-line react/forbid-dom-props
                 style={{
                   background: `url(${product1})`,
-                  height: '350px',
-                  backgroundRepeat: 'no-repeat',
                 }}
               >
                 <div className={classes.hide}>
