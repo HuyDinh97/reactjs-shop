@@ -51,28 +51,38 @@ function PopularProduct({ name }) {
         className=""
       >
         <SwiperSlide>
-          <img src={product1} alt="product" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={product2} alt="product" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={product3} alt="product" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={product4} alt="product" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={product1} alt="product" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={product2} alt="product" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={product3} alt="product" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={product4} alt="product" />
+          <div className={classes.apperance}>
+            <a href="/">
+              <div
+                className={classes.product_img}
+                // eslint-disable-next-line react/forbid-dom-props
+                style={{
+                  background: `url(${product1})`,
+                  height: '350px',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              >
+                <div className={classes.hide}>
+                  <div className={classes.opacity_layer}>
+                    <button type="button">Add to cart</button>
+                    <div>
+                      <span>1</span>
+                      <span>1</span>
+                      <span>1</span>
+                    </div>
+                  </div>
+                  <div className={classes.white_overlay} />
+                </div>
+              </div>
+            </a>
+          </div>
+          <div>
+            <div>Variable product1</div>
+            <div>
+              <span>$ 90.00</span>
+              <span>$ 78.00</span>
+            </div>
+          </div>
         </SwiperSlide>
       </Swiper>
     </div>

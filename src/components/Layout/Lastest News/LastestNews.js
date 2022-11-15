@@ -32,7 +32,7 @@ function LastestNews() {
           </Card.Body>
         </Card>
         <Card className={classes.block_news}>
-          <Card.Img variant="top" src={cardImg1} />
+          <Card.Img variant="top" src={cardImg2} />
           <Card.Body>
             <Card.Title className="fw-bolder h5 mb-3">
               SIMPLY TIPS FOR BEAUTY
@@ -51,7 +51,7 @@ function LastestNews() {
           </Card.Body>
         </Card>
         <Card className={classes.block_news}>
-          <Card.Img variant="top" src={cardImg1} />
+          <Card.Img variant="top" src={cardImg3} />
           <Card.Body>
             <Card.Title className="fw-bolder h5 mb-3">
               SIMPLY TIPS FOR BEAUTY
