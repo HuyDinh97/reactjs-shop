@@ -4,6 +4,10 @@ import { GrNext, GrPrevious } from 'react-icons/gr';
 import { Navigation } from 'swiper';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { HiHeart } from 'react-icons/hi';
+import { BsFillEyeFill } from 'react-icons/bs';
+import { TbRefresh } from 'react-icons/tb';
+
 import TitleUnderline from './TitleUnderline';
 
 import 'swiper/swiper-bundle.min.css';
@@ -71,9 +75,15 @@ function PopularProduct({ name }) {
                       </button>
                     </div>
                     <div className={classes.opacity_icon}>
-                      <span>1</span>
-                      <span>1</span>
-                      <span>1</span>
+                      <span>
+                        <HiHeart />
+                      </span>
+                      <span>
+                        <BsFillEyeFill />
+                      </span>
+                      <span>
+                        <TbRefresh />
+                      </span>
                     </div>
                   </div>
                   <div className={classes.white_overlay} />

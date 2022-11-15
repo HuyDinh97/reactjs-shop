@@ -98,7 +98,7 @@ svg polyline {
 }
 
 .hide {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: flex-end;
   
@@ -116,5 +116,18 @@ svg polyline {
 }
 
 .opacity_icon {
-  margin-top: 100%;
+  margin-top: 60%;
+  margin-bottom: 5%;
+}
+
+.opacity_icon span {
+  font-size: 40px;
+  color: white;
+  margin: 5px;
+}
+
+.opacity_icon svg {
+  background-color: #363f4e;
+  border-radius: 20px;
+  padding: 5px;
 }
