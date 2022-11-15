@@ -62,8 +62,15 @@ function PopularProduct({ name }) {
               >
                 <div className={classes.hide}>
                   <div className={classes.opacity_layer}>
-                    <button type="button">Add to cart</button>
                     <div>
+                      <button
+                        className="border-0 search-btn-color fs-6 fw-semibold px-4 py-2 rounded-pill"
+                        type="button"
+                      >
+                        Add to cart
+                      </button>
+                    </div>
+                    <div className={classes.opacity_icon}>
                       <span>1</span>
                       <span>1</span>
                       <span>1</span>

@@ -79,6 +79,12 @@ svg polyline {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  z-index: 1;
+}
+
+.opacity_layer button {
+  background-color: #eb3d32;
+  color: white;
 }
 
 .white_overlay {
@@ -94,7 +100,7 @@ svg polyline {
 .hide {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   
 }
 
@@ -103,9 +109,12 @@ svg polyline {
 }
 
 .product_img {
-  height: '350px';
-  background-repeat: 'no-repeat';
+  height: 350px;
+  background-repeat: 'no-repeat' !important;
   display: flex;
   justify-content: center;
 }
 
+.opacity_icon {
+  margin-top: 100%;
+}
