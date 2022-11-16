@@ -13,3 +13,22 @@
   margin-left: 10%;
   display: flex;
 }
+
+.quote_w {
+  width: 50px!important;
+}
+
+.Box p {
+  padding: 20px 10px 0 10px;
+}
+
+.user_comment {
+  color: white;
+  font-weight: 500;
+}
+
+.user_name {
+  color: black;
+  font-weight: 600;
+  font-style: italic;
+}

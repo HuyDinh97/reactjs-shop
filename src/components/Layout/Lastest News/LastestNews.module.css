@@ -1,0 +1,40 @@
+.mg_4 {
+  margin-top: 4rem!important;
+}
+
+.mg_4 img {
+  padding: 0;
+}
+
+.block_news {
+  width: 22rem;
+  text-align: center;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.375)!important;
+}
+
+.comment_count {
+  font-style: italic;
+  color: #eb3d32;
+}
+
+.text_overflow {
+  white-space: pre;
+  inline-size: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #6c757d;
+  font-weight: 400;
+  font-size: unset;
+}
+
+.LastestNewsBtn {
+  border: none;
+  color: #eb3d32;
+  background-color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.Box_News {
+  display: flex;
+}

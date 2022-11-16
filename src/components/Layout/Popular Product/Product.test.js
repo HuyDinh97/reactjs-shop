@@ -7,5 +7,5 @@ test('should slide run correctly', async () => {
   render(<Product />);
 
   const buttons = await screen.findAllByRole('button');
-  expect(buttons).toHaveLength(2);
+  expect(buttons).toHaveLength(3);
 });
