@@ -8,6 +8,7 @@ import Advertising from './Advertising/Advertising';
 import Banner from './Banner/Banner';
 import CustomerComment from './Customer comment/CustomerComment';
 import LastestNews from './Lastest News/LastestNews';
+import SubscribeEmail from './Subscribe Email/SubscribeEmail';
 
 import classes from './Layout.module.css';
 
@@ -28,6 +29,7 @@ function Layout(_props) {
         <CustomerComment />
         <LastestNews />
       </main>
+      <SubscribeEmail />
     </div>
   );
 }

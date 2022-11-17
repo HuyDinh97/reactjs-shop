@@ -1,0 +1,24 @@
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subscribe_email {
+  margin-top: 4rem;
+  background-color: #363f4e;
+  height: 400px;
+  display: flex;
+  align-items: center;
+}
+
+.TitleUnderline {
+  color: white !important;
+}
+
+.TitleUnderline::before {
+  border-bottom: 3px solid white !important;
+}
