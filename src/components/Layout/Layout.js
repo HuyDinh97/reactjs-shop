@@ -9,6 +9,7 @@ import Banner from './Banner/Banner';
 import CustomerComment from './Customer comment/CustomerComment';
 import LastestNews from './Lastest News/LastestNews';
 import SubscribeEmail from './Subscribe Email/SubscribeEmail';
+import ServiceBanner from './Service Banner/ServiceBanner';
 
 import classes from './Layout.module.css';
 
@@ -30,6 +31,9 @@ function Layout(_props) {
         <LastestNews />
       </main>
       <SubscribeEmail />
+      <main className={classes.main}>
+        <ServiceBanner />
+      </main>
     </div>
   );
 }
