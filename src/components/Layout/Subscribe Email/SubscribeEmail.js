@@ -19,6 +19,7 @@ function SubscribeEmail() {
             type="email"
             className="form-control rounded-pill fw-semibold py-2 fs-6 d-flex justify-content-end"
             placeholder="Enter Your Email"
+            data-testid="email-input"
           />
           <button type="button">Subscribe</button>
         </div>
