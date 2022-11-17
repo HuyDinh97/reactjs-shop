@@ -1,32 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\SearchBar\SearchBar.test.js">
-    <testCase name="Should search input render" duration="46"/>
-    <testCase name="Should show cart dropdown" duration="164"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Subscribe Email\SubscribeEmail.test.js">
-    <testCase name="should email input render" duration="32"/>
-    <testCase name="should subscribe email button run" duration="54"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\SummerSale\SummerSale.test.js">
-    <testCase name="should Summer Sale render correctly" duration="98"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Popular Product\Product.test.js">
-    <testCase name="should slide run correctly" duration="126"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Header\Header.test.js">
-    <testCase name="should Header render correctly" duration="23"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js">
-    <testCase name="should CustomerComment run correctly" duration="53"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Categories\Categories.test.js">
-    <testCase name="should Header render correctly" duration="31"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Advertising\Advertising.test.js">
-    <testCase name="should Advertising render correctly" duration="24"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Banner\Banner.test.js">
-    <testCase name="should Banner run correctly" duration="26"/>
+  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Service Banner\ServiceBanner.test.js">
+    <testCase name="should ServiceBanner render correctly" duration="36"/>
   </file>
 </testExecutions>
