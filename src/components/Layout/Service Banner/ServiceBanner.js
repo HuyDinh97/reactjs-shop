@@ -10,7 +10,9 @@ function ServiceBanner() {
     <div className={classes.ServiceBanner_box}>
       <div className="border-end d-flex align-items-center flex-row px-5">
         <div className="d-flex mx-3 flip-img fs-1">
-          <ImTruck />
+          <span className={classes.ServiceBanner_truck_icon}>
+            <ImTruck />
+          </span>
         </div>
         <div className={classes.w_max_content}>
           <h5 className="fw-bold mt-2">FREE DELIVERY</h5>

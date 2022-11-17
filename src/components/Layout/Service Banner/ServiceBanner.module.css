@@ -15,3 +15,8 @@
 .w_max_content {
   width: max-content;
 }
+
+.ServiceBanner_truck_icon {
+  -webkit-transform: scaleX(-1);
+  display: flex;
+}
