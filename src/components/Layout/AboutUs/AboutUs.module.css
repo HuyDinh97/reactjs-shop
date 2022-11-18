@@ -1,0 +1,38 @@
+footer{
+  margin-top: 4rem;
+  background-color: #fbf9fa;
+}
+
+footer h5 {
+  margin-bottom: 1rem;
+  width: max-content;
+}
+
+.footer_box {
+  margin-right: auto;
+  margin-left: auto;
+  width: 60%;
+}
+
+footer span {
+  font-weight: 500;
+  opacity: 80% !important;
+  font-size: 16px;
+}
+
+.contact_info {
+  width: max-content;
+
+}
+
+.about_us_icon {
+  font-size: 20px;
+  color: #eb3d32;
+}
+
+.about_us_text {
+  font-weight: 500;
+  opacity: 60% !important;
+  font-size: 16px;
+}
+
