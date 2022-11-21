@@ -18,10 +18,12 @@ function AboutUs() {
             <Col xs={4} className="mb-3 px-2">
               <h5>ABOUT US</h5>
               <p>
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form, by
-                injected humour, or randomised words which do not look even
-                slightly believable.
+                <span>
+                  There are many variations of passages of Lorem Ipsum but the
+                  majority have suffered alteration in some form, by injected
+                  humour, or randomised words which do not look even slightly
+                  believable.
+                </span>
               </p>
             </Col>
 
