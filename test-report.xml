@@ -1,28 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\SearchBar\SearchBar.test.js">
-    <testCase name="Should search input render" duration="54"/>
-    <testCase name="Should show cart dropdown" duration="194"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\SummerSale\SummerSale.test.js">
-    <testCase name="should Summer Sale render correctly" duration="111"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Header\Header.test.js">
-    <testCase name="should Header render correctly" duration="25"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js">
-    <testCase name="should CustomerComment run correctly" duration="63"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Categories\Categories.test.js">
-    <testCase name="should Header render correctly" duration="27"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Advertising\Advertising.test.js">
-    <testCase name="should Advertising render correctly" duration="22"/>
-  </file>
   <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Banner\Banner.test.js">
-    <testCase name="should Banner run correctly" duration="22"/>
+    <testCase name="should Banner run correctly" duration="31"/>
   </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Popular Product\Product.test.js">
-    <testCase name="should slide run correctly" duration="147"/>
+  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Service Banner\ServiceBanner.test.js">
+    <testCase name="should ServiceBanner render correctly" duration="36"/>
   </file>
 </testExecutions>

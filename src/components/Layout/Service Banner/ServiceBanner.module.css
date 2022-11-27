@@ -1,0 +1,22 @@
+.icon_subtitle {
+  font-weight: 600!important;
+  margin-bottom: 0.5rem!important;
+  color: #363f4e;
+  font-size: 13px;
+  opacity: 80%;
+}
+
+.ServiceBanner_box {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.w_max_content {
+  width: max-content;
+}
+
+.ServiceBanner_truck_icon {
+  -webkit-transform: scaleX(-1);
+  display: flex;
+}
