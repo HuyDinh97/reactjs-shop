@@ -1,0 +1,20 @@
+.copyright_color {
+  background-color: #363f4e;
+}
+
+.copyright_box {
+  margin-right: auto;
+  margin-left: auto;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 65px;
+  color: white;
+  font-weight: 450;
+}
+
+.copyright_box span {
+  margin-right: 15px;
+  font-size: 20px;
+}
