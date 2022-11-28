@@ -7,7 +7,7 @@ import {
 } from 'react-icons/fa';
 import { AiOutlineTwitter } from 'react-icons/ai';
 
-import classes from './Footer.module.css';
+import classes from './Copyright.module.css';
 
 function Copyright() {
   return (

@@ -11,7 +11,7 @@ import LastestNews from './Lastest News/LastestNews';
 import SubscribeEmail from './Subscribe Email/SubscribeEmail';
 import ServiceBanner from './Service Banner/ServiceBanner';
 import AboutUs from './AboutUs/AboutUs';
-import Copyright from './Footer/Footer';
+import Copyright from './Copyright/Copyright';
 
 import classes from './Layout.module.css';
 

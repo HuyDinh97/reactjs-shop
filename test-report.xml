@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Banner\Banner.test.js">
-    <testCase name="should Banner run correctly" duration="31"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Service Banner\ServiceBanner.test.js">
-    <testCase name="should ServiceBanner render correctly" duration="36"/>
+  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Copyright\Copyright.test.js">
+    <testCase name="should Copyright render correctly" duration="38"/>
   </file>
 </testExecutions>
