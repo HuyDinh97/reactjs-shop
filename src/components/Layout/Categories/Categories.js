@@ -1,31 +1,31 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Nav from 'react-bootstrap/Nav';
+import useFetechCategory from 'Hooks/useFetchCategory';
 
 import classes from './Categories.module.css';
 
 function Categories() {
-  const [categories, setCategories] = useState([]);
-  useEffect(() => {
-    axios
-      .get('https://vnguyen.xyz/huy/day17/apis/index.php?type=categories')
-      .then((res) => {
-        console.log(res);
-        setCategories(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  const { categories, isSuccess } = useFetechCategory(); // Destructuring
+
+  // Safe code: handle if API error in response
+  if (isSuccess === false) {
+    return <p>Error, cannot fetch API</p>;
+  }
+
+  if (categories.length <= 0) {
+    return <p>Loading...</p>;
+  }
+
   return (
-    <Nav defaultActiveKey="/home" as="ul">
-      {categories.map((category) => (
-        <Nav.Item key={category._id} as="li">
-          <Nav.Link className={classes.nav_categories} href="/">
-            {category.name}
-          </Nav.Link>
-        </Nav.Item>
-      ))}
+    <Nav defaultActiveKey="/home" as="ul" data-testid="category-element">
+      {categories &&
+        categories.map((category) => (
+          <Nav.Item key={category._id} as="li">
+            <Nav.Link className={classes.nav_categories} href="/">
+              {category.name}
+            </Nav.Link>
+          </Nav.Item>
+        ))}
     </Nav>
   );
 }
