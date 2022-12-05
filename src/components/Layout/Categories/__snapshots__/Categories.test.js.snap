@@ -7,89 +7,13 @@ exports[`should Header render correctly 1`] = `
     <div>
       <ul
         class="nav"
-      >
-        <li
-          class="nav-item"
-        >
-          <a
-            class="nav-link active"
-            data-rr-ui-event-key="/home"
-            href="/home"
-          >
-            Home
-          </a>
-        </li>
-        <li
-          class="nav-item"
-        >
-          <a
-            class="nav-link"
-            data-rr-ui-event-key="link-1"
-            href="#"
-            role="button"
-            tabindex="0"
-          >
-            Fashion Sneaker
-          </a>
-        </li>
-        <li
-          class="nav-item"
-        >
-          <a
-            class="nav-link"
-            data-rr-ui-event-key="link-2"
-            href="#"
-            role="button"
-            tabindex="0"
-          >
-            Jackets
-          </a>
-        </li>
-      </ul>
+      />
     </div>
   </body>,
   "container": <div>
     <ul
       class="nav"
-    >
-      <li
-        class="nav-item"
-      >
-        <a
-          class="nav-link active"
-          data-rr-ui-event-key="/home"
-          href="/home"
-        >
-          Home
-        </a>
-      </li>
-      <li
-        class="nav-item"
-      >
-        <a
-          class="nav-link"
-          data-rr-ui-event-key="link-1"
-          href="#"
-          role="button"
-          tabindex="0"
-        >
-          Fashion Sneaker
-        </a>
-      </li>
-      <li
-        class="nav-item"
-      >
-        <a
-          class="nav-link"
-          data-rr-ui-event-key="link-2"
-          href="#"
-          role="button"
-          tabindex="0"
-        >
-          Jackets
-        </a>
-      </li>
-    </ul>
+    />
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

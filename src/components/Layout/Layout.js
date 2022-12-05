@@ -11,6 +11,7 @@ import LastestNews from './Lastest News/LastestNews';
 import SubscribeEmail from './Subscribe Email/SubscribeEmail';
 import ServiceBanner from './Service Banner/ServiceBanner';
 import AboutUs from './AboutUs/AboutUs';
+import Copyright from './Copyright/Copyright';
 
 import classes from './Layout.module.css';
 
@@ -36,6 +37,7 @@ function Layout(_props) {
         <ServiceBanner />
       </main>
       <AboutUs />
+      <Copyright />
     </div>
   );
 }
