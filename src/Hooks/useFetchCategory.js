@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 
 const useFetechCategory = () => {
-  const [categories, setCategories] = React.useState([]);
+  const [categories, setCategories] = React.useState();
   const [isSuccess, setIssuccess] = React.useState();
 
   React.useEffect(() => {
