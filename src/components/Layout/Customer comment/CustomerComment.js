@@ -13,7 +13,7 @@ function CustomerComment() {
   const { blogs, isSuccess } = useFetchBlog();
 
   if (isSuccess === false) {
-    return <p data-testid="error-fetch">Error, cannot fetch API</p>;
+    return <p data-testid="error-fetch-blog">Error, cannot fetch API</p>;
   }
 
   if (!blogs) {
