@@ -12,9 +12,6 @@ module.exports = {
     '\\.(gif|ttf|eot|png|jpg|jpeg)$': '<rootDir>src/__mocks__/fileMock.js',
     '\\.svg$': '<rootDir>src/__mocks__/svgrMock.js',
   },
-
-  setupFilesAfterEnv: ['<rootDir>src/setupTest.js'],
-
   testEnvironment: 'jest-environment-jsdom',
   testResultsProcessor: 'jest-sonar-reporter',
 

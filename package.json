@@ -14,11 +14,9 @@
     "react-icons": "^4.4.0",
     "react-router-dom": "^5.3.4",
     "react-scripts": "5.0.1",
-    "regenerator-runtime": "^0.13.11",
     "swiper": "^8.4.4",
     "ts-jest": "^29.0.3",
-    "web-vitals": "^2.1.4",
-    "whatwg-fetch": "^3.6.2"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
