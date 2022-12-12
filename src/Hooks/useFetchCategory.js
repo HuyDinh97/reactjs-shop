@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React from 'react';
 
-const useFetchCategory = () => {
-  const [categories, setCategories] = React.useState();
+const useFetechCategory = () => {
+  const [categories, setCategories] = React.useState([]);
   const [isSuccess, setIssuccess] = React.useState();
 
   React.useEffect(() => {
@@ -18,4 +18,4 @@ const useFetchCategory = () => {
   return { categories, isSuccess };
 };
 
-export default useFetchCategory;
+export default useFetechCategory;

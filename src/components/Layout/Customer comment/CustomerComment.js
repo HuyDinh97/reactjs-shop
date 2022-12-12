@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
@@ -46,10 +45,13 @@ function CustomerComment() {
                       />
                     </div>
                     <div>
-                      <p className={classes.user_comment}>{blog.content}</p>
+                      <p className={classes.user_comment}>
+                        {blog.content.substring(0, 320)}
+                        ...
+                      </p>
                     </div>
                     <div>
-                      <p className={classes.user_name}>- {blog.author}</p>
+                      <p className={classes.user_name}>{blog.author}</p>
                     </div>
                   </div>
                 </div>
