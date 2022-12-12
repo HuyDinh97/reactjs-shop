@@ -7,7 +7,7 @@ const useFetchBlog = () => {
 
   React.useEffect(() => {
     axios
-      .get('https://vnguyen.xyz/huy/day17/apis/index.php?type=posts')
+      .get('https://vnguyen.xyz/huy/day17/apis/index.php')
       .then((res) => {
         setBlogs(res.data.data);
         setIssuccess(true);
