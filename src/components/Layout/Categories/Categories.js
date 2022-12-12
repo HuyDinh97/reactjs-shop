@@ -1,11 +1,11 @@
 import React from 'react';
 import Nav from 'react-bootstrap/Nav';
-import useFetchCategory from 'Hooks/useFetchCategory';
+import useFetechCategory from 'Hooks/useFetchCategory';
 
 import classes from './Categories.module.css';
 
 function Categories() {
-  const { categories, isSuccess } = useFetchCategory(); // Destructuring
+  const { categories, isSuccess } = useFetechCategory(); // Destructuring
 
   // Safe code: handle if API error in response
   if (isSuccess === false) {
