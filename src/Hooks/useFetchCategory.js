@@ -7,7 +7,7 @@ const useFetchCategory = () => {
 
   React.useEffect(() => {
     axios
-      .get('https://vnguyen.xyz/huy/day17/apis/index.php?type=categories')
+      .get('https://vnguyen.xyz/huy/day17/apis/index.php')
       .then((res) => {
         setCategories(res.data.data);
         setIssuccess(true);
