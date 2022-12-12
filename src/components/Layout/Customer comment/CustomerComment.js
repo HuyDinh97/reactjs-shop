@@ -1,61 +1,43 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
-import useFetchBlog from 'Hooks/useFetchBlog';
+import customerImg from './image/client-img-1.png';
 import quoteImg from './image/icons8-quote-left-48.png';
-
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 
 import classes from './CustomerComment.module.css';
 
 function CustomerComment() {
-  const { blogs, isSuccess } = useFetchBlog();
-
-  if (isSuccess === false) {
-    return <p data-testid="error-fetch">Error, cannot fetch API</p>;
-  }
-
-  if (!blogs) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <div>
-      <Swiper
-        pagination
-        modules={[Pagination]}
-        className="mySwiper"
-        data-testid="blog-element"
-      >
-        {blogs &&
-          blogs.map((blog) => (
-            <SwiperSlide className={classes.Box} key={blog._id}>
+      <Swiper pagination modules={[Pagination]} className="mySwiper">
+        <SwiperSlide className={classes.Box}>
+          <div>
+            <div className={classes.Box_inside}>
               <div>
-                <div className={classes.Box_inside}>
-                  <div>
-                    <img src={blog.image} alt="img" />
-                  </div>
-                  <div>
-                    <div>
-                      <img
-                        className={classes.quote_w}
-                        src={quoteImg}
-                        alt="quoteImg"
-                      />
-                    </div>
-                    <div>
-                      <p className={classes.user_comment}>{blog.content}</p>
-                    </div>
-                    <div>
-                      <p className={classes.user_name}>- {blog.author}</p>
-                    </div>
-                  </div>
+                <img src={customerImg} alt="img" />
+              </div>
+              <div>
+                <div>
+                  <img
+                    className={classes.quote_w}
+                    src={quoteImg}
+                    alt="quoteImg"
+                  />
+                </div>
+                <div>
+                  <p className={classes.user_comment}>asdasdasdasdasd</p>
+                </div>
+                <div>
+                  <p className={classes.user_name}>- William Genske</p>
                 </div>
               </div>
-            </SwiperSlide>
-          ))}
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide className={classes.Box}>Slide 2</SwiperSlide>
+        <SwiperSlide className={classes.Box}>Slide 3</SwiperSlide>
       </Swiper>
     </div>
   );
