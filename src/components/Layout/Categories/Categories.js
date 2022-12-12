@@ -9,10 +9,10 @@ function Categories() {
 
   // Safe code: handle if API error in response
   if (isSuccess === false) {
-    return <p data-testid="error-fetch">Error, cannot fetch API</p>;
+    return <p>Error, cannot fetch API</p>;
   }
 
-  if (!categories) {
+  if (categories.length <= 0) {
     return <p>Loading...</p>;
   }
 
