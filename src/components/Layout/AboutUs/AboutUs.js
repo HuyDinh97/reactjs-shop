@@ -3,6 +3,8 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import useFetechCategory from 'Hooks/useFetchCategory';
+
 import { TfiLocationPin } from 'react-icons/tfi';
 import { BsTelephone } from 'react-icons/bs';
 import { GoMail } from 'react-icons/go';
@@ -10,6 +12,16 @@ import { GoMail } from 'react-icons/go';
 import classes from './AboutUs.module.css';
 
 function AboutUs() {
+  const { categories, isSuccess } = useFetechCategory();
+
+  if (isSuccess === false) {
+    return <p data-testid="error-fetch-categories">Error, cannot fetch API</p>;
+  }
+
+  if (categories.length <= 0) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div>
       <footer>
@@ -30,41 +42,14 @@ function AboutUs() {
             <Col xs={2} className="mb-3 px-2">
               <h5>CATEGORIES</h5>
               <ul className="nav flex-column" id="category-footer">
-                <li className="nav-item mb-2">
-                  <a href="#" className="nav-link p-0 text-muted">
-                    <span>Fashion Sneakers</span>
-                  </a>
-                </li>
-                <li className="nav-item mb-2">
-                  <a href="#" className="nav-link p-0 text-muted">
-                    <span>Jackets</span>
-                  </a>
-                </li>
-                <li className="nav-item mb-2">
-                  <a href="#" className="nav-link p-0 text-muted">
-                    <span>Outdoor Shop</span>
-                  </a>
-                </li>
-                <li className="nav-item mb-2">
-                  <a href="#" className="nav-link p-0 text-muted">
-                    <span>Pants</span>
-                  </a>
-                </li>
-                <li className="nav-item mb-2">
-                  <a href="#" className="nav-link p-0 text-muted">
-                    <span>Search & Top</span>
-                  </a>
-                </li>
-                <li className="nav-item mb-2">
-                  <a href="#" className="nav-link p-0 text-muted">
-                    <span>Swim Shop</span>
-                  </a>
-                </li>
-                <li className="nav-item mb-2">
-                  <a href="#" className="nav-link p-0 text-muted">
-                    <span>Swim Shop</span>
-                  </a>
-                </li>
+                {categories &&
+                  categories.map((category) => (
+                    <li className="nav-item mb-2">
+                      <a href="#" className="nav-link p-0 text-muted">
+                        <span>{category.name}</span>
+                      </a>
+                    </li>
+                  ))}
               </ul>
             </Col>
 

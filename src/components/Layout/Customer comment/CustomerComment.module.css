@@ -5,13 +5,23 @@
 }
 
 .Box img {
-  width: 100%;
+  border-radius: 50%!important;
+  height: auto;
+  width: 200px;
 }
 
 .Box_inside {
-  margin-top: 4%;
+  margin-top: 3%;
   margin-left: 10%;
   display: flex;
+  margin-right: 10%;
+  align-items: stretch;
+}
+
+.Box_avatar {
+  display: flex;
+  align-items: stretch;
+  height: 195px;
 }
 
 .quote_w {
