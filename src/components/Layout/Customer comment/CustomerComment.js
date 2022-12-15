@@ -1,7 +1,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
-import useFetchBlog from 'Hooks/useFetchBlog';
+import useFetchTestimotional from 'Hooks/useFetchTestimotional';
 import quoteImg from './image/icons8-quote-left-48.png';
 
 import 'swiper/swiper-bundle.min.css';
@@ -10,15 +10,17 @@ import 'swiper/swiper.min.css';
 import classes from './CustomerComment.module.css';
 
 function CustomerComment() {
-  const { blogs, isSuccess } = useFetchBlog();
+  const { testimotions, isSuccess } = useFetchTestimotional();
 
   if (isSuccess === false) {
     return <p data-testid="error-fetch-blog">Error, cannot fetch API</p>;
   }
 
-  if (!blogs) {
+  if (!testimotions) {
     return <p>Loading...</p>;
   }
+
+  const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
 
   return (
     <div>
@@ -26,15 +28,15 @@ function CustomerComment() {
         pagination
         modules={[Pagination]}
         className="mySwiper"
-        data-testid="blog-element"
+        data-testid="testimotional-element"
       >
-        {blogs &&
-          blogs.map((blog) => (
-            <SwiperSlide className={classes.Box} key={blog._id}>
+        {testimotions &&
+          testimotions.map((testi) => (
+            <SwiperSlide className={classes.Box} key={testi._id.$oid}>
               <div>
                 <div className={classes.Box_inside}>
-                  <div>
-                    <img src={blog.image} alt="img" />
+                  <div className={classes.Box_avatar}>
+                    <img src={linkIMG + testi.avatar} alt="img" />
                   </div>
                   <div>
                     <div>
@@ -46,12 +48,14 @@ function CustomerComment() {
                     </div>
                     <div>
                       <p className={classes.user_comment}>
-                        {blog.content.substring(0, 320)}
-                        ...
+                        {testi.feedback_text}
                       </p>
                     </div>
                     <div>
-                      <p className={classes.user_name}>{blog.author}</p>
+                      <p className={classes.user_name}>
+                        {' - '}
+                        {testi.customer_name}
+                      </p>
                     </div>
                   </div>
                 </div>
