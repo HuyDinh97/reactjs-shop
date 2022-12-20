@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Categories\Categories.test.js">
-    <testCase name="should Header render correctly" duration="63"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Popular Product\Product.test.js">
-    <testCase name="should slide run correctly" duration="176"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Subscribe Email\SubscribeEmail.test.js">
-    <testCase name="should email input render" duration="30"/>
-    <testCase name="should subscribe email button run" duration="68"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\SearchBar\SearchBar.test.js">
-    <testCase name="Should search input render" duration="67"/>
-    <testCase name="Should show cart dropdown" duration="178"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\SummerSale\SummerSale.test.js">
-    <testCase name="should Summer Sale render correctly" duration="104"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Service Banner\ServiceBanner.test.js">
-    <testCase name="should ServiceBanner render correctly" duration="33"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Header\Header.test.js">
-    <testCase name="should Header render correctly" duration="27"/>
-  </file>
   <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js">
-    <testCase name="should CustomerComment run correctly" duration="51"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Copyright\Copyright.test.js">
-    <testCase name="should Copyright render correctly" duration="34"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Advertising\Advertising.test.js">
-    <testCase name="should Advertising render correctly" duration="24"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Banner\Banner.test.js">
-    <testCase name="should Banner run correctly" duration="23"/>
+    <testCase name="should customer comment render correctly" duration="1076">
+      <failure message="Error: Unable to find an element by: [data-testid=&quot;testimotional-element&quot;]"><![CDATA[Error: Unable to find an element by: [data-testid="testimotional-element"]
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <p>
+      Loading...
+    </p>
+  </div>
+</body>
+    at waitForWrapper (D:\du lieu\IT\React\playground\reactjs-shop\node_modules\@testing-library\dom\dist\wait-for.js:187:27)
+    at D:\du lieu\IT\React\playground\reactjs-shop\node_modules\@testing-library\dom\dist\query-helpers.js:101:32
+    at findByTestId (D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js:52:23)
+    at tryCatch (D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js:2:1)
+    at Generator.<anonymous> (D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js:2:1)
+    at Generator.next (D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js:2:1)
+    at asyncGeneratorStep (D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js:2:1)
+    at _next (D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js:2:1)
+    at D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js:2:1
+    at new Promise (<anonymous>)
+    at Object.<anonymous> (D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js:2:1)
+    at Promise.then.completed (D:\du lieu\IT\React\playground\reactjs-shop\node_modules\jest-cli\node_modules\jest-circus\build\utils.js:289:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (D:\du lieu\IT\React\playground\reactjs-shop\node_modules\jest-cli\node_modules\jest-circus\build\utils.js:222:10)
+    at _callCircusTest (D:\du lieu\IT\React\playground\reactjs-shop\node_modules\jest-cli\node_modules\jest-circus\build\run.js:248:40)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at _runTest (D:\du lieu\IT\React\playground\reactjs-shop\node_modules\jest-cli\node_modules\jest-circus\build\run.js:184:3)
+    at _runTestsForDescribeBlock (D:\du lieu\IT\React\playground\reactjs-shop\node_modules\jest-cli\node_modules\jest-circus\build\run.js:86:9)
+    at run (D:\du lieu\IT\React\playground\reactjs-shop\node_modules\jest-cli\node_modules\jest-circus\build\run.js:26:3)
+    at runAndTransformResultsToJestFormat (D:\du lieu\IT\React\playground\reactjs-shop\node_modules\jest-cli\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:120:21)]]></failure>
+    </testCase>
+    <testCase name="should customer comment render failed" duration="23"/>
   </file>
 </testExecutions>

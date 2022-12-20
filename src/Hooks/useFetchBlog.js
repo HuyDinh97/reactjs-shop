@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 
 const useFetchBlog = () => {
-  const [blogs, setBlogs] = React.useState([]);
+  const [blogs, setBlogs] = React.useState();
   const [isSuccess, setIssuccess] = React.useState();
 
   React.useEffect(() => {
