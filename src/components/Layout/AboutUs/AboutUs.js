@@ -44,7 +44,7 @@ function AboutUs() {
               <ul className="nav flex-column" id="category-footer">
                 {categories &&
                   categories.map((category) => (
-                    <li className="nav-item mb-2">
+                    <li className="nav-item mb-2" key={category._id}>
                       <a href="#" className="nav-link p-0 text-muted">
                         <span>{category.name}</span>
                       </a>
