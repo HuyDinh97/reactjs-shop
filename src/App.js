@@ -1,11 +1,19 @@
+import useFetchCategory from 'Hooks/useFetchCategory';
+import AboutUs from 'pages/AboutUs';
+import Home from 'pages/Home';
 import React from 'react';
-import Layout from './components/Layout/Layout';
+import { Routes, Route } from 'react-router-dom';
+import Layout from './pages/Layout';
 
 function App() {
+  useFetchCategory();
   return (
-    <div>
-      <Layout />
-    </div>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about-us" element={<AboutUs />} />
+      </Routes>
+    </Layout>
   );
 }
 

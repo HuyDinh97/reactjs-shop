@@ -7,13 +7,16 @@
     "axios": "^1.2.0",
     "babel-core": "7.0.0-bridge.0",
     "bootstrap": "^5.2.2",
+    "history": "4.9.0",
     "msw": "^0.49.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
-    "react-router-dom": "^5.3.4",
+    "react-redux": "7.2.3",
+    "react-router-dom": "6.0.2",
     "react-scripts": "5.0.1",
+    "redux": "^4.0.5",
     "regenerator-runtime": "^0.13.11",
     "swiper": "^8.4.4",
     "ts-jest": "^29.0.3",
@@ -90,5 +93,6 @@
     "*.{js,ts,tsx}": [
       "yarn lint:js src"
     ]
-  }
+  },
+  "packageManager": "yarn@3.1.1"
 }
