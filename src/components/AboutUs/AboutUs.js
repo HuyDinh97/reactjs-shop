@@ -2,8 +2,7 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
-import useFetechCategory from 'Hooks/useFetchCategory';
+import { useGetCategories } from 'store/selectors/common';
 
 import { TfiLocationPin } from 'react-icons/tfi';
 import { BsTelephone } from 'react-icons/bs';
@@ -12,11 +11,7 @@ import { GoMail } from 'react-icons/go';
 import classes from './AboutUs.module.css';
 
 function AboutUs() {
-  const { categories, isSuccess } = useFetechCategory();
-
-  if (isSuccess === false) {
-    return <p data-testid="error-fetch-categories">Error, cannot fetch API</p>;
-  }
+  const categories = useGetCategories();
 
   if (categories.length <= 0) {
     return <p>Loading...</p>;

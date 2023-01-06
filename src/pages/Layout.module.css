@@ -1,3 +1,9 @@
+.main {
+  margin-right: auto;
+  margin-left: auto;
+  width: 60%;
+}
+
 .nav_categories {
   color: black !important;
   font-weight: 600 !important;
