@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/extensions
 import React from 'react';
 
-import AppRouter from 'router/AppRouters';
+import Navigation from 'components/Navigation';
 import Header from '../components/Header/Header';
 import SearchBar from '../components/SearchBar/SearchBar';
 import SummerSale from '../components/SummerSale/SummerSale';
@@ -19,7 +19,7 @@ function Layout(props) {
       <Header />
       <div className={classes.main}>
         <SearchBar />
-        <AppRouter classes={classes} />
+        <Navigation classes={classes} />
       </div>
       <SummerSale />
       <main className={classes.main}>{children}</main>
