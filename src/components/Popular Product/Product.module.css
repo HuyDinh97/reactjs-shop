@@ -113,6 +113,7 @@ svg polyline {
   background-position: center !important;
   display: flex;
   justify-content: center;
+  background-size: contain !important;
 }
 
 .opacity_icon {
