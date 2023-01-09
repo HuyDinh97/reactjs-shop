@@ -8,5 +8,10 @@ export const useGetCategories = () =>
 
 export const useGetPopularProduct = () =>
   useSelector((state) =>
-    state?.common?.products?.length > 0 ? state.common.categories : []
+    state?.common?.products?.length > 0 ? state.common.products : []
+  );
+
+export const useGetTestimonial = () =>
+  useSelector((state) =>
+    state?.common?.testimonials?.length > 0 ? state.common.testimonials : []
   );

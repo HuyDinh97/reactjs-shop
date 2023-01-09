@@ -1,6 +1,7 @@
 const initialState = {
   categories: [],
   popularProducts: [],
+  testtimotionals: [],
 };
 // eslint-disable-next-line default-param-last
 export default (state = initialState, action) => {
@@ -14,6 +15,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         popularProducts: action.payload.popularProducts,
+      };
+    case 'ADD_TESTIMONIAL':
+      return {
+        ...state,
+        testimonials: action.payload.testimonials,
       };
     default:
       return state;

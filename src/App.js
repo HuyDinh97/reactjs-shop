@@ -1,5 +1,6 @@
 import useFetchCategory from 'Hooks/useFetchCategory';
 import useFetchPopularProduct from 'Hooks/useFetchPopularProduct';
+import useFetchTestimonial from 'Hooks/useFetchTestimotional';
 import AboutUs from 'pages/AboutUs';
 import Home from 'pages/Home';
 import React from 'react';
@@ -9,6 +10,7 @@ import Layout from './pages/Layout';
 function App() {
   useFetchCategory();
   useFetchPopularProduct();
+  useFetchTestimonial();
   return (
     <Layout>
       <Routes>

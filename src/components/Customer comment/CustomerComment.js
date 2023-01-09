@@ -1,7 +1,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
-import useFetchTestimotional from 'Hooks/useFetchTestimotional';
+import { useGetTestimonial } from 'store/selectors/common';
 import quoteImg from './image/icons8-quote-left-48.png';
 
 import 'swiper/swiper-bundle.min.css';
@@ -10,11 +10,8 @@ import 'swiper/swiper.min.css';
 import classes from './CustomerComment.module.css';
 
 function CustomerComment() {
-  const { testimotional, isSuccess } = useFetchTestimotional();
-
-  if (isSuccess === false) {
-    return <p data-testid="error-fetch-blog">Error, cannot fetch API</p>;
-  }
+  const testimotional = useGetTestimonial();
+  console.log(testimotional);
 
   if (!testimotional) {
     return <p>Loading...</p>;

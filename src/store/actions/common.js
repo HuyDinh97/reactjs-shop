@@ -12,3 +12,10 @@ export const addPopularProduct = (payload) => {
     payload,
   };
 };
+
+export const addTestimonial = (payload) => {
+  return {
+    type: 'ADD_TESTIMONIAL',
+    payload,
+  };
+};

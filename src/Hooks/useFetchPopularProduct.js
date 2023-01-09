@@ -17,7 +17,7 @@ const useFetchPopularProduct = () => {
     axios
       .get('https://vnguyen.xyz/huy/day17/apis/index.php?type=products')
       .then((res) => {
-        dispatch(addPopularProduct({ products: res.data.data }));
+        dispatch(addPopularProduct({ popularProducts: res.data.data }));
         setIssuccess(true);
       })
       .catch(() => setIssuccess(false));
