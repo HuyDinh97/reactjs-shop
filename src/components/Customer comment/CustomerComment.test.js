@@ -1,11 +1,12 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { server } from '__mocks__/server';
 import { rest } from 'msw';
+import { act } from 'react-dom/test-utils';
 import CustomerComment from './CustomerComment';
 
-test('should customer comment render correctly', async () => {
+it('should customer comment render correctly', async () => {
   server.use(
     rest.get(
       `https://vnguyen.xyz/huy/day17/apis/index.php`,
@@ -50,8 +51,15 @@ test('should customer comment render correctly', async () => {
     )
   );
 
-  render(<CustomerComment />);
-  expect(await screen.findByTestId('testimotional-element'));
+  act(() => {
+    render(<CustomerComment />);
+  });
+
+  await act(async () => {
+    waitFor(() => {
+      expect(screen.findByTestId('testimotional-element'));
+    });
+  });
 
   // screen.debug(undefined);
 });
@@ -67,6 +75,6 @@ test('Should customer comment render failed', async () => {
   );
 
   render(<CustomerComment />);
-  screen.debug(undefined, 5000000000000);
+  // screen.debug(undefined, 5000000000000);
   expect(await screen.findByTestId('error-fetch-blog'));
 });

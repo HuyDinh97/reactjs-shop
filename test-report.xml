@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Customer comment\CustomerComment.test.js">
-    <testCase name="should customer comment render correctly" duration="285"/>
-    <testCase name="Should customer comment render failed" duration="58"/>
+    <testCase name="should customer comment render correctly" duration="146"/>
+    <testCase name="Should customer comment render failed" duration="29"/>
   </file>
 </testExecutions>
