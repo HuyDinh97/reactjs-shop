@@ -53,7 +53,7 @@ test('should customer comment render correctly', async () => {
   render(<CustomerComment />);
   expect(await screen.findByTestId('testimotional-element'));
 
-  screen.debug(undefined);
+  // screen.debug(undefined);
 });
 
 test('Should customer comment render failed', async () => {
@@ -67,6 +67,6 @@ test('Should customer comment render failed', async () => {
   );
 
   render(<CustomerComment />);
-  // screen.debug(undefined, 5000000000000);
+  screen.debug(undefined, 5000000000000);
   expect(await screen.findByTestId('error-fetch-blog'));
 });
