@@ -1,9 +1,9 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
+// import React from 'react';
+// import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { server } from '__mocks__/server';
 import { rest } from 'msw';
-import CustomerComment from './CustomerComment';
+// import CustomerComment from './CustomerComment';
 
 // it('should customer comment render correctly', async () => {
 //   server.use(
