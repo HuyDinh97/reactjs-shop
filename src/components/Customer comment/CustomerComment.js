@@ -10,13 +10,13 @@ import 'swiper/swiper.min.css';
 import classes from './CustomerComment.module.css';
 
 function CustomerComment() {
-  const { testimotions, isSuccess } = useFetchTestimotional();
+  const { testimotional, isSuccess } = useFetchTestimotional();
 
   if (isSuccess === false) {
     return <p data-testid="error-fetch-blog">Error, cannot fetch API</p>;
   }
 
-  if (!testimotions) {
+  if (!testimotional) {
     return <p>Loading...</p>;
   }
 
@@ -30,8 +30,8 @@ function CustomerComment() {
         className="mySwiper"
         data-testid="testimotional-element"
       >
-        {testimotions &&
-          testimotions.map((testi) => (
+        {testimotional &&
+          testimotional.map((testi) => (
             <SwiperSlide className={classes.Box} key={testi._id.$oid}>
               <div>
                 <div className={classes.Box_inside}>

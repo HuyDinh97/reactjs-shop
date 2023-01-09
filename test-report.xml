@@ -1,38 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js">
-    <testCase name="should customer comment render correctly" duration="1076">
-      <failure message="Error: Unable to find an element by: [data-testid=&quot;testimotional-element&quot;]"><![CDATA[Error: Unable to find an element by: [data-testid="testimotional-element"]
-
-Ignored nodes: comments, script, style
-<body>
-  <div>
-    <p>
-      Loading...
-    </p>
-  </div>
-</body>
-    at waitForWrapper (D:\du lieu\IT\React\playground\reactjs-shop\node_modules\@testing-library\dom\dist\wait-for.js:187:27)
-    at D:\du lieu\IT\React\playground\reactjs-shop\node_modules\@testing-library\dom\dist\query-helpers.js:101:32
-    at findByTestId (D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js:52:23)
-    at tryCatch (D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js:2:1)
-    at Generator.<anonymous> (D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js:2:1)
-    at Generator.next (D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js:2:1)
-    at asyncGeneratorStep (D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js:2:1)
-    at _next (D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js:2:1)
-    at D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js:2:1
-    at new Promise (<anonymous>)
-    at Object.<anonymous> (D:\du lieu\IT\React\playground\reactjs-shop\src\components\Layout\Customer comment\CustomerComment.test.js:2:1)
-    at Promise.then.completed (D:\du lieu\IT\React\playground\reactjs-shop\node_modules\jest-cli\node_modules\jest-circus\build\utils.js:289:28)
-    at new Promise (<anonymous>)
-    at callAsyncCircusFn (D:\du lieu\IT\React\playground\reactjs-shop\node_modules\jest-cli\node_modules\jest-circus\build\utils.js:222:10)
-    at _callCircusTest (D:\du lieu\IT\React\playground\reactjs-shop\node_modules\jest-cli\node_modules\jest-circus\build\run.js:248:40)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5)
-    at _runTest (D:\du lieu\IT\React\playground\reactjs-shop\node_modules\jest-cli\node_modules\jest-circus\build\run.js:184:3)
-    at _runTestsForDescribeBlock (D:\du lieu\IT\React\playground\reactjs-shop\node_modules\jest-cli\node_modules\jest-circus\build\run.js:86:9)
-    at run (D:\du lieu\IT\React\playground\reactjs-shop\node_modules\jest-cli\node_modules\jest-circus\build\run.js:26:3)
-    at runAndTransformResultsToJestFormat (D:\du lieu\IT\React\playground\reactjs-shop\node_modules\jest-cli\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:120:21)]]></failure>
-    </testCase>
-    <testCase name="should customer comment render failed" duration="23"/>
+  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Customer comment\CustomerComment.test.js">
+    <testCase name="should customer comment render correctly" duration="357"/>
+    <testCase name="Should customer comment render failed" duration="52"/>
   </file>
 </testExecutions>
