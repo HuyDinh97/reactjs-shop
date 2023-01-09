@@ -5,3 +5,10 @@ export const addCategories = (payload) => {
     payload,
   };
 };
+
+export const addPopularProduct = (payload) => {
+  return {
+    type: 'ADD_POPULARPRODUCT',
+    payload,
+  };
+};
