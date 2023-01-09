@@ -11,7 +11,6 @@ import classes from './CustomerComment.module.css';
 
 function CustomerComment() {
   const testimotional = useGetTestimonial();
-  console.log(testimotional);
 
   if (!testimotional) {
     return <p>Loading...</p>;
