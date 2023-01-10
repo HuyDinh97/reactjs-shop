@@ -13,6 +13,13 @@ export const addPopularProduct = (payload) => {
   };
 };
 
+export const addBestSeller = (payload) => {
+  return {
+    type: 'ADD_BESTSELLER',
+    payload,
+  };
+};
+
 export const addTestimonial = (payload) => {
   return {
     type: 'ADD_TESTIMONIAL',

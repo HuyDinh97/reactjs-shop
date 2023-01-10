@@ -16,6 +16,11 @@ export default (state = initialState, action) => {
         ...state,
         popularProducts: action.payload.popularProducts,
       };
+    case 'ADD_BESTSELLER':
+      return {
+        ...state,
+        bestSellers: action.payload.bestSellers,
+      };
     case 'ADD_TESTIMONIAL':
       return {
         ...state,
