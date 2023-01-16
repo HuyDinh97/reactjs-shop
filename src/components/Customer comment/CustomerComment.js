@@ -13,7 +13,7 @@ function CustomerComment() {
   const testimotional = useGetTestimonial();
 
   if (!testimotional) {
-    return <p>Loading...</p>;
+    return <p data-testid="testimotional-error">Loading...</p>;
   }
 
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
