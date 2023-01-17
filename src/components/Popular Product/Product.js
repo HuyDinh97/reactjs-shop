@@ -24,11 +24,11 @@ function PopularProduct({ name }) {
   const priceCheck = 'd-none';
 
   if (!products) {
-    return <p>Loading...</p>;
+    return <p data-testid="popularProducts-error">Loading...</p>;
   }
 
   return (
-    <div className={classes.mg_4}>
+    <div className={classes.mg_4} data-testid="popularProducts-element">
       <Row className={classes.mg_bot}>
         <Col xs lg="2" />
         <TitleUnderline name={name} />

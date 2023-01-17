@@ -1,42 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Subscribe Email\SubscribeEmail.test.js">
-    <testCase name="should email input render" duration="31"/>
-    <testCase name="should subscribe email button run" duration="56"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Customer comment\CustomerComment.test.js">
-    <testCase name="should customer comment render correctly" duration="80"/>
-    <testCase name="Should customer comment render failed" duration="45"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\store\actions\action.test.js">
-    <testCase name="should addCategories from API" duration="3"/>
-    <testCase name="should addPopularProduct from API" duration="1"/>
-    <testCase name="should addBestSeller from API" duration="1"/>
-    <testCase name="should addTestimonial from API" duration="1"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\SearchBar\SearchBar.test.js">
-    <testCase name="Should search input render" duration="35"/>
-    <testCase name="Should show cart dropdown" duration="143"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\SummerSale\SummerSale.test.js">
-    <testCase name="should Summer Sale render correctly" duration="99"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Header\Header.test.js">
-    <testCase name="should Header render correctly" duration="26"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Service Banner\ServiceBanner.test.js">
-    <testCase name="should ServiceBanner render correctly" duration="35"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Banner\Banner.test.js">
-    <testCase name="should Banner run correctly" duration="21"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Copyright\Copyright.test.js">
-    <testCase name="should Copyright render correctly" duration="29"/>
-  </file>
   <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Popular Product\Product.test.js">
-    <testCase name="should slide run correctly" duration="1"/>
-  </file>
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Advertising\Advertising.test.js">
-    <testCase name="should Advertising render correctly" duration="23"/>
+    <testCase name="should slide run correctly" duration="116"/>
+    <testCase name="Should popularProducts render failed" duration="22"/>
   </file>
 </testExecutions>

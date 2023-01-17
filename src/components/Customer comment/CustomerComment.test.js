@@ -50,7 +50,6 @@ it('should customer comment render correctly', async () => {
   );
 
   await expect(screen.getByTestId('testimotional-element')).toBeTruthy();
-  // screen.debug();
 });
 
 test('Should customer comment render failed', async () => {
