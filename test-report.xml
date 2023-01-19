@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Popular Product\Product.test.js">
-    <testCase name="Should popularProducts render failed" duration="122"/>
+    <testCase name="should slide run correctly" duration="128"/>
+    <testCase name="Should popularProducts render failed" duration="23"/>
   </file>
 </testExecutions>
