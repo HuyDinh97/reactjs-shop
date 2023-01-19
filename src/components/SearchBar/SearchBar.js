@@ -57,7 +57,7 @@ function SearchBar() {
             </div>
             <div className={classes.center}>
               <button type="button" className={classes.cart_view_cart}>
-                View Cart
+                <a href="/my-cart">View Cart</a>
               </button>
             </div>
           </Dropdown.Menu>

@@ -4,7 +4,6 @@ import React from 'react';
 import Navigation from 'components/Navigation';
 import Header from '../components/Header/Header';
 import SearchBar from '../components/SearchBar/SearchBar';
-import SummerSale from '../components/SummerSale/SummerSale';
 import SubscribeEmail from '../components/Subscribe Email/SubscribeEmail';
 import ServiceBanner from '../components/Service Banner/ServiceBanner';
 import AboutUs from '../components/AboutUs/AboutUs';
@@ -21,7 +20,6 @@ function Layout(props) {
         <SearchBar />
         <Navigation classes={classes} />
       </div>
-      <SummerSale />
       <main className={classes.main}>{children}</main>
       <SubscribeEmail />
       <main className={classes.main}>
