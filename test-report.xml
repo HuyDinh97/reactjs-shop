@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\store\reducers\reducers.test.js">
-    <testCase name="should set default state" duration="3"/>
+  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Popular Product\Product.test.js">
+    <testCase name="Should popularProducts render failed" duration="122"/>
   </file>
 </testExecutions>
