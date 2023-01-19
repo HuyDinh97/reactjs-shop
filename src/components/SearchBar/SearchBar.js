@@ -9,7 +9,9 @@ function SearchBar() {
   return (
     <div className={classes.searchBar}>
       <div>
-        <img src={logo} alt="Logo" />
+        <a href="/">
+          <img src={logo} alt="Logo" />
+        </a>
       </div>
       <div className={classes.searchSection}>
         <input
