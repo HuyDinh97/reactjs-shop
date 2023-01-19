@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Popular Product\Product.test.js">
-    <testCase name="should slide run correctly" duration="116"/>
-    <testCase name="Should popularProducts render failed" duration="22"/>
+  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\store\actions\action.test.js">
+    <testCase name="should addCategories from API" duration="2"/>
+    <testCase name="should addPopularProduct from API" duration="1"/>
+    <testCase name="should addBestSeller from API" duration="2"/>
+    <testCase name="should addTestimonial from API" duration="1"/>
   </file>
 </testExecutions>

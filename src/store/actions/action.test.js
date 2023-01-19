@@ -5,6 +5,21 @@ import {
   addTestimonial,
 } from './common';
 
+const productTest = [
+  {
+    _id: 12444571,
+    name: 'Calvin Klein womens Solid Sheath With Chiffon Bell Sleeves Dress',
+    category: 1001,
+    thumb: 'images/products/product-img-3.jpg',
+    price: 11,
+    sales: 5,
+    visit: 25,
+    quantity: 12,
+    order: 6,
+    color: 263,
+  },
+];
+
 test('should addCategories from API', () => {
   const action = addCategories({ categories: [{ _id: 1001, name: 'Dress' }] });
   expect(action).toEqual({
@@ -22,76 +37,24 @@ test('should addCategories from API', () => {
 
 test('should addPopularProduct from API', () => {
   const action = addPopularProduct({
-    popularProduct: [
-      {
-        _id: 12444571,
-        name: 'Calvin Klein womens Solid Sheath With Chiffon Bell Sleeves Dress',
-        category: 1001,
-        thumb: 'images/products/product-img-3.jpg',
-        price: 11,
-        sales: 5,
-        visit: 25,
-        quantity: 12,
-        order: 6,
-        color: 263,
-      },
-    ],
+    popularProduct: productTest,
   });
   expect(action).toEqual({
     type: 'ADD_POPULARPRODUCT',
     payload: {
-      popularProduct: [
-        {
-          _id: 12444571,
-          name: 'Calvin Klein womens Solid Sheath With Chiffon Bell Sleeves Dress',
-          category: 1001,
-          thumb: 'images/products/product-img-3.jpg',
-          price: 11,
-          sales: 5,
-          visit: 25,
-          quantity: 12,
-          order: 6,
-          color: 263,
-        },
-      ],
+      popularProduct: productTest,
     },
   });
 });
 
 test('should addBestSeller from API', () => {
   const action = addBestSeller({
-    bestSeller: [
-      {
-        _id: 12444571,
-        name: 'Calvin Klein womens Solid Sheath With Chiffon Bell Sleeves Dress',
-        category: 1001,
-        thumb: 'images/products/product-img-3.jpg',
-        price: 11,
-        sales: 5,
-        visit: 25,
-        quantity: 12,
-        order: 6,
-        color: 263,
-      },
-    ],
+    bestSeller: productTest,
   });
   expect(action).toEqual({
     type: 'ADD_BESTSELLER',
     payload: {
-      bestSeller: [
-        {
-          _id: 12444571,
-          name: 'Calvin Klein womens Solid Sheath With Chiffon Bell Sleeves Dress',
-          category: 1001,
-          thumb: 'images/products/product-img-3.jpg',
-          price: 11,
-          sales: 5,
-          visit: 25,
-          quantity: 12,
-          order: 6,
-          color: 263,
-        },
-      ],
+      bestSeller: productTest,
     },
   });
 });
