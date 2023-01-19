@@ -1,6 +1,7 @@
 const initialState = {
   categories: [],
   popularProducts: [],
+  bestSellers: [],
   testtimotionals: [],
 };
 // eslint-disable-next-line default-param-last

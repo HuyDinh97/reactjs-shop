@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\store\actions\action.test.js">
-    <testCase name="should addCategories from API" duration="2"/>
-    <testCase name="should addPopularProduct from API" duration="1"/>
-    <testCase name="should addBestSeller from API" duration="2"/>
-    <testCase name="should addTestimonial from API" duration="1"/>
+  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\store\reducers\reducers.test.js">
+    <testCase name="should set default state" duration="3"/>
   </file>
 </testExecutions>
