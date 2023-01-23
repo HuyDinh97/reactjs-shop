@@ -5,3 +5,24 @@ export const addCategories = (payload) => {
     payload,
   };
 };
+
+export const addPopularProduct = (payload) => {
+  return {
+    type: 'ADD_POPULARPRODUCT',
+    payload,
+  };
+};
+
+export const addBestSeller = (payload) => {
+  return {
+    type: 'ADD_BESTSELLER',
+    payload,
+  };
+};
+
+export const addTestimonial = (payload) => {
+  return {
+    type: 'ADD_TESTIMONIAL',
+    payload,
+  };
+};

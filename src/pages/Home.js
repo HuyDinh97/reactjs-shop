@@ -1,4 +1,5 @@
 import React from 'react';
+import BestSeller from 'components/Best Seller/BestSeller';
 import Product from '../components/Popular Product/Product';
 import Advertising from '../components/Advertising/Advertising';
 import Banner from '../components/Banner/Banner';
@@ -11,7 +12,7 @@ function Home() {
       <Advertising />
       <Product name="POPULAR PRODUCT" />
       <Banner />
-      <Product name="BEST SELLER" />
+      <BestSeller name="BEST SELLER" />
       <CustomerComment />
       <LastestNews />
     </>

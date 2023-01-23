@@ -9,7 +9,9 @@ function SearchBar() {
   return (
     <div className={classes.searchBar}>
       <div>
-        <img src={logo} alt="Logo" />
+        <a href="/">
+          <img src={logo} alt="Logo" />
+        </a>
       </div>
       <div className={classes.searchSection}>
         <input
@@ -55,7 +57,7 @@ function SearchBar() {
             </div>
             <div className={classes.center}>
               <button type="button" className={classes.cart_view_cart}>
-                View Cart
+                <a href="/my-cart">View Cart</a>
               </button>
             </div>
           </Dropdown.Menu>

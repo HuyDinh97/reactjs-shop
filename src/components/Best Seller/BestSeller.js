@@ -1,34 +1,33 @@
-import React, { useRef } from 'react';
+import { React, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import { Navigation } from 'swiper';
+import { useGetBestSeller } from 'store/selectors/common';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { HiHeart } from 'react-icons/hi';
 import { BsFillEyeFill } from 'react-icons/bs';
 import { TbRefresh } from 'react-icons/tb';
-import { useGetPopularProduct } from 'store/selectors/common';
-
-import TitleUnderline from './TitleUnderline';
+import TitleUnderline from 'components/Popular Product/TitleUnderline';
 
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 
-import classes from './Product.module.css';
+import classes from './BestSeller.module.css';
 
-function PopularProduct({ name }) {
-  const products = useGetPopularProduct();
+function BestSeller({ name }) {
+  const products = useGetBestSeller();
 
   const swiperRef = useRef();
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
 
   if (!products) {
-    return <p data-testid="popularProducts-error">Loading...</p>;
+    return <p>Loading...</p>;
   }
 
   return (
-    <div className={classes.mg_4} data-testid="popularProducts-element">
+    <div className={classes.mg_4}>
       <Row className={classes.mg_bot}>
         <Col xs lg="2" />
         <TitleUnderline name={name} />
@@ -124,4 +123,4 @@ function PopularProduct({ name }) {
   );
 }
 
-export default PopularProduct;
+export default BestSeller;
