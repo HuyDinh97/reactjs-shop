@@ -12,6 +12,7 @@ th {
 
 .cartTable td {
   vertical-align: middle;
+  --bs-table-accent-bg: white!important;
 }
 
 .quantity_in_cart {
@@ -20,6 +21,7 @@ th {
 
 .quantity_button {
   padding: 8px 16px;
+  background-color: #363f4e;
 }
 
 .quantity_button svg {

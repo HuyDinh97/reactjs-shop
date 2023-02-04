@@ -32,11 +32,11 @@ function CartTable() {
             <td className={classes.price_sample}>$6</td>
             <td>
               <div className="d-flex justify-content-center">
-                <button>
+                <button className={classes.quantity_button}>
                   <FaMinus />
                 </button>
                 <div className={classes.quantity_in_cart}>2</div>
-                <button>
+                <button className={classes.quantity_button}>
                   <FaPlus />
                 </button>
               </div>
