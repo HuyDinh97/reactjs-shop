@@ -1,0 +1,33 @@
+th {
+  color: gray!important;
+}
+
+.cartTable td img {
+  height: 110px;
+}
+
+.cartTable {
+  text-align: center;
+}
+
+.cartTable td {
+  vertical-align: middle;
+}
+
+.quantity_in_cart {
+  padding: 10px 20px;
+}
+
+.quantity_button {
+  padding: 8px 16px;
+}
+
+.quantity_button svg {
+  color: white!important;
+}
+
+.price_sample {
+  color: #ea3c31!important;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
