@@ -1,5 +1,7 @@
 th {
   color: gray!important;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .cartTable td img {
@@ -20,8 +22,10 @@ th {
 }
 
 .quantity_button {
-  padding: 8px 16px;
+  padding: 10px 10px;
   background-color: #363f4e;
+  display: flex;
+  border:none;
 }
 
 .quantity_button svg {
