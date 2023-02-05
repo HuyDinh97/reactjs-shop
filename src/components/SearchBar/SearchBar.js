@@ -38,25 +38,13 @@ function SearchBar() {
           </Dropdown.Toggle>
 
           <Dropdown.Menu className={classes.dropdown_menu}>
-            <div>
-              No items in this cart!
-              {/* <div className={classes.cart_Item}>
-                <img src={cartItem1} alt="cartItem" />
-                <p>product name</p>
-                <div>X</div>
-              </div>
-              <div className={classes.cart_Item}>
-                <img src={cartItem2} alt="cartItem" />
-                <p>product name</p>
-                <div>X</div>
-              </div> */}
-            </div>
+            <div>No items in this cart!</div>
             <div className={classes.space_between}>
               <span>Total</span>
               <span className={classes.cart_total_price}>$0</span>
             </div>
             <div className={classes.center}>
-              <button type="button" className={classes.cart_view_cart}>
+              <button type="button" className={classes.view_cart_button}>
                 <a href="/my-cart">View Cart</a>
               </button>
             </div>
