@@ -1,7 +1,8 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
 import { Table } from 'react-bootstrap';
-import { FaMinus, FaPlus } from 'react-icons/fa';
+import { FaMinus, FaPlus, FaChevronLeft } from 'react-icons/fa';
+import { HiRefresh } from 'react-icons/hi';
 
 import classes from './CartTable.module.css';
 import image from './image/product-img-3.jpg';
@@ -51,6 +52,28 @@ function CartTable() {
             <td>@mdo</td>
           </tr>
         </tbody>
+        <tfoot>
+          <tr>
+            <td colSpan={5}>
+              <div className="d-flex justify-content-center align-item-center">
+                <span>
+                  <button href="/">
+                    <a href="/">
+                      <FaChevronLeft className={classes.margin_right_1rem} />
+                      CONTINUE SHOPPING
+                    </a>
+                  </button>
+                </span>
+                <span>
+                  <button className={classes.update_cart}>
+                    <HiRefresh className={classes.margin_right_1rem} />
+                    UPDATE CART
+                  </button>
+                </span>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
       </Table>
     </div>
   );

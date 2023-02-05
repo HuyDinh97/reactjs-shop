@@ -37,3 +37,38 @@ th {
   font-weight: 600;
   font-size: 1.25rem;
 }
+
+.cartTable tfoot span {
+  padding: 1rem 0.5rem 1rem 0.5rem;
+}
+
+.cartTable tfoot button {
+  background-color: #363f4e;
+  color: white;
+  border-radius: var(--bs-border-radius-pill)!important;
+  padding:  0.5rem 4rem 0.5rem 4rem;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  border: none;
+}
+
+.cartTable tfoot button a {
+  text-decoration: none;
+}
+
+.cartTable tfoot button:hover {
+  background-color: #fed400!important;
+}
+
+.cartTable tfoot button svg {
+  font-size: 1.5rem!important;
+}
+
+.margin_right_1rem {
+  margin-right: 1rem;
+}
+
+.update_cart {
+  background-color: #ea3c31!important;
+}
