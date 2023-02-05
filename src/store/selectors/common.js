@@ -10,7 +10,7 @@ export const useGetPopularProduct = () =>
   useSelector((state) =>
     state?.common?.popularProducts?.length > 0
       ? state.common.popularProducts
-      : []
+      : undefined
   );
 
 export const useGetBestSeller = () =>
