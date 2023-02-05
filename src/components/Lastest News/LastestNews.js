@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import TitleUnderline from '../Popular Product/TitleUnderline';
+import TitleUnderline from '../PopularProduct/TitleUnderline';
 import cardImg1 from './image/news-img-1.jpg';
 import cardImg2 from './image/news-img-2.jpg';
 import cardImg3 from './image/news-img-3.jpg';
