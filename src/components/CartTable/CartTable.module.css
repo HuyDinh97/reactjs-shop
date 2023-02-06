@@ -28,6 +28,10 @@ th {
   border:none;
 }
 
+.quantity_button:hover {
+  background-color: #ea3c31;
+}
+
 .quantity_button svg {
   color: white!important;
 }

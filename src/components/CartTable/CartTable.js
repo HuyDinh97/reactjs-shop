@@ -1,4 +1,6 @@
 /* eslint-disable react/button-has-type */
+import CartTotal from 'components/CartTotal/CartTotal';
+import PromotionCode from 'components/PromotionCode/PromotionCode';
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import { FaMinus, FaPlus, FaChevronLeft } from 'react-icons/fa';
@@ -44,13 +46,6 @@ function CartTable() {
             </td>
             <td className={classes.price_sample}>$6</td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@mdo</td>
-          </tr>
         </tbody>
         <tfoot>
           <tr>
@@ -75,6 +70,10 @@ function CartTable() {
           </tr>
         </tfoot>
       </Table>
+      <div className="d-flex justify-content-between">
+        <PromotionCode />
+        <CartTotal />
+      </div>
     </div>
   );
 }
