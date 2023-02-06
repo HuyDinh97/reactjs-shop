@@ -11,7 +11,7 @@ import image from './image/product-img-3.jpg';
 
 function CartTable() {
   return (
-    <div>
+    <div className={classes.mt_5}>
       <Table className={classes.cartTable} striped bordered hover size="sm">
         <thead>
           <tr>

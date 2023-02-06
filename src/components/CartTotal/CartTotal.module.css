@@ -27,7 +27,8 @@
 
 .Card_Title {
   padding: 1.5rem 0 1.5rem 0!important;
-  border-bottom: 1px solid var(--bs-border-color-translucent);;
+  border-bottom: 1px solid var(--bs-border-color-translucent);
+  background-color: var(--bs-card-cap-bg);
 }
 
 .Card_Button {
