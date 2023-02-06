@@ -18,7 +18,20 @@ th {
 }
 
 .quantity_in_cart {
-  padding: 10px 20px;
+  padding: 0;
+  width: 25%;
+}
+
+.quantity_in_cart input {
+  width: 100%;
+  padding: 0.3rem;
+  border-radius: 0!important;
+  border: 1px solid var(--bs-border-color);
+  text-align: center;
+}
+
+.quantity_in_cart input:focus-visible {
+  outline: 0;
 }
 
 .quantity_button {
