@@ -1,0 +1,42 @@
+.Card {
+  width: 23rem;
+  text-align: center;
+  border-radius: 0!important;
+  margin-top: 5rem;
+}
+
+.Subtotal {
+  color: gray;
+  font-size: 1.25rem!important;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Total {
+  color: gray;
+  margin-top: 1.5rem!important;
+  margin-bottom: 1.5rem!important;
+  font-size: 1.25rem!important;
+  border-top: var(--bs-border-color);
+  border-top-style: dashed;
+  border-top-width: 2px;
+  padding-top: 1.5rem!important;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Card_Title {
+  padding: 1.5rem 0 1.5rem 0!important;
+  border-bottom: 1px solid var(--bs-border-color-translucent);
+  background-color: var(--bs-card-cap-bg);
+}
+
+.Card_Button {
+  width: -webkit-fill-available;
+  background-color: #eb3d32!important;
+  padding: 0.5rem 0 0.5rem 0;
+  border-radius: 0!important;
+  font-weight: 600!important;
+  margin: 2rem 1rem 2rem 1rem;
+  border: none!important;
+}

@@ -1,14 +1,17 @@
 /* eslint-disable react/button-has-type */
+import CartTotal from 'components/CartTotal/CartTotal';
+import PromotionCode from 'components/PromotionCode/PromotionCode';
 import React from 'react';
 import { Table } from 'react-bootstrap';
-import { FaMinus, FaPlus } from 'react-icons/fa';
+import { FaMinus, FaPlus, FaChevronLeft } from 'react-icons/fa';
+import { HiRefresh } from 'react-icons/hi';
 
 import classes from './CartTable.module.css';
 import image from './image/product-img-3.jpg';
 
 function CartTable() {
   return (
-    <div>
+    <div className={classes.mt_5}>
       <Table className={classes.cartTable} striped bordered hover size="sm">
         <thead>
           <tr>
@@ -35,7 +38,14 @@ function CartTable() {
                 <button className={classes.quantity_button}>
                   <FaMinus />
                 </button>
-                <div className={classes.quantity_in_cart}>2</div>
+                <div className={classes.quantity_in_cart}>
+                  <input
+                    type="tel"
+                    min={0}
+                    aria-label="couple-code"
+                    value={2}
+                  />
+                </div>
                 <button className={classes.quantity_button}>
                   <FaPlus />
                 </button>
@@ -43,15 +53,34 @@ function CartTable() {
             </td>
             <td className={classes.price_sample}>$6</td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@mdo</td>
-          </tr>
         </tbody>
+        <tfoot>
+          <tr>
+            <td colSpan={5}>
+              <div className="d-flex justify-content-center align-item-center">
+                <span>
+                  <button href="/">
+                    <a href="/">
+                      <FaChevronLeft className={classes.margin_right_1rem} />
+                      CONTINUE SHOPPING
+                    </a>
+                  </button>
+                </span>
+                <span>
+                  <button className={classes.update_cart}>
+                    <HiRefresh className={classes.margin_right_1rem} />
+                    UPDATE CART
+                  </button>
+                </span>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
       </Table>
+      <div className="d-flex justify-content-between">
+        <PromotionCode />
+        <CartTotal />
+      </div>
     </div>
   );
 }

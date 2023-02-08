@@ -1,4 +1,4 @@
-import CartTable from 'components/Cart Table/CartTable';
+import CartTable from 'components/CartTable/CartTable';
 import PageTitle from 'components/Page Title/PageTitle';
 import React from 'react';
 

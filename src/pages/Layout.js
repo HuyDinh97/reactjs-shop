@@ -4,8 +4,8 @@ import React from 'react';
 import Navigation from 'components/Navigation';
 import Header from '../components/Header/Header';
 import SearchBar from '../components/SearchBar/SearchBar';
-import SubscribeEmail from '../components/Subscribe Email/SubscribeEmail';
-import ServiceBanner from '../components/Service Banner/ServiceBanner';
+import SubscribeEmail from '../components/SubscribeEmail/SubscribeEmail';
+import ServiceBanner from '../components/ServiceBanner/ServiceBanner';
 import AboutUs from '../components/AboutUs/AboutUs';
 import Copyright from '../components/Copyright/Copyright';
 

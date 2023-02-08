@@ -1,9 +1,9 @@
 import React from 'react';
-import BestSeller from 'components/Best Seller/BestSeller';
-import Product from '../components/Popular Product/Product';
+import BestSeller from 'components/BestSeller/BestSeller';
+import Product from '../components/PopularProduct/Product';
 import Advertising from '../components/Advertising/Advertising';
 import Banner from '../components/Banner/Banner';
-import CustomerComment from '../components/Customer comment/CustomerComment';
+import CustomerComment from '../components/Customercomment/CustomerComment';
 import LastestNews from '../components/Lastest News/LastestNews';
 
 function Home() {

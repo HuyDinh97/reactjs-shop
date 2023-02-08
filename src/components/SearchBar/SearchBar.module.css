@@ -79,13 +79,22 @@ button:first-child:active {
   justify-content: center;
 }
 
-.cart_view_cart {
+.view_cart_button {
   background-color: #eb3d32;
   border-radius: var(--bs-border-radius-pill)!important;
   border: none;
   color: white;
   padding: 5px 20px 5px 20px;
   font-weight: 500;
+}
+
+.view_cart_button:hover {
+  background-color: #e21304;
+}
+
+.view_cart_button a {
+  color: white!important;
+  text-decoration: none!important;
 }
 
 .cart_total_price {

@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import { HiHeart } from 'react-icons/hi';
 import { BsFillEyeFill } from 'react-icons/bs';
 import { TbRefresh } from 'react-icons/tb';
-import TitleUnderline from 'components/Popular Product/TitleUnderline';
+import TitleUnderline from 'components/PopularProduct/TitleUnderline';
 
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
