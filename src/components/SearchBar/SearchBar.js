@@ -2,15 +2,12 @@ import React from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { GrFormClose } from 'react-icons/gr';
-import { useGetMyCart } from 'store/selectors/common';
 import logo from './logo/logo.png';
 import cartIcon from './logo/cart-icon.png';
 import productImg from './image/product-img-3.jpg';
 import classes from './SearchBar.module.css';
 
 function SearchBar() {
-  const productInCart = useGetMyCart();
-  console.log(productInCart.length);
   return (
     <div className={classes.searchBar}>
       <div>
