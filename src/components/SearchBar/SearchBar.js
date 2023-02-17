@@ -1,19 +1,24 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { GrFormClose } from 'react-icons/gr';
+import { useGetMyCart } from 'store/selectors/common';
+import { Link } from 'react-router-dom';
 import logo from './logo/logo.png';
 import cartIcon from './logo/cart-icon.png';
-import productImg from './image/product-img-3.jpg';
 import classes from './SearchBar.module.css';
 
 function SearchBar() {
+  const mycart = useGetMyCart();
+  console.log(mycart);
+  const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   return (
     <div className={classes.searchBar}>
       <div>
-        <a href="/">
+        <Link to="/">
           <img src={logo} alt="Logo" />
-        </a>
+        </Link>
       </div>
       <div className={classes.searchSection}>
         <input
@@ -34,30 +39,35 @@ function SearchBar() {
           >
             <img src={cartIcon} alt="icon" />
             <Badge className={classes.badge} bg="">
-              59
+              {mycart.length > 0 ? mycart.length : 0}
             </Badge>
             <span>$0</span>
           </Dropdown.Toggle>
 
           <Dropdown.Menu className={classes.dropdown_menu}>
             <div>
-              <div>
-                <ul className={classes.dropdown_menu_product}>
-                  <span>
-                    <img src={productImg} alt="1" />
-                  </span>
-                  <span>
-                    <div className="fw-semibold">
-                      Calvin Klein womens Solid Sheahh
-                    </div>
-                    <div>Quantiy: 1</div>
-                    <div className={classes.price_color}>$24</div>
-                  </span>
-                  <span className={classes.close_button}>
-                    <GrFormClose />
-                  </span>
-                </ul>
-              </div>
+              {mycart.length > 0 &&
+                mycart.map((item) => (
+                  <div key={item._id}>
+                    <ul className={classes.dropdown_menu_product}>
+                      <li className="d-flex">
+                        <span>
+                          <img src={linkIMG + item.thumb} alt="1" />
+                        </span>
+                        <span>
+                          <div className="fw-semibold">{item.name}</div>
+                          <div>Quantiy: 1</div>
+                          <div className={classes.price_color}>
+                            ${item.price}
+                          </div>
+                        </span>
+                        <span className={classes.close_button}>
+                          <GrFormClose />
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                ))}
               <div className={classes.space_between}>
                 <span>Total</span>
                 <span className={classes.cart_total_price}>$0</span>
@@ -65,7 +75,7 @@ function SearchBar() {
             </div>
             <div className={classes.center}>
               <button type="button" className={classes.view_cart_button}>
-                <a href="/my-cart">View Cart</a>
+                <Link to="/my-cart">View Cart</Link>
               </button>
             </div>
           </Dropdown.Menu>
