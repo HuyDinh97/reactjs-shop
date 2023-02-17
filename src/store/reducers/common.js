@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
     case 'ADD_PRODUCTTOCART':
       return {
         ...state,
-        productInCart: action.payload.productInCart,
+        productInCart: [...state.productInCart, action.payload],
       };
     default:
       return state;

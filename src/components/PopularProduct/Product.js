@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useCallback } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import { Navigation } from 'swiper';
@@ -10,7 +10,7 @@ import Col from 'react-bootstrap/Col';
 import { HiHeart } from 'react-icons/hi';
 import { BsFillEyeFill } from 'react-icons/bs';
 import { TbRefresh } from 'react-icons/tb';
-import { useGetMyCart, useGetPopularProduct } from 'store/selectors/common';
+import { useGetPopularProduct } from 'store/selectors/common';
 import { addProductToCart } from 'store/actions/common';
 
 import TitleUnderline from './TitleUnderline';
@@ -22,22 +22,18 @@ import classes from './Product.module.css';
 
 function PopularProduct({ name }) {
   const products = useGetPopularProduct();
-  const productinCartStore = useGetMyCart();
 
   const swiperRef = useRef();
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
   const dispatch = useDispatch();
 
-  const [productInCart, setProductInMyCart] = useState([]);
-
-  const addProduct = (e) => {
-    const productInMyCart = { id: 1, productName: 'Shirt' };
-    e.preventDefault();
-    setProductInMyCart((prevItem) => [...prevItem, productInMyCart]);
-    dispatch(addProductToCart({ productInCart }));
-    console.log(productinCartStore);
-  };
+  const addProduct = useCallback(
+    (productInCart) => () => {
+      dispatch(addProductToCart({ productInCart }));
+    },
+    []
+  );
 
   if (!products) {
     return <p data-testid="popularProducts-error">Loading...</p>;
@@ -93,7 +89,7 @@ function PopularProduct({ name }) {
                           <button
                             className="border-0 search-btn-color fs-6 fw-semibold px-4 py-2 rounded-pill"
                             type="button"
-                            onClick={addProduct}
+                            onClick={addProduct(popularProduct)}
                           >
                             Add to cart
                           </button>
