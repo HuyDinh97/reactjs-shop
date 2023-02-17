@@ -1,7 +1,10 @@
 import React from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Dropdown from 'react-bootstrap/Dropdown';
+
 import { GrFormClose } from 'react-icons/gr';
+import { Link } from 'react-router-dom';
+
 import logo from './logo/logo.png';
 import cartIcon from './logo/cart-icon.png';
 import productImg from './image/product-img-3.jpg';
@@ -11,9 +14,9 @@ function SearchBar() {
   return (
     <div className={classes.searchBar}>
       <div>
-        <a href="/">
+        <Link to="/">
           <img src={logo} alt="Logo" />
-        </a>
+        </Link>
       </div>
       <div className={classes.searchSection}>
         <input
