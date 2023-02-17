@@ -33,12 +33,9 @@ function SearchBar() {
             id="dropdown-basic"
           >
             <img src={cartIcon} alt="icon" />
-            {productInCart?.length > 0 &&
-              productInCart.map((product) => (
-                <Badge className={classes.badge} bg="">
-                  {product.length}
-                </Badge>
-              ))}
+            <Badge className={classes.badge} bg="">
+              59
+            </Badge>
             <span>$0</span>
           </Dropdown.Toggle>
 
