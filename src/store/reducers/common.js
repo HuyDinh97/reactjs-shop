@@ -3,6 +3,7 @@ const initialState = {
   popularProducts: [],
   bestSellers: [],
   testtimotionals: [],
+  productInCart: [],
 };
 // eslint-disable-next-line default-param-last
 export default (state = initialState, action) => {
@@ -26,6 +27,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         testimonials: action.payload.testimonials,
+      };
+    case 'ADD_PRODUCTTOCART':
+      return {
+        ...state,
+        productInCart: action.payload.productInCart,
       };
     default:
       return state;

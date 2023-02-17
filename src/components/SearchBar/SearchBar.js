@@ -1,11 +1,16 @@
 import React from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { GrFormClose } from 'react-icons/gr';
+import { useGetMyCart } from 'store/selectors/common';
 import logo from './logo/logo.png';
 import cartIcon from './logo/cart-icon.png';
+import productImg from './image/product-img-3.jpg';
 import classes from './SearchBar.module.css';
 
 function SearchBar() {
+  const productInCart = useGetMyCart();
+  console.log(productInCart.length);
   return (
     <div className={classes.searchBar}>
       <div>
@@ -31,17 +36,38 @@ function SearchBar() {
             id="dropdown-basic"
           >
             <img src={cartIcon} alt="icon" />
-            <Badge className={classes.badge} bg="">
-              9
-            </Badge>
+            {productInCart?.length > 0 &&
+              productInCart.map((product) => (
+                <Badge className={classes.badge} bg="">
+                  {product.length}
+                </Badge>
+              ))}
             <span>$0</span>
           </Dropdown.Toggle>
 
           <Dropdown.Menu className={classes.dropdown_menu}>
-            <div>No items in this cart!</div>
-            <div className={classes.space_between}>
-              <span>Total</span>
-              <span className={classes.cart_total_price}>$0</span>
+            <div>
+              <div>
+                <ul className={classes.dropdown_menu_product}>
+                  <span>
+                    <img src={productImg} alt="1" />
+                  </span>
+                  <span>
+                    <div className="fw-semibold">
+                      Calvin Klein womens Solid Sheahh
+                    </div>
+                    <div>Quantiy: 1</div>
+                    <div className={classes.price_color}>$24</div>
+                  </span>
+                  <span className={classes.close_button}>
+                    <GrFormClose />
+                  </span>
+                </ul>
+              </div>
+              <div className={classes.space_between}>
+                <span>Total</span>
+                <span className={classes.cart_total_price}>$0</span>
+              </div>
             </div>
             <div className={classes.center}>
               <button type="button" className={classes.view_cart_button}>

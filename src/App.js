@@ -7,6 +7,7 @@ import Home from 'pages/Home';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import MyCart from 'pages/MyCart';
+import useFetchMyCart from 'Hooks/useFetchMyCart';
 import Layout from './pages/Layout';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   useFetchPopularProduct();
   useFetchTestimonial();
   useFetchBestSeller();
+  useFetchMyCart();
   return (
     <Layout>
       <Routes>

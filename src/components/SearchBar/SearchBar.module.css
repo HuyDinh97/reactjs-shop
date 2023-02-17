@@ -104,8 +104,10 @@ button:first-child:active {
 .dropdown_menu {
   height: auto;
   padding: 20px !important;
-  width: max-content;
-  transform: translate(-115px, 46px) !important;
+  position: absolute;
+  inset: 9px auto auto -192px!important;
+  transform: translate(0px, 46px);
+  width: 325px;
 
 }
 
@@ -124,4 +126,27 @@ button:first-child:active {
   padding-left: 10px;
   padding-right: 10px;
   width: -webkit-fill-available;
+}
+
+.dropdown_menu_product{
+  display: flex;
+}
+
+.dropdown_menu_product img{
+  height: 90px;
+}
+
+.dropdown_menu_product {
+  padding-left: 0!important;
+}
+
+.close_button {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+}
+
+.dropdown_menu_product .price_color{
+  color:#f16b62;
+  font-weight: 500;
 }
