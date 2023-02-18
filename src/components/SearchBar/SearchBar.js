@@ -11,7 +11,6 @@ import classes from './SearchBar.module.css';
 
 function SearchBar() {
   const mycart = useGetMyCart();
-  console.log(mycart);
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   return (
     <div className={classes.searchBar}>
@@ -46,7 +45,7 @@ function SearchBar() {
 
           <Dropdown.Menu className={classes.dropdown_menu}>
             <div>
-              {mycart.length > 0 &&
+              {mycart.length > 0 ? (
                 mycart.map((item) => (
                   <div key={item._id}>
                     <ul className={classes.dropdown_menu_product}>
@@ -58,7 +57,7 @@ function SearchBar() {
                           <div className="fw-semibold">{item.name}</div>
                           <div>Quantiy: 1</div>
                           <div className={classes.price_color}>
-                            ${item.price}
+                            ${item.price - item.sales}
                           </div>
                         </span>
                         <span className={classes.close_button}>
@@ -67,7 +66,14 @@ function SearchBar() {
                       </li>
                     </ul>
                   </div>
-                ))}
+                ))
+              ) : (
+                <div>
+                  <ul className={classes.dropdown_menu_product}>
+                    <li className="d-flex">No items in cart!</li>
+                  </ul>
+                </div>
+              )}
               <div className={classes.space_between}>
                 <span>Total</span>
                 <span className={classes.cart_total_price}>$0</span>
