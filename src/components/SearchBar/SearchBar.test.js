@@ -2,15 +2,24 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
+import { MemoryRouter } from 'react-router-dom';
 import SearchBar from './SearchBar';
 
 test('Should search input render', () => {
-  render(<SearchBar />);
+  render(
+    <MemoryRouter initialEntries={[{ pathname: '/' }]}>
+      <SearchBar />
+    </MemoryRouter>
+  );
   expect(screen.getByTestId('search-input')).toBeInTheDocument();
 });
 
 test('Should show cart dropdown', async () => {
-  render(<SearchBar />);
+  render(
+    <MemoryRouter initialEntries={[{ pathname: '/' }]}>
+      <SearchBar />
+    </MemoryRouter>
+  );
 
   const buttons = await screen.findAllByRole('button');
   expect(buttons).toHaveLength(2);
