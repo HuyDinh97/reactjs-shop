@@ -35,7 +35,6 @@ test('Should show cart dropdown', async () => {
     },
   };
   const store = mockStore(productsAvailableState);
-
   render(
     <Provider store={store}>
       <MemoryRouter>
