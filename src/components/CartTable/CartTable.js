@@ -39,12 +39,7 @@ function CartTable() {
                   <FaMinus />
                 </button>
                 <div className={classes.quantity_in_cart}>
-                  <input
-                    type="tel"
-                    min={0}
-                    aria-label="couple-code"
-                    value={2}
-                  />
+                  <input type="tel" min={0} aria-label="couple-code" />
                 </div>
                 <button className={classes.quantity_button}>
                   <FaPlus />

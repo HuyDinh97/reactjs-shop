@@ -22,3 +22,8 @@ export const useGetTestimonial = () =>
   useSelector((state) =>
     state?.common?.testimonials?.length > 0 ? state.common.testimonials : []
   );
+
+export const useGetMyCart = () =>
+  useSelector((state) =>
+    state.common?.productInCart.length > 0 ? state.common.productInCart : []
+  );

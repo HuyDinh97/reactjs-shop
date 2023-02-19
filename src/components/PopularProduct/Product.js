@@ -1,13 +1,17 @@
-import React, { useRef } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useRef, useCallback } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import { Navigation } from 'swiper';
+import { useDispatch } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { HiHeart } from 'react-icons/hi';
 import { BsFillEyeFill } from 'react-icons/bs';
 import { TbRefresh } from 'react-icons/tb';
 import { useGetPopularProduct } from 'store/selectors/common';
+import { addProductToCart } from 'store/actions/common';
 
 import TitleUnderline from './TitleUnderline';
 
@@ -22,6 +26,14 @@ function PopularProduct({ name }) {
   const swiperRef = useRef();
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
+  const dispatch = useDispatch();
+
+  const addProduct = useCallback(
+    (productInCart) => () => {
+      dispatch(addProductToCart(productInCart));
+    },
+    []
+  );
 
   if (!products) {
     return <p data-testid="popularProducts-error">Loading...</p>;
@@ -63,7 +75,7 @@ function PopularProduct({ name }) {
           products.map((popularProduct) => (
             <SwiperSlide key={popularProduct._id}>
               <div className={classes.apperance}>
-                <a href="/">
+                <a>
                   <div
                     className={classes.product_img}
                     // eslint-disable-next-line react/forbid-dom-props
@@ -77,6 +89,7 @@ function PopularProduct({ name }) {
                           <button
                             className="border-0 search-btn-color fs-6 fw-semibold px-4 py-2 rounded-pill"
                             type="button"
+                            onClick={addProduct(popularProduct)}
                           >
                             Add to cart
                           </button>

@@ -26,3 +26,10 @@ export const addTestimonial = (payload) => {
     payload,
   };
 };
+
+export const addProductToCart = (payload) => {
+  return {
+    type: 'ADD_PRODUCTTOCART',
+    payload,
+  };
+};
