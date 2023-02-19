@@ -13,7 +13,7 @@ function SearchBar() {
   const mycart = useGetMyCart();
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   return (
-    <div className={classes.searchBar}>
+    <div className={classes.searchBar} data-testid="dropdownItem-element">
       <div>
         <Link to="/">
           <img src={logo} alt="Logo" />
