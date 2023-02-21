@@ -10,7 +10,7 @@ import Col from 'react-bootstrap/Col';
 import { HiHeart } from 'react-icons/hi';
 import { BsFillEyeFill } from 'react-icons/bs';
 import { TbRefresh } from 'react-icons/tb';
-import { useGetMyCart, useGetPopularProduct } from 'store/selectors/common';
+import { useGetPopularProduct } from 'store/selectors/common';
 import { addProductToCart } from 'store/actions/common';
 
 import TitleUnderline from './TitleUnderline';
@@ -27,11 +27,8 @@ function PopularProduct({ name }) {
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
   const dispatch = useDispatch();
-  const mycart = useGetMyCart();
-  const idCheck = mycart.map((id) => id._id);
 
   const addProduct = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     (productInCart) => () => {
       const data = {
         _id: productInCart._id,
