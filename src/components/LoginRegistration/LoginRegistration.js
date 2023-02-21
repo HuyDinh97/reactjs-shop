@@ -50,7 +50,7 @@ function LoginRegistration() {
 
       <ul>
         <li>
-          <h4 className="fw-bold">LOGIN</h4>
+          <h4 className="fw-bold">REGISTRATION</h4>
         </li>
         <li className={classes.subTitle}>
           <span className={classes.subTitle_color}>Error:</span>
