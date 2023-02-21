@@ -49,7 +49,6 @@ export default (state = initialState, action) => {
       } else {
         newProductInCart[productIndex].quantity++;
       }
-      console.log(newProductInCart[productIndex].quantity);
       return {
         ...state,
         productInCart: [...newProductInCart],
