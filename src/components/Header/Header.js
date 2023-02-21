@@ -24,7 +24,7 @@ function Header() {
         <div className={classes.header_user}>
           <ul>
             <li className={classes.header_border_end}>
-              <a href="/">Login</a>
+              <a href="/login">Login</a>
             </li>
             <li className={classes.header_border_end}>
               <a href="/">Wishlist</a>

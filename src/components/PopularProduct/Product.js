@@ -10,7 +10,7 @@ import Col from 'react-bootstrap/Col';
 import { HiHeart } from 'react-icons/hi';
 import { BsFillEyeFill } from 'react-icons/bs';
 import { TbRefresh } from 'react-icons/tb';
-import { useGetPopularProduct } from 'store/selectors/common';
+import { useGetMyCart, useGetPopularProduct } from 'store/selectors/common';
 import { addProductToCart } from 'store/actions/common';
 
 import TitleUnderline from './TitleUnderline';
@@ -27,10 +27,26 @@ function PopularProduct({ name }) {
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
   const dispatch = useDispatch();
+  const mycart = useGetMyCart();
+  const idCheck = mycart.map((id) => id._id);
 
   const addProduct = useCallback(
-    (productInCart) => () => {
-      dispatch(addProductToCart(productInCart));
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    (productInCart, idCheck) => () => {
+      const data = {
+        _id: productInCart._id,
+        name: productInCart.name,
+        price: productInCart.price,
+        sales: productInCart.sales,
+        thumb: productInCart.thumb,
+        quantity: 1,
+      };
+      const exist = idCheck.includes(data._id);
+      if (exist) {
+        dispatch(addProductToCart(...data, data.quantity + 1));
+      }
+      dispatch(addProductToCart(data));
+      console.log(data._id);
     },
     []
   );
@@ -89,7 +105,7 @@ function PopularProduct({ name }) {
                           <button
                             className="border-0 search-btn-color fs-6 fw-semibold px-4 py-2 rounded-pill"
                             type="button"
-                            onClick={addProduct(popularProduct)}
+                            onClick={addProduct(popularProduct, idCheck)}
                           >
                             Add to cart
                           </button>

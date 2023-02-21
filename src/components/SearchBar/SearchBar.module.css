@@ -5,6 +5,9 @@
   padding: 1% 0 1% 0;
   border-bottom: 1px solid gray;
   border-color: lightgrey;
+  margin-right: auto;
+  margin-left: auto;
+  width: 60%;
 }
 
 .searchSection {
