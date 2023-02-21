@@ -5,6 +5,16 @@ import { MdEmail } from 'react-icons/md';
 import classes from './Header.module.css';
 
 function Header() {
+  const checkLoginLogout = document.cookie
+    .split(';')
+    .map((item) => item.includes('email'));
+  const check = checkLoginLogout.find((chec) => chec === true);
+  console.log(check);
+
+  const Logout = () => {
+    document.cookie = 'email=; expires=Thu, 18 Dec 2013 12:00:00 UTC';
+  };
+
   return (
     <header className={classes.header_color}>
       <div className={classes.header}>
@@ -24,7 +34,13 @@ function Header() {
         <div className={classes.header_user}>
           <ul>
             <li className={classes.header_border_end}>
-              <a href="/login">Login</a>
+              {!check ? (
+                <a href="/login">Login</a>
+              ) : (
+                <a href="/" onClick={Logout}>
+                  Logout
+                </a>
+              )}
             </li>
             <li className={classes.header_border_end}>
               <a href="/">Wishlist</a>
