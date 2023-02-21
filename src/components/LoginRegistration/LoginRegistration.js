@@ -2,43 +2,20 @@
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useRef } from 'react';
+import { postData, setCookie, checkLogin } from './LoginCheck';
 import classes from './LoginRegistration.module.css';
 
 function LoginRegistration() {
-  const postData = async (url = '', data = {}) => {
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        redirect: 'follow',
-        body: new URLSearchParams(data),
-      });
-      return response.json();
-    } catch {
-      console.error('ss');
-    }
-  };
-
   const emailLogIn = useRef();
   const passwordLogIn = useRef();
   const loginRemember = document.getElementById('loginRemember');
-
-  const setCookie = (email, value, minutes = 0) => {
-    let expires = '1';
-    if (minutes && minutes > 0) {
-      const date = new Date();
-      date.setTime(date.getTime() + minutes * 60 * 1000);
-      expires = date.toUTCString();
-    }
-    document.cookie = `${email}=${value}; expires=${expires}; path=/;`;
-  };
 
   const doLogin = async () => {
     const email = emailLogIn.current.value;
     const password = passwordLogIn.current.value;
     const remember = loginRemember.checked ? 5 : 1;
+
+    console.log(document.cookie);
 
     const regEmail =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -73,6 +50,8 @@ function LoginRegistration() {
     }
     alert(response.message);
   };
+
+  checkLogin();
 
   return (
     <div className={classes.LoginRegistration}>
