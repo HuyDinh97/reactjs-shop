@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-case-declarations */
 const initialState = {
   categories: [],
   popularProducts: [],
@@ -29,10 +31,30 @@ export default (state = initialState, action) => {
         testimonials: action.payload.testimonials,
       };
     case 'ADD_PRODUCTTOCART':
+      const productExist = state.productInCart.find(
+        (product) => product._id === action.payload._id
+      );
+      if (!productExist) {
+        return {
+          ...state,
+          productInCart: [...state.productInCart, action.payload],
+        };
+      }
+      const newProductInCart = state.productInCart;
+      const productIndex = newProductInCart.findIndex(
+        (product) => product._id === action.payload._id
+      );
+      if (newProductInCart[productIndex].quantity === 1) {
+        newProductInCart[productIndex].quantity = 2;
+      } else {
+        newProductInCart[productIndex].quantity++;
+      }
+      console.log(newProductInCart[productIndex].quantity);
       return {
         ...state,
-        productInCart: [...state.productInCart, action.payload],
+        productInCart: [...newProductInCart],
       };
+
     default:
       return state;
   }

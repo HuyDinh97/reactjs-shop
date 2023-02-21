@@ -55,7 +55,7 @@ function SearchBar() {
                         </span>
                         <span>
                           <div className="fw-semibold">{item.name}</div>
-                          <div>Quantiy: 1</div>
+                          <div>Quantiy: {item.quantity}</div>
                           <div className={classes.price_color}>
                             ${item.price - item.sales}
                           </div>

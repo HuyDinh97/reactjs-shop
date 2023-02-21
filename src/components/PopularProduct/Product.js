@@ -32,7 +32,7 @@ function PopularProduct({ name }) {
 
   const addProduct = useCallback(
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    (productInCart, idCheck) => () => {
+    (productInCart) => () => {
       const data = {
         _id: productInCart._id,
         name: productInCart.name,
@@ -41,12 +41,11 @@ function PopularProduct({ name }) {
         thumb: productInCart.thumb,
         quantity: 1,
       };
-      const exist = idCheck.includes(data._id);
-      if (exist) {
-        dispatch(addProductToCart(...data, data.quantity + 1));
-      }
+      // const exist = idCheck.includes(data._id);
+      // if (exist) {
+      //   dispatch(addProductToCart(...data, data.quantity);
+      // }
       dispatch(addProductToCart(data));
-      console.log(data._id);
     },
     []
   );
