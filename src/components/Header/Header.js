@@ -9,7 +9,6 @@ function Header() {
     .split(';')
     .map((item) => item.includes('email'));
   const check = checkLoginLogout.find((chec) => chec === true);
-  console.log(check);
 
   const Logout = () => {
     document.cookie = 'email=; expires=Thu, 18 Dec 2013 12:00:00 UTC';
