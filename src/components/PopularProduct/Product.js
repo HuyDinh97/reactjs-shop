@@ -29,7 +29,6 @@ function PopularProduct({ name }) {
   const dispatch = useDispatch();
 
   const addProduct = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     (productInCart) => () => {
       const data = {
         _id: productInCart._id,
