@@ -3,12 +3,3 @@
   margin-left: auto;
   width: 60%;
 }
-
-.nav_categories {
-  color: black !important;
-  font-weight: 600 !important;
-}
-
-.nav_categories:hover {
-  color: rgb(109, 109, 109) !important;
-}

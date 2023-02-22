@@ -7,6 +7,7 @@ import Home from 'pages/Home';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import MyCart from 'pages/MyCart';
+import Login from 'pages/LoginPage';
 import Layout from './pages/Layout';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/my-cart" element={<MyCart />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Layout>
   );

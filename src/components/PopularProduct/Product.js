@@ -30,7 +30,15 @@ function PopularProduct({ name }) {
 
   const addProduct = useCallback(
     (productInCart) => () => {
-      dispatch(addProductToCart(productInCart));
+      const data = {
+        _id: productInCart._id,
+        name: productInCart.name,
+        price: productInCart.price,
+        sales: productInCart.sales,
+        thumb: productInCart.thumb,
+        quantity: 1,
+      };
+      dispatch(addProductToCart(data));
     },
     []
   );
