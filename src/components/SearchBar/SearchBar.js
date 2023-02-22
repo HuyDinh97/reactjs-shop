@@ -11,8 +11,14 @@ import classes from './SearchBar.module.css';
 
 function SearchBar() {
   const mycart = useGetMyCart();
+  const TotalCost = (total, price) => total + price;
 
-  const totalItem = mycart.map((item) => item);
+  const total =
+    mycart.length > 0
+      ? mycart
+          .map((item) => item.quantity * (item.price - item.sales))
+          .reduce(TotalCost)
+      : 0;
 
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   return (
@@ -43,7 +49,7 @@ function SearchBar() {
             <Badge className={classes.badge} bg="">
               {mycart.length > 0 ? mycart.length : 0}
             </Badge>
-            <span>$0</span>
+            <span className={classes.cart_total_price}>${total}</span>
           </Dropdown.Toggle>
 
           <Dropdown.Menu className={classes.dropdown_menu}>
@@ -79,7 +85,7 @@ function SearchBar() {
               )}
               <div className={classes.space_between}>
                 <span>Total</span>
-                <span className={classes.cart_total_price}>$0</span>
+                <span className={classes.cart_total_price}>${total}</span>
               </div>
             </div>
             <div className={classes.center}>
