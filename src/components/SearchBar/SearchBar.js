@@ -1,10 +1,12 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React from 'react';
+import React, { useCallback } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { GrFormClose } from 'react-icons/gr';
 import { useGetMyCart } from 'store/selectors/common';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { deleteProductInCart } from 'store/actions/common';
 import logo from './logo/logo.png';
 import cartIcon from './logo/cart-icon.png';
 import classes from './SearchBar.module.css';
@@ -12,6 +14,7 @@ import classes from './SearchBar.module.css';
 function SearchBar() {
   const mycart = useGetMyCart();
   const TotalCost = (total, price) => total + price;
+  const dispatch = useDispatch();
 
   const total =
     mycart.length > 0
@@ -19,6 +22,14 @@ function SearchBar() {
           .map((item) => item.quantity * (item.price - item.sales))
           .reduce(TotalCost)
       : 0;
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const DeteleItem = useCallback(
+    (id) => () => {
+      dispatch(deleteProductInCart(id));
+    },
+    [dispatch]
+  );
 
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   return (
@@ -70,7 +81,9 @@ function SearchBar() {
                           </div>
                         </span>
                         <span className={classes.close_button}>
-                          <GrFormClose />
+                          <button type="button" onClick={DeteleItem(item._id)}>
+                            <GrFormClose />
+                          </button>
                         </span>
                       </li>
                     </ul>

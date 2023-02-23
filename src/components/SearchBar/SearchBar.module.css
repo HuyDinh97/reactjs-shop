@@ -150,6 +150,12 @@ button:first-child:active {
   font-size: 30px;
 }
 
+.close_button button {
+  display: flex;
+  border: none;
+  background-color: white;
+}
+
 .dropdown_menu_product .price_color{
   color:#f16b62;
   font-weight: 500;
