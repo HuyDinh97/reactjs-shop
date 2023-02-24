@@ -11,6 +11,15 @@ import classes from './SearchBar.module.css';
 
 function SearchBar() {
   const mycart = useGetMyCart();
+  const TotalCost = (total, price) => total + price;
+
+  const total =
+    mycart.length > 0
+      ? mycart
+          .map((item) => item.quantity * (item.price * (1 - item.sales / 100)))
+          .reduce(TotalCost)
+      : 0;
+
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   return (
     <div className={classes.searchBar} data-testid="dropdownItem-element">
@@ -40,7 +49,7 @@ function SearchBar() {
             <Badge className={classes.badge} bg="">
               {mycart.length > 0 ? mycart.length : 0}
             </Badge>
-            <span>$0</span>
+            <span className={classes.cart_total_price}>${total}</span>
           </Dropdown.Toggle>
 
           <Dropdown.Menu className={classes.dropdown_menu}>
@@ -55,13 +64,17 @@ function SearchBar() {
                         </span>
                         <span>
                           <div className="fw-semibold">{item.name}</div>
-                          <div>Quantiy: 1</div>
+                          <div>Quantiy: {item.quantity}</div>
                           <div className={classes.price_color}>
-                            ${item.price - item.sales}
+                            $
+                            {item.quantity *
+                              (item.price * (1 - item.sales / 100))}
                           </div>
                         </span>
                         <span className={classes.close_button}>
-                          <GrFormClose />
+                          <button type="button">
+                            <GrFormClose />
+                          </button>
                         </span>
                       </li>
                     </ul>
@@ -76,7 +89,7 @@ function SearchBar() {
               )}
               <div className={classes.space_between}>
                 <span>Total</span>
-                <span className={classes.cart_total_price}>$0</span>
+                <span className={classes.cart_total_price}>${total}</span>
               </div>
             </div>
             <div className={classes.center}>

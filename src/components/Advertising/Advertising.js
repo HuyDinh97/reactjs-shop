@@ -11,7 +11,7 @@ import classes from './Advertising.module.css';
 
 function Advertising() {
   return (
-    <Row className={classes.mg_4}>
+    <Row className={classes.advertising}>
       <Col>
         <img src={Ads1} alt="ADS" />
       </Col>

@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 const initialState = {
   categories: [],
   popularProducts: [],
@@ -29,10 +30,39 @@ export default (state = initialState, action) => {
         testimonials: action.payload.testimonials,
       };
     case 'ADD_PRODUCTTOCART':
+      const productIndex = state.productInCart.findIndex(
+        (product) => product._id === action.payload._id
+      );
+
+      const productExist = productIndex !== -1;
+      const { price, sales, quantity } = action.payload;
+
+      const newQuantity = productExist
+        ? state.productInCart[productIndex].quantity + 1
+        : quantity;
+
+      const realPrice = price * newQuantity;
+      const afterSalesPrice = realPrice - (realPrice * sales) / 100;
+      const newProduct = {
+        ...action.payload,
+        quantity: newQuantity,
+        afterSalesPrice,
+      };
+
+      if (productExist) {
+        const newState = state.productInCart;
+        newState[productIndex] = newProduct;
+        return {
+          ...state,
+          productInCart: [...newState],
+        };
+      }
+
       return {
         ...state,
-        productInCart: [...state.productInCart, action.payload],
+        productInCart: [...state.productInCart, newProduct],
       };
+
     default:
       return state;
   }

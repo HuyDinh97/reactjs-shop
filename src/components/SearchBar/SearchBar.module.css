@@ -102,6 +102,7 @@ button:first-child:active {
 
 .cart_total_price {
   color: #f16b62;
+  font-weight: 600;
 }
 
 .dropdown_menu {
@@ -147,6 +148,12 @@ button:first-child:active {
   display: flex;
   align-items: center;
   font-size: 30px;
+}
+
+.close_button button {
+  display: flex;
+  border: none;
+  background-color: white;
 }
 
 .dropdown_menu_product .price_color{
