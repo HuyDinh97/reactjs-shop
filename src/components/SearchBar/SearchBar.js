@@ -5,8 +5,6 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { GrFormClose } from 'react-icons/gr';
 import { useGetMyCart } from 'store/selectors/common';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { deleteProductInCart } from 'store/actions/common';
 import logo from './logo/logo.png';
 import cartIcon from './logo/cart-icon.png';
 import classes from './SearchBar.module.css';
@@ -14,7 +12,6 @@ import classes from './SearchBar.module.css';
 function SearchBar() {
   const mycart = useGetMyCart();
   const TotalCost = (total, price) => total + price;
-  const dispatch = useDispatch();
 
   const total =
     mycart.length > 0
