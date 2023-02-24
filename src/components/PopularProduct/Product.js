@@ -134,7 +134,8 @@ function PopularProduct({ name }) {
                   </span>
                   <span className="mx-2 fs-6 fw-semibold">
                     {' $ '}
-                    {popularProduct.price - popularProduct.sales}
+                    {popularProduct.quantity *
+                      (popularProduct.price * (1 - popularProduct.sales / 100))}
                   </span>
                 </div>
               </div>

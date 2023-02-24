@@ -31,35 +31,37 @@ export default (state = initialState, action) => {
         testimonials: action.payload.testimonials,
       };
     case 'ADD_PRODUCTTOCART':
-      const productExist = state.productInCart.find(
+      const productIndex = state.productInCart.findIndex(
         (product) => product._id === action.payload._id
       );
-      if (!productExist) {
+
+      const productExist = productIndex !== -1;
+      const { price, sales, quantity } = action.payload;
+
+      const newQuantity = productExist
+        ? state.productInCart[productIndex].quantity + 1
+        : quantity;
+
+      const realPrice = price * newQuantity;
+      const afterSalesPrice = realPrice - (realPrice * sales) / 100;
+      const newProduct = {
+        ...action.payload,
+        quantity: newQuantity,
+        afterSalesPrice,
+      };
+
+      if (productExist) {
+        const newState = state.productInCart;
+        newState[productIndex] = newProduct;
         return {
           ...state,
-          productInCart: [...state.productInCart, action.payload],
+          productInCart: [...newState],
         };
       }
-      const newProductInCart = state.productInCart;
-      const productIndex = newProductInCart.findIndex(
-        (product) => product._id === action.payload._id
-      );
-      if (newProductInCart[productIndex].quantity === 1) {
-        newProductInCart[productIndex].quantity = 2;
-      } else {
-        newProductInCart[productIndex].quantity++;
-      }
+
       return {
         ...state,
-        productInCart: [...newProductInCart],
-      };
-    case 'DELETE_PRODUCTINCART':
-      const productDelete = state.productInCart.filter(
-        (product) => product._id !== action.payload
-      );
-      return {
-        ...state,
-        productInCart: [...productDelete],
+        productInCart: [...state.productInCart, newProduct],
       };
 
     default:

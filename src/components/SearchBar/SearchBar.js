@@ -19,17 +19,9 @@ function SearchBar() {
   const total =
     mycart.length > 0
       ? mycart
-          .map((item) => item.quantity * (item.price - item.sales))
+          .map((item) => item.quantity * (item.price * (1 - item.sales / 100)))
           .reduce(TotalCost)
       : 0;
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const DeteleItem = useCallback(
-    (id) => () => {
-      dispatch(deleteProductInCart(id));
-    },
-    [dispatch]
-  );
 
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   return (
@@ -77,11 +69,13 @@ function SearchBar() {
                           <div className="fw-semibold">{item.name}</div>
                           <div>Quantiy: {item.quantity}</div>
                           <div className={classes.price_color}>
-                            ${item.price - item.sales}
+                            $
+                            {item.quantity *
+                              (item.price * (1 - item.sales / 100))}
                           </div>
                         </span>
                         <span className={classes.close_button}>
-                          <button type="button" onClick={DeteleItem(item._id)}>
+                          <button type="button">
                             <GrFormClose />
                           </button>
                         </span>
