@@ -1,4 +1,3 @@
-/* eslint-disable no-plusplus */
 /* eslint-disable no-case-declarations */
 const initialState = {
   categories: [],
