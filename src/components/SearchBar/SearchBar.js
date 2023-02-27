@@ -1,11 +1,13 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/jsx-one-expression-per-line */
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import Badge from 'react-bootstrap/Badge';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { GrFormClose } from 'react-icons/gr';
 import { useGetMyCart } from 'store/selectors/common';
 import { Link } from 'react-router-dom';
+import { deleteProductInCart } from 'store/actions/common';
 import logo from './logo/logo.png';
 import cartIcon from './logo/cart-icon.png';
 import classes from './SearchBar.module.css';
@@ -13,6 +15,7 @@ import classes from './SearchBar.module.css';
 function SearchBar() {
   const mycart = useGetMyCart();
   const TotalCost = (total, price) => total + price;
+  const dispatch = useDispatch();
 
   const total =
     mycart.length > 0
@@ -21,6 +24,13 @@ function SearchBar() {
           .reduce(TotalCost)
           .toFixed(2)
       : 0;
+
+      const DeteleItem = useCallback(
+        (id) => () => {
+          dispatch(deleteProductInCart(id));
+        },
+        [dispatch]
+      );
 
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   return (
@@ -74,7 +84,7 @@ function SearchBar() {
                           </div>
                         </span>
                         <span className={classes.close_button}>
-                          <button type="button">
+                          <button type="button" onClick={DeteleItem(item._id)}>
                             <GrFormClose />
                           </button>
                         </span>

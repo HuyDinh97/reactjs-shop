@@ -63,6 +63,16 @@ export default (state = initialState, action) => {
         productInCart: [...state.productInCart, newProduct],
       };
 
+    case 'DELETE_PRODUCTINCART':
+      const productDelete = state.productInCart.filter(
+        (product) => product._id !== action.payload
+      );
+
+      return {
+        ...state,
+        productInCart: [...productDelete],
+      };
+
     default:
       return state;
   }
