@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import Badge from 'react-bootstrap/Badge';
@@ -18,6 +19,7 @@ function SearchBar() {
       ? mycart
           .map((item) => item.quantity * (item.price * (1 - item.sales / 100)))
           .reduce(TotalCost)
+          .toFixed(2)
       : 0;
 
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
@@ -67,8 +69,8 @@ function SearchBar() {
                           <div>Quantiy: {item.quantity}</div>
                           <div className={classes.price_color}>
                             $
-                            {item.quantity *
-                              (item.price * (1 - item.sales / 100))}
+                            {(item.quantity *
+                              (item.price * (1 - item.sales / 100))).toFixed(2)}
                           </div>
                         </span>
                         <span className={classes.close_button}>

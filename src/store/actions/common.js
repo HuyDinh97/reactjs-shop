@@ -33,10 +33,3 @@ export const addProductToCart = (payload) => {
     payload,
   };
 };
-
-export const deleteProductInCart = (payload) => {
-  return {
-    type: 'DELETE_PRODUCTINCART',
-    payload,
-  };
-};

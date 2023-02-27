@@ -5,13 +5,11 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import { FaMinus, FaPlus, FaChevronLeft } from 'react-icons/fa';
 import { HiRefresh } from 'react-icons/hi';
-import { useGetMyCart } from 'store/selectors/common';
 
 import classes from './CartTable.module.css';
 import image from './image/product-img-3.jpg';
 
 function CartTable() {
-  const mycart = useGetMyCart();
   return (
     <div className={classes.mt_5}>
       <Table className={classes.cartTable} striped bordered hover size="sm">
@@ -25,37 +23,31 @@ function CartTable() {
           </tr>
         </thead>
         <tbody>
-          {mycart.length > 0 ? (
-            mycart.map((item) => (
-              <tr key={item._id}>
-                <td>
-                  <div className="d-flex justify-content-center" colSpan={2}>
-                    <img src={image} alt="" />
-                  </div>
-                </td>
-                <td className="fs-5 fw-semibold">{item.name}</td>
-                <td className={classes.price_sample}>$6</td>
-                <td>
-                  <div className="d-flex justify-content-center align-items-center">
-                    <button className={classes.quantity_button}>
-                      <FaMinus />
-                    </button>
-                    <div className={classes.quantity_in_cart}>
-                      <input type="tel" min={0} aria-label="couple-code" />
-                    </div>
-                    <button className={classes.quantity_button}>
-                      <FaPlus />
-                    </button>
-                  </div>
-                </td>
-                <td className={classes.price_sample}>$6</td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan={5}>No items in cart</td>
-            </tr>
-          )}
+          <tr>
+            <td>
+              <div className="d-flex justify-content-center" colSpan={2}>
+                <img src={image} alt="" />
+              </div>
+            </td>
+            <td className="fs-5 fw-semibold">
+              Calvin Klein womens Solid Sheath With Chiffon Bell Sleeves Dress
+            </td>
+            <td className={classes.price_sample}>$6</td>
+            <td>
+              <div className="d-flex justify-content-center align-items-center">
+                <button className={classes.quantity_button}>
+                  <FaMinus />
+                </button>
+                <div className={classes.quantity_in_cart}>
+                  <input type="tel" min={0} aria-label="couple-code" />
+                </div>
+                <button className={classes.quantity_button}>
+                  <FaPlus />
+                </button>
+              </div>
+            </td>
+            <td className={classes.price_sample}>$6</td>
+          </tr>
         </tbody>
         <tfoot>
           <tr>
