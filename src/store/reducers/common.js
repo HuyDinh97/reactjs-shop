@@ -43,10 +43,11 @@ export default (state = initialState, action) => {
 
       const realPrice = price * newQuantity;
       const afterSalesPrice = realPrice - (realPrice * sales) / 100;
+      console.log(afterSalesPrice);
       const newProduct = {
         ...action.payload,
         quantity: newQuantity,
-        afterSalesPrice,
+        Price: afterSalesPrice,
       };
 
       if (productExist) {

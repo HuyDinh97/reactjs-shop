@@ -5,13 +5,28 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import { FaMinus, FaPlus, FaChevronLeft } from 'react-icons/fa';
 import { HiRefresh } from 'react-icons/hi';
+import { useGetMyCart } from 'store/selectors/common';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import classes from './CartTable.module.css';
-import image from './image/product-img-3.jpg';
 
 function CartTable() {
+  const mycart = useGetMyCart();
+
+  const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   return (
-    <div className={classes.mt_5}>
+    <div className={classes.cartTable}>
+      <Container>
+        <Row>
+          <Col xs={1}>Item</Col>
+          <Col xs={6}>Product Name</Col>
+          <Col xs={1}>Price</Col>
+          <Col xs={3}>Quantity</Col>
+          <Col xs={1}>Subtotal</Col>
+        </Row>
+      </Container>
       <Table className={classes.cartTable} striped bordered hover size="sm">
         <thead>
           <tr>
@@ -23,31 +38,37 @@ function CartTable() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <div className="d-flex justify-content-center" colSpan={2}>
-                <img src={image} alt="" />
-              </div>
-            </td>
-            <td className="fs-5 fw-semibold">
-              Calvin Klein womens Solid Sheath With Chiffon Bell Sleeves Dress
-            </td>
-            <td className={classes.price_sample}>$6</td>
-            <td>
-              <div className="d-flex justify-content-center align-items-center">
-                <button className={classes.quantity_button}>
-                  <FaMinus />
-                </button>
-                <div className={classes.quantity_in_cart}>
-                  <input type="tel" min={0} aria-label="couple-code" />
-                </div>
-                <button className={classes.quantity_button}>
-                  <FaPlus />
-                </button>
-              </div>
-            </td>
-            <td className={classes.price_sample}>$6</td>
-          </tr>
+          {mycart.length > 0 ? (
+            mycart.map((item) => (
+              <tr key={item._id}>
+                <td>
+                  <div className="d-flex justify-content-center" colSpan={2}>
+                    <img src={linkIMG + item.thumb} alt="" />
+                  </div>
+                </td>
+                <td className="fs-5 fw-semibold">{item.name}</td>
+                <td className={classes.price_sample}>$6</td>
+                <td>
+                  <div className="d-flex justify-content-center align-items-center">
+                    <button className={classes.quantity_button}>
+                      <FaMinus />
+                    </button>
+                    <div className={classes.quantity_in_cart}>
+                      <input type="tel" min={0} aria-label="couple-code" />
+                    </div>
+                    <button className={classes.quantity_button}>
+                      <FaPlus />
+                    </button>
+                  </div>
+                </td>
+                <td className={classes.price_sample}>$6</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan={5}>No items in cart</td>
+            </tr>
+          )}
         </tbody>
         <tfoot>
           <tr>

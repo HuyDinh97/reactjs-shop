@@ -4,10 +4,6 @@ th {
   font-size: 16px;
 }
 
-.mt_5{
-  margin-top: 5rem;
-}
-
 .cartTable td img {
   height: 110px;
 }
@@ -16,9 +12,14 @@ th {
   text-align: center;
 }
 
+.cartTable .row>.col {
+  background-color: #bbeffd;
+  border: 1px solid #61dafb;
+}
+
 .cartTable td {
-  vertical-align: middle;
-  --bs-table-accent-bg: white!important;
+  background-color: #bbeffd;
+  border: 1px solid #61dafb;
 }
 
 .quantity_in_cart {
