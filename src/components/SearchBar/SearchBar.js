@@ -50,14 +50,14 @@ function SearchBar() {
           >
             <img src={cartIcon} alt="icon" />
             <Badge className={classes.badge} bg="">
-              {productInCart.length > 0 ? productInCart.length : 0}
+              {productInCart?.length > 0 ? productInCart.length : 0}
             </Badge>
             <span className={classes.cart_total_price}>${totalCost}</span>
           </Dropdown.Toggle>
 
           <Dropdown.Menu className={classes.dropdown_menu}>
             <div>
-              {productInCart.length > 0 ? (
+              {productInCart?.length > 0 ? (
                 productInCart.map((product) => (
                   <div key={product._id}>
                     <ul className={classes.dropdown_menu_product}>
