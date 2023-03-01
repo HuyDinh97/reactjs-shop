@@ -11,10 +11,13 @@ const initialState = {
 };
 
 const calculateTotalCost = (products) =>
-  products.reduce(
-    (prevValue, currProduct) => prevValue + (currProduct?.afterSalesPrice ?? 0),
-    0
-  );
+  products
+    .reduce(
+      (prevValue, currProduct) =>
+        prevValue + (currProduct?.afterSalesPrice ?? 0),
+      0
+    )
+    .toFixed(2);
 // eslint-disable-next-line default-param-last
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -72,6 +75,18 @@ export default (state = initialState, action) => {
         productInCart: {
           products: newProductList,
           totalCost: calculateTotalCost(newProductList),
+        },
+      };
+    case 'DELETE_PRODUCTINCART':
+      const productDelete = state.productInCart.products.filter(
+        (product) => product._id !== action.payload
+      );
+
+      return {
+        ...state,
+        productInCart: {
+          products: [...productDelete],
+          totalCost: calculateTotalCost(productDelete),
         },
       };
 
