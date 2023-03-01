@@ -11,16 +11,7 @@ import cartIcon from './logo/cart-icon.png';
 import classes from './SearchBar.module.css';
 
 function SearchBar() {
-  const mycart = useGetMyCart();
-  const TotalCost = (total, price) => total + price;
-
-  const total =
-    mycart.length > 0
-      ? mycart
-          .map((item) => item.quantity * (item.price * (1 - item.sales / 100)))
-          .reduce(TotalCost)
-          .toFixed(2)
-      : 0;
+  const { products: productInCart, totalCost } = useGetMyCart();
 
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   return (
@@ -49,28 +40,27 @@ function SearchBar() {
           >
             <img src={cartIcon} alt="icon" />
             <Badge className={classes.badge} bg="">
-              {mycart.length > 0 ? mycart.length : 0}
+              {productInCart.length > 0 ? productInCart.length : 0}
             </Badge>
-            <span className={classes.cart_total_price}>${total}</span>
+            <span className={classes.cart_total_price}>${totalCost}</span>
           </Dropdown.Toggle>
 
           <Dropdown.Menu className={classes.dropdown_menu}>
             <div>
-              {mycart.length > 0 ? (
-                mycart.map((item) => (
-                  <div key={item._id}>
+              {productInCart.length > 0 ? (
+                productInCart.map((product) => (
+                  <div key={product._id}>
                     <ul className={classes.dropdown_menu_product}>
                       <li className="d-flex">
                         <span>
-                          <img src={linkIMG + item.thumb} alt="1" />
+                          <img src={linkIMG + product.thumb} alt="1" />
                         </span>
                         <span>
-                          <div className="fw-semibold">{item.name}</div>
-                          <div>Quantiy: {item.quantity}</div>
+                          <div className="fw-semibold">{product.name}</div>
+                          <div>Quantiy: {product.quantity}</div>
                           <div className={classes.price_color}>
                             $
-                            {(item.quantity *
-                              (item.price * (1 - item.sales / 100))).toFixed(2)}
+                            {product.afterSalesPrice}
                           </div>
                         </span>
                         <span className={classes.close_button}>
@@ -91,7 +81,7 @@ function SearchBar() {
               )}
               <div className={classes.space_between}>
                 <span>Total</span>
-                <span className={classes.cart_total_price}>${total}</span>
+                <span className={classes.cart_total_price}>${totalCost}</span>
               </div>
             </div>
             <div className={classes.center}>

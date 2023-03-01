@@ -4,8 +4,17 @@ const initialState = {
   popularProducts: [],
   bestSellers: [],
   testtimotionals: [],
-  productInCart: [],
+  productInCart: {
+    products: [],
+    totalCost: 0,
+  },
 };
+
+const calculateTotalCost = (products) =>
+  products.reduce(
+    (prevValue, currProduct) => prevValue + (currProduct?.afterSalesPrice ?? 0),
+    0
+  );
 // eslint-disable-next-line default-param-last
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -30,7 +39,8 @@ export default (state = initialState, action) => {
         testimonials: action.payload.testimonials,
       };
     case 'ADD_PRODUCTTOCART':
-      const productIndex = state.productInCart.findIndex(
+      const { products } = state.productInCart;
+      const productIndex = products.findIndex(
         (product) => product._id === action.payload._id
       );
 
@@ -38,29 +48,31 @@ export default (state = initialState, action) => {
       const { price, sales, quantity } = action.payload;
 
       const newQuantity = productExist
-        ? state.productInCart[productIndex].quantity + 1
+        ? products[productIndex].quantity + 1
         : quantity;
 
       const realPrice = price * newQuantity;
       const afterSalesPrice = realPrice - (realPrice * sales) / 100;
+
       const newProduct = {
         ...action.payload,
         quantity: newQuantity,
         afterSalesPrice,
       };
 
+      const newProductList = products;
       if (productExist) {
-        const newState = state.productInCart;
-        newState[productIndex] = newProduct;
-        return {
-          ...state,
-          productInCart: [...newState],
-        };
+        newProductList[productIndex] = newProduct;
+      } else {
+        newProductList.push(newProduct);
       }
 
       return {
         ...state,
-        productInCart: [...state.productInCart, newProduct],
+        productInCart: {
+          products: newProductList,
+          totalCost: calculateTotalCost(newProductList),
+        },
       };
 
     default:
