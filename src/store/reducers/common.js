@@ -38,7 +38,6 @@ export default (state = initialState, action) => {
         popularProducts[i].realPrice = realPrice;
         newPopularProduct = popularProducts;
       }
-      console.log(newPopularProduct);
       return {
         ...state,
         popularProducts: [...newPopularProduct],
