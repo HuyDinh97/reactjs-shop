@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-plusplus */
 /* eslint-disable no-case-declarations */
 const initialState = {
   categories: [],
   popularProducts: [],
   bestSellers: [],
-  testtimotionals: [],
+  testtimonials: [],
   productInCart: {
     products: [],
     totalCost: 0,
@@ -27,9 +29,20 @@ export default (state = initialState, action) => {
         categories: action.payload.categories,
       };
     case 'ADD_POPULARPRODUCT':
+      const { popularProducts } = action.payload;
+      const afterSalesPrices = popularProducts.map(
+        (prod) => prod.price * (1 - prod.sales / 100)
+      );
+      let newPopularProduct = [];
+      for (let i = 0; i <= popularProducts.length - 1; i++) {
+        const realPrice = afterSalesPrices[i];
+        popularProducts[i].realPrice = realPrice;
+        newPopularProduct = popularProducts;
+      }
+      console.log(newPopularProduct);
       return {
         ...state,
-        popularProducts: action.payload.popularProducts,
+        popularProducts: [...newPopularProduct],
       };
     case 'ADD_BESTSELLER':
       return {
