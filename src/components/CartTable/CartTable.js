@@ -37,7 +37,7 @@ function CartTable() {
             $6
           </Col>
           <Col xs={2}>
-            <div className="d-flex justify-content-center align-items-center border-0">
+            <div className={classes.cartDetailQuantity}>
               <button className={classes.quantity_button}>
                 <FaMinus />
               </button>
@@ -75,10 +75,16 @@ function CartTable() {
           </Col>
         </Row>
       </Container>
-      <div className="d-flex justify-content-between">
-        <PromotionCode />
-        <CartTotal />
-      </div>
+      <Container>
+        <Row>
+          <Col className={classes.promotionCode}>
+            <PromotionCode />
+          </Col>
+          <Col className={classes.subtotal}>
+            <CartTotal />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

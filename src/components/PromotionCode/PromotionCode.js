@@ -5,7 +5,7 @@ import classes from './PromotionCode.module.css';
 
 function PromotionCode() {
   return (
-    <div>
+    <div className={classes.promotionCode}>
       <Card className={classes.Card}>
         <Card.Title className={classes.Card_Title}>PROMOTION CODE</Card.Title>
         <Card.Body>
