@@ -16,11 +16,11 @@ function Navigation() {
 
   return (
     <div className={classes.main}>
-      <Navbar expand="lg" className={classes.navbar}>
-        <Container>
+      <Navbar expand="xxl" className={classes.navbar}>
+        <Container className={classes.containerNavbar}>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+            <Nav className={classes.navbarNav}>
               <Nav.Link className={navClass} to="/">
                 Home
               </Nav.Link>

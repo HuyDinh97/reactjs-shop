@@ -13,8 +13,26 @@
   border-top: 1px solid rgb(207, 205, 205);
 }
 
-.navbar {
-  margin-right: auto;
-  margin-left: auto;
-  width: 60%;
+.containerNavbar{
+  padding: 0!important;
+}
+
+@media screen and (max-width:1400px) {
+  .main {
+    border: none;
+  }
+  .main .container {
+    padding-right: 0!important;
+  }
+  .navbarNav {
+    display: flex;
+    align-items: flex-end;
+  }
+  .nav_categories {
+    padding: 0.5rem 0 0.5rem 0!important;
+  }
+  .containerNavbar{
+    display: flex;
+    justify-content: flex-end!important;
+  }
 }
