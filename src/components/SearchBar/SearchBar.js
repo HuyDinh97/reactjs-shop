@@ -8,6 +8,7 @@ import { useGetMyCart } from 'store/selectors/common';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteProductInCart } from 'store/actions/common';
+import Navigation from 'components/Navigation';
 import logo from './logo/logo.png';
 import cartIcon from './logo/cart-icon.png';
 import classes from './SearchBar.module.css';
@@ -18,46 +19,47 @@ function SearchBar() {
 
   const deleteProduct = useCallback(
     (id) => () => {
-      dispatch(deleteProductInCart(id));
+      dispatch(deleteProductInCart({ _id: id }));
     },
     [dispatch]
   );
 
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   return (
-    <div className={classes.searchBar} data-testid="dropdownItem-element">
-      <div>
-        <Link to="/">
-          <img src={logo} alt="Logo" />
-        </Link>
-      </div>
-      <div className={classes.searchSection}>
-        <input
-          className={classes.search_Box}
-          data-testid="search-input"
-          placeholder="Search Product..."
-        />
-        <button type="button" className={classes.search_Btn}>
-          Search
-        </button>
-      </div>
-      <div>
-        <Dropdown className={classes.cart_button}>
-          <Dropdown.Toggle
-            className={classes.cart_toggle}
-            variant=""
-            id="dropdown-basic"
-          >
-            <img src={cartIcon} alt="icon" />
-            <Badge className={classes.badge} bg="">
-              {productInCart?.length > 0 ? productInCart.length : 0}
-            </Badge>
-            <span className={classes.cart_total_price}>${totalCost}</span>
-          </Dropdown.Toggle>
+    <div>
+      <div className={classes.searchBar} data-testid="dropdownItem-element">
+        <div>
+          <Link to="/">
+            <img src={logo} alt="Logo" />
+          </Link>
+        </div>
+        <div className={classes.searchSection}>
+          <input
+            className={classes.search_Box}
+            data-testid="search-input"
+            placeholder="Search Product..."
+          />
+          <button type="button" className={classes.search_Btn}>
+            Search
+          </button>
+        </div>
+        <div>
+          <Dropdown className={classes.cart_button}>
+            <Dropdown.Toggle
+              className={classes.cart_toggle}
+              variant=""
+              id="dropdown-basic"
+            >
+              <img src={cartIcon} alt="icon" />
+              <Badge className={classes.badge} bg="">
+                {productInCart?.length > 0 ? productInCart.length : 0}
+              </Badge>
+              <span className={classes.cart_total_price}>${totalCost}</span>
+            </Dropdown.Toggle>
 
-          <Dropdown.Menu className={classes.dropdown_menu}>
-            <div>
-              {productInCart?.length > 0 ? (
+            <Dropdown.Menu className={classes.dropdown_menu}>
+              <div>
+                {productInCart?.length > 0 ? (
                 productInCart.map((product) => (
                   <div key={product._id}>
                     <ul className={classes.dropdown_menu_product}>
@@ -89,18 +91,22 @@ function SearchBar() {
                   </ul>
                 </div>
               )}
-              <div className={classes.space_between}>
-                <span>Total</span>
-                <span className={classes.cart_total_price}>${totalCost}</span>
+                <div className={classes.space_between}>
+                  <span>Total</span>
+                  <span className={classes.cart_total_price}>${totalCost}</span>
+                </div>
               </div>
-            </div>
-            <div className={classes.center}>
-              <button type="button" className={classes.view_cart_button}>
-                <Link to="/my-cart">View Cart</Link>
-              </button>
-            </div>
-          </Dropdown.Menu>
-        </Dropdown>
+              <div className={classes.center}>
+                <button type="button" className={classes.view_cart_button}>
+                  <Link to="/my-cart">View Cart</Link>
+                </button>
+              </div>
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+      </div>
+      <div>
+        <Navigation />
       </div>
     </div>
   );
