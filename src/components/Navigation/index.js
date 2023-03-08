@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from 'react-bootstrap/Nav';
-import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
 import { useGetCategories } from 'store/selectors/common';
 import classes from './navigation.module.css';
 
@@ -15,24 +16,29 @@ function Navigation() {
 
   return (
     <div className={classes.main}>
-      <Nav defaultActiveKey="/home" as="ul" data-testid="category-element">
-        <Nav.Item>
-          <Link to="/" className={navClass}>
-            Home
-          </Link>
-        </Nav.Item>
-        {categories &&
-          categories.map((category) => (
-            <Nav.Item key={category._id} as="li">
-              <Nav.Link className={classes.nav_categories} href="/">
-                {category.name}
+      <Navbar expand="lg" className={classes.navbar}>
+        <Container>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link className={navClass} to="/">
+                Home
               </Nav.Link>
-            </Nav.Item>
-          ))}
-        <Link to="/about-us" className={navClass}>
-          About
-        </Link>
-      </Nav>
+              {categories &&
+                categories.map((category) => (
+                  <Nav.Item key={category._id} as="li">
+                    <Nav.Link className={classes.nav_categories} href="/">
+                      {category.name}
+                    </Nav.Link>
+                  </Nav.Item>
+                ))}
+              <Nav.Link to="/about-us" className={navClass}>
+                About
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </div>
   );
 }
