@@ -15,7 +15,7 @@ import image from './image/product-img-3.jpg';
 function CartTable() {
   return (
     <div className={classes.mt_5}>
-      <Container>
+      <Container className={classes.webVersion}>
         <Row className={classes.cartDetailHeader}>
           <Col lg={2}>Item</Col>
           <Col lg={5}>Product Name</Col>
@@ -68,6 +68,56 @@ function CartTable() {
               <span className={classes.buttonUpdateCartBorder}>
                 <button className={classes.buttonUpdateCart}>
                   <HiRefresh className={classes.margin_right_1rem} />
+                  UPDATE CART
+                </button>
+              </span>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      <Container className={classes.mobileVersion}>
+        <Row className="d-flex flex-column">
+          <Col className="d-flex justify-content-between p-3">
+            <div className={classes.semibold}>Product:</div>
+            <div className="fw-bold">Product 01</div>
+          </Col>
+          <Col className="d-flex justify-content-between p-3">
+            <div className={classes.semibold}>Price:</div>
+            <div className={classes.price_sample}>$ 78</div>
+          </Col>
+          <Col className="d-flex justify-content-between p-3">
+            <div className={classes.semibold}>Quantity:</div>
+            <div>
+              <div className={classes.cartDetailQuantity}>
+                <button className={classes.quantity_button}>
+                  <FaMinus />
+                </button>
+                <div className={classes.quantity_in_cart}>
+                  <input type="tel" min={0} aria-label="couple-code" />
+                </div>
+                <button className={classes.quantity_button}>
+                  <FaPlus />
+                </button>
+              </div>
+            </div>
+          </Col>
+          <Col className="d-flex justify-content-between p-3">
+            <div className={classes.semibold}>Subprice:</div>
+            <div className={classes.price_sample}>$ 78</div>
+          </Col>
+        </Row>
+        <Row className={classes.underCartButton}>
+          <Col>
+            <div className="d-flex justify-content-center align-item-center border-0 p-0">
+              <span className={classes.buttonUnderCartBorder}>
+                <Link to="/" className={classes.buttonUnderCart}>
+                  <FaChevronLeft className={classes.iconButton} />
+                  CONTINUE SHOPPING
+                </Link>
+              </span>
+              <span className={classes.buttonUpdateCartBorder}>
+                <button className={classes.buttonUpdateCart}>
+                  <HiRefresh className={classes.iconButton} />
                   UPDATE CART
                 </button>
               </span>

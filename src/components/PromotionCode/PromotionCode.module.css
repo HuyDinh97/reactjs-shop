@@ -33,3 +33,9 @@
     justify-content: center!important;
   }
 }
+
+@media screen and (max-width: 576px) {
+  .Card_Text {
+    font-size: 1rem!important;
+  }
+}

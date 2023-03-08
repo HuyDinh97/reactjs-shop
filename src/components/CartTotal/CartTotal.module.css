@@ -47,3 +47,12 @@
     justify-content: center!important;
   }
 }
+
+@media screen and (max-width: 576px) {
+  .Subtotal {
+    font-size: 1rem!important;
+  }
+  .Total {
+    font-size: 1rem!important;
+  }
+}

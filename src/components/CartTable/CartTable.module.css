@@ -128,7 +128,7 @@ th {
   text-decoration: none;
 }
 
-.margin_right_1rem {
+.iconButton {
   margin-right: 1rem;
 }
 
@@ -164,6 +164,18 @@ th {
   justify-content: end;
 }
 
+.mobileVersion {
+  display: none;
+}
+.semibold {
+  font-weight: 600;
+}
+
+.underCartButton {
+  padding: 1rem;
+  border-top: 1px solid gray;
+}
+
 @media screen and (max-width: 1224px) {
   .cartDetailQuantity {
     flex-direction: column;
@@ -171,5 +183,96 @@ th {
   .subtotal {
     display: flex!important;
     justify-content: center!important;
+  }
+}
+
+@media screen and (max-width:992px) {
+  .webVersion{
+    display: none;
+  }
+  .mobileVersion {
+    display: block;
+    border: 1px solid gray;
+  }
+  .price_sample {
+    color: #ea3c31!important;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .cartDetailQuantity {
+    display: flex;
+    align-items: flex-end!important;
+  }
+  .quantity_in_cart {
+    width: 18%;
+  }
+  .quantity_button {
+    padding: 7px 9px;
+  }
+  .buttonUnderCart {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+  }
+  .buttonUpdateCart {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+  }
+}
+
+@media screen and (max-width:576px) {
+  .mobileVersion {
+    display: block;
+    border: 1px solid gray;
+    width: 93%!important;
+  }
+  .quantity_in_cart {
+    width: 18%;
+  }
+  .quantity_button {
+    padding: 7px 9px;
+  }
+  .buttonUnderCart {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.7rem;
+  }
+  .buttonUpdateCart {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.7rem;
+  }
+  .iconButton {
+    margin-right: 0.5rem;
+  }
+  .buttonUnderCartBorder {
+    margin-right: 0.5rem;
+  }
+}
+
+@media screen and (max-width:391px) {
+  .mobileVersion {
+    display: block;
+    border: 1px solid gray;
+    width: 93%!important;
+  }
+  .quantity_in_cart {
+    width: 18%;
+  }
+  .quantity_button {
+    padding: 7px 9px;
+  }
+  .buttonUnderCart {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.7rem;
+  }
+  .buttonUpdateCart {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.7rem;
+  }
+  .iconButton {
+    margin-right: 0.5rem;
+  }
+  .buttonUnderCartBorder {
+    margin-right: 0.5rem;
   }
 }
