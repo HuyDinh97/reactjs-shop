@@ -160,3 +160,18 @@ button:first-child:active {
   color:#f16b62;
   font-weight: 500;
 }
+
+@media screen and (max-width:1048px) {
+  .searchBar {
+    width: 100%;
+  }
+  .searchSection input{
+    width: 170px;
+  }
+}
+
+@media screen and (max-width:678px) {
+  .searchSection{
+    display: none;
+  }
+}

@@ -1,7 +1,6 @@
 import React from 'react';
 import BestSeller from 'components/BestSeller/BestSeller';
 import SearchBar from 'components/SearchBar/SearchBar';
-import Navigation from 'components/Navigation';
 import SubscribeEmail from 'components/SubscribeEmail/SubscribeEmail';
 import ServiceBanner from 'components/ServiceBanner/ServiceBanner';
 import SummerSale from 'components/SummerSale/SummerSale';
@@ -17,7 +16,6 @@ function Home() {
     <div>
       <div>
         <SearchBar />
-        <Navigation />
         <SummerSale />
       </div>
       <div className={classes.main}>

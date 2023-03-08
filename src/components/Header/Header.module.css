@@ -71,6 +71,14 @@ header a {
     flex-direction: column!important;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+  }
+  .header_color {
+    padding: 5px;
+  }
+  .header ul {
+    font-size: 0.8rem;
+    font-weight: 500;
   }
 
 }

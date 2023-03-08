@@ -9,7 +9,6 @@ function MyCart() {
   return (
     <div>
       <SearchBar />
-      <Navigation />
       <div className={classes.main}>
         <PageTitle />
         <CartTable />
