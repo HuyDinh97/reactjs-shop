@@ -17,26 +17,26 @@ function CartTable() {
     <div className={classes.mt_5}>
       <Container>
         <Row className={classes.cartDetailHeader}>
-          <Col xs={2}>Item</Col>
-          <Col xs={5}>Product Name</Col>
-          <Col xs={1}>Price</Col>
-          <Col xs={2}>Quantity</Col>
-          <Col xs={1}>Subtotal</Col>
-          <Col xs={1}> </Col>
+          <Col lg={2}>Item</Col>
+          <Col lg={5}>Product Name</Col>
+          <Col lg={1}>Price</Col>
+          <Col lg={2}>Quantity</Col>
+          <Col lg={1}>Subtotal</Col>
+          <Col lg={1}> </Col>
         </Row>
         <Row className={classes.cartDetail}>
-          <Col xs={2}>
+          <Col lg={2}>
             <div className="d-flex justify-content-center border-0">
               <img src={image} alt="" />
             </div>
           </Col>
-          <Col className={classes.productName} xs={5}>
+          <Col className={classes.productName} lg={5}>
             Calvin Klein womens Solid Sheath With Chiffon Bell Sleeves Dress
           </Col>
-          <Col className={classes.price_sample} xs={1}>
+          <Col className={classes.price_sample} lg={1}>
             $6
           </Col>
-          <Col xs={2}>
+          <Col lg={2}>
             <div className={classes.cartDetailQuantity}>
               <button className={classes.quantity_button}>
                 <FaMinus />
@@ -49,10 +49,10 @@ function CartTable() {
               </button>
             </div>
           </Col>
-          <Col className={classes.price_sample} xs={1}>
+          <Col className={classes.price_sample} lg={1}>
             $6
           </Col>
-          <Col xs={1}>
+          <Col lg={1}>
             <button className={classes.deleteButton}>X</button>
           </Col>
         </Row>
