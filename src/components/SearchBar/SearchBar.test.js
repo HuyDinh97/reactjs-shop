@@ -9,7 +9,14 @@ import SearchBar from './SearchBar';
 
 const mockStore = configureMockStore();
 test('Should search input render', () => {
-  const store = mockStore();
+  const emptyData = {
+    common: {
+      productInCart: {
+        product: [],
+      },
+    },
+  };
+  const store = mockStore(emptyData);
   render(
     <Provider store={store}>
       <MemoryRouter>
@@ -23,15 +30,17 @@ test('Should search input render', () => {
 test('Should show cart dropdown', async () => {
   const productsAvailableState = {
     common: {
-      productInCart: [
-        {
-          _id: 12444571,
-          name: 'Calvin Klein womens Solid Sheath With Chiffon Bell Sleeves Dress',
-          thumb: 'images/products/product-img-3.jpg',
-          price: 11,
-          quantity: 1,
-        },
-      ],
+      productInCart: {
+        products: [
+          {
+            _id: 12444571,
+            name: 'Calvin Klein womens Solid Sheath With Chiffon Bell Sleeves Dress',
+            thumb: 'images/products/product-img-3.jpg',
+            price: 11,
+            quantity: 1,
+          },
+        ],
+      },
     },
   };
   const store = mockStore(productsAvailableState);
