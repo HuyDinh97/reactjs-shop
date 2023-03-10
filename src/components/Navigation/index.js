@@ -3,6 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { useGetCategories } from 'store/selectors/common';
+import { GoThreeBars } from 'react-icons/go';
 import classes from './navigation.module.css';
 
 function Navigation() {
@@ -18,8 +19,17 @@ function Navigation() {
     <div className={classes.main}>
       <Navbar expand="xxl" className={classes.navbar}>
         <Container className={classes.containerNavbar}>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Toggle
+            className={classes.navbarToggle}
+            aria-controls="offcanvasNavbar-expand-xs"
+          >
+            <GoThreeBars />
+          </Navbar.Toggle>
+          <Navbar.Offcanvas
+            className={classes.offCanvas}
+            id="basic-navbar-nav"
+            placement="top"
+          >
             <Nav className={classes.navbarNav}>
               <Nav.Link className={navClass} to="/">
                 Home
@@ -36,7 +46,7 @@ function Navigation() {
                 About
               </Nav.Link>
             </Nav>
-          </Navbar.Collapse>
+          </Navbar.Offcanvas>
         </Container>
       </Navbar>
     </div>

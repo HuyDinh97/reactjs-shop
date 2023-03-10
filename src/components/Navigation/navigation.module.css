@@ -17,6 +17,12 @@
   padding: 0!important;
 }
 
+.navbarToggle {
+  display: flex;
+  border-radius: 0!important;
+  padding: 5px!important;
+}
+
 @media screen and (max-width:1400px) {
   .main {
     border: none;
@@ -27,6 +33,10 @@
   .navbarNav {
     display: flex;
     align-items: flex-end;
+    flex-direction: row!important;
+    justify-content: space-evenly;
+    align-items: center;
+    height: -webkit-fill-available;
   }
   .nav_categories {
     padding: 0.5rem 0 0.5rem 0!important;
@@ -34,5 +44,11 @@
   .containerNavbar{
     display: flex;
     justify-content: flex-end!important;
+  }
+  .containerNavbar svg {
+    color: #ea3c31;
+  }
+  body .offcanvas.offcanvas-top  {
+    height: fit-content!important;
   }
 }
