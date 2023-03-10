@@ -90,13 +90,13 @@ export default (state = initialState, action) => {
       };
     case 'DELETE_PRODUCTINCART':
       const productDelete = state.productInCart.products.filter(
-        (product) => product._id !== action.payload
+        (product) => product._id !== action.payload._id
       );
 
       return {
         ...state,
         productInCart: {
-          products: [...productDelete],
+          products: productDelete,
           totalCost: calculateTotalCost(productDelete),
         },
       };
