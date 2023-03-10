@@ -4,9 +4,11 @@ import React, { useCallback } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { GrFormClose } from 'react-icons/gr';
+import { AiOutlineSearch } from 'react-icons/ai';
 import { useGetMyCart } from 'store/selectors/common';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -50,7 +52,7 @@ function SearchBar() {
                 </button>
               </div>
             </Col>
-            <Col xl={6} className={classes.cartDropdown}>
+            <Col xs={9} className={classes.cartDropdown}>
               <div>
                 <Dropdown className={classes.cart_button}>
                   <Dropdown.Toggle
@@ -113,7 +115,28 @@ function SearchBar() {
                 </Dropdown>
               </div>
             </Col>
-            <Col xxl={12} xl={6} className={classes.navigation}>
+            <Col xs={2}>
+              <Navbar className="d-flex flex-nowrap" expand="xs">
+                <Container className="flex-row-reverse">
+                  <Navbar.Toggle
+                    className={classes.navbarToggle}
+                    aria-controls="search"
+                  >
+                    <AiOutlineSearch />
+                  </Navbar.Toggle>
+                  <Navbar.Collapse>
+                    <div className="d-flex flex-column">
+                      <input
+                        className={classes.search_Box}
+                        data-testid="search-input"
+                        placeholder="Search Product..."
+                      />
+                    </div>
+                  </Navbar.Collapse>
+                </Container>
+              </Navbar>
+            </Col>
+            <Col xxl={12} xs={1} className={classes.navigation}>
               <Navigation />
             </Col>
           </Row>

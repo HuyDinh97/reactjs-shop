@@ -173,6 +173,14 @@ button:first-child:active {
   }
 }
 
+.navbarToggle {
+  display: flex;
+  border-radius: 0!important;
+  padding: 5px!important;
+  color: white!important;
+  background-color: #eb3d32!important;
+}
+
 @media screen and (max-width:1200px) {
   .logo {
     display: flex!important;
@@ -194,7 +202,7 @@ button:first-child:active {
   .navigation {
     display: flex;
     justify-content: flex-end;
-    padding-right: 2rem!important;
+    padding-right: 1rem!important;
   }
   .cartDropdown {
     display: flex;
@@ -202,5 +210,13 @@ button:first-child:active {
   }
   .dropdown_menu {
     inset: 9px auto auto 20px!important;
+  }
+  .searchBar .logo img {
+    height: 55px;
+    margin: 1rem;
+  }
+  .search_Box {
+    width: auto;
+    height: auto;
   }
 }

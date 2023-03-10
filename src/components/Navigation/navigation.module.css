@@ -21,6 +21,7 @@
   display: flex;
   border-radius: 0!important;
   padding: 5px!important;
+  border-color: #ea3c31!important;
 }
 
 @media screen and (max-width:1400px) {
