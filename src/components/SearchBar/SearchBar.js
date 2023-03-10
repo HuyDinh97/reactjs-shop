@@ -128,7 +128,6 @@ function SearchBar() {
                     <div className="d-flex flex-column">
                       <input
                         className={classes.search_Box}
-                        data-testid="search-input"
                         placeholder="Search Product..."
                       />
                     </div>

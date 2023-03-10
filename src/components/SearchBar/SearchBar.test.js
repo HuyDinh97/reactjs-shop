@@ -53,7 +53,7 @@ test('Should show cart dropdown', async () => {
   );
   screen.debug(undefined);
   const buttons = await screen.findAllByRole('button');
-  expect(buttons).toHaveLength(2);
+  expect(buttons).toHaveLength(3);
 
   userEvent.click(buttons[1]);
 
