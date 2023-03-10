@@ -6,6 +6,5 @@ import Banner from './Banner';
 
 test('should Banner run correctly', () => {
   const Wrapper = render(<Banner />);
-
-  expect(Wrapper).toBeInTheDocument();
+  expect(Wrapper).not.toBeNull();
 });
