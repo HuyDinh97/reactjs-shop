@@ -115,7 +115,7 @@ function SearchBar() {
                 </Dropdown>
               </div>
             </Col>
-            <Col xs={2}>
+            <Col xs={2} className={classes.mobileSearch}>
               <Navbar className="d-flex flex-nowrap" expand="xs">
                 <Container className="flex-row-reverse">
                   <Navbar.Toggle

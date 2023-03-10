@@ -158,6 +158,10 @@ button:first-child:active {
   font-weight: 500;
 }
 
+.mobileSearch {
+  display: none;
+}
+
 @media screen and (max-width:1400px) {
   .dropdown_menu {
     inset: 9px auto auto -12px!important;
@@ -188,6 +192,9 @@ button:first-child:active {
   }
   .searchSection{
     display: none;
+  }
+  .mobileSearch {
+    display: block;
   }
 }
 
