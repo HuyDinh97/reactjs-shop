@@ -121,3 +121,37 @@ h1 {
   font-size: 16px !important;
   font-weight: bold !important;
 }
+
+@media screen and (max-width: 576px) {
+  .swiper_height {
+    height: 270px;
+  }
+  .swiper_height img {
+    object-fit: cover;
+  }
+  .swiper_height h1 {
+    font-size: 1.3rem;
+    font-weight: 500!important;
+  }
+  .swiper_height p {
+    font-size: 0.7rem;
+    opacity: 0.8;
+  }
+  .button {
+    padding: 8px 14px 8px 14px;
+    font-size: 11px !important;
+    font-weight: 500!important;
+  }
+  .slide_1 {
+    left: 36%;
+  }
+  .slide_2 {
+    right: -20%;
+  }
+  .slide_2 p {
+    width: 100%;
+  }
+  .slide_3 {
+    left: 36%;
+  }
+}
