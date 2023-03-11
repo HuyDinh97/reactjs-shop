@@ -226,4 +226,7 @@ button:first-child:active {
     width: auto;
     height: auto;
   }
+  .cart_total_price {
+    color: black;
+  }
 }
