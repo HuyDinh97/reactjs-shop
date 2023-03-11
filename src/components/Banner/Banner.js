@@ -11,7 +11,7 @@ import classes from './Banner.module.css';
 
 function Banner() {
   return (
-    <div className={classes.mg_4}>
+    <div className={classes.banner}>
       <Container>
         <Row>
           <Col xxl={6} xl={12}>
