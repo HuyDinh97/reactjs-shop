@@ -21,3 +21,15 @@
   left: 31%;
   border-bottom: 3px solid #f24432;
 }
+
+@media screen and (max-width: 576px) {
+  .Underline {
+    width: max-content;
+    font-size: 18px;
+  }
+  .Underline::before {
+    width: 46%;
+    bottom: 4px;
+    left: 29%;
+  }
+}
