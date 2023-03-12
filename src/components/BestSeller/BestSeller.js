@@ -27,7 +27,7 @@ function BestSeller({ name }) {
   }
 
   return (
-    <div className={classes.mg_4}>
+    <div className={classes.bestSeller}>
       <Row className={classes.mg_bot}>
         <Col xs lg="2" />
         <TitleUnderline name={name} />
@@ -49,6 +49,21 @@ function BestSeller({ name }) {
         </Col>
       </Row>
       <Swiper
+        breakpoints={{
+          // when window width is >= 640px
+          300: {
+            width: 300,
+            slidesPerView: 2,
+            spaceBetween: 2,
+            slidesPerGroup: 1,
+          },
+          1200: {
+            width: 1128,
+            slidesPerView: 4,
+            spaceBetween: 30,
+            slidesPerGroup: 1,
+          },
+        }}
         slidesPerView={4}
         spaceBetween={30}
         slidesPerGroup={1}
@@ -56,7 +71,7 @@ function BestSeller({ name }) {
           swiperRef.current = swiper;
         }}
         modules={[Navigation]}
-        className=""
+        className={classes.swiperMain}
       >
         {products &&
           products.map((popularProduct) => (
@@ -110,7 +125,7 @@ function BestSeller({ name }) {
                       {popularProduct.price}
                     </s>
                   </span>
-                  <span className="mx-2 fs-6 fw-semibold">
+                  <span>
                     {' $ '}
                     {popularProduct.price - popularProduct.sales}
                   </span>
@@ -118,6 +133,22 @@ function BestSeller({ name }) {
               </div>
             </SwiperSlide>
           ))}
+        <div className={classes.swiperButton}>
+          <button
+            type="button"
+            className={classes.prev_button}
+            onClick={() => swiperRef.current?.slidePrev()}
+          >
+            <GrPrevious />
+          </button>
+          <button
+            type="button"
+            className={classes.next_button}
+            onClick={() => swiperRef.current?.slideNext()}
+          >
+            <GrNext />
+          </button>
+        </div>
       </Swiper>
     </div>
   );
