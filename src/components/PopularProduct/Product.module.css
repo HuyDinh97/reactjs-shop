@@ -52,10 +52,6 @@ body {
   margin-right: 0.5rem;
 }
 
-.mg_4 {
-  margin-top: 4rem!important;
-}
-
 .mg_bot {
   margin-bottom: 1rem;
 }
@@ -142,7 +138,6 @@ svg polyline {
 
 .product_name a {
   color:#000;
-  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
 }
@@ -159,4 +154,95 @@ svg polyline {
 
 .gray_price {
   color: gray;
+}
+.swiperButton {
+  display: none;
+}
+.swiperMain {
+  width: 300px;
+}
+
+@media screen and (min-width: 300px) {
+  .swiperMain {
+    width: 300px;
+  }
+  .mg_bot .prev_button {
+    display: none;
+  }
+  .mg_bot .next_button {
+    display: none;
+  }
+  .swiperButton {
+    display: flex;
+  }
+  .product_img {
+    height: 180px;
+  }
+  .swiperButton .prev_button {
+    z-index: 1;
+    position: absolute;
+    top: 40%;
+    height: 8%;
+  }
+
+  .swiperButton .prev_button:hover {
+    opacity: 0.7;
+  }
+
+  .swiperButton .next_button {
+    z-index: 1;
+    position: absolute;
+    top: 40%;
+    left: 91%;
+    height: 8%;
+  }
+
+  .swiperButton .next_button:hover {
+    opacity: 0.7;
+  }
+  .product_name {
+    text-align: center;
+  }
+  
+  .product_name a {
+    font-size: 0.7rem;
+  }
+
+  .product_price {
+    font-size: 0.7rem;
+  }
+  .popularProduct {
+    margin-top: 2rem;
+  }
+}
+
+@media screen and (min-width: 1200px){
+  .popularProduct {
+    margin-top: 4rem;
+  }
+  .swiperMain {
+    width: 100%;
+  }
+  .product_img {
+    height: 350px;
+  }
+  .mg_bot .prev_button {
+    display: flex;
+  }
+  .mg_bot .next_button {
+    display: flex;
+  }
+  .swiperButton .prev_button {
+    display: none;
+  }
+  .swiperButton .next_button {
+    display: none;
+  }
+  .product_name a {
+    font-size: 1rem;
+  }
+
+  .product_price {
+    font-size: 1rem;
+  }
 }

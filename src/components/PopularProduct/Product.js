@@ -48,7 +48,10 @@ function PopularProduct({ name }) {
   }
 
   return (
-    <div className={classes.mg_4} data-testid="popularProducts-element">
+    <div
+      className={classes.popularProduct}
+      data-testid="popularProducts-element"
+    >
       <Row className={classes.mg_bot}>
         <Col xs lg="2" />
         <TitleUnderline name={name} />
@@ -70,14 +73,26 @@ function PopularProduct({ name }) {
         </Col>
       </Row>
       <Swiper
-        slidesPerView={4}
-        spaceBetween={30}
-        slidesPerGroup={1}
+        breakpoints={{
+          // when window width is >= 640px
+          300: {
+            width: 300,
+            slidesPerView: 2,
+            spaceBetween: 2,
+            slidesPerGroup: 1,
+          },
+          1200: {
+            width: 1128,
+            slidesPerView: 4,
+            spaceBetween: 30,
+            slidesPerGroup: 1,
+          },
+        }}
         onBeforeInit={(swiper) => {
           swiperRef.current = swiper;
         }}
         modules={[Navigation]}
-        className=""
+        className={classes.swiperMain}
       >
         {products &&
           products.map((popularProduct) => (
@@ -132,7 +147,7 @@ function PopularProduct({ name }) {
                       {popularProduct.price}
                     </s>
                   </span>
-                  <span className="mx-2 fs-6 fw-semibold">
+                  <span className="mx-2">
                     {' $ '}
                     {popularProduct.realPrice}
                   </span>
@@ -140,6 +155,22 @@ function PopularProduct({ name }) {
               </div>
             </SwiperSlide>
           ))}
+        <div className={classes.swiperButton}>
+          <button
+            type="button"
+            className={classes.prev_button}
+            onClick={() => swiperRef.current?.slidePrev()}
+          >
+            <GrPrevious />
+          </button>
+          <button
+            type="button"
+            className={classes.next_button}
+            onClick={() => swiperRef.current?.slideNext()}
+          >
+            <GrNext />
+          </button>
+        </div>
       </Swiper>
     </div>
   );
