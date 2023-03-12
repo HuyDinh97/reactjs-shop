@@ -17,7 +17,7 @@ function Banner() {
           <Col xxl={6} xl={12}>
             <img src={banner1} />
           </Col>
-          <Col xxl={6} xl={12}>
+          <Col className={classes.secondBanner} xxl={6} xl={12}>
             <img src={banner2} />
           </Col>
         </Row>

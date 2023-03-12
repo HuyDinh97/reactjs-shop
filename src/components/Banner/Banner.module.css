@@ -1,5 +1,5 @@
 .banner {
-  margin-top: 4rem!important;
+  margin-top: 4rem;
 }
 
 .Col {
@@ -13,5 +13,11 @@
 @media screen and (max-width: 576px) {
   .banner img {
     width: -webkit-fill-available;
+  }
+  .banner {
+     margin-top: 0;
+  }
+  .secondBanner {
+    margin-top: 10px!important;
   }
 }
