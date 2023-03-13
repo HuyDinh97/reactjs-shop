@@ -105,11 +105,11 @@ svg polyline {
 
 .product_img {
   height: 350px;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
+  background-repeat: no-repeat!important;
+  background-position: center!important;
   display: flex;
   justify-content: center;
-  background-size: contain !important;
+  background-size: cover !important;
 }
 
 .opacity_icon {
@@ -164,12 +164,12 @@ svg polyline {
   width: 300px;
 }
 
-@media screen and (min-width: 300px) {
+@media screen and (min-width: 360px) {
   .bestSeller {
     margin-top: 2rem;
   }
   .swiperMain {
-    width: 300px;
+    width: 360px;
   }
   .mg_bot .prev_button {
     display: none;
@@ -181,7 +181,7 @@ svg polyline {
     display: flex;
   }
   .product_img {
-    height: 180px;
+    height: 230px;
   }
   .swiperButton .prev_button {
     z-index: 1;
@@ -198,7 +198,7 @@ svg polyline {
     z-index: 1;
     position: absolute;
     top: 40%;
-    left: 91%;
+    left: 92%;
     height: 8%;
   }
 
