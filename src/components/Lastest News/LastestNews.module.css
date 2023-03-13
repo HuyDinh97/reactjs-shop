@@ -38,3 +38,40 @@
 .Box_News {
   display: flex;
 }
+
+.cardTitle {
+  font-weight: 750;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.subtitle {
+  --bs-text-opacity: 1;
+  color: #6c757d!important;
+  margin-bottom: 1rem!important;
+  font-size: 1rem;
+}
+
+.lastestNews {
+  margin-top: 1.25rem
+}
+
+@media screen and (max-width: 576px) {
+  .cardTitle {
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  .text_overflow {
+    font-size: 0.9rem;
+  }
+  .LastestNewsBtn {
+    font-size: 0.9rem;
+  }
+  .lastestNews {
+    display: flex;
+    justify-content: center;
+  }
+}
