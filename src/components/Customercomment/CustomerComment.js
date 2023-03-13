@@ -21,9 +21,12 @@ function CustomerComment() {
   return (
     <div>
       <Swiper
-        pagination
+        pagination={{
+          clickable: true,
+          bulletClass: `swiper-pagination-bullet swiper-pagination-testClass`,
+        }}
         modules={[Pagination]}
-        className="mySwiper"
+        className={classes.mySwiper}
         data-testid="testimotional-element"
       >
         {testimotional &&
@@ -34,7 +37,7 @@ function CustomerComment() {
                   <div className={classes.Box_avatar}>
                     <img src={linkIMG + testi.avatar} alt="img" />
                   </div>
-                  <div>
+                  <div className={classes.px_4}>
                     <div>
                       <img
                         className={classes.quote_w}

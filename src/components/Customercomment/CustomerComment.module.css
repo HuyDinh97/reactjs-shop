@@ -4,12 +4,6 @@
   margin-top: 4rem;
 }
 
-.Box img {
-  border-radius: 50%!important;
-  height: auto;
-  width: 200px;
-}
-
 .Box_inside {
   margin-top: 3%;
   margin-left: 10%;
@@ -24,8 +18,13 @@
   height: 195px;
 }
 
+.Box_avatar img{
+  border-radius: 50%;
+  width: 195px;
+}
+
 .quote_w {
-  width: 50px!important;
+  width: 50px;
 }
 
 .Box p {
@@ -41,4 +40,51 @@
   color: black;
   font-weight: 600;
   font-style: italic;
+}
+
+.mySwiper span{
+  border: 6px solid white;
+}
+
+.px_4 {
+  margin-left: 1.5rem;
+  margin-right  : 1.5rem;
+}
+
+@media screen and (max-width: 576px) {
+  .Box {
+    width: auto;
+    height: auto;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  .Box p {
+    padding: 0px 10px 12px 10px;
+  }
+  .Box_avatar{
+    height: auto;
+    justify-content: center;
+  }
+  .Box_avatar img{
+    height: 80px;
+    width: auto;
+  }
+  .Box_inside {
+    flex-direction: column;
+  }
+  .quote_w {
+    width: 20px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .user_comment {
+    font-size: 12px;
+  }
+  .user_name {
+    font-size: medium;
+  }
+  .px_4 {
+    margin-left: 0!important;
+    margin-right: 0!important;
+  }
 }
