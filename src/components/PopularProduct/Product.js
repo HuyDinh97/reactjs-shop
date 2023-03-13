@@ -75,10 +75,10 @@ function PopularProduct({ name }) {
       <Swiper
         breakpoints={{
           // when window width is >= 640px
-          300: {
-            width: 300,
+          360: {
+            width: 360,
             slidesPerView: 2,
-            spaceBetween: 2,
+            spaceBetween: 20,
             slidesPerGroup: 1,
           },
           1200: {
