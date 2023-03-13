@@ -22,7 +22,7 @@ function AboutUs() {
       <footer>
         <div className={classes.footer_box}>
           <Row>
-            <Col xs={4} className="mb-3 px-2">
+            <Col xl={4} xs={12} className="mb-3 px-2">
               <h5>ABOUT US</h5>
               <p>
                 <span>
@@ -34,7 +34,7 @@ function AboutUs() {
               </p>
             </Col>
 
-            <Col xs={2} className="mb-3 px-2">
+            <Col xl={2} xs={6} className="mb-3 px-2">
               <h5>CATEGORIES</h5>
               <ul className="nav flex-column" id="category-footer">
                 {categories &&
@@ -48,30 +48,30 @@ function AboutUs() {
               </ul>
             </Col>
 
-            <Col xs={2} className="mb-3 px-2">
+            <Col xl={2} xs={6} className="mb-3 px-2">
               <h5>MY ACCOUNT</h5>
               <ul className="nav flex-column">
-                <li className="nav-item mb-2">
+                <li className="nav-item">
                   <a href="#" className="nav-link p-0 text-muted">
                     <span>Order</span>
                   </a>
                 </li>
-                <li className="nav-item mb-2">
+                <li className="nav-item">
                   <a href="#" className="nav-link p-0 text-muted">
                     <span>Order</span>
                   </a>
                 </li>
-                <li className="nav-item mb-2">
+                <li className="nav-item">
                   <a href="#" className="nav-link p-0 text-muted">
                     <span>Order</span>
                   </a>
                 </li>
-                <li className="nav-item mb-2">
+                <li className="nav-item">
                   <a href="#" className="nav-link p-0 text-muted">
                     <span>Order</span>
                   </a>
                 </li>
-                <li className="nav-item mb-2">
+                <li className="nav-item">
                   <a href="#" className="nav-link p-0 text-muted">
                     <span>Order</span>
                   </a>
@@ -79,35 +79,35 @@ function AboutUs() {
               </ul>
             </Col>
 
-            <Col xs={4} className="mb-3 px-2">
+            <Col xl={4} xs={12} className="mb-3 px-2">
               <h5>CONTACT INFO</h5>
               <ul className="nav flex-column">
-                <li className="nav-item mb-2">
-                  <a href="#" className="nav-link p-0 text-muted">
-                    <span className={classes.about_us_icon}>
+                <li className="nav-item">
+                  <div className="d-flex nav-link p-0 text-muted">
+                    <span className={classes.aboutUsIcon}>
                       <TfiLocationPin />
                     </span>
-                    <span className="mx-2">
+                    <span className={classes.contactInfo}>
                       c/o Giunti International Division Via G.B.Pỉelli, 30 20124
                       Milan
                     </span>
-                  </a>
+                  </div>
                 </li>
-                <li className="nav-item mb-2">
-                  <a href="#" className="nav-link p-0 text-muted pop">
-                    <span className={classes.about_us_icon}>
+                <li className="nav-item">
+                  <div className="nav-link p-0 text-muted pop">
+                    <span className={classes.aboutUsIcon}>
                       <BsTelephone />
                     </span>
-                    <span className="mx-2">+025 2155 3255</span>
-                  </a>
+                    <span className={classes.contactInfo}>+025 2155 3255</span>
+                  </div>
                 </li>
-                <li className="nav-item mb-2">
-                  <a href="#" className="nav-link p-0 text-muted">
-                    <span className={classes.about_us_icon}>
+                <li className="nav-item">
+                  <div className="nav-link p-0 text-muted">
+                    <span className={classes.aboutUsIcon}>
                       <GoMail />
                     </span>
-                    <span className="mx-2">info@gmail.com</span>
-                  </a>
+                    <span className={classes.contactInfo}>info@gmail.com</span>
+                  </div>
                 </li>
               </ul>
             </Col>

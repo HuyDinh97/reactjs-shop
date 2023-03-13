@@ -8,6 +8,10 @@ footer h5 {
   width: max-content;
 }
 
+footer li {
+  margin-bottom: 0.5rem;
+}
+
 .footer_box {
   margin-right: auto;
   margin-left: auto;
@@ -25,7 +29,35 @@ footer span {
 
 }
 
-.about_us_icon {
+.aboutUsIcon {
   font-size: 20px;
   color: #eb3d32;
+}
+
+.contactInfo {
+  margin: 0 0.5rem 0 0.5rem;
+}
+
+@media screen and (max-width: 576px) {
+  .footer_box {
+    width: 90%;
+  }
+  footer h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  footer p {
+    font-size: small;
+  }
+  footer p span{
+    font-size: 15px;
+    opacity: 0.5!important;
+  }
+  .contactInfo {
+    font-size: 13px;
+  }
+  footer li {
+    margin-bottom: 0!important;
+  }
 }
