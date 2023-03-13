@@ -5,12 +5,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 5rem 0 5rem 0;
 }
 
 .subscribe_email {
   margin-top: 4rem;
   background-color: #363f4e;
-  height: 400px;
+  height: auto;
   display: flex;
   align-items: center;
 }
@@ -41,16 +42,67 @@
 }
 
 .container button {
-  border-radius: var(--bs-border-radius-pill)!important;
-  font-weight: 600!important;
-  font-size: 1rem!important;
-  padding-top: 0.5rem!important;
-  padding-bottom: 0.5rem!important;
-  padding-right: 3rem!important;
-  padding-left: 3rem!important;
-  margin-right: 1.5rem!important;
-  margin-left: 1.5rem!important;
+  border-radius: var(--bs-border-radius-pill);
+  font-weight: 600;
+  font-size: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
   border: 0!important;
   background-color: #eb3d32;
   color: white;
+}
+
+.emailDescribe {
+  color: white;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  width: 95%;
+  text-align: center;
+}
+
+.emailSubcribeSubmit {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0 1.5rem 0;
+  width: 50%;
+}
+
+@media screen and (max-width: 576px) {
+  .container {
+    width: 100%;
+    padding: 2rem 0 2rem 0;
+  }
+  .Underline {
+    font-size: 17px;
+  }
+  .Underline::before {
+    border-bottom: 2px solid white;
+    bottom: 0;
+  }
+  .emailDescribe {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .emailSubcribeSubmit {
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    width: 95%;
+  }
+  .emailSubcribeSubmit input {
+    margin-bottom: 0.5rem;
+    font-size: 13px!important;
+    padding-left: 20px;
+  }
+  .emailSubcribeSubmit button {
+    font-size: 12px;
+    padding-bottom: 10px; 
+  }
 }
