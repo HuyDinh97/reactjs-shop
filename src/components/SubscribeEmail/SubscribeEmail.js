@@ -1,5 +1,4 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
 
 import classes from './SubscribeEmail.module.css';
 
@@ -7,9 +6,9 @@ function SubscribeEmail() {
   return (
     <div className={classes.subscribe_email}>
       <div className={classes.container}>
-        <Col col className={classes.Product_title}>
+        <div className={classes.Product_title}>
           <div className={classes.Underline}>FOLLOW YOUR UPDATE!</div>
-        </Col>
+        </div>
         <p className={classes.emailDescribe}>
           If you want to get an email from us every time we have a new special
           offer, then sign up here!
