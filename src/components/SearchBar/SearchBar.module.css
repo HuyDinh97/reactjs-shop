@@ -1,8 +1,4 @@
 .searchBar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1% 0 1% 0;
   border-color: lightgrey;
   margin-right: auto;
   margin-left: auto;
@@ -18,12 +14,20 @@
   font-weight: 500;
 }
 
+.container {
+  padding: 0%!important;
+}
+
 .search_Box {
   height: 55px;
   width: 300px;
   padding-left: 40px;
   border-color: lightgrey;
   border: 1px solid lightgrey;
+}
+
+.logo {
+  padding: 0!important;
 }
 
 .btn-primary {
@@ -44,12 +48,13 @@
   display: flex !important;
   align-items: center;
   color: #eb3d32;
+  padding: 0!important;
 }
 
 
 
 .searchBar img {
-  padding: 0 10px 0 10px;
+  padding: 10px;
 }
 
 .padding_lr {
@@ -162,21 +167,6 @@ button:first-child:active {
   display: none;
 }
 
-@media screen and (max-width:1400px) {
-  .dropdown_menu {
-    inset: 9px auto auto -12px!important;
-  }
-  .navigation {
-    display: flex;
-    justify-content: flex-end;
-  }
-  .cartDropdown {
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 0!important;
-  }
-}
-
 .navbarToggle {
   display: flex;
   border-radius: 0!important;
@@ -184,17 +174,36 @@ button:first-child:active {
   color: white!important;
   background-color: #eb3d32!important;
 }
+.navigation {
+  display: none;
+}
 
 @media screen and (max-width:1200px) {
   .logo {
     display: flex!important;
     justify-content: center!important;
   }
+  .navigation {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem!important;
+  }
+  .secondNavigation {
+    display: none;
+  }
   .searchSection{
     display: none;
   }
   .mobileSearch {
     display: block;
+  }
+  .dropdown_menu {
+    inset: 9px auto auto -12px!important;
+  }
+  .cartDropdown {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 0!important;
   }
 }
 
@@ -205,11 +214,6 @@ button:first-child:active {
   .navbar-nav {
     position: absolute!important;
     right: -27px!important;
-  }
-  .navigation {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 1rem!important;
   }
   .cartDropdown {
     display: flex;
