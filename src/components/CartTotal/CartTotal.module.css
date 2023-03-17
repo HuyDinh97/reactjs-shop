@@ -40,3 +40,19 @@
   margin: 2rem 1rem 2rem 1rem;
   border: none!important;
 }
+
+@media screen and (max-width: 1224px) {
+  .cartTotal {
+    display: flex!important;
+    justify-content: center!important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .Subtotal {
+    font-size: 1rem!important;
+  }
+  .Total {
+    font-size: 1rem!important;
+  }
+}

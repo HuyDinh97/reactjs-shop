@@ -3,7 +3,12 @@
 import React, { useCallback } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { GrFormClose } from 'react-icons/gr';
+import { AiOutlineSearch } from 'react-icons/ai';
 import { useGetMyCart } from 'store/selectors/common';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -19,7 +24,7 @@ function SearchBar() {
 
   const deleteProduct = useCallback(
     (id) => () => {
-      dispatch(deleteProductInCart({ _id: id }));
+      dispatch(deleteProductInCart(id));
     },
     [dispatch]
   );
@@ -28,38 +33,43 @@ function SearchBar() {
   return (
     <div>
       <div className={classes.searchBar} data-testid="dropdownItem-element">
-        <div>
-          <Link to="/">
-            <img src={logo} alt="Logo" />
-          </Link>
-        </div>
-        <div className={classes.searchSection}>
-          <input
-            className={classes.search_Box}
-            data-testid="search-input"
-            placeholder="Search Product..."
-          />
-          <button type="button" className={classes.search_Btn}>
-            Search
-          </button>
-        </div>
-        <div>
-          <Dropdown className={classes.cart_button}>
-            <Dropdown.Toggle
-              className={classes.cart_toggle}
-              variant=""
-              id="dropdown-basic"
-            >
-              <img src={cartIcon} alt="icon" />
-              <Badge className={classes.badge} bg="">
-                {productInCart?.length > 0 ? productInCart.length : 0}
-              </Badge>
-              <span className={classes.cart_total_price}>${totalCost}</span>
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu className={classes.dropdown_menu}>
+        <Container>
+          <Row xxl={3} xl={3} xs={2} className="d-flex align-items-center">
+            <Col xl={6} sm={12} xs={12} className={classes.logo}>
+              <Link to="/">
+                <img src={logo} alt="Logo" />
+              </Link>
+            </Col>
+            <Col xl={6} className={classes.searchSection}>
+              <div className="d-flex">
+                <input
+                  className={classes.search_Box}
+                  data-testid="search-input"
+                  placeholder="Search Product..."
+                />
+                <button type="button" className={classes.search_Btn}>
+                  Search
+                </button>
+              </div>
+            </Col>
+            <Col xs={9} className={classes.cartDropdown}>
               <div>
-                {productInCart?.length > 0 ? (
+                <Dropdown className={classes.cart_button}>
+                  <Dropdown.Toggle
+                    className={classes.cart_toggle}
+                    variant=""
+                    id="dropdown-basic"
+                  >
+                    <img src={cartIcon} alt="icon" />
+                    <Badge className={classes.badge} bg="">
+                      {productInCart?.length > 0 ? productInCart.length : 0}
+                    </Badge>
+                    <span className={classes.cart_total_price}>${totalCost}</span>
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className={classes.dropdown_menu}>
+                    <div>
+                      {productInCart?.length > 0 ? (
                 productInCart.map((product) => (
                   <div key={product._id}>
                     <ul className={classes.dropdown_menu_product}>
@@ -91,21 +101,47 @@ function SearchBar() {
                   </ul>
                 </div>
               )}
-                <div className={classes.space_between}>
-                  <span>Total</span>
-                  <span className={classes.cart_total_price}>${totalCost}</span>
-                </div>
+                      <div className={classes.space_between}>
+                        <span>Total</span>
+                        <span className={classes.cart_total_price}>${totalCost}</span>
+                      </div>
+                    </div>
+                    <div className={classes.center}>
+                      <button type="button" className={classes.view_cart_button}>
+                        <Link to="/my-cart">View Cart</Link>
+                      </button>
+                    </div>
+                  </Dropdown.Menu>
+                </Dropdown>
               </div>
-              <div className={classes.center}>
-                <button type="button" className={classes.view_cart_button}>
-                  <Link to="/my-cart">View Cart</Link>
-                </button>
-              </div>
-            </Dropdown.Menu>
-          </Dropdown>
-        </div>
+            </Col>
+            <Col xs={2} className={classes.mobileSearch}>
+              <Navbar className="d-flex flex-nowrap" expand="xs">
+                <Container className="flex-row-reverse">
+                  <Navbar.Toggle
+                    className={classes.navbarToggle}
+                    aria-controls="search"
+                  >
+                    <AiOutlineSearch />
+                  </Navbar.Toggle>
+                  <Navbar.Collapse>
+                    <div className="d-flex flex-column">
+                      <input
+                        className={classes.search_Box}
+                        placeholder="Search Product..."
+                      />
+                    </div>
+                  </Navbar.Collapse>
+                </Container>
+              </Navbar>
+            </Col>
+            <Col xxl={12} xs={1} className={classes.navigation}>
+              <Navigation />
+            </Col>
+          </Row>
+        </Container>
       </div>
-      <div>
+      <div className={classes.secondNavigation}>
         <Navigation />
       </div>
     </div>

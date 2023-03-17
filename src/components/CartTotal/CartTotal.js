@@ -4,7 +4,7 @@ import classes from './CartTotal.module.css';
 
 function CartTotal() {
   return (
-    <div>
+    <div className={classes.cartTotal}>
       <Card className={classes.Card}>
         <Card.Title className={classes.Card_Title}>CART TOTAL</Card.Title>
         <Card.Body>

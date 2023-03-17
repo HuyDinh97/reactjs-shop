@@ -1,11 +1,28 @@
-.PageTitle {
+.pageTitle {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #fbfbfb;
+  padding: 2rem 0 1rem 0;
 }
 
-.page_title {
+.pageTitleColor {
   color: #ea3c31;
   font-weight: bold;
+}
+
+@media screen and (max-width:576px) {
+  .pageTitle {
+    padding: 5rem;
+    background-image: url(./image/16472883_271250263295581_4802744403865754391_n.jpg);
+    background-repeat: no-repeat, repeat;
+    background-position: center;
+  }
+  .pageTitleColor {
+    color: white;
+  }
+  .pageTitle p {
+    color: white;
+    font-weight: 500;
+  }
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\SearchBar\SearchBar.test.js">
-    <testCase name="Should search input render" duration="50"/>
-    <testCase name="Should show cart dropdown" duration="111"/>
+  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\ServiceBanner\ServiceBanner.test.js">
+    <testCase name="should ServiceBanner render correctly" duration="50"/>
   </file>
 </testExecutions>

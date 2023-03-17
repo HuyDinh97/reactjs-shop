@@ -26,3 +26,16 @@
   font-weight: 600!important;
   border: none!important;
 }
+
+@media screen and (max-width: 1224px) {
+  .promotionCode {
+    display: flex!important;
+    justify-content: center!important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .Card_Text {
+    font-size: 1rem!important;
+  }
+}

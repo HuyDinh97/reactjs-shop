@@ -1,7 +1,9 @@
 import React from 'react';
 import Nav from 'react-bootstrap/Nav';
-import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
 import { useGetCategories } from 'store/selectors/common';
+import { GoThreeBars } from 'react-icons/go';
 import classes from './navigation.module.css';
 
 function Navigation() {
@@ -15,24 +17,38 @@ function Navigation() {
 
   return (
     <div className={classes.main}>
-      <Nav defaultActiveKey="/home" as="ul" data-testid="category-element">
-        <Nav.Item>
-          <Link to="/" className={navClass}>
-            Home
-          </Link>
-        </Nav.Item>
-        {categories &&
-          categories.map((category) => (
-            <Nav.Item key={category._id} as="li">
-              <Nav.Link className={classes.nav_categories} href="/">
-                {category.name}
+      <Navbar expand="xxl" className={classes.navbar}>
+        <Container className={classes.containerNavbar}>
+          <Navbar.Toggle
+            className={classes.navbarToggle}
+            aria-controls="offcanvasNavbar-expand-xs"
+          >
+            <GoThreeBars />
+          </Navbar.Toggle>
+          <Navbar.Offcanvas
+            className={classes.offCanvas}
+            id="basic-navbar-nav"
+            placement="top"
+          >
+            <Nav className={classes.navbarNav}>
+              <Nav.Link className={navClass} to="/">
+                Home
               </Nav.Link>
-            </Nav.Item>
-          ))}
-        <Link to="/about-us" className={navClass}>
-          About
-        </Link>
-      </Nav>
+              {categories &&
+                categories.map((category) => (
+                  <Nav.Item key={category._id} as="li">
+                    <Nav.Link className={classes.nav_categories} href="/">
+                      {category.name}
+                    </Nav.Link>
+                  </Nav.Item>
+                ))}
+              <Nav.Link to="/about-us" className={navClass}>
+                About
+              </Nav.Link>
+            </Nav>
+          </Navbar.Offcanvas>
+        </Container>
+      </Navbar>
     </div>
   );
 }
