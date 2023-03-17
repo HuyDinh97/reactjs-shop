@@ -141,6 +141,9 @@ function SearchBar() {
           </Row>
         </Container>
       </div>
+      <div className={classes.secondNavigation}>
+        <Navigation />
+      </div>
     </div>
   );
 }
