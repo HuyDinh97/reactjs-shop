@@ -1,4 +1,4 @@
-/* eslint-disable react/forbid-dom-props */
+/* eslint-disable react/forbid-component-props */
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
