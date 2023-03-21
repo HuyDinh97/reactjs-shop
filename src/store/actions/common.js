@@ -27,6 +27,13 @@ export const addTestimonial = (payload) => {
   };
 };
 
+export const addHome = (payload) => {
+  return {
+    type: 'ADD_HOME',
+    payload,
+  };
+};
+
 export const addProductToCart = (payload) => {
   return {
     type: 'ADD_PRODUCTTOCART',

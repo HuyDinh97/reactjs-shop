@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable no-case-declarations */
 const initialState = {
+  home: undefined,
   categories: [],
   popularProducts: [],
   bestSellers: [],
@@ -51,6 +52,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         testimonials: action.payload.testimonials,
+      };
+    case 'ADD_HOME':
+      return {
+        ...state,
+        home: action.payload.data,
       };
     case 'ADD_PRODUCTTOCART':
       const { products } = state.productInCart;

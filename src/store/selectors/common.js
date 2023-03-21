@@ -25,3 +25,5 @@ export const useGetTestimonial = () =>
 
 export const useGetMyCart = () =>
   useSelector((state) => state.common?.productInCart);
+
+export const useGetHome = () => useSelector((state) => state.common?.home);
