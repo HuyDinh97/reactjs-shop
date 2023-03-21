@@ -11,33 +11,40 @@ import classes from './SummerSale.module.css';
 
 function SummerSale() {
   const homeData = useGetHome();
-  if (!homeData) {
-    return <p>...</p>;
-  }
+  console.log(homeData);
   const { slider: sliders } = homeData ?? {};
-  console.log(`sliders`, sliders);
+  if (!homeData) {
+    return <p data-testid="summersale-error">...</p>;
+  }
   return (
-    <Swiper pagination modules={[Pagination]} className={classes.swiper_height}>
-      {sliders &&
-        sliders.map((banner) => (
-          <SwiperSlide
-            key={banner._id}
-            style={{
-              background: `url('https://vnguyen.xyz/huy/day17/apis/${banner.image}') center center / cover no-repeat`,
-            }}
-          >
-            <div className={`${classes.slideBanner} container`}>
-              <h1 className="text-uppercase">{banner.headline}</h1>
-              <p>{banner.sort}</p>
-              <Link to={`/${banner.interact}`}>
-                <button type="button" className={classes.button}>
-                  Shop Now
-                </button>
-              </Link>
-            </div>
-          </SwiperSlide>
-        ))}
-    </Swiper>
+    <div>
+      <Swiper
+        pagination
+        modules={[Pagination]}
+        className={classes.swiper_height}
+        data-testid="summersale-element"
+      >
+        {sliders &&
+          sliders.map((banner) => (
+            <SwiperSlide
+              key={banner._id}
+              style={{
+                background: `url('https://vnguyen.xyz/huy/day17/apis/${banner.image}') center center / cover no-repeat`,
+              }}
+            >
+              <div className={`${classes.slideBanner} container`}>
+                <h1 className="text-uppercase">{banner.headline}</h1>
+                <p>{banner.sort}</p>
+                <Link to={`/${banner.interact}`}>
+                  <button type="button" className={classes.button}>
+                    Shop Now
+                  </button>
+                </Link>
+              </div>
+            </SwiperSlide>
+          ))}
+      </Swiper>
+    </div>
   );
 }
 
