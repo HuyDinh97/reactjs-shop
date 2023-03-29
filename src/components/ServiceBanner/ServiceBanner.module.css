@@ -37,22 +37,32 @@
 .blockBoderEnd {
   border-right: 1px solid #d9d9d9;
 }
+.blockBoderEndDesktop {
+  border-right: 1px solid #d9d9d9;
+}
 
 .reverse {
   transform: scaleX(-1);
+}
+
+@media screen and (max-width: 1199px) {
+  .blockBoderEndDesktop{
+    border-right: none;
+    margin-top: 1.5rem!important;
+  }
+  .blockBoderEnd {
+    margin-top: 1.5rem!important;
+    border-right: 1px solid #d9d9d9;
+  }
+  .underBlockRight {
+    margin-top: 1.5rem!important;
+  }
 }
 
 @media screen and (max-width: 576px) {
   .ServiceBannerBlock {
     flex-direction: column;
     text-align: center;
-  }
-  .underBlockRight {
-    margin-top: 1.5rem!important;
-  }
-  .underBlockLeft {
-    margin-top: 1.5rem!important;
-    border-right: 1px solid #d9d9d9;
   }
   .w_max_content h5 {
     font-size: 0.9rem!important;

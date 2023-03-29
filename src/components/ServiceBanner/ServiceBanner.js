@@ -28,7 +28,7 @@ function ServiceBanner() {
               </div>
             </div>
           </Col>
-          <Col xl={3} xs={6}>
+          <Col xl={3} xs={6} className={classes.blockBoderEndDesktop}>
             <div className={classes.ServiceBannerBox}>
               <div className={classes.ServiceBannerBlock}>
                 <div className="d-flex mx-3 flip-img fs-1">
@@ -43,7 +43,7 @@ function ServiceBanner() {
               </div>
             </div>
           </Col>
-          <Col xl={3} xs={6} className={classes.underBlockLeft}>
+          <Col xl={3} xs={6} className={classes.blockBoderEnd}>
             <div className={classes.ServiceBannerBox}>
               <div className={classes.ServiceBannerBlock}>
                 <div className="d-flex mx-3 flip-img fs-1">
