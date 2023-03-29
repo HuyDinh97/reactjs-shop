@@ -1,4 +1,4 @@
-/* eslint-disable react/forbid-dom-props */
+/* eslint-disable react/forbid-component-props */
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
@@ -25,6 +25,7 @@ function SummerSale() {
             style={{
               background: `url('https://vnguyen.xyz/huy/day17/apis/${banner.image}') center center / cover no-repeat`,
             }}
+            data-testid="summersale-element"
           >
             <div className={`${classes.slideBanner} container`}>
               <h1 className="text-uppercase">{banner.headline}</h1>
