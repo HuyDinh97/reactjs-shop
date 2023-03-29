@@ -1,27 +1,36 @@
-/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react/forbid-component-props */
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
 
-import banner1 from './image/fashion-banner-1.jpg';
-import banner2 from './image/fashion-banner-2.jpg';
+import { useGetHome } from 'store/selectors/common';
 
 import classes from './Banner.module.css';
 
 function Banner() {
+  const banner = useGetHome();
+  const { advertise: advertises } = banner ?? {};
+  if (!banner) {
+    return <p data-testid="banner-error">...</p>;
+  }
+  console.log(advertises);
   return (
     <div className={classes.banner}>
-      <Container>
-        <Row>
-          <Col xxl={6} xl={12}>
-            <img src={banner1} />
-          </Col>
-          <Col className={classes.secondBanner} xxl={6} xl={12}>
-            <img src={banner2} />
-          </Col>
-        </Row>
-      </Container>
+      <Row>
+        {advertises &&
+          advertises.map((advertise) => (
+            <Col
+              xxl={6}
+              xl={12}
+              key={advertise._id.$oid}
+              style={{
+                height: '260px',
+                background: `url('https://vnguyen.xyz/huy/day17/apis/images/${advertise.banner}') center no-repeat`,
+                backgroundSize: 'cover',
+              }}
+            />
+          ))}
+      </Row>
     </div>
   );
 }

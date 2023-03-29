@@ -28,7 +28,8 @@ function SummerSale() {
             <SwiperSlide
               key={banner._id}
               style={{
-                background: `url('https://vnguyen.xyz/huy/day17/apis/${banner.image}') center center / cover no-repeat`,
+                height: '300px',
+                background: `url('https://vnguyen.xyz/huy/day17/apis/${banner.image}') center no-repeat`,
               }}
             >
               <div className={`${classes.slideBanner} container`}>
