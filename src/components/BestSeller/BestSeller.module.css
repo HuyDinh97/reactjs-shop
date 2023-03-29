@@ -109,7 +109,7 @@ svg polyline {
   background-position: center!important;
   display: flex;
   justify-content: center;
-  background-size: cover !important;
+  background-size: contain !important;
 }
 
 .opacity_icon {
@@ -159,92 +159,4 @@ svg polyline {
 
 .swiperButton {
   display: none;
-}
-.swiperMain {
-  width: 300px;
-}
-
-@media screen and (min-width: 360px) {
-  .bestSeller {
-    margin-top: 2rem;
-  }
-  .swiperMain {
-    width: 360px;
-  }
-  .mg_bot .prev_button {
-    display: none;
-  }
-  .mg_bot .next_button {
-    display: none;
-  }
-  .swiperButton {
-    display: flex;
-  }
-  .product_img {
-    height: 230px;
-  }
-  .swiperButton .prev_button {
-    z-index: 1;
-    position: absolute;
-    top: 40%;
-    height: 8%;
-  }
-
-  .swiperButton .prev_button:hover {
-    opacity: 0.7;
-  }
-
-  .swiperButton .next_button {
-    z-index: 1;
-    position: absolute;
-    top: 40%;
-    left: 92%;
-    height: 8%;
-  }
-
-  .swiperButton .next_button:hover {
-    opacity: 0.7;
-  }
-  .product_name {
-    text-align: center;
-  }
-  
-  .product_name a {
-    font-size: 0.7rem;
-  }
-
-  .product_price {
-    font-size: 0.7rem;
-  }
-}
-
-@media screen and (min-width: 1200px){
-  .bestSeller {
-    margin-top: 4rem;
-  }
-  .swiperMain {
-    width: 100%;
-  }
-  .product_img {
-    height: 350px;
-  }
-  .mg_bot .prev_button {
-    display: flex;
-  }
-  .mg_bot .next_button {
-    display: flex;
-  }
-  .swiperButton .prev_button {
-    display: none;
-  }
-  .swiperButton .next_button {
-    display: none;
-  }
-  .product_name a {
-    font-size: 1rem;
-  }
-
-  .product_price {
-    font-size: 1rem;
-  }
 }
