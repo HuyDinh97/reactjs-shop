@@ -13,7 +13,11 @@
   background-color: #363f4e;
   height: auto;
   display: flex;
-  align-items: center;
+  justify-content: center;
+}
+
+.subscribe_email input {
+  width: 360px;
 }
 
 .Product_title {
@@ -74,7 +78,7 @@
   width: 50%;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 612px) {
   .container {
     width: 100%;
     padding: 2rem 0 2rem 0;
@@ -85,6 +89,9 @@
   .Underline::before {
     border-bottom: 2px solid white;
     bottom: 0;
+  }
+  .subscribe_email input {
+    width: inherit;
   }
   .emailDescribe {
     font-size: 13px;
