@@ -11,7 +11,6 @@ import classes from './SummerSale.module.css';
 
 function SummerSale() {
   const homeData = useGetHome();
-  console.log(homeData);
   const { slider: sliders } = homeData ?? {};
   if (!homeData) {
     return <p data-testid="summersale-error">...</p>;

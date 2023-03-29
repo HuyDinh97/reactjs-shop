@@ -2,11 +2,3 @@
   margin-top: 4rem!important;
   --bs-gutter-x: 0!important;
 }
-
-@media screen and (max-width: 576px) {
-  .advertising div {
-    display: flex;
-    justify-content: center;
-    margin: 0.5rem 0 0.5rem 0;
-  }
-}
