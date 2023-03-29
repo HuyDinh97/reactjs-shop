@@ -48,10 +48,7 @@ function PopularProduct({ name }) {
   }
 
   return (
-    <div
-      className={classes.popularProduct}
-      data-testid="popularProducts-element"
-    >
+    <div className="mt-5" data-testid="popularProducts-element">
       <Row className={classes.mg_bot}>
         <Col xs lg="2" />
         <TitleUnderline name={name} />
@@ -73,19 +70,29 @@ function PopularProduct({ name }) {
         </Col>
       </Row>
       <Swiper
+        spaceBetween={20}
+        slidesPerView={4}
         breakpoints={{
-          // when window width is >= 640px
-          360: {
-            width: 360,
-            slidesPerView: 2,
-            spaceBetween: 20,
-            slidesPerGroup: 1,
+          0: {
+            slidesPerView: 1,
           },
-          1200: {
-            width: 1128,
+          400: {
+            slidesPerView: 2,
+          },
+          639: {
+            slidesPerView: 3,
+          },
+          865: {
             slidesPerView: 4,
-            spaceBetween: 30,
-            slidesPerGroup: 1,
+          },
+          1000: {
+            slidesPerView: 4,
+          },
+          1500: {
+            slidesPerView: 4,
+          },
+          1700: {
+            slidesPerView: 4,
           },
         }}
         onBeforeInit={(swiper) => {
