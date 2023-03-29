@@ -1,5 +1,4 @@
 /* eslint-disable react/forbid-component-props */
-/* eslint-disable react/forbid-dom-props */
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
