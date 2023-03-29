@@ -1,5 +1,5 @@
 .Box {
-  height: 300px;
+  height: auto;
   background-color: #eb3d32;
   margin-top: 4rem;
 }
@@ -14,8 +14,8 @@
 
 .Box_avatar {
   display: flex;
-  align-items: stretch;
   height: 195px;
+  justify-content: flex-end;
 }
 
 .Box_avatar img{
@@ -51,40 +51,12 @@
   margin-right  : 1.5rem;
 }
 
-@media screen and (max-width: 576px) {
-  .Box {
-    width: auto;
-    height: auto;
-    text-align: center;
-    padding-bottom: 20px;
-  }
-  .Box p {
-    padding: 0px 10px 12px 10px;
-  }
+@media screen and (max-width: 1199px) {
   .Box_avatar{
-    height: auto;
     justify-content: center;
-  }
-  .Box_avatar img{
-    height: 80px;
-    width: auto;
-  }
-  .Box_inside {
-    flex-direction: column;
-  }
-  .quote_w {
-    width: 20px;
-    margin-top: 1rem;
     margin-bottom: 1rem;
   }
-  .user_comment {
-    font-size: 12px;
-  }
-  .user_name {
-    font-size: medium;
-  }
-  .px_4 {
-    margin-left: 0!important;
-    margin-right: 0!important;
+  .Box {
+    text-align: center;
   }
 }
