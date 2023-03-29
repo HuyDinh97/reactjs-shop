@@ -7,7 +7,6 @@
 }
 
 .block_news {
-  width: 22rem;
   text-align: center;
   box-shadow: 0 .125rem .25rem rgba(0,0,0,.375)!important;
 }
@@ -54,24 +53,4 @@
 
 .lastestNews {
   margin-top: 1.25rem
-}
-
-@media screen and (max-width: 576px) {
-  .cardTitle {
-    font-size: 0.9rem;
-    font-weight: 800;
-  }
-  .subtitle {
-    font-size: 0.9rem;
-  }
-  .text_overflow {
-    font-size: 0.9rem;
-  }
-  .LastestNewsBtn {
-    font-size: 0.9rem;
-  }
-  .lastestNews {
-    display: flex;
-    justify-content: center;
-  }
 }

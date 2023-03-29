@@ -15,7 +15,7 @@ function LastestNews() {
       <TitleUnderline name="LASTEST NEWS" />
       <div className={classes.lastestNews}>
         <Row>
-          <Col className="d-flex justify-content-center py-2">
+          <Col xl={4} xs={12} className="d-flex justify-content-center py-2">
             <Card className={classes.block_news}>
               <Card.Img variant="top" src={cardImg1} />
               <Card.Body>
@@ -39,7 +39,7 @@ function LastestNews() {
               </Card.Body>
             </Card>
           </Col>
-          <Col className="d-flex justify-content-center py-2">
+          <Col xl={4} xs={12} className="d-flex justify-content-center py-2">
             <Card className={classes.block_news}>
               <Card.Img variant="top" src={cardImg2} />
               <Card.Body>
@@ -63,7 +63,7 @@ function LastestNews() {
               </Card.Body>
             </Card>
           </Col>
-          <Col className="d-flex justify-content-center py-2">
+          <Col xl={4} xs={12} className="d-flex justify-content-center py-2">
             <Card className={classes.block_news}>
               <Card.Img variant="top" src={cardImg3} />
               <Card.Body>
