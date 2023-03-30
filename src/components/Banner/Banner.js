@@ -13,7 +13,6 @@ function Banner() {
   if (!banner) {
     return <p data-testid="banner-error">...</p>;
   }
-  console.log(advertises);
   return (
     <div className={classes.banner}>
       <Row>

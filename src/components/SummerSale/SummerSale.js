@@ -15,7 +15,6 @@ function SummerSale() {
     return <p>...</p>;
   }
   const { slider: sliders } = homeData ?? {};
-  console.log(`sliders`, sliders);
   return (
     <Swiper pagination modules={[Pagination]} className={classes.swiper_height}>
       {sliders &&
