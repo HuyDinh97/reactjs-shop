@@ -151,11 +151,11 @@ function CartTable() {
       </Container>
       <Container>
         <Row>
-          <Col className={classes.promotionCode}>
+          <Col xl={6} xs={12} className={classes.promotionCode}>
             <PromotionCode />
           </Col>
-          <Col className={classes.subtotal}>
-            <CartTotal />
+          <Col xl={6} xs={12} className={classes.subtotal}>
+            <CartTotal total={totalCost} />
           </Col>
         </Row>
       </Container>

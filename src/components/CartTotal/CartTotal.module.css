@@ -55,4 +55,7 @@
   .Total {
     font-size: 1rem!important;
   }
+  .Card {
+    width: auto;
+  }
 }
