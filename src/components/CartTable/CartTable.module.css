@@ -246,33 +246,3 @@ th {
     margin-right: 0.5rem;
   }
 }
-
-@media screen and (max-width:391px) {
-  .mobileVersion {
-    display: block;
-    border: 1px solid gray;
-    width: 93%!important;
-  }
-  .quantity_in_cart {
-    width: 18%;
-  }
-  .quantity_button {
-    padding: 7px 9px;
-  }
-  .buttonUnderCart {
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 0.7rem;
-  }
-  .buttonUpdateCart {
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 0.7rem;
-  }
-  .iconButton {
-    margin-right: 0.5rem;
-  }
-  .buttonUnderCartBorder {
-    margin-right: 0.5rem;
-  }
-}

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/button-has-type */
 import CartTotal from 'components/CartTotal/CartTotal';
 import PromotionCode from 'components/PromotionCode/PromotionCode';
@@ -9,10 +10,13 @@ import { FaMinus, FaPlus, FaChevronLeft } from 'react-icons/fa';
 import { HiRefresh } from 'react-icons/hi';
 
 import { Link } from 'react-router-dom';
+import { useGetMyCart } from 'store/selectors/common';
 import classes from './CartTable.module.css';
 import image from './image/product-img-3.jpg';
 
 function CartTable() {
+  const { products: productInCart, totalCost } = useGetMyCart();
+  console.log(productInCart);
   return (
     <div className={classes.mt_5}>
       <Container className={classes.webVersion}>
@@ -24,38 +28,48 @@ function CartTable() {
           <Col lg={1}>Subtotal</Col>
           <Col lg={1}> </Col>
         </Row>
-        <Row className={classes.cartDetail}>
-          <Col lg={2}>
-            <div className="d-flex justify-content-center border-0">
-              <img src={image} alt="" />
-            </div>
-          </Col>
-          <Col className={classes.productName} lg={5}>
-            Calvin Klein womens Solid Sheath With Chiffon Bell Sleeves Dress
-          </Col>
-          <Col className={classes.price_sample} lg={1}>
-            $6
-          </Col>
-          <Col lg={2}>
-            <div className={classes.cartDetailQuantity}>
-              <button className={classes.quantity_button}>
-                <FaMinus />
-              </button>
-              <div className={classes.quantity_in_cart}>
-                <input type="tel" min={0} aria-label="couple-code" />
-              </div>
-              <button className={classes.quantity_button}>
-                <FaPlus />
-              </button>
-            </div>
-          </Col>
-          <Col className={classes.price_sample} lg={1}>
-            $6
-          </Col>
-          <Col lg={1}>
-            <button className={classes.deleteButton}>X</button>
-          </Col>
-        </Row>
+        {productInCart &&
+          productInCart.map((product) => (
+            <Row className={classes.cartDetail}>
+              <Col lg={2}>
+                <div className="d-flex justify-content-center border-0">
+                  <img src={image} alt="" />
+                </div>
+              </Col>
+              <Col className={classes.productName} lg={5}>
+                {product.name}
+              </Col>
+              <Col className={classes.price_sample} lg={1}>
+                $
+                {product.afterSalesPerOnePrice}
+              </Col>
+              <Col lg={2}>
+                <div className={classes.cartDetailQuantity}>
+                  <button className={classes.quantity_button}>
+                    <FaMinus />
+                  </button>
+                  <div className={classes.quantity_in_cart}>
+                    <input
+                      type="tel"
+                      min={0}
+                      value={product.quantity}
+                      aria-label="couple-code"
+                    />
+                  </div>
+                  <button className={classes.quantity_button}>
+                    <FaPlus />
+                  </button>
+                </div>
+              </Col>
+              <Col className={classes.price_sample} lg={1}>
+                $
+                {product.afterSalesPrice}
+              </Col>
+              <Col lg={1}>
+                <button className={classes.deleteButton}>X</button>
+              </Col>
+            </Row>
+          ))}
         <Row className={classes.cartDetail}>
           <Col>
             <div className="d-flex justify-content-center align-item-center border-0 p-0">
@@ -76,36 +90,46 @@ function CartTable() {
         </Row>
       </Container>
       <Container className={classes.mobileVersion}>
-        <Row className="d-flex flex-column">
-          <Col className="d-flex justify-content-between p-3">
-            <div className={classes.semibold}>Product:</div>
-            <div className="fw-bold">Product 01</div>
-          </Col>
-          <Col className="d-flex justify-content-between p-3">
-            <div className={classes.semibold}>Price:</div>
-            <div className={classes.price_sample}>$ 78</div>
-          </Col>
-          <Col className="d-flex justify-content-between p-3">
-            <div className={classes.semibold}>Quantity:</div>
-            <div>
-              <div className={classes.cartDetailQuantity}>
-                <button className={classes.quantity_button}>
-                  <FaMinus />
-                </button>
-                <div className={classes.quantity_in_cart}>
-                  <input type="tel" min={0} aria-label="couple-code" />
+        {productInCart &&
+          productInCart.map((product) => (
+            <Row className="d-flex flex-column">
+              <Col className="d-flex justify-content-between p-3">
+                <Col md={2} xs={2} className={classes.semibold}>Product:</Col>
+                <Col md={10} xs={9} className="fw-bold">{product.name}</Col>
+              </Col>
+              <Col className="d-flex justify-content-between p-3">
+                <div className={classes.semibold}>Price:</div>
+                <div className={classes.price_sample}>
+                  $
+                  {product.afterSalesPerOnePrice}
                 </div>
-                <button className={classes.quantity_button}>
-                  <FaPlus />
-                </button>
-              </div>
-            </div>
-          </Col>
-          <Col className="d-flex justify-content-between p-3">
-            <div className={classes.semibold}>Subprice:</div>
-            <div className={classes.price_sample}>$ 78</div>
-          </Col>
-        </Row>
+              </Col>
+              <Col className="d-flex justify-content-between p-3">
+                <div className={classes.semibold}>Quantity:</div>
+                <div>
+                  <div className={classes.cartDetailQuantity}>
+                    <button className={classes.quantity_button}>
+                      <FaMinus />
+                    </button>
+                    <div className={classes.quantity_in_cart}>
+                      <input type="tel" min={0} value={product.quantity} aria-label="couple-code" />
+                    </div>
+                    <button className={classes.quantity_button}>
+                      <FaPlus />
+                    </button>
+                  </div>
+                </div>
+              </Col>
+              <Col className="d-flex justify-content-between p-3">
+                <div className={classes.semibold}>Subprice:</div>
+                <div className={classes.price_sample}>
+                  $
+                  {product.afterSalesPrice}
+                </div>
+              </Col>
+            </Row>
+          ))
+        }
         <Row className={classes.underCartButton}>
           <Col>
             <div className="d-flex justify-content-center align-item-center border-0 p-0">

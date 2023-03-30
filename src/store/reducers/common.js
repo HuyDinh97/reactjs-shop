@@ -73,11 +73,13 @@ export default (state = initialState, action) => {
 
       const realPrice = price * newQuantity;
       const afterSalesPrice = realPrice - (realPrice * sales) / 100;
+      const afterSalesPerOnePrice = price - (price * sales) / 100;
 
       const newProduct = {
         ...action.payload,
         quantity: newQuantity,
         afterSalesPrice,
+        afterSalesPerOnePrice,
       };
 
       const newProductList = products;
