@@ -188,6 +188,19 @@ th {
   }
 }
 
+@media screen and (max-width: 745px) {
+  .buttonUnderCart {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.7rem;
+  }
+  .buttonUpdateCart {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.7rem;
+  }
+}
+
 @media screen and (max-width:992px) {
   .webVersion{
     display: none;
