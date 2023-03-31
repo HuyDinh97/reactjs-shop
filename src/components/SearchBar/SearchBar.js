@@ -35,7 +35,7 @@ function SearchBar() {
       <div className={classes.searchBar} data-testid="dropdownItem-element">
         <Container>
           <Row xxl={3} xl={3} xs={2} className="d-flex align-items-center">
-            <Col xl={6} sm={12} xs={12} className={classes.logo}>
+            <Col xl={12} sm={12} xs={12} className={classes.logo}>
               <Link to="/">
                 <img src={logo} alt="Logo" />
               </Link>
@@ -52,7 +52,7 @@ function SearchBar() {
                 </button>
               </div>
             </Col>
-            <Col xs={9} className={classes.cartDropdown}>
+            <Col xl={8} xs={9} className={classes.cartDropdown}>
               <div>
                 <Dropdown className={classes.cart_button}>
                   <Dropdown.Toggle
@@ -115,7 +115,7 @@ function SearchBar() {
                 </Dropdown>
               </div>
             </Col>
-            <Col xs={2} className={classes.mobileSearch}>
+            <Col xl={2} xs={2} className={classes.mobileSearch}>
               <Navbar className="d-flex flex-nowrap" expand="xs">
                 <Container className="flex-row-reverse">
                   <Navbar.Toggle
@@ -135,7 +135,7 @@ function SearchBar() {
                 </Container>
               </Navbar>
             </Col>
-            <Col xxl={12} xs={1} className={classes.navigation}>
+            <Col xl={2} xs={1} className={classes.navigation}>
               <Navigation />
             </Col>
           </Row>

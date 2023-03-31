@@ -1,13 +1,7 @@
 .Box {
-  height: 300px;
+  height: auto;
   background-color: #eb3d32;
   margin-top: 4rem;
-}
-
-.Box img {
-  border-radius: 50%!important;
-  height: auto;
-  width: 200px;
 }
 
 .Box_inside {
@@ -20,12 +14,17 @@
 
 .Box_avatar {
   display: flex;
-  align-items: stretch;
   height: 195px;
+  justify-content: flex-end;
+}
+
+.Box_avatar img{
+  border-radius: 50%;
+  width: 195px;
 }
 
 .quote_w {
-  width: 50px!important;
+  width: 50px;
 }
 
 .Box p {
@@ -41,4 +40,23 @@
   color: black;
   font-weight: 600;
   font-style: italic;
+}
+
+.mySwiper span{
+  border: 6px solid white;
+}
+
+.px_4 {
+  margin-left: 1.5rem;
+  margin-right  : 1.5rem;
+}
+
+@media screen and (max-width: 1199px) {
+  .Box_avatar{
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .Box {
+    text-align: center;
+  }
 }

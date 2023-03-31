@@ -1,29 +1,30 @@
 import axios from 'axios';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addTestimonial } from 'store/actions/common';
-import { useGetTestimonial } from 'store/selectors/common';
+import { addHome } from 'store/actions/common';
+import { useGetHome } from 'store/selectors/common';
 
-const useFetchTestimonial = () => {
+const useFetchHome = () => {
   const [isSuccess, setIssuccess] = React.useState();
   const dispatch = useDispatch();
-  const testimonials = useGetTestimonial();
+  const homeData = useGetHome();
 
   React.useEffect(() => {
-    if (testimonials?.length > 0) {
+    if (homeData) {
       setIssuccess(true);
       return;
     }
+
     axios
       .get('https://vnguyen.xyz/huy/day17/apis/index.php?type=home')
       .then((res) => {
-        dispatch(addTestimonial({ testimonials: res.data.data.testimonial }));
+        dispatch(addHome(res?.data ?? {}));
         setIssuccess(true);
       })
       .catch(() => setIssuccess(false));
-  }, [testimonials?.length, dispatch]);
+  }, [homeData, dispatch]);
 
-  return { testimonials, isSuccess };
+  return { homeData, isSuccess };
 };
 
-export default useFetchTestimonial;
+export default useFetchHome;

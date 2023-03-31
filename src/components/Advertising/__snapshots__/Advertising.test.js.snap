@@ -9,29 +9,17 @@ exports[`should Advertising render correctly 1`] = `
         class="row"
       >
         <div
-          class="col"
-        >
-          <img
-            alt="ADS"
-            src="test-file-stub"
-          />
-        </div>
+          class="col-md-4 col-12"
+          style="height: 260px; background: url(test-file-stub) no-repeat center; background-size: contain;"
+        />
         <div
-          class="col"
-        >
-          <img
-            alt="ADS"
-            src="test-file-stub"
-          />
-        </div>
+          class="col-md-4 col-12"
+          style="height: 260px; background: url(test-file-stub) no-repeat center; background-size: contain;"
+        />
         <div
-          class="col"
-        >
-          <img
-            alt="ADS"
-            src="test-file-stub"
-          />
-        </div>
+          class="col-md-4 col-12"
+          style="height: 260px; background: url(test-file-stub) no-repeat center; background-size: contain;"
+        />
       </div>
     </div>
   </body>,
@@ -40,29 +28,17 @@ exports[`should Advertising render correctly 1`] = `
       class="row"
     >
       <div
-        class="col"
-      >
-        <img
-          alt="ADS"
-          src="test-file-stub"
-        />
-      </div>
+        class="col-md-4 col-12"
+        style="height: 260px; background: url(test-file-stub) no-repeat center; background-size: contain;"
+      />
       <div
-        class="col"
-      >
-        <img
-          alt="ADS"
-          src="test-file-stub"
-        />
-      </div>
+        class="col-md-4 col-12"
+        style="height: 260px; background: url(test-file-stub) no-repeat center; background-size: contain;"
+      />
       <div
-        class="col"
-      >
-        <img
-          alt="ADS"
-          src="test-file-stub"
-        />
-      </div>
+        class="col-md-4 col-12"
+        style="height: 260px; background: url(test-file-stub) no-repeat center; background-size: contain;"
+      />
     </div>
   </div>,
   "debug": [Function],

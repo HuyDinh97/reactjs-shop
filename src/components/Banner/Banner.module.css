@@ -1,5 +1,5 @@
-.mg_4 {
-  margin-top: 4rem!important;
+.banner {
+  margin-top: 4rem;
 }
 
 .Col {
@@ -8,4 +8,16 @@
 
 .Col img {
   padding: 0 !important;
+}
+
+@media screen and (max-width: 576px) {
+  .banner img {
+    width: -webkit-fill-available;
+  }
+  .banner {
+     margin-top: 2rem;
+  }
+  .secondBanner {
+    margin-top: 10px!important;
+  }
 }

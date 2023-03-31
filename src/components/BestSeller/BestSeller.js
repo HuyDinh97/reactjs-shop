@@ -27,7 +27,7 @@ function BestSeller({ name }) {
   }
 
   return (
-    <div className={classes.mg_4}>
+    <div className="mt-5">
       <Row className={classes.mg_bot}>
         <Col xs lg="2" />
         <TitleUnderline name={name} />
@@ -49,6 +49,29 @@ function BestSeller({ name }) {
         </Col>
       </Row>
       <Swiper
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+          },
+          400: {
+            slidesPerView: 2,
+          },
+          639: {
+            slidesPerView: 3,
+          },
+          865: {
+            slidesPerView: 4,
+          },
+          1000: {
+            slidesPerView: 4,
+          },
+          1500: {
+            slidesPerView: 4,
+          },
+          1700: {
+            slidesPerView: 4,
+          },
+        }}
         slidesPerView={4}
         spaceBetween={30}
         slidesPerGroup={1}
@@ -56,7 +79,7 @@ function BestSeller({ name }) {
           swiperRef.current = swiper;
         }}
         modules={[Navigation]}
-        className=""
+        className={classes.swiperMain}
       >
         {products &&
           products.map((popularProduct) => (
@@ -110,7 +133,7 @@ function BestSeller({ name }) {
                       {popularProduct.price}
                     </s>
                   </span>
-                  <span className="mx-2 fs-6 fw-semibold">
+                  <span>
                     {' $ '}
                     {popularProduct.price - popularProduct.sales}
                   </span>
@@ -118,6 +141,22 @@ function BestSeller({ name }) {
               </div>
             </SwiperSlide>
           ))}
+        <div className={classes.swiperButton}>
+          <button
+            type="button"
+            className={classes.prev_button}
+            onClick={() => swiperRef.current?.slidePrev()}
+          >
+            <GrPrevious />
+          </button>
+          <button
+            type="button"
+            className={classes.next_button}
+            onClick={() => swiperRef.current?.slideNext()}
+          >
+            <GrNext />
+          </button>
+        </div>
       </Swiper>
     </div>
   );

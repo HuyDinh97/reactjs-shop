@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-component-props */
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -12,15 +13,33 @@ import classes from './Advertising.module.css';
 function Advertising() {
   return (
     <Row className={classes.advertising}>
-      <Col>
-        <img src={Ads1} alt="ADS" />
-      </Col>
-      <Col>
-        <img src={Ads2} alt="ADS" />
-      </Col>
-      <Col>
-        <img src={Ads3} alt="ADS" />
-      </Col>
+      <Col
+        md={4}
+        xs={12}
+        style={{
+          height: '260px',
+          background: `url(${Ads1}) no-repeat center`,
+          backgroundSize: 'contain',
+        }}
+      />
+      <Col
+        md={4}
+        xs={12}
+        style={{
+          height: '260px',
+          background: `url(${Ads2}) no-repeat center`,
+          backgroundSize: 'contain',
+        }}
+      />
+      <Col
+        md={4}
+        xs={12}
+        style={{
+          height: '260px',
+          background: `url(${Ads3}) no-repeat center`,
+          backgroundSize: 'contain',
+        }}
+      />
     </Row>
   );
 }

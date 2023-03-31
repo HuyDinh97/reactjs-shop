@@ -7,7 +7,6 @@
 }
 
 .block_news {
-  width: 22rem;
   text-align: center;
   box-shadow: 0 .125rem .25rem rgba(0,0,0,.375)!important;
 }
@@ -37,4 +36,21 @@
 
 .Box_News {
   display: flex;
+}
+
+.cardTitle {
+  font-weight: 750;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.subtitle {
+  --bs-text-opacity: 1;
+  color: #6c757d!important;
+  margin-bottom: 1rem!important;
+  font-size: 1rem;
+}
+
+.lastestNews {
+  margin-top: 1.25rem
 }

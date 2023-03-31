@@ -178,11 +178,15 @@ button:first-child:active {
   display: none;
 }
 
-@media screen and (max-width:1200px) {
+@media screen and (max-width: 1399px) {
+  .searchSection{
+    display: none;
+  }
   .logo {
     display: flex!important;
     justify-content: center!important;
   }
+  .secondNavigation {
   .navigation {
     display: flex;
     justify-content: flex-end;
@@ -194,6 +198,11 @@ button:first-child:active {
   .searchSection{
     display: none;
   }
+  .navigation {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem!important;
+  }
   .mobileSearch {
     display: block;
   }
@@ -204,6 +213,16 @@ button:first-child:active {
     display: flex;
     justify-content: flex-start;
     padding-left: 0!important;
+  }
+  .dropdown_menu {
+    inset: 9px auto auto -12px!important;
+  }
+}
+
+@media screen and (max-width:1200px) {
+  .logo {
+    display: flex!important;
+    justify-content: center!important;
   }
 }
 

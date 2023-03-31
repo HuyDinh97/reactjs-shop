@@ -9,7 +9,6 @@ import Advertising from '../components/Advertising/Advertising';
 import Banner from '../components/Banner/Banner';
 import CustomerComment from '../components/Customercomment/CustomerComment';
 import LastestNews from '../components/Lastest News/LastestNews';
-import classes from './Layout.module.css';
 
 function Home() {
   return (
@@ -18,7 +17,7 @@ function Home() {
         <SearchBar />
         <SummerSale />
       </div>
-      <div className={classes.main}>
+      <div className="container">
         <Advertising />
         <Product name="POPULAR PRODUCT" />
         <Banner />

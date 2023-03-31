@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\ServiceBanner\ServiceBanner.test.js">
-    <testCase name="should ServiceBanner render correctly" duration="50"/>
+    <testCase name="should ServiceBanner render correctly" duration="44"/>
+  </file>
+  <file path="D:\du lieu\IT\React\playground\reactjs-shop\src\components\Banner\Banner.test.js">
+    <testCase name="should Banner run correctly" duration="21"/>
   </file>
 </testExecutions>

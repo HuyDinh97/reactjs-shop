@@ -1,25 +1,75 @@
-.icon_subtitle {
-  font-weight: 600!important;
-  margin-bottom: 0.5rem!important;
+.serviceBanner {
+  margin-top: 4rem;
+}
+
+.iconSubtitle {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
   color: #363f4e;
   font-size: 13px;
   opacity: 80%;
 }
 
-.ServiceBanner_box {
-  margin-top: 4rem;
+.ServiceBannerBox {
   display: flex;
   justify-content: center;
-  margin-right: auto;
-  margin-left: auto;
-  width: 60%;
 }
 
 .w_max_content {
   width: max-content;
 }
 
-.ServiceBanner_truck_icon {
+.ServiceBannerIcon {
   -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
   display: flex;
+  color: #363f4d;
+}
+
+.ServiceBannerBlock {
+  padding-right: 3rem;
+  padding-left: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.blockBoderEnd {
+  border-right: 1px solid #d9d9d9;
+}
+.blockBoderEndDesktop {
+  border-right: 1px solid #d9d9d9;
+}
+
+.reverse {
+  transform: scaleX(-1);
+}
+
+@media screen and (max-width: 1199px) {
+  .blockBoderEndDesktop{
+    border-right: none;
+    margin-top: 1.5rem!important;
+  }
+  .blockBoderEnd {
+    margin-top: 1.5rem!important;
+    border-right: 1px solid #d9d9d9;
+  }
+  .underBlockRight {
+    margin-top: 1.5rem!important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .ServiceBannerBlock {
+    flex-direction: column;
+    text-align: center;
+  }
+  .w_max_content h5 {
+    font-size: 0.9rem!important;
+    margin-bottom: 0!important;
+  }
+  .w_max_content div {
+    font-size: 0.65rem;
+    font-weight: 700;
+  }
 }
