@@ -109,7 +109,7 @@ svg polyline {
   background-position: center!important;
   display: flex;
   justify-content: center;
-  background-size: contain !important;
+  background-size: cover !important;
 }
 
 .opacity_icon {
@@ -159,4 +159,46 @@ svg polyline {
 
 .swiperButton {
   display: none;
+}
+
+@media screen and (max-width:576px) {
+  .product_img {
+    height: 230px;
+  }
+  .swiperButton {
+    display: flex;
+  }
+
+  .Product_button{
+    display: none;
+  }
+
+  .swiperButton .prev_button {
+    z-index: 1;
+    position: absolute;
+    top: 40%;
+    height: 8%;
+  }
+
+  .swiperButton .prev_button:hover {
+    opacity: 0.7;
+  }
+
+  .swiperButton .next_button {
+    z-index: 1;
+    position: absolute;
+    top: 40%;
+    left: 94%;
+    height: 8%;
+  }
+
+  .swiperButton .next_button:hover {
+    opacity: 0.7;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .swiperButton .next_button {
+    left: 90%;
+  }
 }
