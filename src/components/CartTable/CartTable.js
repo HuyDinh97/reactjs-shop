@@ -1,22 +1,31 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/button-has-type */
 import CartTotal from 'components/CartTotal/CartTotal';
 import PromotionCode from 'components/PromotionCode/PromotionCode';
-import React from 'react';
+import React, { useCallback } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useDispatch } from 'react-redux';
+import { deleteProductInCart } from 'store/actions/common';
 import { FaMinus, FaPlus, FaChevronLeft } from 'react-icons/fa';
 import { HiRefresh } from 'react-icons/hi';
 
 import { Link } from 'react-router-dom';
 import { useGetMyCart } from 'store/selectors/common';
 import classes from './CartTable.module.css';
-import image from './image/product-img-3.jpg';
 
 function CartTable() {
   const { products: productInCart, totalCost } = useGetMyCart();
-  console.log(productInCart);
+  const dispatch = useDispatch();
+
+  const deleteProduct = useCallback(
+    (itemdelete) => () => {
+      dispatch(deleteProductInCart({ _id: itemdelete }));
+    },
+    [dispatch]
+  );
   return (
     <div className={classes.mt_5}>
       <Container className={classes.webVersion}>
@@ -31,9 +40,9 @@ function CartTable() {
         {productInCart &&
           productInCart.map((product) => (
             <Row className={classes.cartDetail}>
-              <Col lg={2}>
+              <Col lg={2} key={product._id}>
                 <div className="d-flex justify-content-center border-0">
-                  <img src={image} alt="" />
+                  <img src={`https://vnguyen.xyz/huy/day17/apis/${product.thumb}`} alt="" />
                 </div>
               </Col>
               <Col className={classes.productName} lg={5}>
@@ -66,7 +75,7 @@ function CartTable() {
                 {product.afterSalesPrice}
               </Col>
               <Col lg={1}>
-                <button className={classes.deleteButton}>X</button>
+                <button className={classes.deleteButton} onClick={deleteProduct(product._id)}>X</button>
               </Col>
             </Row>
           ))}
