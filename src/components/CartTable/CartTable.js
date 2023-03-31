@@ -37,10 +37,10 @@ function CartTable() {
           <Col lg={1}>Subtotal</Col>
           <Col lg={1}> </Col>
         </Row>
-        {productInCart &&
-          productInCart.map((product) => (
-            <Row className={classes.cartDetail}>
-              <Col lg={2} key={product._id}>
+        {productInCart.length > 0 ?
+          productInCart?.map((product) => (
+            <Row className={classes.cartDetail} key={product._id}>
+              <Col lg={2}>
                 <div className="d-flex justify-content-center border-0">
                   <img src={`https://vnguyen.xyz/huy/day17/apis/${product.thumb}`} alt="" />
                 </div>
@@ -61,7 +61,7 @@ function CartTable() {
                     <input
                       type="tel"
                       min={0}
-                      value={product.quantity}
+                      defaultValue={product.quantity}
                       aria-label="couple-code"
                     />
                   </div>
@@ -75,10 +75,16 @@ function CartTable() {
                 {product.afterSalesPrice}
               </Col>
               <Col lg={1}>
-                <button className={classes.deleteButton} onClick={deleteProduct(product._id)}>X</button>
+                <button type="button" className={classes.deleteButton} onClick={deleteProduct(product._id)}>X</button>
               </Col>
             </Row>
-          ))}
+          )) : (
+            <div>
+              <Row className={classes.cartDetailHeader}>
+                <Col>There is no item in cart!</Col>
+              </Row>
+            </div>
+            )}
         <Row className={classes.cartDetail}>
           <Col>
             <div className="d-flex justify-content-center align-item-center border-0 p-0">
@@ -99,9 +105,10 @@ function CartTable() {
         </Row>
       </Container>
       <Container className={classes.mobileVersion}>
-        {productInCart &&
-          productInCart.map((product) => (
-            <Row className="d-flex flex-column">
+        {productInCart.length > 0 ?
+          productInCart?.map((product) => (
+            <Row className="d-flex flex-column" key={product._id}>
+              <Col className={classes.mobileImage}><img src={`https://vnguyen.xyz/huy/day17/apis/${product.thumb}`} alt="" /></Col>
               <Col className="d-flex justify-content-between p-3">
                 <Col md={2} xs={2} className={classes.semibold}>Product:</Col>
                 <Col md={10} xs={9} className="fw-bold">{product.name}</Col>
@@ -121,7 +128,7 @@ function CartTable() {
                       <FaMinus />
                     </button>
                     <div className={classes.quantity_in_cart}>
-                      <input type="tel" min={0} value={product.quantity} aria-label="couple-code" />
+                      <input type="tel" min={0} defaultValue={product.quantity} aria-label="couple-code" />
                     </div>
                     <button className={classes.quantity_button}>
                       <FaPlus />
@@ -136,9 +143,17 @@ function CartTable() {
                   {product.afterSalesPrice}
                 </div>
               </Col>
+              <Col className="d-flex justify-content-center pb-2 border-bottom">
+                <button type="button" className={classes.deleteButtonMobile} onClick={deleteProduct(product._id)}>X</button>
+              </Col>
             </Row>
-          ))
-        }
+          )): (
+            <div>
+              <Row className={classes.cartDetailHeader}>
+                <Col>There is no item in cart!</Col>
+              </Row>
+            </div>
+            )}
         <Row className={classes.underCartButton}>
           <Col>
             <div className="d-flex justify-content-center align-item-center border-0 p-0">
@@ -164,7 +179,7 @@ function CartTable() {
             <PromotionCode />
           </Col>
           <Col xl={6} xs={12} className={classes.subtotal}>
-            <CartTotal total={totalCost} />
+            <CartTotal key={totalCost} total={totalCost} />
           </Col>
         </Row>
       </Container>
