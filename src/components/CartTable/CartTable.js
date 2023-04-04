@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useDispatch } from 'react-redux';
-import { deleteProductInCart } from 'store/actions/common';
+import { decreaseProductInCart, deleteProductInCart, increaseProductInCart, updateMyCart } from 'store/actions/common';
 import { FaMinus, FaPlus, FaChevronLeft } from 'react-icons/fa';
 import { HiRefresh } from 'react-icons/hi';
 
@@ -20,12 +20,37 @@ function CartTable() {
   const { products: productInCart, totalCost } = useGetMyCart();
   const dispatch = useDispatch();
 
-  const deleteProduct = useCallback(
-    (itemdelete) => () => {
-      dispatch(deleteProductInCart({ _id: itemdelete }));
+  const decreaseProduct = useCallback(
+    (id) => () => {
+      dispatch(decreaseProductInCart(id));
     },
     [dispatch]
   );
+
+  const increaseProduct = useCallback(
+    (id) => () => {
+      dispatch(increaseProductInCart(id));
+    },
+    [dispatch]
+  );
+
+  const deleteProduct = useCallback(
+    (id) => () => {
+      dispatch(deleteProductInCart(id));
+    },
+    [dispatch]
+  );
+
+  const handleChange = () => {
+    console.log('input change')
+  };
+
+  const updateCart = useCallback(
+    () => () => {
+      dispatch(updateMyCart());
+    },
+  );
+
   return (
     <div className={classes.mt_5}>
       <Container className={classes.webVersion}>
@@ -54,18 +79,20 @@ function CartTable() {
               </Col>
               <Col lg={2}>
                 <div className={classes.cartDetailQuantity}>
-                  <button className={classes.quantity_button}>
+                  <button type="button" className={classes.quantity_button} onClick={decreaseProduct(product._id)}>
                     <FaMinus />
                   </button>
                   <div className={classes.quantity_in_cart}>
                     <input
+                      id={product._id}
                       type="tel"
                       min={0}
-                      defaultValue={product.quantity}
+                      value={product.quantity}
+                      onChange={handleChange}
                       aria-label="couple-code"
                     />
                   </div>
-                  <button className={classes.quantity_button}>
+                  <button type="button" className={classes.quantity_button} onClick={increaseProduct(product._id)}>
                     <FaPlus />
                   </button>
                 </div>
@@ -90,14 +117,14 @@ function CartTable() {
             <div className="d-flex justify-content-center align-item-center border-0 p-0">
               <span className={classes.buttonUnderCartBorder}>
                 <Link to="/" className={classes.buttonUnderCart}>
-                  <FaChevronLeft className={classes.margin_right_1rem} />
-                  CONTINUE SHOPPING
+                  <FaChevronLeft className="mx-2" />
+                  <div className="border-0">CONTINUE SHOPPING</div>
                 </Link>
               </span>
               <span className={classes.buttonUpdateCartBorder}>
-                <button className={classes.buttonUpdateCart}>
-                  <HiRefresh className={classes.margin_right_1rem} />
-                  UPDATE CART
+                <button className={classes.buttonUpdateCart} onClick={updateCart()}>
+                  <HiRefresh className="mx-2" />
+                  <div className="border-0">UPDATE CART</div>
                 </button>
               </span>
             </div>
@@ -110,8 +137,8 @@ function CartTable() {
             <Row className="d-flex flex-column" key={product._id}>
               <Col className={classes.mobileImage}><img src={`https://vnguyen.xyz/huy/day17/apis/${product.thumb}`} alt="" /></Col>
               <Col className="d-flex justify-content-between p-3">
-                <Col md={2} xs={2} className={classes.semibold}>Product:</Col>
-                <Col md={10} xs={9} className="fw-bold">{product.name}</Col>
+                <Col md={2} xs={3} className={classes.semibold}>Product:</Col>
+                <Col md={10} xs={7} className="fw-bold">{product.name}</Col>
               </Col>
               <Col className="d-flex justify-content-between p-3">
                 <div className={classes.semibold}>Price:</div>
@@ -160,13 +187,13 @@ function CartTable() {
               <span className={classes.buttonUnderCartBorder}>
                 <Link to="/" className={classes.buttonUnderCart}>
                   <FaChevronLeft className={classes.iconButton} />
-                  CONTINUE SHOPPING
+                  <div className="border-0">CONTINUE SHOPPING</div>
                 </Link>
               </span>
               <span className={classes.buttonUpdateCartBorder}>
                 <button className={classes.buttonUpdateCart}>
                   <HiRefresh className={classes.iconButton} />
-                  UPDATE CART
+                  <div className="border-0">UPDATE CART</div>
                 </button>
               </span>
             </div>

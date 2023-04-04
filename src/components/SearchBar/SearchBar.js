@@ -23,8 +23,8 @@ function SearchBar() {
   const dispatch = useDispatch();
 
   const deleteProduct = useCallback(
-    (itemdelete) => () => {
-      dispatch(deleteProductInCart({ _id: itemdelete }));
+    (id) => () => {
+      dispatch(deleteProductInCart(id));
     },
     [dispatch]
   );

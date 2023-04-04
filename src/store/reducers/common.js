@@ -22,6 +22,7 @@ const calculateTotalCost = (products) =>
     .toFixed(2);
 // eslint-disable-next-line default-param-last
 export default (state = initialState, action) => {
+  const { products } = state.productInCart;
   switch (action.type) {
     case 'ADD_CATEGORIES':
       return {
@@ -59,12 +60,11 @@ export default (state = initialState, action) => {
         home: action.payload.data,
       };
     case 'ADD_PRODUCTTOCART':
-      const { products } = state.productInCart;
       const productIndex = products.findIndex(
         (product) => product._id === action.payload._id
       );
-
       const productExist = productIndex !== -1;
+
       const { price, sales, quantity } = action.payload;
 
       const newQuantity = productExist
@@ -98,7 +98,7 @@ export default (state = initialState, action) => {
       };
     case 'DELETE_PRODUCTINCART':
       const productDelete = state.productInCart.products.filter(
-        (product) => product._id !== action.payload._id
+        (product) => product._id !== action.id
       );
 
       return {
@@ -108,7 +108,72 @@ export default (state = initialState, action) => {
           totalCost: calculateTotalCost(productDelete),
         },
       };
+    case 'INCREASE_PRODUCTINCART':
+      const updateInCreaseProduct = state.productInCart.products.map(
+        (curProd) => {
+          if (curProd._id === action.id) {
+            const increaseQuantity = curProd.quantity + 1;
 
+            return {
+              ...curProd,
+              quantity: increaseQuantity,
+            };
+          }
+
+          return curProd;
+        }
+      );
+      return {
+        ...state,
+        productInCart: {
+          ...state.productInCart,
+          products: updateInCreaseProduct,
+        },
+      };
+    case 'DECREASE_PRODUCTINCART':
+      const updateDecreaseProduct = state.productInCart.products.map(
+        (curProd) => {
+          if (curProd._id === action.id) {
+            let increaseQuantity = curProd.quantity - 1;
+            if (increaseQuantity <= 1) {
+              increaseQuantity = 1;
+            }
+
+            return {
+              ...curProd,
+              quantity: increaseQuantity,
+            };
+          }
+
+          return curProd;
+        }
+      );
+      return {
+        ...state,
+        productInCart: {
+          ...state.productInCart,
+          products: updateDecreaseProduct,
+        },
+      };
+    case 'UPDATE_MYCART':
+      const updateMyCart = state.productInCart.products.map((product) => {
+        const realPriceMyCart = product.price * product.quantity;
+        const afterSalesPriceMyCart =
+          realPriceMyCart - (realPriceMyCart * product.sales) / 100;
+        return {
+          ...product,
+          afterSalesPrice: afterSalesPriceMyCart,
+        };
+      });
+      console.log(updateMyCart);
+      return {
+        ...state,
+        productInCart: {
+          ...state.productInCart,
+          products: updateMyCart,
+          totalCost: calculateTotalCost(updateMyCart),
+        },
+      };
     default:
       return state;
   }
