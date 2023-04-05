@@ -186,7 +186,6 @@ button:first-child:active {
     display: flex!important;
     justify-content: center!important;
   }
-  .secondNavigation {
   .navigation {
     display: flex;
     justify-content: flex-end;
