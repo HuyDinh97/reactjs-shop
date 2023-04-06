@@ -165,7 +165,6 @@ export default (state = initialState, action) => {
           afterSalesPrice: afterSalesPriceMyCart,
         };
       });
-      console.log(updateMyCart);
       return {
         ...state,
         productInCart: {

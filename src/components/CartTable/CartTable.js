@@ -3,7 +3,7 @@
 /* eslint-disable react/button-has-type */
 import CartTotal from 'components/CartTotal/CartTotal';
 import PromotionCode from 'components/PromotionCode/PromotionCode';
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -40,29 +40,40 @@ function CartTable() {
     },
     [dispatch]
   );
-
+  // onchange fuction for input defaultValue
   const handleChange = () => {
     console.log('input change')
   };
 
+  const updateCartButton = useRef('');
+  const cartTable = useRef();
   const updateCart = useCallback(
     () => () => {
       dispatch(updateMyCart());
+
+      updateCartButton.current.innerHTML = 'UPDATING...'
+      document.getElementById("cartTable").style.opacity = "0.5";
+
+      setTimeout(() => {
+        updateCartButton.current.innerHTML = 'UPDATE CART';
+        document.getElementById("cartTable").style.opacity = "1";
+    }, 500);
     },
   );
 
   return (
-    <div className={classes.mt_5}>
-      <Container className={classes.webVersion}>
-        <Row className={classes.cartDetailHeader}>
-          <Col lg={2}>Item</Col>
-          <Col lg={5}>Product Name</Col>
-          <Col lg={1}>Price</Col>
-          <Col lg={2}>Quantity</Col>
-          <Col lg={1}>Subtotal</Col>
-          <Col lg={1}> </Col>
-        </Row>
-        {productInCart.length > 0 ?
+    <div className={classes.mt_5} ref={cartTable}>
+      <div id="cartTable">
+        <Container className={classes.webVersion}>
+          <Row className={classes.cartDetailHeader}>
+            <Col lg={2}>Item</Col>
+            <Col lg={5}>Product Name</Col>
+            <Col lg={1}>Price</Col>
+            <Col lg={2}>Quantity</Col>
+            <Col lg={1}>Subtotal</Col>
+            <Col lg={1}> </Col>
+          </Row>
+          {productInCart.length > 0 ?
           productInCart?.map((product) => (
             <Row className={classes.cartDetail} key={product._id}>
               <Col lg={2}>
@@ -112,27 +123,27 @@ function CartTable() {
               </Row>
             </div>
             )}
-        <Row className={classes.cartDetail}>
-          <Col>
-            <div className="d-flex justify-content-center align-item-center border-0 p-0">
-              <span className={classes.buttonUnderCartBorder}>
-                <Link to="/" className={classes.buttonUnderCart}>
-                  <FaChevronLeft className="mx-2" />
-                  <div className="border-0">CONTINUE SHOPPING</div>
-                </Link>
-              </span>
-              <span className={classes.buttonUpdateCartBorder}>
-                <button className={classes.buttonUpdateCart} onClick={updateCart()}>
-                  <HiRefresh className="mx-2" />
-                  <div className="border-0">UPDATE CART</div>
-                </button>
-              </span>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-      <Container className={classes.mobileVersion}>
-        {productInCart.length > 0 ?
+          <Row className={classes.cartDetail}>
+            <Col>
+              <div className="d-flex justify-content-center align-item-center border-0 p-0">
+                <span className={classes.buttonUnderCartBorder}>
+                  <Link to="/" className={classes.buttonUnderCart}>
+                    <FaChevronLeft className="mx-2" />
+                    <div className="border-0">CONTINUE SHOPPING</div>
+                  </Link>
+                </span>
+                <span className={classes.buttonUpdateCartBorder}>
+                  <button className={classes.buttonUpdateCart} onClick={updateCart()}>
+                    <HiRefresh className="mx-2" />
+                    <div className="border-0" ref={updateCartButton}>UPDATE CART</div>
+                  </button>
+                </span>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+        <Container className={classes.mobileVersion}>
+          {productInCart.length > 0 ?
           productInCart?.map((product) => (
             <Row className="d-flex flex-column" key={product._id}>
               <Col className={classes.mobileImage}><img src={`https://vnguyen.xyz/huy/day17/apis/${product.thumb}`} alt="" /></Col>
@@ -151,13 +162,20 @@ function CartTable() {
                 <div className={classes.semibold}>Quantity:</div>
                 <div>
                   <div className={classes.cartDetailQuantity}>
-                    <button className={classes.quantity_button}>
+                    <button className={classes.quantity_button} onClick={decreaseProduct(product._id)}>
                       <FaMinus />
                     </button>
                     <div className={classes.quantity_in_cart}>
-                      <input type="tel" min={0} defaultValue={product.quantity} aria-label="couple-code" />
+                      <input
+                        id={product._id}
+                        type="tel"
+                        min={0}
+                        value={product.quantity}
+                        onChange={handleChange}
+                        aria-label="couple-code"
+                      />
                     </div>
-                    <button className={classes.quantity_button}>
+                    <button className={classes.quantity_button} onClick={increaseProduct(product._id)}>
                       <FaPlus />
                     </button>
                   </div>
@@ -181,25 +199,26 @@ function CartTable() {
               </Row>
             </div>
             )}
-        <Row className={classes.underCartButton}>
-          <Col>
-            <div className="d-flex justify-content-center align-item-center border-0 p-0">
-              <span className={classes.buttonUnderCartBorder}>
-                <Link to="/" className={classes.buttonUnderCart}>
-                  <FaChevronLeft className={classes.iconButton} />
-                  <div className="border-0">CONTINUE SHOPPING</div>
-                </Link>
-              </span>
-              <span className={classes.buttonUpdateCartBorder}>
-                <button className={classes.buttonUpdateCart}>
-                  <HiRefresh className={classes.iconButton} />
-                  <div className="border-0">UPDATE CART</div>
-                </button>
-              </span>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+          <Row className={classes.underCartButton}>
+            <Col>
+              <div className="d-flex justify-content-center align-item-center border-0 p-0">
+                <span className={classes.buttonUnderCartBorder}>
+                  <Link to="/" className={classes.buttonUnderCart}>
+                    <FaChevronLeft className={classes.iconButton} />
+                    <div className="border-0">CONTINUE SHOPPING</div>
+                  </Link>
+                </span>
+                <span className={classes.buttonUpdateCartBorder}>
+                  <button className={classes.buttonUpdateCart} onClick={updateCart()}>
+                    <HiRefresh className={classes.iconButton} />
+                    <div className="border-0">UPDATE CART</div>
+                  </button>
+                </span>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
       <Container>
         <Row>
           <Col xl={6} xs={12} className={classes.promotionCode}>
