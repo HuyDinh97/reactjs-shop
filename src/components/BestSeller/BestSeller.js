@@ -55,26 +55,29 @@ function BestSeller({ name }) {
           },
           400: {
             slidesPerView: 2,
+            spaceBetween: 10,
           },
           639: {
             slidesPerView: 3,
+            spaceBetween: 20,
           },
           865: {
             slidesPerView: 4,
+            spaceBetween: 20,
           },
           1000: {
             slidesPerView: 4,
+            spaceBetween: 20,
           },
           1500: {
             slidesPerView: 4,
+            spaceBetween: 20,
           },
           1700: {
-            slidesPerView: 4,
+            slidesPerView: 5,
+            spaceBetween: 20,
           },
         }}
-        slidesPerView={4}
-        spaceBetween={30}
-        slidesPerGroup={1}
         onBeforeInit={(swiper) => {
           swiperRef.current = swiper;
         }}
@@ -120,7 +123,7 @@ function BestSeller({ name }) {
                   </div>
                 </a>
               </div>
-              <div className="card-body d-flex justify-content-center my-2 mb-2 flex-column">
+              <div className="card-body d-flex justify-content-center my-2 mb-2 flex-column text-center">
                 <div className={classes.product_name}>
                   <a href="/">{popularProduct.name}</a>
                 </div>
