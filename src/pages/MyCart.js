@@ -8,8 +8,8 @@ function MyCart() {
   return (
     <div>
       <SearchBar />
+      <PageTitle />
       <div className={classes.main}>
-        <PageTitle />
         <CartTable />
       </div>
     </div>

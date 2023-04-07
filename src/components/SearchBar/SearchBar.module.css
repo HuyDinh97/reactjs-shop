@@ -186,7 +186,15 @@ button:first-child:active {
     display: flex!important;
     justify-content: center!important;
   }
+  .navigation {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem!important;
+  }
   .secondNavigation {
+    display: none;
+  }
+  .searchSection{
     display: none;
   }
   .navigation {
@@ -196,6 +204,9 @@ button:first-child:active {
   }
   .mobileSearch {
     display: block;
+  }
+  .dropdown_menu {
+    inset: 9px auto auto -12px!important;
   }
   .cartDropdown {
     display: flex;

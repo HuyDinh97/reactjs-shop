@@ -52,7 +52,7 @@ function SearchBar() {
                 </button>
               </div>
             </Col>
-            <Col xl={8} xs={9} className={classes.cartDropdown}>
+            <Col xl={10} xs={9} className={classes.cartDropdown}>
               <div>
                 <Dropdown className={classes.cart_button}>
                   <Dropdown.Toggle
@@ -115,7 +115,7 @@ function SearchBar() {
                 </Dropdown>
               </div>
             </Col>
-            <Col xl={2} xs={2} className={classes.mobileSearch}>
+            <Col xl={1} xs={2} className={classes.mobileSearch}>
               <Navbar className="d-flex flex-nowrap" expand="xs">
                 <Container className="flex-row-reverse">
                   <Navbar.Toggle
@@ -135,7 +135,7 @@ function SearchBar() {
                 </Container>
               </Navbar>
             </Col>
-            <Col xl={2} xs={1} className={classes.navigation}>
+            <Col xl={1} xs={1} className={classes.navigation}>
               <Navigation />
             </Col>
           </Row>

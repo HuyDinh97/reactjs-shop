@@ -7,6 +7,7 @@
 
 .Underline {
   font-size: 30px;
+  width: max-content;
   display: inline-block;
   padding-bottom: 10px;
   position: relative;
@@ -31,5 +32,8 @@
     width: 46%;
     bottom: 4px;
     left: 29%;
+  }
+  .Product_title{
+    flex: none!important;
   }
 }
