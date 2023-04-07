@@ -16,7 +16,6 @@ import image from './image/product-img-3.jpg';
 
 function CartTable() {
   const { products: productInCart, totalCost } = useGetMyCart();
-  console.log(productInCart);
   return (
     <div className={classes.mt_5}>
       <Container className={classes.webVersion}>
