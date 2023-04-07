@@ -56,6 +56,12 @@
     font-size: 1rem!important;
   }
   .Card {
+    width: 20rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .Card {
     width: auto;
   }
 }

@@ -25,6 +25,10 @@
   border-color: #ea3c31!important;
 }
 
+.offCanvas {
+  height: 8vh!important;
+}
+
 @media screen and (max-width:1400px) {
   .main {
     border: none;
@@ -49,8 +53,5 @@
   }
   .containerNavbar svg {
     color: #ea3c31;
-  }
-  body .offcanvas.offcanvas-top  {
-    height: fit-content!important;
   }
 }
