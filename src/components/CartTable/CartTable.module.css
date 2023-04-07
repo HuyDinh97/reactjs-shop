@@ -103,6 +103,14 @@ th {
   font-weight: 600;
 }
 
+.deleteButtonMobile {
+  border: none;
+  background-color: #ea3c31;
+  color: white;
+  padding: 0rem 1rem 0rem 1rem;
+  font-weight: 600;
+}
+
 .buttonUnderCartBorder {
   color: white;
 }
@@ -176,6 +184,16 @@ th {
 .underCartButton {
   padding: 1rem;
   border-top: 1px solid gray;
+}
+
+.mobileImage {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.mobileImage img{
+  height: 100px;
 }
 
 @media screen and (max-width: 1224px) {
