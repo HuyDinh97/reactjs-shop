@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/button-has-type */
 import CartTotal from 'components/CartTotal/CartTotal';
