@@ -46,7 +46,6 @@ function CartTable() {
   };
 
   const updateCartButton = useRef('');
-  const cartTable = useRef();
   const updateCart = useCallback(
     () => () => {
       dispatch(updateMyCart());
@@ -62,7 +61,7 @@ function CartTable() {
   );
 
   return (
-    <div className={classes.mt_5} ref={cartTable}>
+    <div className={classes.mt_5}>
       <div id="cartTable">
         <Container className={classes.webVersion}>
           <Row className={classes.cartDetailHeader}>
