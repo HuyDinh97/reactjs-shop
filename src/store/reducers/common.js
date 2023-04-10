@@ -22,7 +22,7 @@ const calculateTotalCost = (products) =>
     .toFixed(2);
 // eslint-disable-next-line default-param-last
 export default (state = initialState, action) => {
-  const { products } = state.productInCart;
+  const { products } = state.productInCart ? state.productInCart : [];
   switch (action.type) {
     case 'ADD_CATEGORIES':
       return {
