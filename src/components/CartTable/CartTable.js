@@ -45,7 +45,7 @@ function CartTable() {
     console.log('input change')
   };
 
-  const updateCartButton = useRef(['']);
+  const updateCartButton = useRef([]);
   const updateCart = useCallback(
     () => () => {
       dispatch(updateMyCart());
