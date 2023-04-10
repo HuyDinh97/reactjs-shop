@@ -58,6 +58,7 @@ function CartTable() {
         document.getElementById("cartTable").style.opacity = "1";
     }, 500);
     },
+    [dispatch]
   );
 
   return (
