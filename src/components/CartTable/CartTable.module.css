@@ -137,7 +137,7 @@ th {
 }
 
 .iconButton {
-  margin-right: 1rem;
+  margin-right: 1rem!important;
 }
 
 .buttonUpdateCartBorder {
@@ -262,15 +262,13 @@ th {
   .quantity_button {
     padding: 7px 9px;
   }
-  .buttonUnderCart {
-    font-size: 0.7rem;
+  .buttonUnderCart  div {
+    font-size: 0.6rem;
     font-weight: 600;
-    padding: 0.7rem;
   }
-  .buttonUpdateCart {
-    font-size: 0.7rem;
+  .buttonUpdateCart div {
+    font-size: 0.6rem;
     font-weight: 600;
-    padding: 0.7rem;
   }
   .iconButton {
     margin-right: 0.5rem;

@@ -41,9 +41,29 @@ export const addProductToCart = (payload) => {
   };
 };
 
-export const deleteProductInCart = (payload) => {
+export const deleteProductInCart = (id) => {
   return {
     type: 'DELETE_PRODUCTINCART',
-    payload,
+    id,
+  };
+};
+
+export const increaseProductInCart = (id) => {
+  return {
+    type: 'INCREASE_PRODUCTINCART',
+    id,
+  };
+};
+
+export const decreaseProductInCart = (id) => {
+  return {
+    type: 'DECREASE_PRODUCTINCART',
+    id,
+  };
+};
+
+export const updateMyCart = () => {
+  return {
+    type: 'UPDATE_MYCART',
   };
 };
