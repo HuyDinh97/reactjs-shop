@@ -112,14 +112,11 @@ export default (state = initialState, action) => {
       const updateInCreaseProduct = state.productInCart.products.map(
         (curProd) => {
           if (curProd._id === action.id) {
-            const increaseQuantity = curProd.quantity + 1;
-
             return {
               ...curProd,
-              quantity: increaseQuantity,
+              quantity: curProd.quantity + 1,
             };
           }
-
           return curProd;
         }
       );
@@ -134,17 +131,16 @@ export default (state = initialState, action) => {
       const updateDecreaseProduct = state.productInCart.products.map(
         (curProd) => {
           if (curProd._id === action.id) {
-            let increaseQuantity = curProd.quantity - 1;
-            if (increaseQuantity <= 1) {
-              increaseQuantity = 1;
+            let deacreaseQuantity = curProd.quantity - 1;
+            if (deacreaseQuantity <= 0) {
+              deacreaseQuantity = 1;
             }
 
             return {
               ...curProd,
-              quantity: increaseQuantity,
+              quantity: deacreaseQuantity,
             };
           }
-
           return curProd;
         }
       );

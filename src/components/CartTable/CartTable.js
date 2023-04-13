@@ -3,7 +3,7 @@
 /* eslint-disable react/button-has-type */
 import CartTotal from 'components/CartTotal/CartTotal';
 import PromotionCode from 'components/PromotionCode/PromotionCode';
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -18,17 +18,19 @@ import classes from './CartTable.module.css';
 
 function CartTable() {
   const { products: productInCart, totalCost } = useGetMyCart();
+  const initialCartUpdateState = {
+    text: 'UPDATE CART',
+    opacity: '100'
+  };
+  const [updateCartState, setUpdateCartState] = useState(initialCartUpdateState);
   const dispatch = useDispatch();
 
-  const decreaseProduct = useCallback(
-    (id) => () => {
-      dispatch(decreaseProductInCart(id));
-    },
-    [dispatch]
-  );
-
-  const increaseProduct = useCallback(
-    (id) => () => {
+  const changeProductQuanity = useCallback(
+    (id, isDecrease = false) => () => {
+      if (isDecrease) {
+        dispatch(decreaseProductInCart(id));
+        return;
+      }
       dispatch(increaseProductInCart(id));
     },
     [dispatch]
@@ -48,14 +50,14 @@ function CartTable() {
   const updateCartButton = useRef([]);
   const updateCart = useCallback(
     () => () => {
+      setUpdateCartState({
+        text: 'UPDATING...',
+        opacity: '25'
+      });
       dispatch(updateMyCart());
 
-      updateCartButton.current.innerHTML = 'UPDATING...'
-      document.getElementById("cartTable").style.opacity = "0.5";
-
       setTimeout(() => {
-        updateCartButton.current.innerHTML = 'UPDATE CART';
-        document.getElementById("cartTable").style.opacity = "1";
+        setUpdateCartState(initialCartUpdateState);
     }, 500);
     },
     [dispatch]
@@ -63,7 +65,7 @@ function CartTable() {
 
   return (
     <div className={classes.mt_5}>
-      <div id="cartTable">
+      <div id="cartTable" className={`opacity-${updateCartState.opacity}`}>
         <Container className={classes.webVersion}>
           <Row className={classes.cartDetailHeader}>
             <Col lg={2}>Item</Col>
@@ -76,7 +78,7 @@ function CartTable() {
           {productInCart.length > 0 ?
           productInCart?.map((product) => (
             <Row className={classes.cartDetail} key={product._id}>
-              <Col lg={2}>
+              <Col lg={2} className="d-md-none d-lg-block">
                 <div className="d-flex justify-content-center border-0">
                   <img src={`https://vnguyen.xyz/huy/day17/apis/${product.thumb}`} alt="" />
                 </div>
@@ -90,7 +92,7 @@ function CartTable() {
               </Col>
               <Col lg={2}>
                 <div className={classes.cartDetailQuantity}>
-                  <button type="button" className={classes.quantity_button} onClick={decreaseProduct(product._id)}>
+                  <button type="button" className={classes.quantity_button} onClick={changeProductQuanity(product._id, true)}>
                     <FaMinus />
                   </button>
                   <div className={classes.quantity_in_cart}>
@@ -103,7 +105,7 @@ function CartTable() {
                       aria-label="couple-code"
                     />
                   </div>
-                  <button type="button" className={classes.quantity_button} onClick={increaseProduct(product._id)}>
+                  <button type="button" className={classes.quantity_button} onClick={changeProductQuanity(product._id)}>
                     <FaPlus />
                   </button>
                 </div>
@@ -135,13 +137,15 @@ function CartTable() {
                 <span className={classes.buttonUpdateCartBorder}>
                   <button className={classes.buttonUpdateCart} onClick={updateCart()}>
                     <HiRefresh className="mx-2" />
-                    <div className="border-0" ref={updateCartButton}>UPDATE CART</div>
+                    <div className="border-0" ref={updateCartButton}>{updateCartState.text}</div>
                   </button>
                 </span>
               </div>
             </Col>
           </Row>
         </Container>
+
+        {/* MOBILE */}
         <Container className={classes.mobileVersion}>
           {productInCart.length > 0 ?
           productInCart?.map((product) => (
@@ -162,7 +166,7 @@ function CartTable() {
                 <div className={classes.semibold}>Quantity:</div>
                 <div>
                   <div className={classes.cartDetailQuantity}>
-                    <button className={classes.quantity_button} onClick={decreaseProduct(product._id)}>
+                    <button className={classes.quantity_button} onClick={changeProductQuanity(product._id, true)}>
                       <FaMinus />
                     </button>
                     <div className={classes.quantity_in_cart}>
@@ -175,7 +179,7 @@ function CartTable() {
                         aria-label="couple-code"
                       />
                     </div>
-                    <button className={classes.quantity_button} onClick={increaseProduct(product._id)}>
+                    <button className={classes.quantity_button} onClick={changeProductQuanity(product._id)}>
                       <FaPlus />
                     </button>
                   </div>
@@ -211,7 +215,7 @@ function CartTable() {
                 <span className={classes.buttonUpdateCartBorder}>
                   <button className={classes.buttonUpdateCart} onClick={updateCart()}>
                     <HiRefresh className={classes.iconButton} />
-                    <div className="border-0">UPDATE CART</div>
+                    <div className="border-0">{updateCartState.text}</div>
                   </button>
                 </span>
               </div>
