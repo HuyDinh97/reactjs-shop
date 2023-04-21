@@ -32,7 +32,7 @@ function SearchBar() {
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   return (
     <div>
-      <div className={classes.searchBar} data-testid="dropdownItem-element">
+      <div className={`${classes.searchBar} container py-3`} data-testid="dropdownItem-element">
         <Container>
           <Row xxl={3} xl={3} xs={2} className="d-flex align-items-center">
             <Col xl={12} sm={12} xs={12} className={classes.logo}>
