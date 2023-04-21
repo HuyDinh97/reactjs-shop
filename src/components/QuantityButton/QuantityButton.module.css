@@ -1,5 +1,6 @@
 .cartDetailQuantity {
   width: min-content;
+  display: flex;
 }
 
 .quantity_button {

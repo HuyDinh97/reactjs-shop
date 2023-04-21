@@ -8,7 +8,6 @@ import { useDispatch } from 'react-redux';
 import classes from './QuantityButton.module.css';
 
 function QuantityButton({ productId, productQuantity }) {
-  console.log(productId);
   const handleChange = () => {
     console.log('input change');
   };
@@ -30,7 +29,7 @@ function QuantityButton({ productId, productQuantity }) {
     <div className={`${classes.cartDetailQuantity} border-0`}>
       <button
         type="button"
-        className={classes.quantity_button}
+        className={`${classes.quantity_button} w-100 d-flex justify-content-center`}
         onClick={changeProductQuanity(productId, true)}
       >
         <FaMinus />
@@ -47,7 +46,7 @@ function QuantityButton({ productId, productQuantity }) {
       </div>
       <button
         type="button"
-        className={classes.quantity_button}
+        className={`${classes.quantity_button} w-100 d-flex justify-content-center`}
         onClick={changeProductQuanity(productId)}
       >
         <FaPlus />
