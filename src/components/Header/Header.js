@@ -16,7 +16,7 @@ function Header() {
 
   return (
     <header className={classes.header_color}>
-      <div className={classes.header}>
+      <div className={`${classes.header} container`}>
         <div>
           <ul>
             <li className={classes.header_border_end}>
