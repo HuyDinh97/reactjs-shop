@@ -45,13 +45,6 @@ th {
   padding: 0 4rem 0 4rem!important;
 }
 
-.cartDetailQuantity {
-  display: flex;
-  align-items: center!important;
-  justify-content: center!important;
-  border: none!important;
-}
-
 .quantity_in_cart {
   padding: 0;
   width: 25%;
@@ -197,9 +190,6 @@ th {
 }
 
 @media screen and (max-width: 1224px) {
-  .cartDetailQuantity {
-    flex-direction: column;
-  }
   .subtotal {
     display: flex!important;
     justify-content: center!important;
@@ -231,10 +221,6 @@ th {
     color: #ea3c31!important;
     font-weight: 600;
     font-size: 1rem;
-  }
-  .cartDetailQuantity {
-    display: flex;
-    align-items: flex-end!important;
   }
   .quantity_in_cart {
     width: 18%;
