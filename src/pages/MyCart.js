@@ -2,14 +2,13 @@ import CartTable from 'components/CartTable/CartTable';
 import PageTitle from 'components/Page Title/PageTitle';
 import SearchBar from 'components/SearchBar/SearchBar';
 import React from 'react';
-import classes from './Layout.module.css';
 
 function MyCart() {
   return (
     <div>
       <SearchBar />
-      <PageTitle />
-      <div className={classes.main}>
+      <PageTitle pageTitle="my cart" pageLink="Cart" />
+      <div className="container">
         <CartTable />
       </div>
     </div>
