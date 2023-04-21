@@ -13,11 +13,6 @@
   border-top: 1px solid rgb(207, 205, 205);
 }
 
-.containerNavbar{
-  padding: 0!important;
-  width: 60%!important;
-}
-
 .navbarToggle {
   display: flex;
   border-radius: 0!important;

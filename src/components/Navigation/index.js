@@ -31,7 +31,7 @@ function Navigation() {
             placement="top"
           >
             <Nav className={classes.navbarNav}>
-              <Nav.Link className={navClass} to="/">
+              <Nav.Link className={`${navClass} ps-0`} to="/">
                 Home
               </Nav.Link>
               {categories &&
