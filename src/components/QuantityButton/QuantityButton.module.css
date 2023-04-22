@@ -4,7 +4,7 @@
 }
 
 .quantity_button {
-  padding: 6px 14px;
+  padding: 10px 14px;
   background-color: #363f4e;
   display: flex;
   border:none;
@@ -25,6 +25,7 @@
 }
 
 .quantity_in_cart input {
+  padding: 5px;
   width: 45px;
   border-radius: 0!important;
   border: 1px solid var(--bs-border-color);
