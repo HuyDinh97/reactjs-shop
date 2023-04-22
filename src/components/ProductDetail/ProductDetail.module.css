@@ -1,0 +1,27 @@
+.productDetailIMG {
+  height: 450px;
+}
+
+.productDetailSmall {
+  width: 103px;
+  height: 118px;
+}
+
+.addToCartButton {
+  background-color: #eb3d32;
+}
+
+.socialNetworkIcon span{
+  background-color: #363f4e;
+  color: white;
+  margin-left: 8px;
+  padding: 9px 12px 10px 12px;
+}
+
+.leftIcon {
+  fill: #363f4e
+}
+
+.afterSalePriceColor {
+  color: #eb3d32;
+}
