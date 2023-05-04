@@ -40,7 +40,6 @@
   .cartDetailQuantity {
     display: flex;
     align-items: flex-end!important;
-    flex-direction: column;
   }
   .quantity_in_cart {
     width: auto;

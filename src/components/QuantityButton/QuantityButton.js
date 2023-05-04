@@ -7,10 +7,12 @@ import {
 import { useDispatch } from 'react-redux';
 import classes from './QuantityButton.module.css';
 
-function QuantityButton({ productId, productQuantity }) {
+function QuantityButton({ productId, productQuantity, flexDirectionType }) {
   const handleChange = () => {
     console.log('input change');
   };
+
+  const flexDirection = flexDirectionType || 'column';
 
   const dispatch = useDispatch();
 
@@ -26,7 +28,7 @@ function QuantityButton({ productId, productQuantity }) {
     [dispatch]
   );
   return (
-    <div className={`${classes.cartDetailQuantity} border-0`}>
+    <div className={`${classes.cartDetailQuantity} ${flexDirection} border-0`}>
       <button
         type="button"
         className={`${classes.quantity_button} w-100 d-flex justify-content-center`}
