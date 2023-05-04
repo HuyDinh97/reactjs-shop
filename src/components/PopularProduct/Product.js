@@ -1,14 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useRef, useCallback } from 'react';
+import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import { Navigation } from 'swiper';
-import { useDispatch } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useGetPopularProduct } from 'store/selectors/common';
-import { addProductToCart } from 'store/actions/common';
 
 import SingleProduct from 'components/SingleProduct/SingleProduct';
 import TitleUnderline from './TitleUnderline';
@@ -22,22 +20,6 @@ function PopularProduct({ name }) {
   const products = useGetPopularProduct();
 
   const swiperRef = useRef();
-  const dispatch = useDispatch();
-
-  const addProduct = useCallback(
-    (productInCart) => () => {
-      const data = {
-        _id: productInCart._id,
-        name: productInCart.name,
-        price: productInCart.price,
-        sales: productInCart.sales,
-        thumb: productInCart.thumb,
-        quantity: 1,
-      };
-      dispatch(addProductToCart(data));
-    },
-    []
-  );
 
   if (!products) {
     return <p data-testid="popularProducts-error">Loading...</p>;
@@ -104,10 +86,7 @@ function PopularProduct({ name }) {
         {products &&
           products.map((popularProduct) => (
             <SwiperSlide key={popularProduct._id}>
-              <SingleProduct
-                addProduct={addProduct}
-                popularProduct={popularProduct}
-              />
+              <SingleProduct popularProduct={popularProduct} />
             </SwiperSlide>
           ))}
         <div className={classes.swiperButton}>

@@ -18,10 +18,14 @@ import { AiOutlineTwitter } from 'react-icons/ai';
 import Nav from 'react-bootstrap/Nav';
 import Tab from 'react-bootstrap/Tab';
 
+import SingleProduct from 'components/SingleProduct/SingleProduct';
+import { useGetBestSeller } from 'store/selectors/common';
 import cart from './img/cart-icon-1.png';
 import classes from './ProductDetail.module.css';
 
 function ProductDetail() {
+  const testRelatedProduct = useGetBestSeller();
+  console.log(testRelatedProduct);
   const linkIMG =
     'http://c3kienthuyhp.edu.vn/wp-content/uploads/2022/12/1672384705_929_999-Anh-Gai-Xinh-Viet-Nam-Hot-Girl-Cute-De.jpg';
 
@@ -254,8 +258,12 @@ function ProductDetail() {
         </Tab.Container>
         <div>
           <Row>
-            <Col>1</Col>
-            <Col>2</Col>
+            {testRelatedProduct &&
+              testRelatedProduct.map((popularProduct) => (
+                <Col key={popularProduct._id}>
+                  <SingleProduct popularProduct={popularProduct} />
+                </Col>
+              ))}
           </Row>
         </div>
       </Container>
