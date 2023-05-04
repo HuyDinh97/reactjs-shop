@@ -45,9 +45,19 @@ export default (state = initialState, action) => {
         popularProducts: [...newPopularProduct],
       };
     case 'ADD_BESTSELLER':
+      const { bestSellers } = action.payload;
+      const afterSalesPricesBestSeller = bestSellers.map(
+        (prod) => prod.price * (1 - prod.sales / 100)
+      );
+      let newBestSeller = [];
+      for (let i = 0; i <= bestSellers.length - 1; i++) {
+        const realPrice = afterSalesPricesBestSeller[i];
+        bestSellers[i].realPrice = realPrice;
+        newBestSeller = bestSellers;
+      }
       return {
         ...state,
-        bestSellers: action.payload.bestSellers,
+        bestSellers: [...newBestSeller],
       };
     case 'ADD_TESTIMONIAL':
       return {
