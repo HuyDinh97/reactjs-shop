@@ -25,7 +25,6 @@ import classes from './ProductDetail.module.css';
 
 function ProductDetail() {
   const testRelatedProduct = useGetBestSeller();
-  console.log(testRelatedProduct);
   const linkIMG =
     'http://c3kienthuyhp.edu.vn/wp-content/uploads/2022/12/1672384705_929_999-Anh-Gai-Xinh-Viet-Nam-Hot-Girl-Cute-De.jpg';
 
