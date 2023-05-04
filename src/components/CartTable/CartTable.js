@@ -135,7 +135,7 @@ function CartTable() {
               <Col className="d-flex justify-content-between p-3">
                 <div className={classes.semibold}>Quantity:</div>
                 <div>
-                  <QuantityButton productId={product._id} productQuantity={product.quantity} />
+                  <QuantityButton flexDirectionType="flex-column" productId={product._id} productQuantity={product.quantity} />
                 </div>
               </Col>
               <Col className="d-flex justify-content-between p-3">
