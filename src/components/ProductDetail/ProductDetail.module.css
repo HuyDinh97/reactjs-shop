@@ -40,7 +40,15 @@
   font-size: 14px;
 }
 
+.reviewContent {
+  padding: 1rem 1rem 8rem 1rem!important;
+}
+
 .submitButton {
   background-color: #363f4e;
   color: white;
+}
+
+.relatedProduct {
+  margin-top: 15rem;
 }

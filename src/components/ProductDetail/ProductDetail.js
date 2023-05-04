@@ -203,11 +203,11 @@ function ProductDetail() {
                     <div className="fw-semibold mb-2 fs-5">
                       CUSTOMER REVIEWS
                     </div>
-                    <div className="d-flex opacity-50">
+                    <div className="d-flex opacity-75 py-3 border-bottom">
                       <div>
                         <FaUserCircle fill="gray" className="fs-1" />
                       </div>
-                      <div className="ms-3">
+                      <div className="ms-4  ">
                         <div className="fw-semibold fs-5">admin</div>
                         <div className={`${classes.reviewTime} fw-semibold`}>
                           Sep 17th
@@ -216,7 +216,7 @@ function ProductDetail() {
                       </div>
                     </div>
                   </Col>
-                  <Col className="my-3">
+                  <Col className="my-2">
                     <div className="fw-semibold fs-5">ADD A REVIEW</div>
                     <Row className="my-3">
                       <Col lg={6}>
@@ -236,7 +236,7 @@ function ProductDetail() {
                       <Col className="mt-4" xs={12}>
                         <textarea
                           type="text"
-                          className="w-100 pb-5 p-3 border fw-semibold"
+                          className={`${classes.reviewContent} w-100 border fw-semibold`}
                           placeholder="Enter Your Review"
                         />
                       </Col>
@@ -255,7 +255,7 @@ function ProductDetail() {
             </Tab.Content>
           </div>
         </Tab.Container>
-        <div className="mt-5">
+        <div className={classes.relatedProduct}>
           <div>RELATED PRODUCT</div>
           <Row>
             {testRelatedProduct &&
