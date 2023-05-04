@@ -12,22 +12,14 @@
   color: white;
 }
 
-.white_overlay {
-  position: absolute;
-  width: 100%;
-  height: 80%;
-  background-color: white;
-  opacity: 50%;
-  top: 0%;
-  left: 0%;
-}
-
 .hide {
   display: none;
   justify-content: center;
   align-items: flex-end;
   
 }
+
+
 
 .apperance:hover .hide {
   display: flex;
@@ -40,6 +32,18 @@
   display: flex;
   justify-content: center;
   background-size: cover !important;
+}
+
+.white_overlay {
+  background-color: white;
+  width: 300px;
+  height: 350px;
+  opacity: 0.5;
+}
+
+.opacity_layer:hover {
+  opacity: 100%;
+  height: fit-content;
 }
 
 .opacity_icon {
