@@ -252,6 +252,12 @@ function ProductDetail() {
             </Tab.Content>
           </div>
         </Tab.Container>
+        <div>
+          <Row>
+            <Col>1</Col>
+            <Col>2</Col>
+          </Row>
+        </div>
       </Container>
     </div>
   );
