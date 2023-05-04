@@ -24,7 +24,7 @@ function SingleProduct({ popularProduct }) {
       };
       dispatch(addProductToCart(data));
     },
-    []
+    [dispatch]
   );
   return (
     <div>
