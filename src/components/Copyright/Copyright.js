@@ -14,7 +14,7 @@ import classes from './Copyright.module.css';
 function Copyright() {
   return (
     <div className={classes.copyright}>
-      <div className={classes.copyrightBox}>
+      <div className={`${classes.copyrightBox} container`}>
         <Row>
           <Col xl={6} xs={12} className={classes.copyrightText}>
             Copyright © 2018, Inc. All rights reserved.

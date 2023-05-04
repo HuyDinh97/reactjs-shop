@@ -13,12 +13,6 @@ footer li {
   margin-bottom: 0.5rem;
 }
 
-.footer_box {
-  margin-right: auto;
-  margin-left: auto;
-  width: 60%;
-}
-
 footer span {
   font-weight: 500;
   opacity: 80% !important;
@@ -42,9 +36,6 @@ footer span {
 @media screen and (max-width: 576px) {
   footer {
     padding: 1.5rem 0 1.5rem 0;
-  }
-  .footer_box {
-    width: 90%;
   }
   footer h5 {
     font-size: 1rem;
