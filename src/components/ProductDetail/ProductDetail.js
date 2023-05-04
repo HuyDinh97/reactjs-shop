@@ -255,11 +255,12 @@ function ProductDetail() {
             </Tab.Content>
           </div>
         </Tab.Container>
-        <div>
+        <div className="mt-5">
+          <div>RELATED PRODUCT</div>
           <Row>
             {testRelatedProduct &&
               testRelatedProduct.map((popularProduct) => (
-                <Col key={popularProduct._id}>
+                <Col lg={3} xs={12} key={popularProduct._id}>
                   <SingleProduct popularProduct={popularProduct} />
                 </Col>
               ))}
