@@ -1,23 +1,42 @@
+/* eslint-disable react/forbid-component-props */
 /* eslint-disable react/forbid-dom-props */
-import React from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import QuantityButton from 'components/QuantityButton/QuantityButton';
-import { IoHeartCircleSharp } from 'react-icons/io5';
 import {
+  FaHeart,
+  FaSyncAlt,
   FaFacebookF,
   FaLinkedinIn,
   FaPinterestP,
   FaGooglePlusG,
+  FaUserCircle,
 } from 'react-icons/fa';
 import { AiOutlineTwitter } from 'react-icons/ai';
+import Nav from 'react-bootstrap/Nav';
+import Tab from 'react-bootstrap/Tab';
+
 import cart from './img/cart-icon-1.png';
 import classes from './ProductDetail.module.css';
 
 function ProductDetail() {
   const linkIMG =
     'http://c3kienthuyhp.edu.vn/wp-content/uploads/2022/12/1672384705_929_999-Anh-Gai-Xinh-Viet-Nam-Hot-Girl-Cute-De.jpg';
+
+  const changeIMG = () => {
+    console.log('sss');
+  };
+
+  const [key, setKey] = useState('description');
+  const ActiveStyle = {
+    background: '#eb3d32',
+  };
+  const inActiveStyle = {
+    background: '#363f4e',
+  };
+
   return (
     <div className="my-5">
       <Container>
@@ -30,18 +49,30 @@ function ProductDetail() {
               }}
             />
             <div className="d-flex mt-3">
-              <div
-                className={classes.productDetailSmall}
-                style={{
-                  background: `url(${linkIMG}) no-repeat top`,
-                }}
-              />
-              <div
-                className={`${classes.productDetailSmall} ms-3`}
-                style={{
-                  background: `url(${linkIMG}) no-repeat bottom `,
-                }}
-              />
+              <button
+                type="button"
+                className="border-0 p-0"
+                onClick={changeIMG}
+              >
+                <div
+                  className={`${classes.productDetailSmall}`}
+                  style={{
+                    background: `url(${linkIMG}) no-repeat top `,
+                  }}
+                />
+              </button>
+              <button
+                type="button"
+                className="border-0 p-0 ms-2"
+                onClick={changeIMG}
+              >
+                <div
+                  className={`${classes.productDetailSmall} ms-3`}
+                  style={{
+                    background: `url(${linkIMG}) no-repeat bottom `,
+                  }}
+                />
+              </button>
             </div>
           </Col>
           <Col className="ps-4" lg={7}>
@@ -71,15 +102,15 @@ function ProductDetail() {
                 </span>
               </div>
               <div className="d-flex justify-content-between align-items-center">
-                <div className="d-flex">
+                <div className="d-flex align-items-center">
                   <div className="fs-5 fw-semibold opacity-50">Quantity:</div>
                   <div className="mx-2">
-                    <QuantityButton className="d-flex" />
+                    <QuantityButton className="d-flex flex-row" />
                   </div>
                 </div>
                 <div>
                   <button
-                    className={`${classes.addToCartButton} d-flex rounded-pill p-2 px-4 border-0`}
+                    className={`${classes.addToCartButton} d-flex align-items-center rounded-pill p-2 px-4 border-0`}
                     type="button"
                   >
                     <img src={cart} alt="cart" />
@@ -91,10 +122,15 @@ function ProductDetail() {
               </div>
             </div>
             <Row className={`${classes.socialNetworkIcon} fs-6 my-4`}>
-              <Col className="fs-1">
-                <IoHeartCircleSharp className={classes.leftIcon} />
+              <Col className="fs-1 d-flex">
+                <FaHeart
+                  className={`${classes.leftIcon} fs-1 p-2 rounded-pill`}
+                />
+                <FaSyncAlt
+                  className={`${classes.leftIcon} fs-1 p-2 rounded-pill`}
+                />
               </Col>
-              <Col className="d-flex justify-content-end">
+              <Col className="d-flex justify-content-end align-items-center">
                 <span>
                   <FaFacebookF />
                 </span>
@@ -114,6 +150,108 @@ function ProductDetail() {
             </Row>
           </Col>
         </Row>
+        <Tab.Container
+          defaultActiveKey="description"
+          activeKey={key}
+          // eslint-disable-next-line @typescript-eslint/no-shadow
+          onSelect={(key) => setKey(key)}
+        >
+          <Row className="mt-5">
+            <Col lg={1} xs={12}>
+              <Nav
+                variant="pills"
+                className={`${classes.descriptionActive} flex-row`}
+              >
+                <Nav.Item className={`${classes.description} m-2 ms-0`}>
+                  <Nav.Link
+                    eventKey="description"
+                    className="fw-semibold py-3"
+                    style={key === 'description' ? ActiveStyle : inActiveStyle}
+                  >
+                    DESCRIPTION
+                  </Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </Col>
+            <Col lg={2} xs={12} className="ms-4">
+              <Nav variant="pills" className="flex-row">
+                <Nav.Item
+                  className={`${classes.description} text-decoration-none m-2`}
+                >
+                  <Nav.Link
+                    eventKey="review"
+                    style={key === 'review' ? ActiveStyle : inActiveStyle}
+                    className="fw-semibold px-3 py-3"
+                  >
+                    REVIEWS
+                  </Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </Col>
+          </Row>
+          <div className="border p-4">
+            <Tab.Content>
+              <Tab.Pane eventKey="description">
+                <p>description</p>
+              </Tab.Pane>
+              <Tab.Pane eventKey="review">
+                <Row>
+                  <Col xs={12}>
+                    <div className="fw-semibold mb-2 fs-5">
+                      CUSTOMER REVIEWS
+                    </div>
+                    <div className="d-flex opacity-50">
+                      <div>
+                        <FaUserCircle fill="gray" className="fs-1" />
+                      </div>
+                      <div className="ms-3">
+                        <div className="fw-semibold fs-5">admin</div>
+                        <div className={`${classes.reviewTime} fw-semibold`}>
+                          Sep 17th
+                        </div>
+                        <div className="fw-semibold fs-5">helpdesk 24/7</div>
+                      </div>
+                    </div>
+                  </Col>
+                  <Col className="my-3">
+                    <div className="fw-semibold fs-5">ADD A REVIEW</div>
+                    <Row className="my-3">
+                      <Col lg={6}>
+                        <input
+                          type="text"
+                          className="w-100 p-2 px-3 border fw-semibold"
+                          placeholder="Enter Your Name"
+                        />
+                      </Col>
+                      <Col lg={6}>
+                        <input
+                          type="text"
+                          className="w-100 p-2 px-3 border fw-semibold"
+                          placeholder="Enter Your Email"
+                        />
+                      </Col>
+                      <Col className="mt-4" xs={12}>
+                        <textarea
+                          type="text"
+                          className="w-100 pb-5 p-3 border fw-semibold"
+                          placeholder="Enter Your Review"
+                        />
+                      </Col>
+                      <Col className="mt-4">
+                        <button
+                          className={`${classes.submitButton} rounded-pill border-0 p-3 fw-semibold px-4 fs-5`}
+                          type="button"
+                        >
+                          Submit
+                        </button>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Tab.Pane>
+            </Tab.Content>
+          </div>
+        </Tab.Container>
       </Container>
     </div>
   );

@@ -16,12 +16,31 @@
   color: white;
   margin-left: 8px;
   padding: 9px 12px 10px 12px;
+  height: fit-content;
 }
 
 .leftIcon {
-  fill: #363f4e
+  background-color: #363f4e;
+  fill: white;
 }
 
 .afterSalePriceColor {
   color: #eb3d32;
+}
+
+.description a {
+  color: white;
+}
+
+.description a:hover {
+  color: white;
+}
+
+.reviewTime {
+  font-size: 14px;
+}
+
+.submitButton {
+  background-color: #363f4e;
+  color: white;
 }
