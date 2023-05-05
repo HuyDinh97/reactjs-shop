@@ -33,7 +33,7 @@
 .UnderlineB::before {
   content: "";
   position: absolute;
-  width: 42%;
+  width: 34%;
   height: 9px;
   bottom: 9px;
   left: 0%;
