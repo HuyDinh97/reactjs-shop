@@ -29,8 +29,12 @@ function ProductDetail() {
   const linkIMG =
     'http://c3kienthuyhp.edu.vn/wp-content/uploads/2022/12/1672384705_929_999-Anh-Gai-Xinh-Viet-Nam-Hot-Girl-Cute-De.jpg';
 
-  const changeIMG = () => {
-    console.log('sss');
+  const [img, setImg] = useState('no-repeat center');
+  const changeIMGtop = () => {
+    setImg('no-repeat top');
+  };
+  const changeIMGbot = () => {
+    setImg('no-repeat bottom');
   };
 
   const [key, setKey] = useState('description');
@@ -49,14 +53,14 @@ function ProductDetail() {
             <div
               className={classes.productDetailIMG}
               style={{
-                background: `url(${linkIMG}) no-repeat center`,
+                background: `url(${linkIMG}) ${img}`,
               }}
             />
             <div className="d-flex mt-3">
               <button
                 type="button"
                 className="border-0 p-0"
-                onClick={changeIMG}
+                onClick={changeIMGtop}
               >
                 <div
                   className={`${classes.productDetailSmall}`}
@@ -68,10 +72,10 @@ function ProductDetail() {
               <button
                 type="button"
                 className="border-0 p-0 ms-2"
-                onClick={changeIMG}
+                onClick={changeIMGbot}
               >
                 <div
-                  className={`${classes.productDetailSmall} ms-3`}
+                  className={`${classes.productDetailSmall}`}
                   style={{
                     background: `url(${linkIMG}) no-repeat bottom `,
                   }}
@@ -193,7 +197,7 @@ function ProductDetail() {
               </Nav>
             </Col>
           </Row>
-          <div className="border p-4">
+          <div className="border p-4 px-5">
             <Tab.Content>
               <Tab.Pane eventKey="description">
                 <p>description</p>
@@ -203,6 +207,18 @@ function ProductDetail() {
                   <Col xs={12}>
                     <div className="fw-semibold mb-2 fs-5">
                       CUSTOMER REVIEWS
+                    </div>
+                    <div className="d-flex opacity-75 py-3 border-bottom">
+                      <div>
+                        <FaUserCircle fill="gray" className="fs-1" />
+                      </div>
+                      <div className="ms-4  ">
+                        <div className="fw-semibold fs-5">admin</div>
+                        <div className={`${classes.reviewTime} fw-semibold`}>
+                          Sep 17th
+                        </div>
+                        <div className="fw-semibold fs-5">helpdesk 24/7</div>
+                      </div>
                     </div>
                     <div className="d-flex opacity-75 py-3 border-bottom">
                       <div>
