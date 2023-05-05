@@ -164,16 +164,18 @@ function ProductDetail() {
           // eslint-disable-next-line @typescript-eslint/no-shadow
           onSelect={(key) => setKey(key)}
         >
-          <Row className="mt-5">
-            <Col lg={1} xs={12}>
+          <Row className="mt-5 mb-1">
+            <Col lg={2} xs={12}>
               <Nav
                 variant="pills"
                 className={`${classes.descriptionActive} flex-row`}
               >
-                <Nav.Item className={`${classes.description} m-2 ms-0`}>
+                <Nav.Item
+                  className={`${classes.description} ms-0 w-100 text-center`}
+                >
                   <Nav.Link
                     eventKey="description"
-                    className="fw-semibold py-3"
+                    className="fw-semibold py-3 rounded-0"
                     style={key === 'description' ? ActiveStyle : inActiveStyle}
                   >
                     DESCRIPTION
@@ -181,17 +183,17 @@ function ProductDetail() {
                 </Nav.Item>
               </Nav>
             </Col>
-            <Col lg={2} xs={12} className="ms-4">
+            <Col lg={2} xs={12} className="ps-0">
               <Nav variant="pills" className="flex-row">
                 <Nav.Item
-                  className={`${classes.description} text-decoration-none m-2`}
+                  className={`${classes.description} text-decoration-none`}
                 >
                   <Nav.Link
                     eventKey="review"
                     style={key === 'review' ? ActiveStyle : inActiveStyle}
-                    className="fw-semibold px-3 py-3"
+                    className="fw-semibold px-3 py-3 rounded-0"
                   >
-                    REVIEWS
+                    REVIEWS (2)
                   </Nav.Link>
                 </Nav.Item>
               </Nav>
