@@ -99,7 +99,7 @@ function ProductDetail() {
               asdasdasdasdasdasdasdasd
             </div>
             <div className="border-bottom py-5">
-              <div>
+              <div className="mb-2">
                 <span className="fw-semibold opacity-50 fs-5">
                   Availability:
                 </span>
@@ -109,14 +109,16 @@ function ProductDetail() {
                   In Stock
                 </span>
               </div>
-              <div className="d-flex justify-content-between align-items-center">
-                <div className="d-flex align-items-center">
-                  <div className="fs-5 fw-semibold opacity-50">Quantity:</div>
+              <Row className="d-flex justify-content-between align-items-center">
+                <Col className="d-flex align-items-center">
+                  <div className="fs-5 fw-semibold opacity-50 mb-2">
+                    Quantity:
+                  </div>
                   <div className="mx-2">
                     <QuantityButton className="d-flex flex-row" />
                   </div>
-                </div>
-                <div>
+                </Col>
+                <Col className={`${classes.cartButtonCol} d-flex mt-2`}>
                   <button
                     className={`${classes.addToCartButton} d-flex align-items-center rounded-pill p-2 px-4 border-0`}
                     type="button"
@@ -126,19 +128,23 @@ function ProductDetail() {
                       Add to Cart
                     </div>
                   </button>
-                </div>
-              </div>
+                </Col>
+              </Row>
             </div>
             <Row className={`${classes.socialNetworkIcon} fs-6 my-4`}>
-              <Col className="fs-1 d-flex">
+              <Col lg={4} xs={12} className="fs-2 d-flex pb-2">
                 <FaHeart
-                  className={`${classes.leftIcon} fs-1 p-2 rounded-pill`}
+                  className={`${classes.leftIcon} fs-2 p-2 rounded-pill w-auto h-auto`}
                 />
                 <FaSyncAlt
-                  className={`${classes.leftIcon} fs-1 p-2 rounded-pill`}
+                  className={`${classes.leftIcon} fs-2 p-2 rounded-pill w-auto h-auto`}
                 />
               </Col>
-              <Col className="d-flex justify-content-end align-items-center">
+              <Col
+                lg={8}
+                xs={12}
+                className={`${classes.rightIcon} d-flex align-items-center`}
+              >
                 <span>
                   <FaFacebookF />
                 </span>
@@ -175,7 +181,7 @@ function ProductDetail() {
                 >
                   <Nav.Link
                     eventKey="description"
-                    className="fw-semibold py-3 rounded-0"
+                    className="fw-semibold py-3 rounded-0 mb-1"
                     style={key === 'description' ? ActiveStyle : inActiveStyle}
                   >
                     DESCRIPTION
@@ -183,10 +189,30 @@ function ProductDetail() {
                 </Nav.Item>
               </Nav>
             </Col>
-            <Col lg={2} xs={12} className="ps-0">
+            <Col lg={0} xs={12} className={classes.additionalInfo}>
+              <Nav
+                variant="pills"
+                className={`${classes.descriptionActive} flex-row`}
+              >
+                <Nav.Item
+                  className={`${classes.description} ms-0 w-100 text-center`}
+                >
+                  <Nav.Link
+                    eventKey="additionalInfo"
+                    className="fw-semibold py-3 rounded-0 mb-1"
+                    style={
+                      key === 'additionalInfo' ? ActiveStyle : inActiveStyle
+                    }
+                  >
+                    ADDITIONAL INFORMATION
+                  </Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </Col>
+            <Col lg={2} xs={12}>
               <Nav variant="pills" className="flex-row">
                 <Nav.Item
-                  className={`${classes.description} text-decoration-none`}
+                  className={`${classes.description} text-decoration-none w-100 text-center`}
                 >
                   <Nav.Link
                     eventKey="review"
@@ -202,7 +228,7 @@ function ProductDetail() {
           <div className="border p-4 px-5">
             <Tab.Content>
               <Tab.Pane eventKey="description">
-                <p>description</p>
+                <div className="fw-semibold mb-2 fs-5">DESCRIPTION</div>
               </Tab.Pane>
               <Tab.Pane eventKey="review">
                 <Row>
@@ -241,7 +267,7 @@ function ProductDetail() {
                       <Col lg={6}>
                         <input
                           type="text"
-                          className="w-100 p-2 px-3 border fw-semibold"
+                          className="w-100 p-2 px-3 mb-2 border fw-semibold"
                           placeholder="Enter Your Name"
                         />
                       </Col>
@@ -281,7 +307,7 @@ function ProductDetail() {
           <Row>
             {testRelatedProduct &&
               testRelatedProduct.map((popularProduct) => (
-                <Col lg={3} xs={12} key={popularProduct._id}>
+                <Col lg={3} xs={6} key={popularProduct._id}>
                   <SingleProduct popularProduct={popularProduct} />
                 </Col>
               ))}

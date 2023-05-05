@@ -14,7 +14,7 @@
 .socialNetworkIcon span{
   background-color: #363f4e;
   color: white;
-  margin-left: 8px;
+  margin-right: 8px;
   padding: 9px 12px 10px 12px;
   height: fit-content;
 }
@@ -51,4 +51,34 @@
 
 .relatedProduct {
   margin-top: 15rem;
+}
+
+.additionalInfo {
+  display: none;
+}
+
+.rightIcon {
+  justify-content: flex-end;
+}
+
+.cartButtonCol {
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 992px) {
+  .additionalInfo {
+    display: block;
+  }
+  .rightIcon {
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (max-width: 447px) {
+  .rightIcon {
+    justify-content: flex-start;
+  }
+  .cartButtonCol {
+    justify-content: flex-start;
+  }
 }
