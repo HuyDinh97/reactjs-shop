@@ -20,9 +20,9 @@ import Tab from 'react-bootstrap/Tab';
 
 import SingleProduct from 'components/SingleProduct/SingleProduct';
 import { useGetBestSeller } from 'store/selectors/common';
+import TitleUnderline from 'components/PopularProduct/TitleUnderline';
 import cart from './img/cart-icon-1.png';
 import classes from './ProductDetail.module.css';
-import TitleUnderline from 'components/PopularProduct/TitleUnderline';
 
 function ProductDetail() {
   const testRelatedProduct = useGetBestSeller();
