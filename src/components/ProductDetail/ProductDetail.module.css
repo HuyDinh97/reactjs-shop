@@ -49,6 +49,10 @@
   color: white;
 }
 
+.submitButton:hover {
+  background-color: #eb3d32;
+}
+
 .relatedProduct {
   margin-top: 15rem;
 }
