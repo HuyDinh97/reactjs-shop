@@ -1,6 +1,7 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/forbid-component-props */
 /* eslint-disable react/forbid-dom-props */
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -21,12 +22,15 @@ import Tab from 'react-bootstrap/Tab';
 import SingleProduct from 'components/SingleProduct/SingleProduct';
 import { useGetBestSeller, useGetProductDetail } from 'store/selectors/common';
 import TitleUnderline from 'components/PopularProduct/TitleUnderline';
+import { useDispatch } from 'react-redux';
+import { addProductToCart } from 'store/actions/common';
 import cart from './img/cart-icon-1.png';
 import classes from './ProductDetail.module.css';
 
 function ProductDetail() {
   const testRelatedProduct = useGetBestSeller();
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
+  const priceCheck = 'd-none';
 
   const [img, setImg] = useState('no-repeat center');
   const changeIMGtop = () => {
@@ -44,6 +48,22 @@ function ProductDetail() {
     background: '#363f4e',
   };
   const productDetailData = useGetProductDetail();
+  const dispatch = useDispatch();
+
+  const addProduct = useCallback(
+    (productInCart) => () => {
+      const data = {
+        _id: productInCart._id,
+        name: productInCart.name,
+        price: productInCart.price,
+        sales: productInCart.sales,
+        thumb: productInCart.thumb,
+        quantity: 1,
+      };
+      dispatch(addProductToCart(data));
+    },
+    [dispatch]
+  );
 
   return (
     <div className="my-5">
@@ -92,13 +112,17 @@ function ProductDetail() {
               <Col className="ps-4" lg={7}>
                 <h2>{data.name}</h2>
                 <div>
-                  <span className="fs-6 fw-semibold opacity-50">
-                    <s>$ 95.00</s>
+                  <span
+                    className={`${
+                      data.sales === 0 ? priceCheck : null
+                    } fs-6 fw-semibold opacity-50 me-3`}
+                  >
+                    <s>$ {data.price}</s>
                   </span>
                   <span
-                    className={`${classes.afterSalePriceColor} fs-4 ms-3 fw-semibold`}
+                    className={`${classes.afterSalePriceColor} fs-4 fw-semibold`}
                   >
-                    $ 81.00
+                    $ {data.afterSalesPriceDetail}
                   </span>
                 </div>
                 <div className="border-bottom py-4 fw-semibold opacity-50 fs-5">
@@ -112,7 +136,7 @@ function ProductDetail() {
                     <span
                       className={`${classes.afterSalePriceColor} fw-semibold fs-5 ms-1`}
                     >
-                      In Stock
+                      {data.available}
                     </span>
                   </div>
                   <Row className="d-flex justify-content-between align-items-center">
@@ -128,6 +152,7 @@ function ProductDetail() {
                       <button
                         className={`${classes.addToCartButton} d-flex align-items-center rounded-pill p-2 px-4 border-0`}
                         type="button"
+                        onClick={addProduct(data)}
                       >
                         <img src={cart} alt="cart" />
                         <div className="d-flex align-items-center mx-2 fw-semibold text-white fs-6">
