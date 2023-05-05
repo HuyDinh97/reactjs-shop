@@ -19,15 +19,14 @@ import Nav from 'react-bootstrap/Nav';
 import Tab from 'react-bootstrap/Tab';
 
 import SingleProduct from 'components/SingleProduct/SingleProduct';
-import { useGetBestSeller } from 'store/selectors/common';
+import { useGetBestSeller, useGetProductDetail } from 'store/selectors/common';
 import TitleUnderline from 'components/PopularProduct/TitleUnderline';
 import cart from './img/cart-icon-1.png';
 import classes from './ProductDetail.module.css';
 
 function ProductDetail() {
   const testRelatedProduct = useGetBestSeller();
-  const linkIMG =
-    'http://c3kienthuyhp.edu.vn/wp-content/uploads/2022/12/1672384705_929_999-Anh-Gai-Xinh-Viet-Nam-Hot-Girl-Cute-De.jpg';
+  const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
 
   const [img, setImg] = useState('no-repeat center');
   const changeIMGtop = () => {
@@ -44,126 +43,134 @@ function ProductDetail() {
   const inActiveStyle = {
     background: '#363f4e',
   };
+  const productDetailData = useGetProductDetail();
 
   return (
     <div className="my-5">
       <Container>
-        <Row>
-          <Col lg={5}>
-            <div
-              className={classes.productDetailIMG}
-              style={{
-                background: `url(${linkIMG}) ${img}`,
-              }}
-            />
-            <div className="d-flex mt-3">
-              <button
-                type="button"
-                className="border-0 p-0"
-                onClick={changeIMGtop}
-              >
+        {productDetailData &&
+          productDetailData.map((data) => (
+            <Row key={data._id}>
+              <Col lg={5}>
                 <div
-                  className={`${classes.productDetailSmall}`}
+                  className={classes.productDetailIMG}
                   style={{
-                    background: `url(${linkIMG}) no-repeat top `,
+                    background: `url(${linkIMG + data.thumb}) ${img}`,
                   }}
                 />
-              </button>
-              <button
-                type="button"
-                className="border-0 p-0 ms-2"
-                onClick={changeIMGbot}
-              >
-                <div
-                  className={`${classes.productDetailSmall}`}
-                  style={{
-                    background: `url(${linkIMG}) no-repeat bottom `,
-                  }}
-                />
-              </button>
-            </div>
-          </Col>
-          <Col className="ps-4" lg={7}>
-            <h2>Product</h2>
-            <div>
-              <span className="fs-6 fw-semibold opacity-50">
-                <s>$ 95.00</s>
-              </span>
-              <span
-                className={`${classes.afterSalePriceColor} fs-4 ms-3 fw-semibold`}
-              >
-                $ 81.00
-              </span>
-            </div>
-            <div className="border-bottom py-4 fw-semibold opacity-50 fs-5">
-              asdasdasdasdasdasdasdasd
-            </div>
-            <div className="border-bottom py-5">
-              <div className="mb-2">
-                <span className="fw-semibold opacity-50 fs-5">
-                  Availability:
-                </span>
-                <span
-                  className={`${classes.afterSalePriceColor} fw-semibold fs-5 ms-1`}
-                >
-                  In Stock
-                </span>
-              </div>
-              <Row className="d-flex justify-content-between align-items-center">
-                <Col className="d-flex align-items-center">
-                  <div className="fs-5 fw-semibold opacity-50 mb-2">
-                    Quantity:
-                  </div>
-                  <div className="mx-2">
-                    <QuantityButton className="d-flex flex-row" />
-                  </div>
-                </Col>
-                <Col className={`${classes.cartButtonCol} d-flex mt-2`}>
+                <div className="d-flex mt-3">
                   <button
-                    className={`${classes.addToCartButton} d-flex align-items-center rounded-pill p-2 px-4 border-0`}
                     type="button"
+                    className="border-0 p-0"
+                    onClick={changeIMGtop}
                   >
-                    <img src={cart} alt="cart" />
-                    <div className="d-flex align-items-center mx-2 fw-semibold text-white fs-6">
-                      Add to Cart
-                    </div>
+                    <div
+                      className={`${classes.productDetailSmall}`}
+                      style={{
+                        background: `url(${
+                          linkIMG + data.thumb
+                        }) no-repeat top `,
+                      }}
+                    />
                   </button>
-                </Col>
-              </Row>
-            </div>
-            <Row className={`${classes.socialNetworkIcon} fs-6 my-4`}>
-              <Col lg={4} xs={12} className="fs-2 d-flex pb-2">
-                <FaHeart
-                  className={`${classes.leftIcon} fs-2 p-2 rounded-pill w-auto h-auto`}
-                />
-                <FaSyncAlt
-                  className={`${classes.leftIcon} fs-2 p-2 rounded-pill w-auto h-auto`}
-                />
+                  <button
+                    type="button"
+                    className="border-0 p-0 ms-2"
+                    onClick={changeIMGbot}
+                  >
+                    <div
+                      className={`${classes.productDetailSmall}`}
+                      style={{
+                        background: `url(${
+                          linkIMG + data.thumb
+                        }) no-repeat bottom `,
+                      }}
+                    />
+                  </button>
+                </div>
               </Col>
-              <Col
-                lg={8}
-                xs={12}
-                className={`${classes.rightIcon} d-flex align-items-center`}
-              >
-                <span>
-                  <FaFacebookF />
-                </span>
-                <span>
-                  <AiOutlineTwitter />
-                </span>
-                <span>
-                  <FaLinkedinIn />
-                </span>
-                <span>
-                  <FaPinterestP />
-                </span>
-                <span>
-                  <FaGooglePlusG />
-                </span>
+              <Col className="ps-4" lg={7}>
+                <h2>{data.name}</h2>
+                <div>
+                  <span className="fs-6 fw-semibold opacity-50">
+                    <s>$ 95.00</s>
+                  </span>
+                  <span
+                    className={`${classes.afterSalePriceColor} fs-4 ms-3 fw-semibold`}
+                  >
+                    $ 81.00
+                  </span>
+                </div>
+                <div className="border-bottom py-4 fw-semibold opacity-50 fs-5">
+                  asdasdasdasdasdasdasdasd
+                </div>
+                <div className="border-bottom py-5">
+                  <div className="mb-2">
+                    <span className="fw-semibold opacity-50 fs-5">
+                      Availability:
+                    </span>
+                    <span
+                      className={`${classes.afterSalePriceColor} fw-semibold fs-5 ms-1`}
+                    >
+                      In Stock
+                    </span>
+                  </div>
+                  <Row className="d-flex justify-content-between align-items-center">
+                    <Col className="d-flex align-items-center">
+                      <div className="fs-5 fw-semibold opacity-50 mb-2">
+                        Quantity:
+                      </div>
+                      <div className="mx-2">
+                        <QuantityButton className="d-flex flex-row" />
+                      </div>
+                    </Col>
+                    <Col className={`${classes.cartButtonCol} d-flex mt-2`}>
+                      <button
+                        className={`${classes.addToCartButton} d-flex align-items-center rounded-pill p-2 px-4 border-0`}
+                        type="button"
+                      >
+                        <img src={cart} alt="cart" />
+                        <div className="d-flex align-items-center mx-2 fw-semibold text-white fs-6">
+                          Add to Cart
+                        </div>
+                      </button>
+                    </Col>
+                  </Row>
+                </div>
+                <Row className={`${classes.socialNetworkIcon} fs-6 my-4`}>
+                  <Col lg={4} xs={12} className="fs-2 d-flex pb-2">
+                    <FaHeart
+                      className={`${classes.leftIcon} fs-2 p-2 rounded-pill w-auto h-auto`}
+                    />
+                    <FaSyncAlt
+                      className={`${classes.leftIcon} ${classes.hiddenIcon} fs-2 p-2 rounded-pill w-auto h-auto`}
+                    />
+                  </Col>
+                  <Col
+                    lg={8}
+                    xs={12}
+                    className={`${classes.rightIcon} d-flex align-items-center`}
+                  >
+                    <span>
+                      <FaFacebookF />
+                    </span>
+                    <span>
+                      <AiOutlineTwitter />
+                    </span>
+                    <span>
+                      <FaLinkedinIn />
+                    </span>
+                    <span>
+                      <FaPinterestP />
+                    </span>
+                    <span>
+                      <FaGooglePlusG />
+                    </span>
+                  </Col>
+                </Row>
               </Col>
             </Row>
-          </Col>
-        </Row>
+          ))}
         <Tab.Container
           defaultActiveKey="description"
           activeKey={key}

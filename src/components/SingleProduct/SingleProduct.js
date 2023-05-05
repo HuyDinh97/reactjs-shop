@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { HiHeart } from 'react-icons/hi';
 import { BsFillEyeFill } from 'react-icons/bs';
 import { TbRefresh } from 'react-icons/tb';
-import { addProductToCart } from 'store/actions/common';
+import { addProductToCart, productDetail } from 'store/actions/common';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import classes from './SingleProduct.module.css';
 
@@ -26,10 +27,18 @@ function SingleProduct({ popularProduct }) {
     },
     [dispatch]
   );
+
+  const uploadInfo = useCallback(
+    (data) => () => {
+      dispatch(productDetail(data));
+    },
+    [dispatch]
+  );
+
   return (
     <div>
       <div className={classes.apperance}>
-        <a>
+        <div>
           <div
             className={classes.product_img}
             // eslint-disable-next-line react/forbid-dom-props
@@ -53,7 +62,12 @@ function SingleProduct({ popularProduct }) {
                     <HiHeart />
                   </span>
                   <span>
-                    <BsFillEyeFill />
+                    <Link
+                      to="/product-detail"
+                      onClick={uploadInfo(popularProduct)}
+                    >
+                      <BsFillEyeFill />
+                    </Link>
                   </span>
                   <span>
                     <TbRefresh />
@@ -63,7 +77,7 @@ function SingleProduct({ popularProduct }) {
               <div className={classes.white_overlay} />
             </div>
           </div>
-        </a>
+        </div>
       </div>
       <div className="card-body d-flex justify-content-center my-2 mb-2 flex-column text-center">
         <div className={classes.product_name}>

@@ -10,6 +10,7 @@ const initialState = {
     products: [],
     totalCost: 0,
   },
+  productDetail: [],
 };
 
 const calculateTotalCost = (products) =>
@@ -105,6 +106,15 @@ export default (state = initialState, action) => {
           products: newProductList,
           totalCost: calculateTotalCost(newProductList),
         },
+      };
+    case 'PRODUCT_DETAIL':
+      const productDetail = action.payload;
+      const available = productDetail.quantity > 0 ? 'In Stock' : 'Sold out';
+      productDetail.available = available;
+      const newProductDetail = productDetail;
+      return {
+        ...state,
+        productDetail: [newProductDetail],
       };
     case 'DELETE_PRODUCTINCART':
       const productDelete = state.productInCart.products.filter(
