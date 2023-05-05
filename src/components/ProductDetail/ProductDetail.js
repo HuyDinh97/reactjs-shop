@@ -22,6 +22,7 @@ import SingleProduct from 'components/SingleProduct/SingleProduct';
 import { useGetBestSeller } from 'store/selectors/common';
 import cart from './img/cart-icon-1.png';
 import classes from './ProductDetail.module.css';
+import TitleUnderline from 'components/PopularProduct/TitleUnderline';
 
 function ProductDetail() {
   const testRelatedProduct = useGetBestSeller();
@@ -256,7 +257,9 @@ function ProductDetail() {
           </div>
         </Tab.Container>
         <div className={classes.relatedProduct}>
-          <div>RELATED PRODUCT</div>
+          <div className="fw-bold fs-2 mb-5">
+            <TitleUnderline name="RELATED PRODUCTS" position="left" />
+          </div>
           <Row>
             {testRelatedProduct &&
               testRelatedProduct.map((popularProduct) => (
