@@ -187,7 +187,6 @@ button:first-child:active {
   }
   .navigation {
     display: flex;
-    justify-content: flex-end;
     padding-right: 1rem!important;
   }
   .secondNavigation {
@@ -195,11 +194,6 @@ button:first-child:active {
   }
   .searchSection{
     display: none;
-  }
-  .navigation {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 1rem!important;
   }
   .mobileSearch {
     display: block;
@@ -227,10 +221,6 @@ button:first-child:active {
 @media screen and (max-width:576px) {
   .searchBar {
     width: 100%;
-  }
-  .navbar-nav {
-    position: absolute!important;
-    right: -27px!important;
   }
   .cartDropdown {
     display: flex;

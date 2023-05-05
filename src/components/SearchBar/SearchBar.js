@@ -52,7 +52,7 @@ function SearchBar() {
                 </button>
               </div>
             </Col>
-            <Col xl={10} xs={9} className={classes.cartDropdown}>
+            <Col xl={10} xs={8} className={classes.cartDropdown}>
               <div>
                 <Dropdown className={classes.cart_button}>
                   <Dropdown.Toggle
@@ -70,37 +70,37 @@ function SearchBar() {
                   <Dropdown.Menu className={classes.dropdown_menu}>
                     <div>
                       {productInCart?.length > 0 ? (
-                productInCart.map((product) => (
-                  <div key={product._id}>
-                    <ul className={classes.dropdown_menu_product}>
-                      <li className="d-flex">
-                        <span>
-                          <img src={linkIMG + product.thumb} alt="1" />
-                        </span>
-                        <span>
-                          <div className="fw-semibold">{product.name}</div>
-                          <div>Quantiy: {product.quantity}</div>
-                          <div className={classes.price_color}>
-                            $
-                            {product.afterSalesPrice}
+                        productInCart.map((product) => (
+                          <div key={product._id}>
+                            <ul className={classes.dropdown_menu_product}>
+                              <li className="d-flex">
+                                <span>
+                                  <img src={linkIMG + product.thumb} alt="1" />
+                                </span>
+                                <span>
+                                  <div className="fw-semibold">{product.name}</div>
+                                  <div>Quantiy: {product.quantity}</div>
+                                  <div className={classes.price_color}>
+                                    $
+                                    {product.afterSalesPrice}
+                                  </div>
+                                </span>
+                                <span className={classes.close_button}>
+                                  <button type="button" onClick={deleteProduct(product._id)}>
+                                    <GrFormClose />
+                                  </button>
+                                </span>
+                              </li>
+                            </ul>
                           </div>
-                        </span>
-                        <span className={classes.close_button}>
-                          <button type="button" onClick={deleteProduct(product._id)}>
-                            <GrFormClose />
-                          </button>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                ))
-              ) : (
-                <div>
-                  <ul className={classes.dropdown_menu_product}>
-                    <li className="d-flex">No items in cart!</li>
-                  </ul>
-                </div>
-              )}
+                        ))
+                      ) : (
+                        <div>
+                          <ul className={classes.dropdown_menu_product}>
+                            <li className="d-flex">No items in cart!</li>
+                          </ul>
+                        </div>
+                      )}
                       <div className={classes.space_between}>
                         <span>Total</span>
                         <span className={classes.cart_total_price}>${totalCost}</span>
@@ -115,9 +115,9 @@ function SearchBar() {
                 </Dropdown>
               </div>
             </Col>
-            <Col xl={1} xs={2} className={classes.mobileSearch}>
+            <Col xl={1} xs={2} className={`${classes.mobileSearch} p-0`}>
               <Navbar className="d-flex flex-nowrap" expand="xs">
-                <Container className="flex-row-reverse">
+                <Container className="flex-row-reverse p-0">
                   <Navbar.Toggle
                     className={classes.navbarToggle}
                     aria-controls="search"
@@ -135,7 +135,7 @@ function SearchBar() {
                 </Container>
               </Navbar>
             </Col>
-            <Col xl={1} xs={1} className={classes.navigation}>
+            <Col xl={1} xs={2} className={`${classes.navigation} p-0`}>
               <Navigation />
             </Col>
           </Row>

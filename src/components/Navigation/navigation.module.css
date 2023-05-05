@@ -45,6 +45,7 @@
   .containerNavbar{
     display: flex;
     justify-content: flex-end!important;
+    padding-left: 2px;
   }
   .containerNavbar svg {
     color: #ea3c31;
