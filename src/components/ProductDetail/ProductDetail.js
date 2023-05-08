@@ -20,7 +20,10 @@ import Nav from 'react-bootstrap/Nav';
 import Tab from 'react-bootstrap/Tab';
 
 import SingleProduct from 'components/SingleProduct/SingleProduct';
-import { useGetProductDetail } from 'store/selectors/common';
+import {
+  useGetProductDetail,
+  useGetUpdateQuantity,
+} from 'store/selectors/common';
 import TitleUnderline from 'components/PopularProduct/TitleUnderline';
 import { useDispatch } from 'react-redux';
 import { addProductToCart } from 'store/actions/common';
@@ -29,6 +32,7 @@ import classes from './ProductDetail.module.css';
 
 function ProductDetail() {
   const testRelatedProduct = [];
+  const quantityUpdate = useGetUpdateQuantity();
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
   const dispatch = useDispatch();
@@ -57,11 +61,12 @@ function ProductDetail() {
         price: productInCart.price,
         sales: productInCart.sales,
         thumb: productInCart.thumb,
-        quantity: 1,
+        quantity: quantityUpdate[0],
       };
       dispatch(addProductToCart(data));
+      console.log(data);
     },
-    [dispatch]
+    [dispatch, quantityUpdate]
   );
 
   return (
@@ -148,6 +153,7 @@ function ProductDetail() {
                           className="d-flex flex-row"
                           productId={product._id}
                           productQuantity={1}
+                          type="update"
                         />
                       </div>
                     </Col>

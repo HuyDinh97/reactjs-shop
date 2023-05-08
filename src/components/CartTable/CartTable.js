@@ -78,7 +78,7 @@ function CartTable() {
                 {product.afterSalesPerOnePrice}
               </Col>
               <Col lg={2}>
-                <QuantityButton productId={product._id} productQuantity={product.quantity} typeOfQuantity="table" />
+                <QuantityButton productId={product._id} productQuantity={product.quantity} type="update" />
               </Col>
               <Col className={classes.price_sample} lg={1}>
                 $

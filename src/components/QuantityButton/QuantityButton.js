@@ -4,11 +4,17 @@ import { FaMinus, FaPlus } from 'react-icons/fa';
 import {
   decreaseProductInCart,
   increaseProductInCart,
+  updateQuantity,
 } from 'store/actions/common';
 import { useDispatch } from 'react-redux';
 import classes from './QuantityButton.module.css';
 
-function QuantityButton({ productId, productQuantity, flexDirectionType }) {
+function QuantityButton({
+  productId,
+  productQuantity,
+  flexDirectionType,
+  type,
+}) {
   const handleChange = () => {
     console.log('input change');
   };
@@ -26,6 +32,7 @@ function QuantityButton({ productId, productQuantity, flexDirectionType }) {
   const flexDirection = flexDirectionType || 'column';
 
   const dispatch = useDispatch();
+  console.log(type);
 
   const changeProductQuantity = useCallback(
     (id, isDecrease = false) =>
@@ -37,13 +44,19 @@ function QuantityButton({ productId, productQuantity, flexDirectionType }) {
           if (value >= 2) {
             setValue(value - 1);
           }
-          dispatch(decreaseProductInCart(id));
+          if (type === 'update') {
+            dispatch(decreaseProductInCart(id));
+          }
+          dispatch(updateQuantity(value - 1));
           return;
         }
-        dispatch(increaseProductInCart(id));
+        if (type === 'update') {
+          dispatch(increaseProductInCart(id));
+        }
         setValue(value + 1);
+        dispatch(updateQuantity(value + 1));
       },
-    [dispatch, value]
+    [dispatch, type, value]
   );
   return (
     <div className={`${classes.cartDetailQuantity} ${flexDirection} border-0`}>
