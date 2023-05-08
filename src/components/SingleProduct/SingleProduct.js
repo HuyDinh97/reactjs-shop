@@ -63,7 +63,7 @@ function SingleProduct({ popularProduct }) {
                   </span>
                   <span>
                     <Link
-                      to="/product-detail"
+                      to={`/product-detail/${popularProduct._id}`}
                       onClick={uploadInfo(popularProduct)}
                     >
                       <BsFillEyeFill />
