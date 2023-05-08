@@ -31,7 +31,12 @@ function QuantityButton({ productId, productQuantity, flexDirectionType }) {
     (id, isDecrease = false) =>
       () => {
         if (isDecrease) {
-          setValue(value - 1);
+          if (value < 2) {
+            setValue(value);
+          }
+          if (value >= 2) {
+            setValue(value - 1);
+          }
           dispatch(decreaseProductInCart(id));
           return;
         }
