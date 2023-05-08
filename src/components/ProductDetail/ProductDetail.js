@@ -64,7 +64,6 @@ function ProductDetail() {
         quantity: quantityUpdate[0],
       };
       dispatch(addProductToCart(data));
-      console.log(data);
     },
     [dispatch, quantityUpdate]
   );

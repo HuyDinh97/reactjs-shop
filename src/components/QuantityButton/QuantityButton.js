@@ -32,7 +32,6 @@ function QuantityButton({
   const flexDirection = flexDirectionType || 'column';
 
   const dispatch = useDispatch();
-  console.log(type);
 
   const changeProductQuantity = useCallback(
     (id, isDecrease = false) =>
