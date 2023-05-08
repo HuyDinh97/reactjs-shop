@@ -20,7 +20,7 @@ import Nav from 'react-bootstrap/Nav';
 import Tab from 'react-bootstrap/Tab';
 
 import SingleProduct from 'components/SingleProduct/SingleProduct';
-import { useGetBestSeller, useGetProductDetail } from 'store/selectors/common';
+import { useGetProductDetail } from 'store/selectors/common';
 import TitleUnderline from 'components/PopularProduct/TitleUnderline';
 import { useDispatch } from 'react-redux';
 import { addProductToCart } from 'store/actions/common';
@@ -28,9 +28,10 @@ import cart from './img/cart-icon-1.png';
 import classes from './ProductDetail.module.css';
 
 function ProductDetail() {
-  const testRelatedProduct = useGetBestSeller();
+  const testRelatedProduct = [];
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
+  const dispatch = useDispatch();
 
   const [img, setImg] = useState('no-repeat center');
   const changeIMGtop = () => {
@@ -48,8 +49,6 @@ function ProductDetail() {
     background: '#363f4e',
   };
   const productDetailData = useGetProductDetail();
-  const dispatch = useDispatch();
-
   const addProduct = useCallback(
     (productInCart) => () => {
       const data = {
