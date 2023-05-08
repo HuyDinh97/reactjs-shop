@@ -153,7 +153,6 @@ function ProductDetail() {
                           className="d-flex flex-row"
                           productId={product._id}
                           productQuantity={1}
-                          type="update"
                         />
                       </div>
                     </Col>
