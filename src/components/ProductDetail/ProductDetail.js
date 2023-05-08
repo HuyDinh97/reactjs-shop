@@ -68,13 +68,13 @@ function ProductDetail() {
     <div className="my-5">
       <Container>
         {productDetailData &&
-          productDetailData.map((data) => (
-            <Row key={data._id}>
+          productDetailData.map((product) => (
+            <Row key={product._id}>
               <Col lg={5}>
                 <div
                   className={classes.productDetailIMG}
                   style={{
-                    background: `url(${linkIMG + data.thumb}) ${img}`,
+                    background: `url(${linkIMG + product.thumb}) ${img}`,
                   }}
                 />
                 <div className="d-flex mt-3">
@@ -87,7 +87,7 @@ function ProductDetail() {
                       className={`${classes.productDetailSmall}`}
                       style={{
                         background: `url(${
-                          linkIMG + data.thumb
+                          linkIMG + product.thumb
                         }) no-repeat top `,
                       }}
                     />
@@ -101,7 +101,7 @@ function ProductDetail() {
                       className={`${classes.productDetailSmall}`}
                       style={{
                         background: `url(${
-                          linkIMG + data.thumb
+                          linkIMG + product.thumb
                         }) no-repeat bottom `,
                       }}
                     />
@@ -109,19 +109,19 @@ function ProductDetail() {
                 </div>
               </Col>
               <Col className="ps-4" lg={7}>
-                <h2>{data.name}</h2>
+                <h2>{product.name}</h2>
                 <div>
                   <span
                     className={`${
-                      data.sales === 0 ? priceCheck : null
+                      product.sales === 0 ? priceCheck : null
                     } fs-6 fw-semibold opacity-50 me-3`}
                   >
-                    <s>$ {data.price}</s>
+                    <s>$ {product.price}</s>
                   </span>
                   <span
                     className={`${classes.afterSalePriceColor} fs-4 fw-semibold`}
                   >
-                    $ {data.afterSalesPriceDetail}
+                    $ {product.afterSalesPriceDetail}
                   </span>
                 </div>
                 <div className="border-bottom py-4 fw-semibold opacity-50 fs-5">
@@ -135,7 +135,7 @@ function ProductDetail() {
                     <span
                       className={`${classes.afterSalePriceColor} fw-semibold fs-5 ms-1`}
                     >
-                      {data.available}
+                      {product.available}
                     </span>
                   </div>
                   <Row className="d-flex justify-content-between align-items-center">
@@ -144,14 +144,18 @@ function ProductDetail() {
                         Quantity:
                       </div>
                       <div className="mx-2">
-                        <QuantityButton className="d-flex flex-row" />
+                        <QuantityButton
+                          className="d-flex flex-row"
+                          productId={product._id}
+                          productQuantity={1}
+                        />
                       </div>
                     </Col>
                     <Col className={`${classes.cartButtonCol} d-flex mt-2`}>
                       <button
                         className={`${classes.addToCartButton} d-flex align-items-center rounded-pill p-2 px-4 border-0`}
                         type="button"
-                        onClick={addProduct(data)}
+                        onClick={addProduct(product)}
                       >
                         <img src={cart} alt="cart" />
                         <div className="d-flex align-items-center mx-2 fw-semibold text-white fs-6">

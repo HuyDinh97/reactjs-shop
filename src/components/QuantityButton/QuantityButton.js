@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+/* eslint-disable no-unused-expressions */
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { FaMinus, FaPlus } from 'react-icons/fa';
 import {
   decreaseProductInCart,
@@ -11,28 +12,40 @@ function QuantityButton({ productId, productQuantity, flexDirectionType }) {
   const handleChange = () => {
     console.log('input change');
   };
+  const [value, setValue] = useState(1);
+  const quantiyDetail = useRef(1);
+
+  useEffect(() => {
+    setValue(1);
+  }, []);
+
+  useEffect(() => {
+    quantiyDetail.current = value;
+  });
 
   const flexDirection = flexDirectionType || 'column';
 
   const dispatch = useDispatch();
 
-  const changeProductQuanity = useCallback(
+  const changeProductQuantity = useCallback(
     (id, isDecrease = false) =>
       () => {
         if (isDecrease) {
+          setValue(value - 1);
           dispatch(decreaseProductInCart(id));
           return;
         }
         dispatch(increaseProductInCart(id));
+        setValue(value + 1);
       },
-    [dispatch]
+    [dispatch, value]
   );
   return (
     <div className={`${classes.cartDetailQuantity} ${flexDirection} border-0`}>
       <button
         type="button"
         className={`${classes.quantity_button} w-100 d-flex justify-content-center`}
-        onClick={changeProductQuanity(productId, true)}
+        onClick={changeProductQuantity(productId, true)}
       >
         <FaMinus />
       </button>
@@ -41,7 +54,10 @@ function QuantityButton({ productId, productQuantity, flexDirectionType }) {
           id={productId}
           type="tel"
           min={0}
-          value={productQuantity}
+          ref={quantiyDetail}
+          value={
+            productQuantity && productQuantity > 1 ? productQuantity : value
+          }
           onChange={handleChange}
           aria-label="couple-code"
         />
@@ -49,7 +65,7 @@ function QuantityButton({ productId, productQuantity, flexDirectionType }) {
       <button
         type="button"
         className={`${classes.quantity_button} w-100 d-flex justify-content-center`}
-        onClick={changeProductQuanity(productId)}
+        onClick={changeProductQuantity(productId)}
       >
         <FaPlus />
       </button>
