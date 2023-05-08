@@ -1,11 +1,10 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useCallback } from 'react';
 import { HiHeart } from 'react-icons/hi';
 import { BsFillEyeFill } from 'react-icons/bs';
 import { TbRefresh } from 'react-icons/tb';
 import { addProductToCart, productDetail } from 'store/actions/common';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import classes from './SingleProduct.module.css';
 
@@ -13,6 +12,9 @@ function SingleProduct({ popularProduct }) {
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
   const dispatch = useDispatch();
+  const { productId } = useParams();
+  console.log(productId);
+
   const addProduct = useCallback(
     (productInCart) => () => {
       const data = {
