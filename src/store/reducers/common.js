@@ -11,6 +11,7 @@ const initialState = {
     totalCost: 0,
   },
   productDetail: [],
+  quantityDetail: 0,
 };
 
 const calculateTotalCost = (products) =>
@@ -79,7 +80,7 @@ export default (state = initialState, action) => {
       const { price, sales, quantity } = action.payload;
 
       const newQuantity = productExist
-        ? products[productIndex].quantity + 1
+        ? products[productIndex].quantity + quantity
         : quantity;
 
       const realPrice = price * newQuantity;
@@ -192,6 +193,12 @@ export default (state = initialState, action) => {
           products: updateMyCart,
           totalCost: calculateTotalCost(updateMyCart),
         },
+      };
+    case 'UPDATE_QUANTITY':
+      const quantityDetail = action.payload;
+      return {
+        ...state,
+        quantityDetail: [quantityDetail],
       };
     default:
       return state;

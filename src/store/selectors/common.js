@@ -30,3 +30,6 @@ export const useGetHome = () => useSelector((state) => state.common?.home);
 
 export const useGetProductDetail = () =>
   useSelector((state) => state.common?.productDetail);
+
+export const useGetUpdateQuantity = () =>
+  useSelector((state) => state.common?.quantityDetail);
