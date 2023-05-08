@@ -21,13 +21,18 @@ import Tab from 'react-bootstrap/Tab';
 import SingleProduct from 'components/SingleProduct/SingleProduct';
 import { useGetBestSeller } from 'store/selectors/common';
 import TitleUnderline from 'components/PopularProduct/TitleUnderline';
+import { useParams } from 'react-router-dom';
 import cart from './img/cart-icon-1.png';
+
 import classes from './ProductDetail.module.css';
 
 function ProductDetail() {
   const testRelatedProduct = useGetBestSeller();
   const linkIMG =
     'http://c3kienthuyhp.edu.vn/wp-content/uploads/2022/12/1672384705_929_999-Anh-Gai-Xinh-Viet-Nam-Hot-Girl-Cute-De.jpg';
+
+  const { productId } = useParams();
+  console.log(productId);
 
   const [img, setImg] = useState('no-repeat center');
   const changeIMGtop = () => {

@@ -4,7 +4,7 @@ import { BsFillEyeFill } from 'react-icons/bs';
 import { TbRefresh } from 'react-icons/tb';
 import { addProductToCart, productDetail } from 'store/actions/common';
 import { useDispatch } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import classes from './SingleProduct.module.css';
 
@@ -12,8 +12,6 @@ function SingleProduct({ popularProduct }) {
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
   const dispatch = useDispatch();
-  const { productId } = useParams();
-  console.log(productId);
 
   const addProduct = useCallback(
     (productInCart) => () => {
@@ -65,7 +63,7 @@ function SingleProduct({ popularProduct }) {
                   </span>
                   <span>
                     <Link
-                      to="/product-detail"
+                      to={`/product-detail/${popularProduct._id}`}
                       onClick={uploadInfo(popularProduct)}
                     >
                       <BsFillEyeFill />
