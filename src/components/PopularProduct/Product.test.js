@@ -4,7 +4,6 @@ import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import PopularProduct from './Product';
 
 const mockStore = configureMockStore();
