@@ -12,6 +12,7 @@ const initialState = {
   },
   productDetail: [],
   quantityDetail: 0,
+  comment: [],
 };
 
 const calculateTotalCost = (products) =>
@@ -199,6 +200,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         quantityDetail: [quantityDetail],
+      };
+    case 'ADD_COMMENT':
+      return {
+        ...state,
+        comment: action.payload,
       };
     default:
       return state;

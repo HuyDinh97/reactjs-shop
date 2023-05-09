@@ -33,3 +33,8 @@ export const useGetProductDetail = () =>
 
 export const useGetUpdateQuantity = () =>
   useSelector((state) => state.common?.quantityDetail);
+
+export const useGetComments = () =>
+  useSelector((state) =>
+    state?.common?.comments?.length > 0 ? state.common.comments : []
+  );

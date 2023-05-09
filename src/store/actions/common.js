@@ -81,3 +81,10 @@ export const updateQuantity = (payload) => {
     payload,
   };
 };
+
+export const addComment = (payload) => {
+  return {
+    type: 'ADD_COMMENT',
+    payload,
+  };
+};

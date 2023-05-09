@@ -30,6 +30,7 @@ import { addProductToCart } from 'store/actions/common';
 import { useParams } from 'react-router-dom';
 import postComment from 'Hooks/postComment';
 
+import useFetchComment from 'Hooks/useFetchComment';
 import cart from './img/cart-icon-1.png';
 
 import classes from './ProductDetail.module.css';
@@ -80,9 +81,6 @@ function ProductDetail() {
   const email = useRef('');
   const review = useRef('');
 
-  const submitClick = (event) => {
-    // console.log(event);
-  };
   const submitData = useCallback(
     () => () => {
       postComment({
@@ -94,6 +92,7 @@ function ProductDetail() {
     },
     [param.productId]
   );
+  const getComments = useFetchComment(param.productId);
 
   return (
     <div className="my-5">
@@ -329,7 +328,7 @@ function ProductDetail() {
                   </Col>
                   <Col className="my-2">
                     <div className="fw-semibold fs-5">ADD A REVIEW</div>
-                    <form id="review" onSubmit={submitClick()}>
+                    <form id="review">
                       <Row className="my-3">
                         <Col lg={6}>
                           <input
