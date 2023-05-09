@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/forbid-component-props */
 /* eslint-disable react/forbid-dom-props */
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -27,6 +27,8 @@ import {
 import TitleUnderline from 'components/PopularProduct/TitleUnderline';
 import { useDispatch } from 'react-redux';
 import { addProductToCart } from 'store/actions/common';
+import { useParams } from 'react-router-dom';
+import postComment from 'Hooks/postComment';
 import cart from './img/cart-icon-1.png';
 import classes from './ProductDetail.module.css';
 
@@ -46,6 +48,7 @@ function ProductDetail() {
   };
 
   const [key, setKey] = useState('description');
+
   const ActiveStyle = {
     background: '#eb3d32',
   };
@@ -66,6 +69,25 @@ function ProductDetail() {
       dispatch(addProductToCart(data));
     },
     [dispatch, quantityUpdate]
+  );
+  const param = useParams();
+  const name = useRef('');
+  const email = useRef('');
+  const review = useRef('');
+
+  const submitClick = (event) => {
+    console.log(event);
+  };
+  const submitData = useCallback(
+    () => () => {
+      postComment({
+        product_id: param.productId,
+        comment: review.current.value,
+        author: name.current.value,
+        email: email.current.value,
+      });
+    },
+    [param]
   );
 
   return (
@@ -302,37 +324,46 @@ function ProductDetail() {
                   </Col>
                   <Col className="my-2">
                     <div className="fw-semibold fs-5">ADD A REVIEW</div>
-                    <Row className="my-3">
-                      <Col lg={6}>
-                        <input
-                          type="text"
-                          className="w-100 p-2 px-3 mb-2 border fw-semibold"
-                          placeholder="Enter Your Name"
-                        />
-                      </Col>
-                      <Col lg={6}>
-                        <input
-                          type="text"
-                          className="w-100 p-2 px-3 border fw-semibold"
-                          placeholder="Enter Your Email"
-                        />
-                      </Col>
-                      <Col className="mt-4" xs={12}>
-                        <textarea
-                          type="text"
-                          className={`${classes.reviewContent} w-100 border fw-semibold`}
-                          placeholder="Enter Your Review"
-                        />
-                      </Col>
-                      <Col className="mt-4">
-                        <button
-                          className={`${classes.submitButton} rounded-pill border-0 p-3 fw-semibold px-4 fs-5`}
-                          type="button"
-                        >
-                          Submit
-                        </button>
-                      </Col>
-                    </Row>
+                    <form id="review" onSubmit={submitClick()}>
+                      <Row className="my-3">
+                        <Col lg={6}>
+                          <input
+                            type="text"
+                            className="w-100 p-2 px-3 mb-2 border fw-semibold"
+                            name="name"
+                            placeholder="Enter Your Name"
+                            ref={name}
+                          />
+                        </Col>
+                        <Col lg={6}>
+                          <input
+                            type="email"
+                            className="w-100 p-2 px-3 border fw-semibold"
+                            name="email"
+                            placeholder="Enter Your Email"
+                            ref={email}
+                          />
+                        </Col>
+                        <Col className="mt-4" xs={12}>
+                          <textarea
+                            type="text"
+                            className={`${classes.reviewContent} w-100 border fw-semibold`}
+                            name="review"
+                            placeholder="Enter Your Review"
+                            ref={review}
+                          />
+                        </Col>
+                        <Col className="mt-4">
+                          <input
+                            className={`${classes.submitButton} rounded-pill border-0 p-3 fw-semibold px-4 fs-5`}
+                            type="button"
+                            form="review"
+                            onClick={submitData()}
+                            value="Submit"
+                          />
+                        </Col>
+                      </Row>
+                    </form>
                   </Col>
                 </Row>
               </Tab.Pane>
