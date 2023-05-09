@@ -15,7 +15,7 @@ function Header() {
   };
 
   return (
-    <header className={classes.header_color}>
+    <header className={`${classes.header_color} py-3`}>
       <div className={`${classes.header} container`}>
         <div>
           <ul>
