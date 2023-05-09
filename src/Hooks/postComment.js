@@ -2,23 +2,27 @@
 /* eslint-disable camelcase */
 import axios from 'axios';
 
-const postComment = ({ product_id, comment, author, email }) => {
+const postComment = ({ productId, commentData, authorData, emailData }) => {
   const fields = {
-    product_id: { required: product_id },
-    comment: { required: comment },
-    author: { required: author },
-    email: { email },
+    product_id: `${productId}`,
+    comment: `${commentData}`,
+    author: `${authorData}`,
+    email: emailData,
   };
   axios
-    .post(
-      'https://vnguyen.xyz/huy/day17/apis/index.php?type=comments&action=add',
-      { fields }
-    )
+    .request({
+      method: 'post',
+      url: 'https://vnguyen.xyz/huy/day17/apis/index.php?type=comments&action=add',
+      data: fields,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    })
     .then((response) => {
-      console.log(response);
+      console.log('data', response);
     })
     .catch((error) => {
-      console.log(error);
+      console.log(error.data);
     });
 };
 

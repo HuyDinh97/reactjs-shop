@@ -81,18 +81,18 @@ function ProductDetail() {
   const review = useRef('');
 
   const submitClick = (event) => {
-    console.log(event);
+    // console.log(event);
   };
   const submitData = useCallback(
     () => () => {
       postComment({
-        product_id: param.productId,
-        comment: review.current.value,
-        author: name.current.value,
-        email: email.current.value,
+        productId: `${param.productId}`,
+        commentData: `${review.current.value}`,
+        authorData: `${name.current.value}`,
+        emailData: email.current.value,
       });
     },
-    [param]
+    [param.productId]
   );
 
   return (
