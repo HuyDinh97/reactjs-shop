@@ -1,17 +1,17 @@
-import CartTable from 'components/CartTable/CartTable';
 import PageTitle from 'components/Page Title/PageTitle';
+import ProductDetail from 'components/ProductDetail/ProductDetail';
 import SearchBar from 'components/SearchBar/SearchBar';
 import React from 'react';
 
-function MyCart() {
+function ProductDetailPage() {
   return (
     <div>
       <SearchBar />
-      <PageTitle pageTitle="my cart" pageLink="Cart" />
+      <PageTitle pageTitle="product detail" pageLink="Product Detail" />
       <div className="container">
-        <CartTable />
+        <ProductDetail />
       </div>
     </div>
   );
 }
-export default MyCart;
+export default ProductDetailPage;

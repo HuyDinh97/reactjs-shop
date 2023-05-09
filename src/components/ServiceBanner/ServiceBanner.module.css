@@ -10,11 +10,6 @@
   opacity: 80%;
 }
 
-.ServiceBannerBox {
-  display: flex;
-  justify-content: center;
-}
-
 .w_max_content {
   width: max-content;
 }
@@ -27,11 +22,10 @@
 }
 
 .ServiceBannerBlock {
-  padding-right: 3rem;
-  padding-left: 3rem;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 
 .blockBoderEnd {
@@ -46,6 +40,10 @@
 }
 
 @media screen and (max-width: 1199px) {
+  .ServiceBannerBox {
+    display: flex;
+    justify-content: center;
+  }
   .blockBoderEndDesktop{
     border-right: none;
     margin-top: 1.5rem!important;

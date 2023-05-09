@@ -20,7 +20,7 @@ function AboutUs() {
   return (
     <div>
       <footer>
-        <div className={classes.footer_box}>
+        <div className="container">
           <Row>
             <Col xl={4} xs={12} className="mb-3 px-2">
               <h5>ABOUT US</h5>

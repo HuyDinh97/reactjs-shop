@@ -8,6 +8,7 @@ import { Routes, Route } from 'react-router-dom';
 import MyCart from 'pages/MyCart';
 import Login from 'pages/LoginPage';
 import useFetchHome from 'Hooks/useFetchHome';
+import ProductDetailPage from 'pages/ProductDetailPage';
 import Layout from './pages/Layout';
 
 function App() {
@@ -22,6 +23,10 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/my-cart" element={<MyCart />} />
         <Route path="/login" element={<Login />} />
+        <Route
+          path="/product-detail/:productId"
+          element={<ProductDetailPage />}
+        />
       </Routes>
     </Layout>
   );

@@ -67,3 +67,10 @@ export const updateMyCart = () => {
     type: 'UPDATE_MYCART',
   };
 };
+
+export const productDetail = (payload) => {
+  return {
+    type: 'PRODUCT_DETAIL',
+    payload,
+  };
+};

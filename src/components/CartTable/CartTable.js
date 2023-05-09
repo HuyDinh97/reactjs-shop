@@ -7,12 +7,13 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useDispatch } from 'react-redux';
-import { decreaseProductInCart, deleteProductInCart, increaseProductInCart, updateMyCart } from 'store/actions/common';
-import { FaMinus, FaPlus, FaChevronLeft } from 'react-icons/fa';
+import { deleteProductInCart, updateMyCart } from 'store/actions/common';
+import { FaChevronLeft } from 'react-icons/fa';
 import { HiRefresh } from 'react-icons/hi';
 
 import { Link } from 'react-router-dom';
 import { useGetMyCart } from 'store/selectors/common';
+import QuantityButton from 'components/QuantityButton/QuantityButton';
 import classes from './CartTable.module.css';
 
 function CartTable() {
@@ -24,17 +25,6 @@ function CartTable() {
   const [updateCartState, setUpdateCartState] = useState(initialCartUpdateState);
   const dispatch = useDispatch();
 
-  const changeProductQuanity = useCallback(
-    (id, isDecrease = false) => () => {
-      if (isDecrease) {
-        dispatch(decreaseProductInCart(id));
-        return;
-      }
-      dispatch(increaseProductInCart(id));
-    },
-    [dispatch]
-  );
-
   const deleteProduct = useCallback(
     (id) => () => {
       dispatch(deleteProductInCart(id));
@@ -42,9 +32,6 @@ function CartTable() {
     [dispatch]
   );
   // onchange fuction for input defaultValue
-  const handleChange = () => {
-    console.log('input change')
-  };
 
   const updateCartButton = useRef([]);
   const updateCart = useCallback(
@@ -59,6 +46,7 @@ function CartTable() {
         setUpdateCartState(initialCartUpdateState);
     }, 500);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [dispatch]
   );
 
@@ -90,24 +78,7 @@ function CartTable() {
                 {product.afterSalesPerOnePrice}
               </Col>
               <Col lg={2}>
-                <div className={classes.cartDetailQuantity}>
-                  <button type="button" className={classes.quantity_button} onClick={changeProductQuanity(product._id, true)}>
-                    <FaMinus />
-                  </button>
-                  <div className={classes.quantity_in_cart}>
-                    <input
-                      id={product._id}
-                      type="tel"
-                      min={0}
-                      value={product.quantity}
-                      onChange={handleChange}
-                      aria-label="couple-code"
-                    />
-                  </div>
-                  <button type="button" className={classes.quantity_button} onClick={changeProductQuanity(product._id)}>
-                    <FaPlus />
-                  </button>
-                </div>
+                <QuantityButton productId={product._id} productQuantity={product.quantity} />
               </Col>
               <Col className={classes.price_sample} lg={1}>
                 $
@@ -164,24 +135,7 @@ function CartTable() {
               <Col className="d-flex justify-content-between p-3">
                 <div className={classes.semibold}>Quantity:</div>
                 <div>
-                  <div className={classes.cartDetailQuantity}>
-                    <button className={classes.quantity_button} onClick={changeProductQuanity(product._id, true)}>
-                      <FaMinus />
-                    </button>
-                    <div className={classes.quantity_in_cart}>
-                      <input
-                        id={product._id}
-                        type="tel"
-                        min={0}
-                        value={product.quantity}
-                        onChange={handleChange}
-                        aria-label="couple-code"
-                      />
-                    </div>
-                    <button className={classes.quantity_button} onClick={changeProductQuanity(product._id)}>
-                      <FaPlus />
-                    </button>
-                  </div>
+                  <QuantityButton flexDirectionType="flex-column" productId={product._id} productQuantity={product.quantity} />
                 </div>
               </Col>
               <Col className="d-flex justify-content-between p-3">

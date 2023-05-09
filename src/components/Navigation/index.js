@@ -18,7 +18,7 @@ function Navigation() {
   return (
     <div className={classes.main}>
       <Navbar expand="xxl" className={classes.navbar}>
-        <Container className={classes.containerNavbar}>
+        <Container className={`${classes.containerNavbar} ps-1`}>
           <Navbar.Toggle
             className={classes.navbarToggle}
             aria-controls="offcanvasNavbar-expand-xs"
@@ -31,7 +31,7 @@ function Navigation() {
             placement="top"
           >
             <Nav className={classes.navbarNav}>
-              <Nav.Link className={navClass} to="/">
+              <Nav.Link className={`${navClass} ps-0`} to="/">
                 Home
               </Nav.Link>
               {categories &&

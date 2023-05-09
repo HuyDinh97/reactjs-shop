@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import PopularProduct from './Product';
 
 const mockStore = configureMockStore();
@@ -30,7 +31,9 @@ test('Should slide run correctly', async () => {
 
   render(
     <Provider store={store}>
-      <PopularProduct />
+      <MemoryRouter>
+        <PopularProduct />
+      </MemoryRouter>
     </Provider>
   );
   const buttons = await screen.findAllByRole('button');

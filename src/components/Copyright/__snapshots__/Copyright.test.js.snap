@@ -6,7 +6,9 @@ exports[`should Copyright render correctly 1`] = `
   "baseElement": <body>
     <div>
       <div>
-        <div>
+        <div
+          class="undefined container"
+        >
           <div
             class="row"
           >
@@ -101,7 +103,9 @@ exports[`should Copyright render correctly 1`] = `
   </body>,
   "container": <div>
     <div>
-      <div>
+      <div
+        class="undefined container"
+      >
         <div
           class="row"
         >

@@ -1,0 +1,100 @@
+.opacity_layer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.opacity_layer button {
+  background-color: #eb3d32;
+  color: white;
+}
+
+.hide {
+  display: none;
+  justify-content: center;
+  align-items: flex-end;
+  
+}
+
+
+
+.apperance:hover .hide {
+  display: flex;
+}
+
+.product_img {
+  height: 350px;
+  background-repeat: no-repeat!important;
+  background-position: center!important;
+  display: flex;
+  justify-content: center;
+  background-size: cover !important;
+}
+
+.white_overlay {
+  background-color: white;
+  width: 300px;
+  height: 350px;
+  opacity: 0.5;
+}
+
+.opacity_layer:hover {
+  opacity: 100%;
+  height: fit-content;
+}
+
+.opacity_icon {
+  margin-top: 60%;
+  margin-bottom: 5%;
+}
+
+.opacity_icon span {
+  font-size: 40px;
+  color: white;
+  margin: 5px;
+}
+
+.opacity_icon svg {
+  background-color: #363f4e;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.product_name {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+
+.product_name a {
+  color:#000;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.product_name a:hover {
+  color: #eb3d32;
+}
+
+.product_price {
+  color: #eb3d32;
+  display: flex;
+  justify-content: center;
+}
+
+.gray_price {
+  color: gray;
+}
+.swiperButton {
+  display: none;
+}
+
+@media screen and (max-width:576px) {
+  .product_img {
+    height: 230px;
+  }
+}
