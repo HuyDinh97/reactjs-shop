@@ -29,7 +29,9 @@ import { useDispatch } from 'react-redux';
 import { addProductToCart } from 'store/actions/common';
 import { useParams } from 'react-router-dom';
 import postComment from 'Hooks/postComment';
+import { useParams } from 'react-router-dom';
 import cart from './img/cart-icon-1.png';
+
 import classes from './ProductDetail.module.css';
 
 function ProductDetail() {
@@ -38,6 +40,9 @@ function ProductDetail() {
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
   const dispatch = useDispatch();
+
+  const { productId } = useParams();
+  console.log(productId);
 
   const [img, setImg] = useState('no-repeat center');
   const changeIMGtop = () => {
