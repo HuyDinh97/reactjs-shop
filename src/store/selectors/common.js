@@ -33,3 +33,4 @@ export const useGetProductDetail = () =>
 
 export const useGetUpdateQuantity = () =>
   useSelector((state) => state.common?.quantityDetail);
+
