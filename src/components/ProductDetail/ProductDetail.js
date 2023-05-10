@@ -21,6 +21,7 @@ import Tab from 'react-bootstrap/Tab';
 
 import SingleProduct from 'components/SingleProduct/SingleProduct';
 import {
+  useGetComments,
   useGetProductDetail,
   useGetUpdateQuantity,
 } from 'store/selectors/common';
@@ -41,9 +42,6 @@ function ProductDetail() {
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
   const dispatch = useDispatch();
-
-  const { productId } = useParams();
-  console.log(productId);
 
   const [img, setImg] = useState('no-repeat center');
   const changeIMGtop = () => {
@@ -92,7 +90,8 @@ function ProductDetail() {
     },
     [param.productId]
   );
-  const getComments = useFetchComment(param.productId);
+  useFetchComment(param.productId);
+  const getComments = useGetComments();
 
   return (
     <div className="my-5">
@@ -301,30 +300,30 @@ function ProductDetail() {
                     <div className="fw-semibold mb-2 fs-5">
                       CUSTOMER REVIEWS
                     </div>
-                    <div className="d-flex opacity-75 py-3 border-bottom">
-                      <div>
-                        <FaUserCircle fill="gray" className="fs-1" />
-                      </div>
-                      <div className="ms-4  ">
-                        <div className="fw-semibold fs-5">admin</div>
-                        <div className={`${classes.reviewTime} fw-semibold`}>
-                          Sep 17th
+                    {getComments &&
+                      getComments.map((comment) => (
+                        <div
+                          key={comment._id.$oid}
+                          className="d-flex opacity-75 py-3 border-bottom"
+                        >
+                          <div>
+                            <FaUserCircle fill="gray" className="fs-1" />
+                          </div>
+                          <div className="ms-4  ">
+                            <div className="fw-semibold fs-5">
+                              {comment.author}
+                            </div>
+                            <div
+                              className={`${classes.reviewTime} fw-semibold`}
+                            >
+                              {comment.created_at}
+                            </div>
+                            <div className="fw-semibold fs-5">
+                              {comment.comment}
+                            </div>
+                          </div>
                         </div>
-                        <div className="fw-semibold fs-5">helpdesk 24/7</div>
-                      </div>
-                    </div>
-                    <div className="d-flex opacity-75 py-3 border-bottom">
-                      <div>
-                        <FaUserCircle fill="gray" className="fs-1" />
-                      </div>
-                      <div className="ms-4  ">
-                        <div className="fw-semibold fs-5">admin</div>
-                        <div className={`${classes.reviewTime} fw-semibold`}>
-                          Sep 17th
-                        </div>
-                        <div className="fw-semibold fs-5">helpdesk 24/7</div>
-                      </div>
-                    </div>
+                      ))}
                   </Col>
                   <Col className="my-2">
                     <div className="fw-semibold fs-5">ADD A REVIEW</div>

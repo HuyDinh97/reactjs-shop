@@ -202,6 +202,28 @@ export default (state = initialState, action) => {
         quantityDetail: [quantityDetail],
       };
     case 'ADD_COMMENT':
+      const commentData = action.payload;
+      const timeTransfer = action.payload.map((time) => {
+        const newDate = new Date(time.created_at).toDateString().split(' ');
+        let dayType;
+        if (newDate[2] === 1 || newDate[2] === 21 || newDate[2] === 31) {
+          dayType = 'st';
+        }
+        if (newDate[2] === 2 || newDate[2] === 22) {
+          dayType = 'nd';
+        }
+        if (newDate[2] === 3 || newDate[2] === 23) {
+          dayType = 'rd';
+        } else {
+          dayType = 'th';
+        }
+
+        const newDateTransfer = `${newDate[1]} ${newDate[2]}${dayType}`;
+        return newDateTransfer;
+      });
+      for (let i = 0; i < commentData.length; i++) {
+        commentData[i].created_at = timeTransfer[i];
+      }
       return {
         ...state,
         comment: action.payload,

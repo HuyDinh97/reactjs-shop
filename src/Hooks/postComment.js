@@ -18,9 +18,9 @@ const postComment = ({ productId, commentData, authorData, emailData }) => {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
     })
-    .then((response) => {
-      console.log('data', response);
-    })
+    // .then((response) => {
+    //   console.log('data', response);
+    // })
     .catch((error) => {
       console.log(error.data);
     });

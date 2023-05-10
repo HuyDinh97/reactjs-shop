@@ -19,7 +19,7 @@ const useFetchComment = (id) => {
         setIssuccess(true);
       })
       .catch(() => setIssuccess(false));
-  }, [dispatch, id]);
+  }, [comments, dispatch, id]);
 
   return { comments, isSuccess };
 };

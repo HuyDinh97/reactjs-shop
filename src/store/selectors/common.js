@@ -36,5 +36,5 @@ export const useGetUpdateQuantity = () =>
 
 export const useGetComments = () =>
   useSelector((state) =>
-    state?.common?.comments?.length > 0 ? state.common.comments : []
+    state?.common?.comment?.length > 0 ? state.common.comment : []
   );
