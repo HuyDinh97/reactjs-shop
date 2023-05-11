@@ -1,54 +1,52 @@
 /* eslint-disable no-alert */
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useRef } from 'react';
-import { postData, setCookie, checkLogin } from './LoginCheck';
+import React, { useRef, useCallback } from 'react';
+import { postData, checkLogin } from './LoginCheck';
 import classes from './LoginRegistration.module.css';
+import doLogin from './doLogin';
 
 function LoginRegistration() {
   const emailLogIn = useRef();
   const passwordLogIn = useRef();
   const loginRemember = document.getElementById('loginRemember');
 
-  const doLogin = async () => {
-    const email = emailLogIn.current.value;
-    const password = passwordLogIn.current.value;
-    const remember = loginRemember.checked ? 5 : 1;
+  const nameSignUpRef = useRef();
+  const emailSignUpRef = useRef();
+  const passwordSignUpRef = useRef();
+  const passwordComfirmSignUpRef = useRef();
+  const acceptSignUp = document.getElementById('acceptSignUp');
 
-    console.log(document.cookie);
+  const logIn = useCallback(() => {
+    doLogin({ emailLogIn, passwordLogIn, loginRemember });
+  }, [loginRemember]);
 
-    const regEmail =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!regEmail.test(email)) {
-      alert(
-        'You must provide an correct email address to perform login action!'
-      );
-      return false;
-    }
+  const doSignUp = async () => {
+    const nameSignUp = nameSignUpRef.current.value;
+    const emailSignUp = emailSignUpRef.current.value;
+    const passwordSignUp = passwordSignUpRef.current.value;
+    const passwordComfirmSignUp = passwordComfirmSignUpRef.current.value;
+    const acceptSignUpCheck = acceptSignUp.checked ? 1 : 0;
 
-    if (!email) {
-      alert('You must provide an email address to perform login action!');
-      return false;
-    }
-    if (!password) {
-      alert('You must provide an password to perform login action!');
-      return false;
-    }
-
-    const response = await postData(
-      'https://vnguyen.xyz/huy/day15/apis/signin.php',
+    const signUp = await postData(
+      'https://vnguyen.xyz/huy/day17/apis/index.php?type=register',
       {
-        email,
-        password,
+        name: nameSignUp,
+        email: emailSignUp,
+        password: passwordComfirmSignUp,
+        confirm_password: passwordComfirmSignUp,
+        agree: acceptSignUpCheck,
       }
     );
-
-    if (response?.status) {
-      setCookie('email', email, remember);
-      window.location.href = '/';
+    if (signUp?.status) {
       return false;
     }
-    alert(response.message);
+    if (passwordSignUp !== passwordComfirmSignUp) {
+      alert('password confirm is uncorrect');
+    }
+    if (acceptSignUpCheck === 0) {
+      alert('You must accept the terms and conditions');
+    }
   };
 
   checkLogin();
@@ -98,7 +96,7 @@ function LoginRegistration() {
           <button
             className={classes.login_button}
             type="button"
-            onClick={doLogin}
+            onClick={logIn}
           >
             Login
           </button>
@@ -119,6 +117,7 @@ function LoginRegistration() {
             className={classes.inputText}
             placeholder="Enter Your Name"
             id="name"
+            ref={nameSignUpRef}
           />
         </li>
         <li>
@@ -126,25 +125,41 @@ function LoginRegistration() {
             className={classes.inputText}
             placeholder="Enter Your Email"
             id="emailSignUp"
+            ref={emailSignUpRef}
           />
         </li>
         <li>
           <input
+            type="password"
             className={classes.inputText}
             placeholder="Enter Your Password"
             id="passwordSignUp"
+            ref={passwordSignUpRef}
+          />
+        </li>
+        <li>
+          <input
+            type="password"
+            className={classes.inputText}
+            placeholder="Comfirm Your Password"
+            id="passwordComfirmSignUp"
+            ref={passwordComfirmSignUpRef}
           />
         </li>
         <li className="d-flex justify-content-between">
           <span className="d-flex">
-            <input type="checkbox" id="scales" name="scales" />
+            <input type="checkbox" id="acceptSignUp" name="acceptSignUp" />
             <label className="mx-1" htmlFor="scales">
               Accept the terms and conditions
             </label>
           </span>
         </li>
         <li>
-          <button className={classes.login_button} type="button">
+          <button
+            className={classes.login_button}
+            type="button"
+            onClick={doSignUp}
+          >
             Sign Up
           </button>
         </li>
