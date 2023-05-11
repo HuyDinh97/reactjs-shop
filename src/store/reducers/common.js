@@ -13,6 +13,7 @@ const initialState = {
   productDetail: [],
   quantityDetail: 0,
   comment: [],
+  error: [],
 };
 
 const calculateTotalCost = (products) =>

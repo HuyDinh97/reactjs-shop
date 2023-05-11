@@ -1,8 +1,8 @@
 /* eslint-disable no-alert */
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useRef, useCallback } from 'react';
-import { postData, checkLogin } from './LoginCheck';
+import React, { useRef, useCallback, useState } from 'react';
+import { checkLogin, postData } from './LoginCheck';
 import classes from './LoginRegistration.module.css';
 import doLogin from './doLogin';
 
@@ -16,6 +16,8 @@ function LoginRegistration() {
   const passwordSignUpRef = useRef();
   const passwordComfirmSignUpRef = useRef();
   const acceptSignUp = document.getElementById('acceptSignUp');
+
+  const [errorData, setErrorData] = useState([]);
 
   const logIn = useCallback(() => {
     doLogin({ emailLogIn, passwordLogIn, loginRemember });
@@ -33,21 +35,18 @@ function LoginRegistration() {
       {
         name: nameSignUp,
         email: emailSignUp,
-        password: passwordComfirmSignUp,
+        password: passwordSignUp,
         confirm_password: passwordComfirmSignUp,
         agree: acceptSignUpCheck,
       }
     );
-    if (signUp?.status) {
-      return false;
-    }
-    if (passwordSignUp !== passwordComfirmSignUp) {
-      alert('password confirm is uncorrect');
-    }
-    if (acceptSignUpCheck === 0) {
-      alert('You must accept the terms and conditions');
-    }
+    const data = signUp.errors;
+    const error = data ? JSON.parse(data) : null;
+    const status = signUp.message;
+    const check = error.fields || status;
+    setErrorData(check);
   };
+  console.log(errorData);
 
   checkLogin();
 
