@@ -27,11 +27,10 @@ import {
 } from 'store/selectors/common';
 import TitleUnderline from 'components/PopularProduct/TitleUnderline';
 import { useDispatch } from 'react-redux';
-import { addProductToCart } from 'store/actions/common';
+import { addComment, addProductToCart } from 'store/actions/common';
 import { useParams } from 'react-router-dom';
 import postComment from 'Hooks/postComment';
 
-import useFetchComment from 'Hooks/useFetchComment';
 import cart from './img/cart-icon-1.png';
 
 import classes from './ProductDetail.module.css';
@@ -52,6 +51,7 @@ function ProductDetail() {
   };
 
   const [key, setKey] = useState('description');
+  const getComments = useGetComments();
 
   const ActiveStyle = {
     background: '#eb3d32',
@@ -79,19 +79,18 @@ function ProductDetail() {
   const email = useRef('');
   const review = useRef('');
 
-  const submitData = useCallback(
-    () => () => {
-      postComment({
-        productId: `${param.productId}`,
-        commentData: `${review.current.value}`,
-        authorData: `${name.current.value}`,
-        emailData: email.current.value,
-      });
-    },
-    [param.productId]
-  );
-  useFetchComment(param.productId);
-  const getComments = useGetComments();
+  const submitData = useCallback(() => {
+    const commentData = {
+      product_id: `${param.productId}`,
+      comment: `${review.current.value}`,
+      author: `${name.current.value}`,
+      email: email.current.value,
+      created_at: new Date().getTime() / 1000,
+    };
+    postComment(commentData);
+    dispatch(addComment([commentData]));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="my-5">
@@ -301,9 +300,9 @@ function ProductDetail() {
                       CUSTOMER REVIEWS
                     </div>
                     {getComments &&
-                      getComments.map((comment) => (
+                      getComments.map((comment, index) => (
                         <div
-                          key={comment._id.$oid}
+                          key={comment.comment + index}
                           className="d-flex opacity-75 py-3 border-bottom"
                         >
                           <div>
@@ -361,7 +360,7 @@ function ProductDetail() {
                             className={`${classes.submitButton} rounded-pill border-0 p-3 fw-semibold px-4 fs-5`}
                             type="button"
                             form="review"
-                            onClick={submitData()}
+                            onClick={submitData}
                             value="Submit"
                           />
                         </Col>

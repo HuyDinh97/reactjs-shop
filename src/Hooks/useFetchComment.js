@@ -19,7 +19,8 @@ const useFetchComment = (id) => {
         setIssuccess(true);
       })
       .catch(() => setIssuccess(false));
-  }, [comments, dispatch, id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
   return { comments, isSuccess };
 };

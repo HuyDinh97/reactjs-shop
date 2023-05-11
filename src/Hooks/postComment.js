@@ -1,13 +1,7 @@
 /* eslint-disable no-undef */
 import axios from 'axios';
 
-const postComment = ({ productId, commentData, authorData, emailData }) => {
-  const fields = {
-    product_id: `${productId}`,
-    comment: `${commentData}`,
-    author: `${authorData}`,
-    email: emailData,
-  };
+const postComment = (fields) => {
   axios
     .request({
       method: 'post',
