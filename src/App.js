@@ -4,7 +4,7 @@ import useFetchBestSeller from 'Hooks/useFetchBestSellerProduct';
 import AboutUs from 'pages/AboutUs';
 import Home from 'pages/Home';
 import React from 'react';
-import { Routes, Route, useParams } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import MyCart from 'pages/MyCart';
 import Login from 'pages/LoginPage';
 import useFetchHome from 'Hooks/useFetchHome';
