@@ -78,7 +78,6 @@ function ProductDetail() {
       ? product
       : null
   );
-  console.log(relatedProductData);
 
   const addProduct = useCallback(
     (productInCart) => () => {
