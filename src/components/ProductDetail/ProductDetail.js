@@ -60,9 +60,6 @@ function ProductDetail() {
   const [key, setKey] = useState('description');
   useFetchComment(param.productId);
   const getComments = useGetComments();
-  // const idCheck = getComments.map(
-  //   (comment) => String(comment.product_id) === param.productId
-  // );
   const getCommentsDetail = getComments.filter((comment) =>
     param.productId.match(comment.product_id)
   );
@@ -256,7 +253,7 @@ function ProductDetail() {
           onSelect={(key) => setKey(key)}
         >
           <Row className="mt-5 mb-1">
-            <Col lg={2} xs={12}>
+            <Col lg={2} xs={12} className={classes.paddingRight_0}>
               <Nav
                 variant="pills"
                 className={`${classes.descriptionActive} flex-row`}
@@ -294,7 +291,7 @@ function ProductDetail() {
                 </Nav.Item>
               </Nav>
             </Col>
-            <Col lg={2} xs={12}>
+            <Col lg={2} xs={12} className={classes.paddingNone}>
               <Nav variant="pills" className="flex-row">
                 <Nav.Item
                   className={`${classes.description} text-decoration-none w-100 text-center`}
