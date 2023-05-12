@@ -23,6 +23,7 @@ import Tab from 'react-bootstrap/Tab';
 import SingleProduct from 'components/SingleProduct/SingleProduct';
 import {
   useGetComments,
+  useGetPopularProduct,
   useGetProductDetail,
   useGetUpdateQuantity,
 } from 'store/selectors/common';
@@ -37,7 +38,6 @@ import cart from './img/cart-icon-1.png';
 import classes from './ProductDetail.module.css';
 
 function ProductDetail() {
-  const testRelatedProduct = [];
   const quantityUpdate = useGetUpdateQuantity();
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
@@ -51,8 +51,17 @@ function ProductDetail() {
     setImg('no-repeat bottom');
   };
 
+  const param = useParams();
+  const name = useRef('');
+  const email = useRef('');
+  const review = useRef('');
+
   const [key, setKey] = useState('description');
   const getComments = useGetComments();
+  const getCommentsDetail = getComments.filter(
+    (comment) => comment.product_id !== param.productId
+  );
+  // console.log(getCommentsDetail);
 
   const ActiveStyle = {
     background: '#eb3d32',
@@ -61,6 +70,16 @@ function ProductDetail() {
     background: '#363f4e',
   };
   const productDetailData = useGetProductDetail();
+  const relatedProduct = productDetailData.map((product) => product.category);
+  const popularProductData = useGetPopularProduct();
+  const relatedProductData = popularProductData.filter((product) =>
+    product.category === relatedProduct[0] &&
+    !param.productId.match(product._id)
+      ? product
+      : null
+  );
+  console.log(relatedProductData);
+
   const addProduct = useCallback(
     (productInCart) => () => {
       const data = {
@@ -75,10 +94,6 @@ function ProductDetail() {
     },
     [dispatch, quantityUpdate]
   );
-  const param = useParams();
-  const name = useRef('');
-  const email = useRef('');
-  const review = useRef('');
 
   const submitData = useCallback(() => {
     const commentData = {
@@ -283,7 +298,7 @@ function ProductDetail() {
                     style={key === 'review' ? ActiveStyle : inActiveStyle}
                     className="fw-semibold px-3 py-3 rounded-0"
                   >
-                    REVIEWS (2)
+                    REVIEWS ({getCommentsDetail.length})
                   </Nav.Link>
                 </Nav.Item>
               </Nav>
@@ -300,8 +315,8 @@ function ProductDetail() {
                     <div className="fw-semibold mb-2 fs-5">
                       CUSTOMER REVIEWS
                     </div>
-                    {getComments &&
-                      getComments.map((comment, index) => (
+                    {getCommentsDetail &&
+                      getCommentsDetail.map((comment, index) => (
                         <div
                           key={comment.comment + index}
                           className="d-flex opacity-75 py-3 border-bottom"
@@ -378,8 +393,8 @@ function ProductDetail() {
             <TitleUnderline name="RELATED PRODUCTS" position="left" />
           </div>
           <Row>
-            {testRelatedProduct &&
-              testRelatedProduct.map((popularProduct) => (
+            {relatedProductData &&
+              relatedProductData.map((popularProduct) => (
                 <Col lg={3} xs={6} key={popularProduct._id}>
                   <SingleProduct popularProduct={popularProduct} />
                 </Col>
