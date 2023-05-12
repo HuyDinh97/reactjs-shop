@@ -33,6 +33,7 @@ import { addComment, addProductToCart } from 'store/actions/common';
 import { useParams } from 'react-router-dom';
 import postComment from 'Hooks/postComment';
 
+import useFetchComment from 'Hooks/useFetchComment';
 import cart from './img/cart-icon-1.png';
 
 import classes from './ProductDetail.module.css';
@@ -57,11 +58,14 @@ function ProductDetail() {
   const review = useRef('');
 
   const [key, setKey] = useState('description');
+  useFetchComment(param.productId);
   const getComments = useGetComments();
-  const getCommentsDetail = getComments.filter(
-    (comment) => comment.product_id !== param.productId
+  // const idCheck = getComments.map(
+  //   (comment) => String(comment.product_id) === param.productId
+  // );
+  const getCommentsDetail = getComments.filter((comment) =>
+    param.productId.match(comment.product_id)
   );
-  // console.log(getCommentsDetail);
 
   const ActiveStyle = {
     background: '#eb3d32',
@@ -72,12 +76,15 @@ function ProductDetail() {
   const productDetailData = useGetProductDetail();
   const relatedProduct = productDetailData.map((product) => product.category);
   const popularProductData = useGetPopularProduct();
-  const relatedProductData = popularProductData.filter((product) =>
-    product.category === relatedProduct[0] &&
-    !param.productId.match(product._id)
-      ? product
-      : null
-  );
+  const relatedProductData =
+    popularProductData !== undefined
+      ? popularProductData.filter((product) =>
+          product.category === relatedProduct[0] &&
+          !param.productId.match(product._id)
+            ? product
+            : null
+        )
+      : [];
 
   const addProduct = useCallback(
     (productInCart) => () => {

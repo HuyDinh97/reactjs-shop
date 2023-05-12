@@ -10,6 +10,11 @@ const useFetchComment = (id) => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
+    const commentExists = comments.find(
+      // eslint-disable-next-line camelcase
+      ({ product_id }) => product_id?.toString() === id
+    );
+    if (commentExists) return;
     axios
       .get(
         `https://vnguyen.xyz/huy/day17/apis/index.php?type=comments&product_id=${id}`
@@ -22,7 +27,7 @@ const useFetchComment = (id) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
-  return { comments, isSuccess };
+  return { isSuccess };
 };
 
 export default useFetchComment;
