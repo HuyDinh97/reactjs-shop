@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/forbid-component-props */
@@ -23,9 +24,9 @@ import Tab from 'react-bootstrap/Tab';
 import SingleProduct from 'components/SingleProduct/SingleProduct';
 import {
   useGetComments,
+  useGetMyCart,
   useGetPopularProduct,
   useGetProductDetail,
-  useGetUpdateQuantity,
 } from 'store/selectors/common';
 import TitleUnderline from 'components/PopularProduct/TitleUnderline';
 import { useDispatch } from 'react-redux';
@@ -39,11 +40,12 @@ import cart from './img/cart-icon-1.png';
 import classes from './ProductDetail.module.css';
 
 function ProductDetail() {
-  const quantityUpdate = useGetUpdateQuantity();
+  const { productId } = useParams();
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
   const dispatch = useDispatch();
 
+  const { products } = useGetMyCart();
   const [img, setImg] = useState('no-repeat center');
   const changeIMGtop = () => {
     setImg('no-repeat top');
@@ -52,16 +54,23 @@ function ProductDetail() {
     setImg('no-repeat bottom');
   };
 
-  const param = useParams();
   const name = useRef('');
   const email = useRef('');
   const review = useRef('');
 
+  const isProductExist = products.find((product) =>
+    productId.toString().match(product._id)
+  );
+
   const [key, setKey] = useState('description');
-  useFetchComment(param.productId);
+  // eslint-disable-next-line prefer-const
+  let [producQuantity, setProductQuantity] = useState(
+    isProductExist?.quantity || 1
+  );
+  useFetchComment(productId);
   const getComments = useGetComments();
   const getCommentsDetail = getComments.filter((comment) =>
-    param.productId.match(comment.product_id)
+    productId.match(comment.product_id)
   );
 
   const ActiveStyle = {
@@ -77,7 +86,7 @@ function ProductDetail() {
     popularProductData !== undefined
       ? popularProductData.filter((product) =>
           product.category === relatedProduct[0] &&
-          !param.productId.match(product._id)
+          !productId.match(product._id)
             ? product
             : null
         )
@@ -91,16 +100,16 @@ function ProductDetail() {
         price: productInCart.price,
         sales: productInCart.sales,
         thumb: productInCart.thumb,
-        quantity: quantityUpdate[0],
+        quantity: producQuantity,
       };
       dispatch(addProductToCart(data));
     },
-    [dispatch, quantityUpdate]
+    [dispatch, producQuantity]
   );
 
   const submitData = useCallback(() => {
     const commentData = {
-      product_id: `${param.productId}`,
+      product_id: `${productId}`,
       comment: `${review.current.value}`,
       author: `${name.current.value}`,
       email: email.current.value,
@@ -110,6 +119,21 @@ function ProductDetail() {
     dispatch(addComment([commentData]));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const changeProductQuantity = useCallback(
+    (isDecrease = false) =>
+      () => {
+        if (isDecrease) {
+          if (producQuantity === 0) return;
+          producQuantity -= 1;
+          setProductQuantity(producQuantity);
+        } else {
+          producQuantity += 1;
+          setProductQuantity(producQuantity);
+        }
+      },
+    []
+  );
 
   return (
     <div className="my-5">
@@ -193,8 +217,8 @@ function ProductDetail() {
                       <div className="mx-2">
                         <QuantityButton
                           className="d-flex flex-row"
-                          productId={product._id}
-                          productQuantity={1}
+                          productQuantity={producQuantity}
+                          changeProductQuantity={changeProductQuantity}
                         />
                       </div>
                     </Col>

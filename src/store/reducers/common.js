@@ -86,7 +86,6 @@ export default (state = initialState, action) => {
       const newQuantity = productExist
         ? products[productIndex].quantity + quantity
         : quantity;
-
       const realPrice = price * newQuantity;
       const afterSalesPrice = realPrice - (realPrice * sales) / 100;
       const afterSalesPerOnePrice = price - (price * sales) / 100;
@@ -126,7 +125,7 @@ export default (state = initialState, action) => {
         productDetail: [newProductDetail],
       };
     case 'DELETE_PRODUCTINCART':
-      const productDelete = state.productInCart.products.filter(
+      const productDelete = products.filter(
         (product) => product._id !== action.id
       );
 
@@ -138,50 +137,53 @@ export default (state = initialState, action) => {
         },
       };
     case 'INCREASE_PRODUCTINCART':
-      const updateInCreaseProduct = state.productInCart.products.map(
-        (curProd) => {
-          if (curProd._id === action.id) {
-            return {
-              ...curProd,
-              quantity: curProd.quantity + 1,
-            };
-          }
-          return curProd;
+      const updateInCreaseProduct = products.map((curProd) => {
+        if (curProd._id === action.id) {
+          return {
+            ...curProd,
+            quantity: curProd.quantity + 1,
+            afterSalesPrice:
+              curProd.afterSalesPerOnePrice * (curProd.quantity + 1),
+          };
         }
-      );
+        return curProd;
+      });
       return {
         ...state,
         productInCart: {
           ...state.productInCart,
           products: updateInCreaseProduct,
+          totalCost: calculateTotalCost(products),
         },
       };
     case 'DECREASE_PRODUCTINCART':
-      const updateDecreaseProduct = state.productInCart.products.map(
-        (curProd) => {
-          if (curProd._id === action.id) {
-            let deacreaseQuantity = curProd.quantity - 1;
-            if (deacreaseQuantity <= 0) {
-              deacreaseQuantity = 1;
-            }
-
-            return {
-              ...curProd,
-              quantity: deacreaseQuantity,
-            };
+      const updateDecreaseProduct = products.map((curProd) => {
+        if (curProd._id === action.id) {
+          let deacreaseQuantity = curProd.quantity - 1;
+          if (deacreaseQuantity <= 0) {
+            deacreaseQuantity = 1;
           }
-          return curProd;
+
+          return {
+            ...curProd,
+            quantity: deacreaseQuantity,
+            afterSalesPrice:
+              curProd.afterSalesPerOnePrice *
+              (curProd.quantity > 1 ? curProd.quantity - 1 : curProd.quantity),
+          };
         }
-      );
+        return curProd;
+      });
       return {
         ...state,
         productInCart: {
           ...state.productInCart,
           products: updateDecreaseProduct,
+          totalCost: calculateTotalCost(updateDecreaseProduct),
         },
       };
     case 'UPDATE_MYCART':
-      const updateMyCart = state.productInCart.products.map((product) => {
+      const updateMyCart = products.map((product) => {
         const realPriceMyCart = product.price * product.quantity;
         const afterSalesPriceMyCart =
           realPriceMyCart - (realPriceMyCart * product.sales) / 100;

@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useDispatch } from 'react-redux';
-import { deleteProductInCart, updateMyCart } from 'store/actions/common';
+import { decreaseProductInCart, deleteProductInCart, increaseProductInCart, updateMyCart } from 'store/actions/common';
 import { FaChevronLeft } from 'react-icons/fa';
 import { HiRefresh } from 'react-icons/hi';
 
@@ -50,6 +50,18 @@ function CartTable() {
     [dispatch]
   );
 
+  const changeProductQuantity = useCallback(
+    (productId, isDecrease = false) =>
+      () => {
+        if (isDecrease) {
+          dispatch(decreaseProductInCart(isDecrease))
+        } else {
+          dispatch(increaseProductInCart(productId))
+        }
+      },
+    []
+  );
+
   return (
     <div className={classes.mt_5}>
       <div id="cartTable" className={`opacity-${updateCartState.opacity}`}>
@@ -78,7 +90,7 @@ function CartTable() {
                 {product.afterSalesPerOnePrice}
               </Col>
               <Col lg={2}>
-                <QuantityButton productId={product._id} productQuantity={product.quantity} type="update" />
+                <QuantityButton productId={product._id} productQuantity={product.quantity} changeProductQuantity={changeProductQuantity} />
               </Col>
               <Col className={classes.price_sample} lg={1}>
                 $
@@ -135,7 +147,7 @@ function CartTable() {
               <Col className="d-flex justify-content-between p-3">
                 <div className={classes.semibold}>Quantity:</div>
                 <div>
-                  <QuantityButton flexDirectionType="flex-column" productId={product._id} productQuantity={product.quantity} />
+                  <QuantityButton flexDirectionType="flex-column" productId={product._id} productQuantity={product.quantity} changeProductQuantity={changeProductQuantity} />
                 </div>
               </Col>
               <Col className="d-flex justify-content-between p-3">

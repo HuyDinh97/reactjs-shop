@@ -62,9 +62,10 @@ export const decreaseProductInCart = (id) => {
   };
 };
 
-export const updateMyCart = () => {
+export const updateMyCart = (payload) => {
   return {
     type: 'UPDATE_MYCART',
+    payload,
   };
 };
 

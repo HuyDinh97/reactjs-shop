@@ -1,80 +1,35 @@
 /* eslint-disable no-unused-expressions */
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { FaMinus, FaPlus } from 'react-icons/fa';
-import {
-  decreaseProductInCart,
-  increaseProductInCart,
-  updateQuantity,
-} from 'store/actions/common';
-import { useDispatch } from 'react-redux';
 import classes from './QuantityButton.module.css';
 
 function QuantityButton({
   productId,
   productQuantity,
   flexDirectionType,
-  type,
+  changeProductQuantity,
 }) {
   const handleChange = () => {
     console.log('input change');
   };
-  const [value, setValue] = useState(1);
-  const quantiyDetail = useRef(1);
-
-  useEffect(() => {
-    setValue(1);
-  }, []);
-
-  useEffect(() => {
-    quantiyDetail.current = value;
-  });
 
   const flexDirection = flexDirectionType || 'column';
 
-  const dispatch = useDispatch();
-
-  const changeProductQuantity = useCallback(
-    (id, isDecrease = false) =>
-      () => {
-        if (isDecrease) {
-          if (value < 2) {
-            setValue(value);
-          }
-          if (value >= 2) {
-            setValue(value - 1);
-          }
-          if (type === 'update') {
-            dispatch(decreaseProductInCart(id));
-          }
-          dispatch(updateQuantity(value - 1));
-          return;
-        }
-        if (type === 'update') {
-          dispatch(increaseProductInCart(id));
-        }
-        setValue(value + 1);
-        dispatch(updateQuantity(value + 1));
-      },
-    [dispatch, type, value]
-  );
   return (
     <div className={`${classes.cartDetailQuantity} ${flexDirection} border-0`}>
       <button
         type="button"
         className={`${classes.quantity_button} w-100 d-flex justify-content-center`}
-        onClick={changeProductQuantity(productId, true)}
+        onClick={changeProductQuantity(true, productId)}
       >
         <FaMinus />
       </button>
       <div className={classes.quantity_in_cart}>
         <input
           id={productId}
-          type="tel"
+          type="number"
           min={0}
-          ref={quantiyDetail}
-          value={
-            productQuantity && productQuantity > 1 ? productQuantity : value
-          }
+          value={productQuantity}
           onChange={handleChange}
           aria-label="couple-code"
         />
