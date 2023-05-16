@@ -184,14 +184,18 @@ export default (state = initialState, action) => {
         },
       };
     case 'UPDATE_MYCART':
-      const updateMyCart = products.map((product) => {
-        const realPriceMyCart = product.price * product.quantity;
-        const afterSalesPriceMyCart =
-          realPriceMyCart - (realPriceMyCart * product.sales) / 100;
-        return {
-          ...product,
-          afterSalesPrice: afterSalesPriceMyCart,
-        };
+      const updateMyCart = products.map((curProd) => {
+        if (curProd._id.toString() === action.payload._id) {
+          const realPriceMyCart = curProd.price * action.payload.quantity;
+          const afterSalesPriceMyCart =
+            realPriceMyCart - (realPriceMyCart * curProd.sales) / 100;
+          return {
+            ...curProd,
+            quantity: action.payload.quantity,
+            afterSalesPrice: afterSalesPriceMyCart,
+          };
+        }
+        return curProd;
       });
       return {
         ...state,

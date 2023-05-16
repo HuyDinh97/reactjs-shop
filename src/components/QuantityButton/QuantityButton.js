@@ -27,7 +27,7 @@ function QuantityButton({
       <div className={classes.quantity_in_cart}>
         <input
           id={productId}
-          type="number"
+          type="tel"
           min={0}
           value={productQuantity}
           onChange={handleChange}

@@ -30,7 +30,11 @@ import {
 } from 'store/selectors/common';
 import TitleUnderline from 'components/PopularProduct/TitleUnderline';
 import { useDispatch } from 'react-redux';
-import { addComment, addProductToCart } from 'store/actions/common';
+import {
+  addComment,
+  addProductToCart,
+  updateMyCart,
+} from 'store/actions/common';
 import { useParams } from 'react-router-dom';
 import postComment from 'Hooks/postComment';
 
@@ -134,6 +138,14 @@ function ProductDetail() {
     []
   );
 
+  const updateProductInCart = useCallback((updateProductQuantity) => () => {
+    const updateData = {
+      _id: productId,
+      quantity: updateProductQuantity,
+    };
+    dispatch(updateMyCart(updateData));
+  });
+
   return (
     <div className="my-5">
       <Container>
@@ -225,11 +237,15 @@ function ProductDetail() {
                       <button
                         className={`${classes.addToCartButton} d-flex align-items-center rounded-pill p-2 px-4 border-0`}
                         type="button"
-                        onClick={addProduct(product)}
+                        onClick={
+                          isProductExist
+                            ? updateProductInCart(producQuantity)
+                            : addProduct(product)
+                        }
                       >
                         <img src={cart} alt="cart" />
                         <div className="d-flex align-items-center mx-2 fw-semibold text-white fs-6">
-                          Add to Cart
+                          {isProductExist ? 'Update My Cart' : 'Add to Cart'}
                         </div>
                       </button>
                     </Col>
