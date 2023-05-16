@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 import { postData, setCookie } from './LoginCheck';
 
-const doLogin = async ({ emailLogIn, passwordLogIn, loginRemember }) => {
+function DoLogin({ emailLogIn, passwordLogIn, loginRemember }) {
   const email = emailLogIn.current.value;
   const password = passwordLogIn.current.value;
   const remember = loginRemember.checked ? 5 : 1;
@@ -22,7 +22,7 @@ const doLogin = async ({ emailLogIn, passwordLogIn, loginRemember }) => {
     return false;
   }
 
-  const login = await postData(
+  const login = postData(
     'https://vnguyen.xyz/huy/day17/apis/index.php?type=login',
     {
       email,
@@ -35,8 +35,8 @@ const doLogin = async ({ emailLogIn, passwordLogIn, loginRemember }) => {
     window.location.href = '/';
     return false;
   }
-  alert(login.message);
-  return true;
-};
+  const status = login?.message;
+  return status;
+}
 
-export default doLogin;
+export default DoLogin;

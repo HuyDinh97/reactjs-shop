@@ -229,6 +229,12 @@ export default (state = initialState, action) => {
         ...state,
         comment: action.payload,
       };
+    case 'ADD_ERROR':
+      const error = action.payload;
+      return {
+        ...state,
+        error: action.payload,
+      };
     default:
       return state;
   }

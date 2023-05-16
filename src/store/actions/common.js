@@ -88,3 +88,10 @@ export const addComment = (payload) => {
     payload,
   };
 };
+
+export const addError = (payload) => {
+  return {
+    type: 'ADD_ERROR',
+    payload,
+  };
+};

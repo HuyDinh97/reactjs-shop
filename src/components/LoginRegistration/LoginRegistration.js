@@ -1,10 +1,9 @@
 /* eslint-disable no-alert */
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useRef, useCallback, useState } from 'react';
-import { checkLogin, postData } from './LoginCheck';
+import React, { useRef, useState } from 'react';
+import { checkLogin, postData, setCookie } from './LoginCheck';
 import classes from './LoginRegistration.module.css';
-import doLogin from './doLogin';
 
 function LoginRegistration() {
   const emailLogIn = useRef();
@@ -17,11 +16,48 @@ function LoginRegistration() {
   const passwordComfirmSignUpRef = useRef();
   const acceptSignUp = document.getElementById('acceptSignUp');
 
-  const [errorData, setErrorData] = useState([]);
+  const [errorLoginData, setErrorLoginData] = useState([]);
+  const [errorSignUpData, setErrorSignUpData] = useState([]);
 
-  const logIn = useCallback(() => {
-    doLogin({ emailLogIn, passwordLogIn, loginRemember });
-  }, [loginRemember]);
+  const doLogin = async () => {
+    const email = emailLogIn.current.value;
+    const password = passwordLogIn.current.value;
+    const remember = loginRemember.checked ? 5 : 1;
+
+    const regEmail =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!regEmail.test(email)) {
+      alert(
+        'You must provide an correct email address to perform login action!'
+      );
+      return false;
+    }
+
+    if (!email) {
+      alert('You must provide an email address to perform login action!');
+      return false;
+    }
+    if (!password) {
+      alert('You must provide an password to perform login action!');
+      return false;
+    }
+
+    const login = await postData(
+      'https://vnguyen.xyz/huy/day17/apis/index.php?type=login',
+      {
+        email,
+        password,
+      }
+    );
+
+    if (login.status === true) {
+      setCookie('email', email, remember);
+      window.location.href = '/';
+      return;
+    }
+    const status = login?.message;
+    setErrorLoginData(status);
+  };
 
   const doSignUp = async () => {
     const nameSignUp = nameSignUpRef.current.value;
@@ -42,13 +78,35 @@ function LoginRegistration() {
     );
     const data = signUp.errors;
     const error = data ? JSON.parse(data) : null;
-    const status = signUp.message;
-    const check = error.fields || status;
-    setErrorData(check);
+    const check = error ? error.fields : [];
+    if (check?.name) {
+      setErrorSignUpData(check.name.required);
+      return;
+    }
+    if (check?.email) {
+      setErrorSignUpData(check.email.required);
+      return;
+    }
+    if (check?.password) {
+      setErrorSignUpData(check.password.required);
+      return;
+    }
+    if (check?.confirm_password) {
+      if (check?.confirm_password.same) {
+        setErrorSignUpData(check.confirm_password.same);
+        return;
+      }
+      setErrorSignUpData(check.confirm_password.required);
+      return;
+    }
+    if (check?.agree) {
+      setErrorSignUpData('You must accept the terms and conditions');
+    }
   };
-  console.log(errorData);
 
   checkLogin();
+  const errorSignUp = errorSignUpData?.length <= 0 ? 'd-none' : 'd-block';
+  const errorLogin = errorLoginData?.length <= 0 ? 'd-none' : 'd-block';
 
   return (
     <div className={classes.LoginRegistration}>
@@ -56,7 +114,7 @@ function LoginRegistration() {
         <li>
           <h4 className="fw-bold">LOGIN</h4>
         </li>
-        <li className={classes.subTitle}>
+        <li className={`${classes.subTitle} ${errorLogin}`}>
           <span className={classes.subTitle_color}>Error:</span>
           <span className={classes.grayText_color}>
             Wrong email or password
@@ -95,7 +153,7 @@ function LoginRegistration() {
           <button
             className={classes.login_button}
             type="button"
-            onClick={logIn}
+            onClick={doLogin}
           >
             Login
           </button>
@@ -107,9 +165,9 @@ function LoginRegistration() {
         <li>
           <h4 className="fw-bold">REGISTRATION</h4>
         </li>
-        <li className={classes.subTitle}>
+        <li className={`${classes.subTitle} ${errorSignUp}`}>
           <span className={classes.subTitle_color}>Error:</span>
-          <span className={classes.grayText_color}>Email already existed</span>
+          <span className={classes.grayText_color}>{errorSignUpData}</span>
         </li>
         <li>
           <input
