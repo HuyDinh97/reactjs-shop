@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useDispatch } from 'react-redux';
-import { decreaseProductInCart, deleteProductInCart, increaseProductInCart } from 'store/actions/common';
+import { adjustProductInCart, deleteProductInCart } from 'store/actions/common';
 import { FaChevronLeft } from 'react-icons/fa';
 
 import { Link } from 'react-router-dom';
@@ -30,9 +30,9 @@ function CartTable() {
     (productId, isDecrease = false) =>
       () => {
         if (isDecrease) {
-          dispatch(decreaseProductInCart(productId))
+          dispatch(adjustProductInCart(productId, isDecrease))
         } else {
-          dispatch(increaseProductInCart(productId))
+          dispatch(adjustProductInCart(productId))
         }
       },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -71,7 +71,7 @@ function CartTable() {
               </Col>
               <Col className={classes.price_sample} lg={1}>
                 $
-                {product.afterSalesPrice}
+                {product.afterSalesPrice.toFixed(2)}
               </Col>
               <Col lg={1}>
                 <button type="button" className={classes.deleteButton} onClick={deleteProduct(product._id)}>X</button>

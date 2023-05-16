@@ -2,11 +2,7 @@ import React, { useCallback } from 'react';
 import { HiHeart } from 'react-icons/hi';
 import { BsFillEyeFill } from 'react-icons/bs';
 import { TbRefresh } from 'react-icons/tb';
-import {
-  addProductToCart,
-  productDetail,
-  updateQuantity,
-} from 'store/actions/common';
+import { addProductToCart, productDetail } from 'store/actions/common';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -35,7 +31,6 @@ function SingleProduct({ popularProduct }) {
   const uploadInfo = useCallback(
     (data) => () => {
       dispatch(productDetail(data));
-      dispatch(updateQuantity(1));
     },
     [dispatch]
   );

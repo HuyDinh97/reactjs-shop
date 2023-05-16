@@ -136,14 +136,22 @@ export default (state = initialState, action) => {
           totalCost: calculateTotalCost(productDelete),
         },
       };
-    case 'INCREASE_PRODUCTINCART':
+    case 'ADJUST_PRODUCTINCART':
       const updateInCreaseProduct = products.map((curProd) => {
+        let quantityUpdate;
+        let newAfterSalesPrice = [];
         if (curProd._id === action.id) {
-          const newAfterSalesPrice =
-            curProd.afterSalesPerOnePrice * (curProd.quantity + 1);
+          if (action.isDecrease === true) {
+            quantityUpdate = curProd.quantity > 1 ? curProd.quantity - 1 : 1;
+            newAfterSalesPrice = curProd.afterSalesPerOnePrice * quantityUpdate;
+          }
+          if (!action.isDecrease) {
+            quantityUpdate = curProd.quantity + 1;
+            newAfterSalesPrice = curProd.afterSalesPerOnePrice * quantityUpdate;
+          }
           return {
             ...curProd,
-            quantity: curProd.quantity + 1,
+            quantity: quantityUpdate,
             afterSalesPrice: newAfterSalesPrice,
           };
         }
@@ -155,30 +163,6 @@ export default (state = initialState, action) => {
           ...state.productInCart,
           products: updateInCreaseProduct,
           totalCost: calculateTotalCost(updateInCreaseProduct),
-        },
-      };
-    case 'DECREASE_PRODUCTINCART':
-      const updateDecreaseProduct = products.map((curProd) => {
-        if (curProd._id === action.id) {
-          const deacreaseQuantity =
-            curProd.quantity > 1 ? curProd.quantity - 1 : 1;
-
-          return {
-            ...curProd,
-            quantity: deacreaseQuantity,
-            afterSalesPrice:
-              curProd.afterSalesPerOnePrice *
-              (curProd.quantity > 1 ? curProd.quantity - 1 : curProd.quantity),
-          };
-        }
-        return curProd;
-      });
-      return {
-        ...state,
-        productInCart: {
-          ...state.productInCart,
-          products: updateDecreaseProduct,
-          totalCost: calculateTotalCost(updateDecreaseProduct),
         },
       };
     case 'UPDATE_MYCART':
@@ -202,12 +186,6 @@ export default (state = initialState, action) => {
           products: updateMyCart,
           totalCost: calculateTotalCost(updateMyCart),
         },
-      };
-    case 'UPDATE_QUANTITY':
-      const quantityDetail = action.payload;
-      return {
-        ...state,
-        quantityDetail: [quantityDetail],
       };
     case 'ADD_COMMENT':
       try {

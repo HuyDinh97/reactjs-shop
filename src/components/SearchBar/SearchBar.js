@@ -82,7 +82,7 @@ function SearchBar() {
                                   <div>Quantiy: {product.quantity}</div>
                                   <div className={classes.price_color}>
                                     $
-                                    {product.afterSalesPrice}
+                                    {product.afterSalesPrice.toFixed(2)}
                                   </div>
                                 </span>
                                 <span className={classes.close_button}>

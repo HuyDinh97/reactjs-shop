@@ -48,17 +48,11 @@ export const deleteProductInCart = (id) => {
   };
 };
 
-export const increaseProductInCart = (id) => {
+export const adjustProductInCart = (id, isDecrease) => {
   return {
-    type: 'INCREASE_PRODUCTINCART',
+    type: 'ADJUST_PRODUCTINCART',
     id,
-  };
-};
-
-export const decreaseProductInCart = (id) => {
-  return {
-    type: 'DECREASE_PRODUCTINCART',
-    id,
+    isDecrease,
   };
 };
 
@@ -72,13 +66,6 @@ export const updateMyCart = (payload) => {
 export const productDetail = (payload) => {
   return {
     type: 'PRODUCT_DETAIL',
-    payload,
-  };
-};
-
-export const updateQuantity = (payload) => {
-  return {
-    type: 'UPDATE_QUANTITY',
     payload,
   };
 };
