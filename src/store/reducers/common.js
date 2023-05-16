@@ -139,11 +139,12 @@ export default (state = initialState, action) => {
     case 'INCREASE_PRODUCTINCART':
       const updateInCreaseProduct = products.map((curProd) => {
         if (curProd._id === action.id) {
+          const newAfterSalesPrice =
+            curProd.afterSalesPerOnePrice * (curProd.quantity + 1);
           return {
             ...curProd,
             quantity: curProd.quantity + 1,
-            afterSalesPrice:
-              curProd.afterSalesPerOnePrice * (curProd.quantity + 1),
+            afterSalesPrice: newAfterSalesPrice,
           };
         }
         return curProd;
@@ -153,14 +154,14 @@ export default (state = initialState, action) => {
         productInCart: {
           ...state.productInCart,
           products: updateInCreaseProduct,
-          totalCost: calculateTotalCost(products),
+          totalCost: calculateTotalCost(updateInCreaseProduct),
         },
       };
     case 'DECREASE_PRODUCTINCART':
       const updateDecreaseProduct = products.map((curProd) => {
         if (curProd._id === action.id) {
           let deacreaseQuantity = curProd.quantity - 1;
-          if (deacreaseQuantity <= 0) {
+          if (deacreaseQuantity <= 1) {
             deacreaseQuantity = 1;
           }
 
