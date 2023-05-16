@@ -117,7 +117,6 @@ function ProductDetail() {
     };
     postComment(commentData);
     dispatch(addComment([commentData]));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const changeProductQuantity = useCallback(
