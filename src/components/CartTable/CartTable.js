@@ -2,14 +2,13 @@
 /* eslint-disable react/button-has-type */
 import CartTotal from 'components/CartTotal/CartTotal';
 import PromotionCode from 'components/PromotionCode/PromotionCode';
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useDispatch } from 'react-redux';
-import { decreaseProductInCart, deleteProductInCart, increaseProductInCart, updateMyCart } from 'store/actions/common';
+import { decreaseProductInCart, deleteProductInCart, increaseProductInCart } from 'store/actions/common';
 import { FaChevronLeft } from 'react-icons/fa';
-import { HiRefresh } from 'react-icons/hi';
 
 import { Link } from 'react-router-dom';
 import { useGetMyCart } from 'store/selectors/common';
@@ -18,11 +17,6 @@ import classes from './CartTable.module.css';
 
 function CartTable() {
   const { products: productInCart, totalCost } = useGetMyCart();
-  const initialCartUpdateState = {
-    text: 'UPDATE CART',
-    opacity: '100'
-  };
-  const [updateCartState, setUpdateCartState] = useState(initialCartUpdateState);
   const dispatch = useDispatch();
 
   const deleteProduct = useCallback(
@@ -31,29 +25,10 @@ function CartTable() {
     },
     [dispatch]
   );
-  // onchange fuction for input defaultValue
-
-  const updateCartButton = useRef([]);
-  const updateCart = useCallback(
-    () => () => {
-      setUpdateCartState({
-        text: 'UPDATING...',
-        opacity: '25'
-      });
-      dispatch(updateMyCart());
-
-      setTimeout(() => {
-        setUpdateCartState(initialCartUpdateState);
-    }, 500);
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [dispatch]
-  );
 
   const changeProductQuantity = useCallback(
     (productId, isDecrease = false) =>
       () => {
-        console.log(isDecrease)
         if (isDecrease) {
           dispatch(decreaseProductInCart(productId))
         } else {
@@ -66,7 +41,7 @@ function CartTable() {
 
   return (
     <div className={classes.mt_5}>
-      <div id="cartTable" className={`opacity-${updateCartState.opacity}`}>
+      <div id="cartTable">
         <Container className={classes.webVersion}>
           <Row className={classes.cartDetailHeader}>
             <Col lg={2}>Item</Col>
@@ -117,12 +92,6 @@ function CartTable() {
                     <FaChevronLeft className="mx-2" />
                     <div className="border-0">CONTINUE SHOPPING</div>
                   </Link>
-                </span>
-                <span className={classes.buttonUpdateCartBorder}>
-                  <button className={classes.buttonUpdateCart} onClick={updateCart()}>
-                    <HiRefresh className="mx-2" />
-                    <div className="border-0" ref={updateCartButton}>{updateCartState.text}</div>
-                  </button>
                 </span>
               </div>
             </Col>
@@ -178,12 +147,6 @@ function CartTable() {
                     <FaChevronLeft className={classes.iconButton} />
                     <div className="border-0">CONTINUE SHOPPING</div>
                   </Link>
-                </span>
-                <span className={classes.buttonUpdateCartBorder}>
-                  <button className={classes.buttonUpdateCart} onClick={updateCart()}>
-                    <HiRefresh className={classes.iconButton} />
-                    <div className="border-0">{updateCartState.text}</div>
-                  </button>
                 </span>
               </div>
             </Col>

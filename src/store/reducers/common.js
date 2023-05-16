@@ -160,10 +160,8 @@ export default (state = initialState, action) => {
     case 'DECREASE_PRODUCTINCART':
       const updateDecreaseProduct = products.map((curProd) => {
         if (curProd._id === action.id) {
-          let deacreaseQuantity = curProd.quantity - 1;
-          if (deacreaseQuantity <= 1) {
-            deacreaseQuantity = 1;
-          }
+          const deacreaseQuantity =
+            curProd.quantity > 1 ? curProd.quantity - 1 : 1;
 
           return {
             ...curProd,
