@@ -53,8 +53,9 @@ function CartTable() {
   const changeProductQuantity = useCallback(
     (productId, isDecrease = false) =>
       () => {
+        console.log(isDecrease)
         if (isDecrease) {
-          dispatch(decreaseProductInCart(isDecrease))
+          dispatch(decreaseProductInCart(productId))
         } else {
           dispatch(increaseProductInCart(productId))
         }

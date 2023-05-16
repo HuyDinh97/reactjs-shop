@@ -124,7 +124,8 @@ function ProductDetail() {
   }, []);
 
   const changeProductQuantity = useCallback(
-    (isDecrease = false) =>
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    (productId, isDecrease = false) =>
       () => {
         if (isDecrease) {
           if (producQuantity === 0) return;

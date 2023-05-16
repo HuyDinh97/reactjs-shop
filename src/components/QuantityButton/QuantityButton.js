@@ -20,7 +20,7 @@ function QuantityButton({
       <button
         type="button"
         className={`${classes.quantity_button} w-100 d-flex justify-content-center`}
-        onClick={changeProductQuantity(true, productId)}
+        onClick={changeProductQuantity(productId, true)}
       >
         <FaMinus />
       </button>
@@ -37,7 +37,7 @@ function QuantityButton({
       <button
         type="button"
         className={`${classes.quantity_button} w-100 d-flex justify-content-center`}
-        onClick={changeProductQuantity(productId)}
+        onClick={changeProductQuantity(productId, false)}
       >
         <FaPlus />
       </button>
