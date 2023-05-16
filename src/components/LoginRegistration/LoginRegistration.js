@@ -24,24 +24,6 @@ function LoginRegistration() {
     const password = passwordLogIn.current.value;
     const remember = loginRemember.checked ? 5 : 1;
 
-    const regEmail =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!regEmail.test(email)) {
-      alert(
-        'You must provide an correct email address to perform login action!'
-      );
-      return false;
-    }
-
-    if (!email) {
-      alert('You must provide an email address to perform login action!');
-      return false;
-    }
-    if (!password) {
-      alert('You must provide an password to perform login action!');
-      return false;
-    }
-
     const login = await postData(
       'https://vnguyen.xyz/huy/day17/apis/index.php?type=login',
       {
@@ -84,7 +66,11 @@ function LoginRegistration() {
       return;
     }
     if (check?.email) {
-      setErrorSignUpData(check.email.required);
+      if (check?.email?.required) {
+        setErrorSignUpData(check.email.required);
+      } else {
+        setErrorSignUpData(check.email.email);
+      }
       return;
     }
     if (check?.password) {
