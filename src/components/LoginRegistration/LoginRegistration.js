@@ -16,7 +16,9 @@ function LoginRegistration() {
   const passwordComfirmSignUpRef = useRef();
   const acceptSignUp = document.getElementById('acceptSignUp');
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [errorLoginData, setErrorLoginData] = useState([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [errorSignUpData, setErrorSignUpData] = useState([]);
 
   const doLogin = async () => {
@@ -44,6 +46,7 @@ function LoginRegistration() {
     const passwordComfirmSignUp = passwordComfirmSignUpRef.current.value;
     const acceptSignUpCheck = acceptSignUp.checked ? 1 : 0;
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const signUp = await postData(
       'https://vnguyen.xyz/huy/day17/apis/index.php?type=register',
       {
