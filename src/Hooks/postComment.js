@@ -1,22 +1,11 @@
 /* eslint-disable no-undef */
-import axios from 'axios';
+import { postData } from 'components/LoginRegistration/LoginCheck';
 
 const postComment = (fields) => {
-  axios
-    .request({
-      method: 'post',
-      url: 'https://vnguyen.xyz/huy/day17/apis/index.php?type=comments&action=add',
-      data: fields,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-    })
-    // .then((response) => {
-    //   console.log('data', response);
-    // })
-    .catch((error) => {
-      console.log(error.data);
-    });
+  postData(
+    'https://vnguyen.xyz/huy/day17/apis/index.php?type=comments&action=add',
+    fields
+  );
 };
 
 export default postComment;
