@@ -20,25 +20,42 @@ function LoginRegistration() {
   const [errorSignUpData, setErrorSignUpData] = useState([]);
 
   const doLogin = async () => {
-    const email = emailLogIn.current.value;
-    const password = passwordLogIn.current.value;
+    const userEmail = emailLogIn.current.value;
+    const userPassword = passwordLogIn.current.value;
     const remember = loginRemember.checked ? 5 : 1;
 
     const login = await postData(
       'https://vnguyen.xyz/huy/day17/apis/index.php?type=login',
       {
-        email,
-        password,
+        email: userEmail,
+        password: userPassword,
       }
     );
+    const data = login.errors;
+    const error = data ? JSON.parse(data) : null;
+    const check = error ? error.fields : [];
 
     if (login.status === true) {
-      setCookie('email', email, remember);
+      setCookie('email', userEmail, remember);
       window.location.href = '/';
       return;
     }
-    const status = login?.message;
-    setErrorLoginData(status);
+    if (check?.email) {
+      if (check?.email?.required) {
+        setErrorLoginData(check?.email?.required);
+      } else {
+        setErrorLoginData(check?.email.email);
+      }
+      return;
+    }
+    if (check?.password) {
+      setErrorLoginData(check?.password.required);
+      console.log(check?.email.required);
+      return;
+    }
+    if (login?.message) {
+      setErrorLoginData(login?.message);
+    }
   };
 
   const doSignUp = async () => {
@@ -62,7 +79,10 @@ function LoginRegistration() {
     const error = data ? JSON.parse(data) : null;
     const check = error ? error.fields : [];
     if (check?.name) {
-      setErrorSignUpData(check.name.required);
+      if (check?.name.required) {
+        setErrorSignUpData(check.name.required);
+      }
+      setErrorSignUpData(check.name.min);
       return;
     }
     if (check?.email) {
@@ -102,9 +122,7 @@ function LoginRegistration() {
         </li>
         <li className={`${classes.subTitle} ${errorLogin}`}>
           <span className={classes.subTitle_color}>Error:</span>
-          <span className={classes.grayText_color}>
-            Wrong email or password
-          </span>
+          <span className={classes.grayText_color}>{errorLoginData}</span>
         </li>
         <li>
           <input
