@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import axios from 'axios';
 
 const postComment = ({ productId, commentData, authorData, emailData }) => {
