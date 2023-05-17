@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-expressions */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { FaMinus, FaPlus } from 'react-icons/fa';
 import {
