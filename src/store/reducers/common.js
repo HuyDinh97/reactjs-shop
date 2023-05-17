@@ -230,7 +230,6 @@ export default (state = initialState, action) => {
         comment: action.payload,
       };
     case 'ADD_ERROR':
-      const error = action.payload;
       return {
         ...state,
         error: action.payload,
