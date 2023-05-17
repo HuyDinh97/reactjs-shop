@@ -31,6 +31,10 @@ function LoginRegistration() {
         password: userPassword,
       }
     );
+    if (login.status === true) {
+      setCookie('email', userEmail, remember);
+      window.location.href = '/';
+    }
   };
 
   const doSignUp = async () => {
