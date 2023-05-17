@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addBestSeller } from 'store/actions/common';
@@ -14,14 +13,11 @@ const useFetchBestSeller = () => {
       setIssuccess(true);
       return;
     }
-    axios
-      .get(
-        'https://vnguyen.xyz/huy/day17/apis/index.php?type=products&filter=best_seller'
-      )
-      .then((res) => {
-        dispatch(addBestSeller({ bestSellers: res.data.data }));
-        setIssuccess(true);
-      })
+    fetch(
+      'https://vnguyen.xyz/huy/day17/apis/index.php?type=products&filter=best_seller'
+    )
+      .then((res) => res.json())
+      .then((product) => dispatch(addBestSeller({ bestSellers: product.data })))
       .catch(() => setIssuccess(false));
   }, [bestSellers?.length, dispatch]);
 
