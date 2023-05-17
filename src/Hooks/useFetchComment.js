@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addComment } from 'store/actions/common';
@@ -15,14 +14,11 @@ const useFetchComment = (id) => {
       ({ product_id }) => product_id?.toString() === id
     );
     if (commentExists) return;
-    axios
-      .get(
-        `https://vnguyen.xyz/huy/day17/apis/index.php?type=comments&product_id=${id}`
-      )
-      .then((res) => {
-        dispatch(addComment(res.data.data));
-        setIssuccess(true);
-      })
+    fetch(
+      `https://vnguyen.xyz/huy/day17/apis/index.php?type=comments&product_id=${id}`
+    )
+      .then((res) => res.json())
+      .then((comment) => dispatch(addComment(comment.data)))
       .catch(() => setIssuccess(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
