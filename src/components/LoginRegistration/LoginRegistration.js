@@ -31,31 +31,31 @@ function LoginRegistration() {
         password: userPassword,
       }
     );
-    const data = login.errors;
-    const error = data ? JSON.parse(data) : null;
-    const check = error ? error.fields : [];
+    // const data = login.errors;
+    // const error = data ? JSON.parse(data) : null;
+    // const check = error ? error.fields : [];
 
-    if (login.status === true) {
-      setCookie('email', userEmail, remember);
-      window.location.href = '/';
-      return;
-    }
-    if (check?.email) {
-      if (check?.email?.required) {
-        setErrorLoginData(check?.email?.required);
-      } else {
-        setErrorLoginData(check?.email.email);
-      }
-      return;
-    }
-    if (check?.password) {
-      setErrorLoginData(check?.password.required);
-      console.log(check?.email.required);
-      return;
-    }
-    if (login?.message) {
-      setErrorLoginData(login?.message);
-    }
+    // if (login.status === true) {
+    //   setCookie('email', userEmail, remember);
+    //   window.location.href = '/';
+    //   return;
+    // }
+    // if (check?.email) {
+    //   if (check?.email?.required) {
+    //     setErrorLoginData(check?.email?.required);
+    //   } else {
+    //     setErrorLoginData(check?.email.email);
+    //   }
+    //   return;
+    // }
+    // if (check?.password) {
+    //   setErrorLoginData(check?.password.required);
+    //   console.log(check?.email.required);
+    //   return;
+    // }
+    // if (login?.message) {
+    //   setErrorLoginData(login?.message);
+    // }
   };
 
   const doSignUp = async () => {
@@ -75,39 +75,39 @@ function LoginRegistration() {
         agree: acceptSignUpCheck,
       }
     );
-    const data = signUp.errors;
-    const error = data ? JSON.parse(data) : null;
-    const check = error ? error.fields : [];
-    if (check?.name) {
-      if (check?.name.required) {
-        setErrorSignUpData(check.name.required);
-      }
-      setErrorSignUpData(check.name.min);
-      return;
-    }
-    if (check?.email) {
-      if (check?.email?.required) {
-        setErrorSignUpData(check.email.required);
-      } else {
-        setErrorSignUpData(check.email.email);
-      }
-      return;
-    }
-    if (check?.password) {
-      setErrorSignUpData(check.password.required);
-      return;
-    }
-    if (check?.confirm_password) {
-      if (check?.confirm_password.same) {
-        setErrorSignUpData(check.confirm_password.same);
-        return;
-      }
-      setErrorSignUpData(check.confirm_password.required);
-      return;
-    }
-    if (check?.agree) {
-      setErrorSignUpData('You must accept the terms and conditions');
-    }
+    // const data = signUp.errors;
+    // const error = data ? JSON.parse(data) : null;
+    // const check = error ? error.fields : [];
+    // if (check?.name) {
+    //   if (check?.name.required) {
+    //     setErrorSignUpData(check.name.required);
+    //   }
+    //   setErrorSignUpData(check.name.min);
+    //   return;
+    // }
+    // if (check?.email) {
+    //   if (check?.email?.required) {
+    //     setErrorSignUpData(check.email.required);
+    //   } else {
+    //     setErrorSignUpData(check.email.email);
+    //   }
+    //   return;
+    // }
+    // if (check?.password) {
+    //   setErrorSignUpData(check.password.required);
+    //   return;
+    // }
+    // if (check?.confirm_password) {
+    //   if (check?.confirm_password.same) {
+    //     setErrorSignUpData(check.confirm_password.same);
+    //     return;
+    //   }
+    //   setErrorSignUpData(check.confirm_password.required);
+    //   return;
+    // }
+    // if (check?.agree) {
+    //   setErrorSignUpData('You must accept the terms and conditions');
+    // }
   };
 
   checkLogin();
