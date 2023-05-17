@@ -14,12 +14,11 @@ const useFetchCategory = () => {
       setIssuccess(true);
       return;
     }
-    axios
-      .get('https://vnguyen.xyz/huy/day17/apis/index.php?type=categories')
-      .then((res) => {
-        dispatch(addCategories({ categories: res.data.data }));
-        setIssuccess(true);
-      })
+    fetch('https://vnguyen.xyz/huy/day17/apis/index.php?type=categories')
+      .then((res) => res.json())
+      .then((category) =>
+        dispatch(addCategories({ categories: category.data }))
+      )
       .catch(() => setIssuccess(false));
   }, [categories?.length, dispatch]);
 
