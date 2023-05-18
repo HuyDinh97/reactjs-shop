@@ -2,19 +2,23 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { checkLogin, postData, setCookie } from './LoginCheck';
+import { useDispatch } from 'react-redux';
+import { loginCookie } from 'store/actions/common';
+import { checkLogin, postData } from './LoginCheck';
 import classes from './LoginRegistration.module.css';
 
 function LoginRegistration() {
   const emailLogIn = useRef();
   const passwordLogIn = useRef();
-  const loginRemember = document.getElementById('loginRemember');
+  // const loginRemember = document.getElementById('loginRemember');
 
   const nameSignUpRef = useRef();
   const emailSignUpRef = useRef();
   const passwordSignUpRef = useRef();
   const passwordComfirmSignUpRef = useRef();
   const acceptSignUp = document.getElementById('acceptSignUp');
+
+  const dispatch = useDispatch();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [errorLoginData, setErrorLoginData] = useState([]);
@@ -25,7 +29,7 @@ function LoginRegistration() {
   const doLogin = async () => {
     const userEmail = emailLogIn.current.value;
     const userPassword = passwordLogIn.current.value;
-    const remember = loginRemember?.checked ? 5 : 1;
+    // const remember = loginRemember?.checked ? 5 : 1;
 
     const login = await postData(
       'https://vnguyen.xyz/huy/day17/apis/index.php?type=login',
@@ -35,7 +39,7 @@ function LoginRegistration() {
       }
     );
     if (login.status === true) {
-      setCookie('email', userEmail, remember);
+      dispatch(loginCookie(login.status));
       return navigate('/');
     }
   };
