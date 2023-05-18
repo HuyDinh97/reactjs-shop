@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useGetCategories } from 'store/selectors/common';
