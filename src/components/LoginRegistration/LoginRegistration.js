@@ -1,8 +1,7 @@
-/* eslint-disable no-alert */
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useRef } from 'react';
-import { postData, setCookie, checkLogin } from './LoginCheck';
+import React, { useRef, useState } from 'react';
+import { checkLogin, postData, setCookie } from './LoginCheck';
 import classes from './LoginRegistration.module.css';
 
 function LoginRegistration() {
@@ -10,48 +9,58 @@ function LoginRegistration() {
   const passwordLogIn = useRef();
   const loginRemember = document.getElementById('loginRemember');
 
+  const nameSignUpRef = useRef();
+  const emailSignUpRef = useRef();
+  const passwordSignUpRef = useRef();
+  const passwordComfirmSignUpRef = useRef();
+  const acceptSignUp = document.getElementById('acceptSignUp');
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [errorLoginData, setErrorLoginData] = useState([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [errorSignUpData, setErrorSignUpData] = useState([]);
+
   const doLogin = async () => {
-    const email = emailLogIn.current.value;
-    const password = passwordLogIn.current.value;
+    const userEmail = emailLogIn.current.value;
+    const userPassword = passwordLogIn.current.value;
     const remember = loginRemember.checked ? 5 : 1;
 
-    console.log(document.cookie);
-
-    const regEmail =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!regEmail.test(email)) {
-      alert(
-        'You must provide an correct email address to perform login action!'
-      );
-      return false;
-    }
-
-    if (!email) {
-      alert('You must provide an email address to perform login action!');
-      return false;
-    }
-    if (!password) {
-      alert('You must provide an password to perform login action!');
-      return false;
-    }
-
-    const response = await postData(
-      'https://vnguyen.xyz/huy/day15/apis/signin.php',
+    const login = await postData(
+      'https://vnguyen.xyz/huy/day17/apis/index.php?type=login',
       {
-        email,
-        password,
+        email: userEmail,
+        password: userPassword,
       }
     );
-
-    if (response?.status) {
-      setCookie('email', email, remember);
+    if (login.status === true) {
+      setCookie('email', userEmail, remember);
       window.location.href = '/';
-      return false;
     }
-    alert(response.message);
+  };
+
+  const doSignUp = async () => {
+    const nameSignUp = nameSignUpRef.current.value;
+    const emailSignUp = emailSignUpRef.current.value;
+    const passwordSignUp = passwordSignUpRef.current.value;
+    const passwordComfirmSignUp = passwordComfirmSignUpRef.current.value;
+    const acceptSignUpCheck = acceptSignUp.checked ? 1 : 0;
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const signUp = await postData(
+      'https://vnguyen.xyz/huy/day17/apis/index.php?type=register',
+      {
+        name: nameSignUp,
+        email: emailSignUp,
+        password: passwordSignUp,
+        confirm_password: passwordComfirmSignUp,
+        agree: acceptSignUpCheck,
+      }
+    );
   };
 
   checkLogin();
+  const errorSignUp = errorSignUpData?.length <= 0 ? 'd-none' : 'd-block';
+  const errorLogin = errorLoginData?.length <= 0 ? 'd-none' : 'd-block';
 
   return (
     <div className={classes.LoginRegistration}>
@@ -59,11 +68,9 @@ function LoginRegistration() {
         <li>
           <h4 className="fw-bold">LOGIN</h4>
         </li>
-        <li className={classes.subTitle}>
+        <li className={`${classes.subTitle} ${errorLogin}`}>
           <span className={classes.subTitle_color}>Error:</span>
-          <span className={classes.grayText_color}>
-            Wrong email or password
-          </span>
+          <span className={classes.grayText_color}>{errorLoginData}</span>
         </li>
         <li>
           <input
@@ -110,15 +117,16 @@ function LoginRegistration() {
         <li>
           <h4 className="fw-bold">REGISTRATION</h4>
         </li>
-        <li className={classes.subTitle}>
+        <li className={`${classes.subTitle} ${errorSignUp}`}>
           <span className={classes.subTitle_color}>Error:</span>
-          <span className={classes.grayText_color}>Email already existed</span>
+          <span className={classes.grayText_color}>{errorSignUpData}</span>
         </li>
         <li>
           <input
             className={classes.inputText}
             placeholder="Enter Your Name"
             id="name"
+            ref={nameSignUpRef}
           />
         </li>
         <li>
@@ -126,25 +134,41 @@ function LoginRegistration() {
             className={classes.inputText}
             placeholder="Enter Your Email"
             id="emailSignUp"
+            ref={emailSignUpRef}
           />
         </li>
         <li>
           <input
+            type="password"
             className={classes.inputText}
             placeholder="Enter Your Password"
             id="passwordSignUp"
+            ref={passwordSignUpRef}
+          />
+        </li>
+        <li>
+          <input
+            type="password"
+            className={classes.inputText}
+            placeholder="Comfirm Your Password"
+            id="passwordComfirmSignUp"
+            ref={passwordComfirmSignUpRef}
           />
         </li>
         <li className="d-flex justify-content-between">
           <span className="d-flex">
-            <input type="checkbox" id="scales" name="scales" />
+            <input type="checkbox" id="acceptSignUp" name="acceptSignUp" />
             <label className="mx-1" htmlFor="scales">
               Accept the terms and conditions
             </label>
           </span>
         </li>
         <li>
-          <button className={classes.login_button} type="button">
+          <button
+            className={classes.login_button}
+            type="button"
+            onClick={doSignUp}
+          >
             Sign Up
           </button>
         </li>
