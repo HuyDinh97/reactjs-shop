@@ -4,7 +4,6 @@ import { addComment } from 'store/actions/common';
 import { useGetComments } from 'store/selectors/common';
 
 const useFetchComment = (id) => {
-  const [isSuccess, setIssuccess] = React.useState();
   const comments = useGetComments();
   const dispatch = useDispatch();
 
@@ -19,11 +18,9 @@ const useFetchComment = (id) => {
     )
       .then((res) => res.json())
       .then((comment) => dispatch(addComment(comment.data)))
-      .catch(() => setIssuccess(false));
+      .catch(() => console.log());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-
-  return { isSuccess };
 };
 
 export default useFetchComment;
