@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { checkLogin, postData, setCookie } from './LoginCheck';
 import classes from './LoginRegistration.module.css';
 
@@ -19,11 +20,12 @@ function LoginRegistration() {
   const [errorLoginData, setErrorLoginData] = useState([]);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [errorSignUpData, setErrorSignUpData] = useState([]);
+  const navigate = useNavigate();
 
   const doLogin = async () => {
     const userEmail = emailLogIn.current.value;
     const userPassword = passwordLogIn.current.value;
-    const remember = loginRemember.checked ? 5 : 1;
+    const remember = loginRemember?.checked ? 5 : 1;
 
     const login = await postData(
       'https://vnguyen.xyz/huy/day17/apis/index.php?type=login',
@@ -34,7 +36,7 @@ function LoginRegistration() {
     );
     if (login.status === true) {
       setCookie('email', userEmail, remember);
-      window.location.href = '/';
+      return navigate('/');
     }
   };
 
@@ -43,7 +45,7 @@ function LoginRegistration() {
     const emailSignUp = emailSignUpRef.current.value;
     const passwordSignUp = passwordSignUpRef.current.value;
     const passwordComfirmSignUp = passwordComfirmSignUpRef.current.value;
-    const acceptSignUpCheck = acceptSignUp.checked ? 1 : 0;
+    const acceptSignUpCheck = acceptSignUp?.checked ? 1 : 0;
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const signUp = await postData(
@@ -169,7 +171,7 @@ function LoginRegistration() {
             type="button"
             onClick={doSignUp}
           >
-            Sign Up
+            Login
           </button>
         </li>
         <div />
