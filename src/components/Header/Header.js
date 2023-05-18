@@ -1,17 +1,18 @@
 import React from 'react';
 import { BsTelephoneFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
-
+import { Link } from 'react-router-dom';
+import { useGetLoginCookie } from 'store/selectors/common';
+import { loginCookie } from 'store/actions/common';
+import { useDispatch } from 'react-redux';
 import classes from './Header.module.css';
 
 function Header() {
-  const checkLoginLogout = document.cookie
-    .split(';')
-    .map((item) => item.includes('email'));
-  const check = checkLoginLogout.find((chec) => chec === true);
-
+  const cookieCheck = useGetLoginCookie();
+  const dispatch = useDispatch();
+  console.log(cookieCheck);
   const Logout = () => {
-    document.cookie = 'email=; expires=Thu, 18 Dec 2013 12:00:00 UTC';
+    dispatch(loginCookie(false));
   };
 
   return (
@@ -33,19 +34,19 @@ function Header() {
         <div className={classes.header_user}>
           <ul>
             <li className={classes.header_border_end}>
-              {!check ? (
-                <a href="/login">Login</a>
+              {cookieCheck === false ? (
+                <Link to="/login">Log in</Link>
               ) : (
-                <a href="/" onClick={Logout}>
-                  Logout
-                </a>
+                <Link to="/" onClick={Logout}>
+                  Log out
+                </Link>
               )}
             </li>
             <li className={classes.header_border_end}>
               <a href="/">Wishlist</a>
             </li>
             <li>
-              <a href="/">My Acount</a>
+              <Link to="/">My Acount</Link>
             </li>
           </ul>
         </div>
