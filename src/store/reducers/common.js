@@ -11,6 +11,7 @@ const initialState = {
     totalCost: 0,
   },
   productDetail: [],
+  loginCookie: false,
 };
 
 const calculateTotalCost = (products) =>
@@ -192,6 +193,11 @@ export default (state = initialState, action) => {
           products: updateMyCart,
           totalCost: calculateTotalCost(updateMyCart),
         },
+      };
+    case 'LOGIN_COOKIE':
+      return {
+        ...state,
+        loginCookie: action.payload,
       };
     default:
       return state;

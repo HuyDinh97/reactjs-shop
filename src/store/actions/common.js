@@ -74,3 +74,10 @@ export const productDetail = (payload) => {
     payload,
   };
 };
+
+export const loginCookie = (payload) => {
+  return {
+    type: 'LOGIN_COOKIE',
+    payload,
+  };
+};
