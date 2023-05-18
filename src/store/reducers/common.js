@@ -144,8 +144,7 @@ export default (state = initialState, action) => {
           if (action.isDecrease === true) {
             quantityUpdate = curProd.quantity > 1 ? curProd.quantity - 1 : 1;
             newAfterSalesPrice = curProd.afterSalesPerOnePrice * quantityUpdate;
-          }
-          if (!action.isDecrease) {
+          } else {
             quantityUpdate = curProd.quantity + 1;
             newAfterSalesPrice = curProd.afterSalesPerOnePrice * quantityUpdate;
           }
