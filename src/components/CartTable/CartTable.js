@@ -2,14 +2,13 @@
 /* eslint-disable react/button-has-type */
 import CartTotal from 'components/CartTotal/CartTotal';
 import PromotionCode from 'components/PromotionCode/PromotionCode';
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useDispatch } from 'react-redux';
-import { deleteProductInCart, updateMyCart } from 'store/actions/common';
+import { adjustProductInCart, deleteProductInCart } from 'store/actions/common';
 import { FaChevronLeft } from 'react-icons/fa';
-import { HiRefresh } from 'react-icons/hi';
 
 import { Link } from 'react-router-dom';
 import { useGetMyCart } from 'store/selectors/common';
@@ -18,11 +17,6 @@ import classes from './CartTable.module.css';
 
 function CartTable() {
   const { products: productInCart, totalCost } = useGetMyCart();
-  const initialCartUpdateState = {
-    text: 'UPDATE CART',
-    opacity: '100'
-  };
-  const [updateCartState, setUpdateCartState] = useState(initialCartUpdateState);
   const dispatch = useDispatch();
 
   const deleteProduct = useCallback(
@@ -31,28 +25,23 @@ function CartTable() {
     },
     [dispatch]
   );
-  // onchange fuction for input defaultValue
 
-  const updateCartButton = useRef([]);
-  const updateCart = useCallback(
-    () => () => {
-      setUpdateCartState({
-        text: 'UPDATING...',
-        opacity: '25'
-      });
-      dispatch(updateMyCart());
-
-      setTimeout(() => {
-        setUpdateCartState(initialCartUpdateState);
-    }, 500);
-    },
+  const changeProductQuantity = useCallback(
+    (productId, isDecrease = false) =>
+      () => {
+        if (isDecrease) {
+          dispatch(adjustProductInCart(productId, isDecrease))
+        } else {
+          dispatch(adjustProductInCart(productId))
+        }
+      },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [dispatch]
+    []
   );
 
   return (
     <div className={classes.mt_5}>
-      <div id="cartTable" className={`opacity-${updateCartState.opacity}`}>
+      <div id="cartTable">
         <Container className={classes.webVersion}>
           <Row className={classes.cartDetailHeader}>
             <Col lg={2}>Item</Col>
@@ -78,11 +67,11 @@ function CartTable() {
                 {product.afterSalesPerOnePrice}
               </Col>
               <Col lg={2}>
-                <QuantityButton productId={product._id} productQuantity={product.quantity} />
+                <QuantityButton productId={product._id} productQuantity={product.quantity} changeProductQuantity={changeProductQuantity} />
               </Col>
               <Col className={classes.price_sample} lg={1}>
                 $
-                {product.afterSalesPrice}
+                {product.afterSalesPrice.toFixed(2)}
               </Col>
               <Col lg={1}>
                 <button type="button" className={classes.deleteButton} onClick={deleteProduct(product._id)}>X</button>
@@ -103,12 +92,6 @@ function CartTable() {
                     <FaChevronLeft className="mx-2" />
                     <div className="border-0">CONTINUE SHOPPING</div>
                   </Link>
-                </span>
-                <span className={classes.buttonUpdateCartBorder}>
-                  <button className={classes.buttonUpdateCart} onClick={updateCart()}>
-                    <HiRefresh className="mx-2" />
-                    <div className="border-0" ref={updateCartButton}>{updateCartState.text}</div>
-                  </button>
                 </span>
               </div>
             </Col>
@@ -135,7 +118,7 @@ function CartTable() {
               <Col className="d-flex justify-content-between p-3">
                 <div className={classes.semibold}>Quantity:</div>
                 <div>
-                  <QuantityButton flexDirectionType="flex-column" productId={product._id} productQuantity={product.quantity} />
+                  <QuantityButton flexDirectionType="flex-column" productId={product._id} productQuantity={product.quantity} changeProductQuantity={changeProductQuantity} />
                 </div>
               </Col>
               <Col className="d-flex justify-content-between p-3">
@@ -164,12 +147,6 @@ function CartTable() {
                     <FaChevronLeft className={classes.iconButton} />
                     <div className="border-0">CONTINUE SHOPPING</div>
                   </Link>
-                </span>
-                <span className={classes.buttonUpdateCartBorder}>
-                  <button className={classes.buttonUpdateCart} onClick={updateCart()}>
-                    <HiRefresh className={classes.iconButton} />
-                    <div className="border-0">{updateCartState.text}</div>
-                  </button>
                 </span>
               </div>
             </Col>

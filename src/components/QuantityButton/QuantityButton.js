@@ -1,38 +1,26 @@
-import React, { useCallback } from 'react';
+/* eslint-disable no-unused-expressions */
+import React from 'react';
 import { FaMinus, FaPlus } from 'react-icons/fa';
-import {
-  decreaseProductInCart,
-  increaseProductInCart,
-} from 'store/actions/common';
-import { useDispatch } from 'react-redux';
 import classes from './QuantityButton.module.css';
 
-function QuantityButton({ productId, productQuantity, flexDirectionType }) {
+function QuantityButton({
+  productId,
+  productQuantity,
+  flexDirectionType,
+  changeProductQuantity,
+}) {
   const handleChange = () => {
     console.log('input change');
   };
 
   const flexDirection = flexDirectionType || 'column';
 
-  const dispatch = useDispatch();
-
-  const changeProductQuanity = useCallback(
-    (id, isDecrease = false) =>
-      () => {
-        if (isDecrease) {
-          dispatch(decreaseProductInCart(id));
-          return;
-        }
-        dispatch(increaseProductInCart(id));
-      },
-    [dispatch]
-  );
   return (
     <div className={`${classes.cartDetailQuantity} ${flexDirection} border-0`}>
       <button
         type="button"
         className={`${classes.quantity_button} w-100 d-flex justify-content-center`}
-        onClick={changeProductQuanity(productId, true)}
+        onClick={changeProductQuantity(productId, true)}
       >
         <FaMinus />
       </button>
@@ -49,7 +37,7 @@ function QuantityButton({ productId, productQuantity, flexDirectionType }) {
       <button
         type="button"
         className={`${classes.quantity_button} w-100 d-flex justify-content-center`}
-        onClick={changeProductQuanity(productId)}
+        onClick={changeProductQuantity(productId, false)}
       >
         <FaPlus />
       </button>

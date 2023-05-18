@@ -48,29 +48,31 @@ export const deleteProductInCart = (id) => {
   };
 };
 
-export const increaseProductInCart = (id) => {
+export const adjustProductInCart = (id, isDecrease) => {
   return {
-    type: 'INCREASE_PRODUCTINCART',
+    type: 'ADJUST_PRODUCTINCART',
     id,
+    isDecrease,
   };
 };
 
-export const decreaseProductInCart = (id) => {
-  return {
-    type: 'DECREASE_PRODUCTINCART',
-    id,
-  };
-};
-
-export const updateMyCart = () => {
+export const updateMyCart = (payload) => {
   return {
     type: 'UPDATE_MYCART',
+    payload,
   };
 };
 
 export const productDetail = (payload) => {
   return {
     type: 'PRODUCT_DETAIL',
+    payload,
+  };
+};
+
+export const addComment = (payload) => {
+  return {
+    type: 'ADD_COMMENT',
     payload,
   };
 };

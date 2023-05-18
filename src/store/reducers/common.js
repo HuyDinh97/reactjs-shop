@@ -1,4 +1,7 @@
 /* eslint-disable no-plusplus */
+
+import { format, fromUnixTime } from 'date-fns';
+
 /* eslint-disable no-case-declarations */
 const initialState = {
   home: undefined,
@@ -11,6 +14,8 @@ const initialState = {
     totalCost: 0,
   },
   productDetail: [],
+  quantityDetail: 0,
+  comment: [],
 };
 
 const calculateTotalCost = (products) =>
@@ -79,9 +84,8 @@ export default (state = initialState, action) => {
       const { price, sales, quantity } = action.payload;
 
       const newQuantity = productExist
-        ? products[productIndex].quantity + 1
+        ? products[productIndex].quantity + quantity
         : quantity;
-
       const realPrice = price * newQuantity;
       const afterSalesPrice = realPrice - (realPrice * sales) / 100;
       const afterSalesPerOnePrice = price - (price * sales) / 100;
@@ -121,7 +125,7 @@ export default (state = initialState, action) => {
         productDetail: [newProductDetail],
       };
     case 'DELETE_PRODUCTINCART':
-      const productDelete = state.productInCart.products.filter(
+      const productDelete = products.filter(
         (product) => product._id !== action.id
       );
 
@@ -132,58 +136,47 @@ export default (state = initialState, action) => {
           totalCost: calculateTotalCost(productDelete),
         },
       };
-    case 'INCREASE_PRODUCTINCART':
-      const updateInCreaseProduct = state.productInCart.products.map(
-        (curProd) => {
-          if (curProd._id === action.id) {
-            return {
-              ...curProd,
-              quantity: curProd.quantity + 1,
-            };
+    case 'ADJUST_PRODUCTINCART':
+      const updateInCreaseProduct = products.map((curProd) => {
+        let quantityUpdate;
+        let newAfterSalesPrice = [];
+        if (curProd._id === action.id) {
+          if (action.isDecrease === true) {
+            quantityUpdate = curProd.quantity > 1 ? curProd.quantity - 1 : 1;
+            newAfterSalesPrice = curProd.afterSalesPerOnePrice * quantityUpdate;
+          } else {
+            quantityUpdate = curProd.quantity + 1;
+            newAfterSalesPrice = curProd.afterSalesPerOnePrice * quantityUpdate;
           }
-          return curProd;
+          return {
+            ...curProd,
+            quantity: quantityUpdate,
+            afterSalesPrice: newAfterSalesPrice,
+          };
         }
-      );
+        return curProd;
+      });
       return {
         ...state,
         productInCart: {
           ...state.productInCart,
           products: updateInCreaseProduct,
-        },
-      };
-    case 'DECREASE_PRODUCTINCART':
-      const updateDecreaseProduct = state.productInCart.products.map(
-        (curProd) => {
-          if (curProd._id === action.id) {
-            let deacreaseQuantity = curProd.quantity - 1;
-            if (deacreaseQuantity <= 0) {
-              deacreaseQuantity = 1;
-            }
-
-            return {
-              ...curProd,
-              quantity: deacreaseQuantity,
-            };
-          }
-          return curProd;
-        }
-      );
-      return {
-        ...state,
-        productInCart: {
-          ...state.productInCart,
-          products: updateDecreaseProduct,
+          totalCost: calculateTotalCost(updateInCreaseProduct),
         },
       };
     case 'UPDATE_MYCART':
-      const updateMyCart = state.productInCart.products.map((product) => {
-        const realPriceMyCart = product.price * product.quantity;
-        const afterSalesPriceMyCart =
-          realPriceMyCart - (realPriceMyCart * product.sales) / 100;
-        return {
-          ...product,
-          afterSalesPrice: afterSalesPriceMyCart,
-        };
+      const updateMyCart = products.map((curProd) => {
+        if (curProd._id.toString() === action.payload._id) {
+          const realPriceMyCart = curProd.price * action.payload.quantity;
+          const afterSalesPriceMyCart =
+            realPriceMyCart - (realPriceMyCart * curProd.sales) / 100;
+          return {
+            ...curProd,
+            quantity: action.payload.quantity,
+            afterSalesPrice: afterSalesPriceMyCart,
+          };
+        }
+        return curProd;
       });
       return {
         ...state,
@@ -193,6 +186,20 @@ export default (state = initialState, action) => {
           totalCost: calculateTotalCost(updateMyCart),
         },
       };
+    case 'ADD_COMMENT':
+      try {
+        const commentData = action.payload.map((comment) => ({
+          ...comment,
+          created_at: format(fromUnixTime(comment.created_at), 'MMMM dd, yyyy'),
+        }));
+        return {
+          ...state,
+          comment: [...state.comment, ...commentData],
+        };
+      } catch (e) {
+        console.log(e);
+      }
+      return state;
     default:
       return state;
   }

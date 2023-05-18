@@ -38,6 +38,7 @@ test('Should show cart dropdown', async () => {
             thumb: 'images/products/product-img-3.jpg',
             price: 11,
             quantity: 1,
+            afterSalesPrice: 63,
           },
         ],
       },

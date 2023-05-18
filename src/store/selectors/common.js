@@ -30,3 +30,8 @@ export const useGetHome = () => useSelector((state) => state.common?.home);
 
 export const useGetProductDetail = () =>
   useSelector((state) => state.common?.productDetail);
+
+export const useGetComments = () =>
+  useSelector((state) =>
+    state?.common?.comment?.length > 0 ? state.common.comment : []
+  );

@@ -1,21 +1,16 @@
-import axios from 'axios';
 import React from 'react';
 
 const useFetchBlog = () => {
   const [blogs, setBlogs] = React.useState();
-  const [isSuccess, setIssuccess] = React.useState();
 
   React.useEffect(() => {
-    axios
-      .get('https://vnguyen.xyz/huy/day17/apis/index.php?type=posts')
-      .then((res) => {
-        setBlogs(res.data.data);
-        setIssuccess(true);
-      })
-      .catch(() => setIssuccess(false));
+    fetch('https://vnguyen.xyz/huy/day17/apis/index.php?type=posts')
+      .then((res) => res.json())
+      .then((data) => setBlogs(data.data))
+      .catch(() => console.log());
   }, []);
 
-  return { blogs, isSuccess };
+  return blogs;
 };
 
 export default useFetchBlog;

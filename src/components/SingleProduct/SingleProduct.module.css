@@ -57,6 +57,15 @@
   margin: 5px;
 }
 
+.opacity_icon span a {
+  color: white;
+}
+
+.opacity_icon span a:hover {
+  color: #eb3d32;
+}
+
+
 .opacity_icon svg {
   background-color: #363f4e;
   border-radius: 20px;
