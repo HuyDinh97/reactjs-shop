@@ -6,9 +6,9 @@ import React, { useCallback, useRef, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { logInData, signUpData } from 'store/actions/common';
-import classes from './LoginRegistration.module.css';
 import DoSignUp from './doSignUp';
 import DoLogIn from './doLogin';
+import classes from './LoginRegistration.module.css';
 
 function LoginRegistration() {
   const emailLogIn = useRef();
