@@ -2,8 +2,8 @@ import React from 'react';
 import { BsTelephoneFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
 
-import classes from './Header.module.css';
 import { Link } from 'react-router-dom';
+import classes from './Header.module.css';
 
 function Header() {
   const checkLoginLogout = document.cookie
