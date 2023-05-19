@@ -76,3 +76,17 @@ export const addComment = (payload) => {
     payload,
   };
 };
+
+export const signUpData = (payload) => {
+  return {
+    type: 'SIGNUP_DATA',
+    payload,
+  };
+};
+
+export const signUpDataReturn = (payload) => {
+  return {
+    type: 'SIGNUP_DATA_RETURN',
+    payload,
+  };
+};

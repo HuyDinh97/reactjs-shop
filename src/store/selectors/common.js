@@ -35,3 +35,9 @@ export const useGetComments = () =>
   useSelector((state) =>
     state?.common?.comment?.length > 0 ? state.common.comment : []
   );
+
+export const useGetSignUpData = () =>
+  useSelector((state) => state.common?.signUpData);
+
+export const useGetSignUpDataReturn = () =>
+  useSelector((state) => state.common?.signUpDataReturn);
