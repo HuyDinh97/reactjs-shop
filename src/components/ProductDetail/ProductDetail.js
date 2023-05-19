@@ -39,6 +39,7 @@ import { useParams } from 'react-router-dom';
 import postComment from 'Hooks/postComment';
 
 import useFetchComment from 'Hooks/useFetchComment';
+import useFetchProductDetail from 'Hooks/useFetchProductDetail';
 import cart from './img/cart-icon-1.png';
 
 import classes from './ProductDetail.module.css';
@@ -71,6 +72,7 @@ function ProductDetail() {
   let [producQuantity, setProductQuantity] = useState(
     isProductExist?.quantity || 1
   );
+  useFetchProductDetail(productId);
   useFetchComment(productId);
   const getComments = useGetComments();
   const getCommentsDetail = getComments.filter((comment) =>
