@@ -3,6 +3,7 @@ import { BsTelephoneFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
 
 import classes from './Header.module.css';
+import { Link } from 'react-router-dom';
 
 function Header() {
   const checkLoginLogout = document.cookie
@@ -34,18 +35,18 @@ function Header() {
           <ul>
             <li className={classes.header_border_end}>
               {!check ? (
-                <a href="/login">Login</a>
+                <Link to="/login">Login</Link>
               ) : (
-                <a href="/" onClick={Logout}>
+                <Link to="/" onClick={Logout}>
                   Logout
-                </a>
+                </Link>
               )}
             </li>
             <li className={classes.header_border_end}>
-              <a href="/">Wishlist</a>
+              <Link to="/">Wishlist</Link>
             </li>
             <li>
-              <a href="/">My Acount</a>
+              <Link to="/">My Acount</Link>
             </li>
           </ul>
         </div>
