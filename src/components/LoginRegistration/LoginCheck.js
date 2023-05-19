@@ -24,9 +24,3 @@ export const setCookie = (email, value, minutes = 0) => {
   }
   document.cookie = `${email}=${value}; expires=${expires}; path=/;`;
 };
-
-export const checkLogin = () => {
-  if (document.cookie.split(';').find((item) => item.includes('email'))) {
-    window.location.href = '/';
-  }
-};
