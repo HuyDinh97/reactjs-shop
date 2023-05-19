@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-/* eslint-disable no-alert */
 
 import { useGetSignUpData } from 'store/selectors/common';
 import { useDispatch } from 'react-redux';
