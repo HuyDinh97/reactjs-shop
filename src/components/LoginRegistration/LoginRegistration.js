@@ -4,10 +4,11 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { signUpData } from 'store/actions/common';
-import { postData, setCookie } from './LoginCheck';
+import { logInData, signUpData } from 'store/actions/common';
+import { useGetLogInDataReturn } from 'store/selectors/common';
 import classes from './LoginRegistration.module.css';
 import DoSignUp from './doSignUp';
+import DoLogIn from './doLogin';
 
 function LoginRegistration() {
   const emailLogIn = useRef();
@@ -25,97 +26,63 @@ function LoginRegistration() {
   const [errorLoginData, setErrorLoginData] = useState([]);
   const [errorSignUpData, setErrorSignUpData] = useState([]);
 
-  const doLogin = async () => {
-    const userEmail = emailLogIn.current.value;
-    const userPassword = passwordLogIn.current.value;
-    const remember = loginRemember.checked ? 5 : 1;
+  const logInCheck = useGetLogInDataReturn();
+  console.log(logInCheck);
 
-    const login = await postData(
-      'https://vnguyen.xyz/huy/day17/apis/index.php?type=login',
-      {
-        email: userEmail,
-        password: userPassword,
-      }
-    );
-    const data = login.errors;
-    const error = data ? JSON.parse(data) : null;
-    const check = error ? error.fields : [];
+  // const doLogin = async () => {
+  //   const userEmail = emailLogIn.current.value;
+  //   const userPassword = passwordLogIn.current.value;
+  //   const remember = loginRemember.checked ? 5 : 1;
 
-    if (login.status === true) {
-      setCookie('email', userEmail, remember);
-      window.location.href = '/';
-      return;
-    }
-    if (check?.email) {
-      if (check?.email?.required) {
-        setErrorLoginData(check?.email?.required);
-      } else {
-        setErrorLoginData(check?.email.email);
-      }
-      return;
-    }
-    if (check?.password) {
-      setErrorLoginData(check?.password.required);
-      console.log(check?.email.required);
-      return;
-    }
-    if (login?.message) {
-      setErrorLoginData(login?.message);
-    }
-  };
-
-  // const doSignUp = async () => {
-  //   const nameSignUp = nameSignUpRef.current.value;
-  //   const emailSignUp = emailSignUpRef.current.value;
-  //   const passwordSignUp = passwordSignUpRef.current.value;
-  //   const passwordComfirmSignUp = passwordComfirmSignUpRef.current.value;
-  //   const acceptSignUpCheck = acceptSignUp.checked ? 1 : 0;
-
-  //   const signUp = await postData(
-  //     'https://vnguyen.xyz/huy/day17/apis/index.php?type=register',
+  //   const login = await postData(
+  //     'https://vnguyen.xyz/huy/day17/apis/index.php?type=login',
   //     {
-  //       name: nameSignUp,
-  //       email: emailSignUp,
-  //       password: passwordSignUp,
-  //       confirm_password: passwordComfirmSignUp,
-  //       agree: acceptSignUpCheck,
+  //       email: userEmail,
+  //       password: userPassword,
   //     }
   //   );
-  //   const data = signUp.errors;
+  //   const data = login.errors;
   //   const error = data ? JSON.parse(data) : null;
   //   const check = error ? error.fields : [];
-  //   if (check?.name) {
-  //     if (check?.name.required) {
-  //       setErrorSignUpData(check?.name.required);
-  //     } else {
-  //       setErrorSignUpData(check.name.min);
-  //     }
+
+  //   if (login.status === true) {
+  //     setCookie('email', userEmail, remember);
+  //     window.location.href = '/';
   //     return;
   //   }
   //   if (check?.email) {
   //     if (check?.email?.required) {
-  //       setErrorSignUpData(check.email.required);
+  //       setErrorLoginData(check?.email?.required);
   //     } else {
-  //       setErrorSignUpData(check.email.email);
+  //       setErrorLoginData(check?.email.email);
   //     }
   //     return;
   //   }
   //   if (check?.password) {
-  //     setErrorSignUpData(check.password.required);
+  //     setErrorLoginData(check?.password.required);
+  //     console.log(check?.email.required);
   //     return;
   //   }
-  //   if (check?.confirm_password) {
-  //     if (check?.confirm_password.same) {
-  //       setErrorSignUpData(check.confirm_password.same);
-  //       return;
-  //     }
-  //     setErrorSignUpData(check.confirm_password.required);
-  //     return;
-  //   }
-  //   if (check?.agree) {
-  //     setErrorSignUpData('You must accept the terms and conditions');
+  //   if (login?.message) {
+  //     setErrorLoginData(login?.message);
   //   }
   // };
+  const doLogIn = useCallback(
+    () => {
+      const remember = loginRemember?.checked ? 1 : 0;
+      const data = {
+        email: emailLogIn.current.value,
+        password: passwordLogIn.current.value,
+        remember,
+      };
+      dispatch(logInData(data));
+      // if (logInCheck === true) {
+      //   window.location.to = '/';
+      // }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
   const doSignUp = useCallback(
     () => {
       const acceptSignUpCheck = acceptSignUp?.checked ? 1 : 0;
@@ -131,6 +98,7 @@ function LoginRegistration() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
+  DoLogIn();
   DoSignUp();
   const errorSignUp = errorSignUpData?.length <= 0 ? 'd-none' : 'd-block';
   const errorLogin = errorLoginData?.length <= 0 ? 'd-none' : 'd-block';
@@ -188,7 +156,7 @@ function LoginRegistration() {
               <button
                 className={classes.login_button}
                 type="button"
-                onClick={doLogin}
+                onClick={doLogIn}
               >
                 Login
               </button>
