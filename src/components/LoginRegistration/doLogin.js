@@ -16,8 +16,6 @@ const DoLogIn = async () => {
       password,
     }
   );
-  const data = login.errors;
-  const error = data ? JSON.parse(data) : null;
 
   dispatch(logInDataReturn(login.status));
 };
