@@ -18,6 +18,8 @@ const initialState = {
   comment: [],
   signUpData: [],
   signUpDataReturn: [],
+  logInData: [],
+  logInDataReturn: [],
 };
 
 const calculateTotalCost = (products) =>
@@ -211,6 +213,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         signUpDataReturn: action.payload,
+      };
+    case 'LOGIN_DATA':
+      return {
+        ...state,
+        logInData: action.payload,
+      };
+    case 'LOGIN_DATA_RETURN':
+      return {
+        ...state,
+        logInDataReturn: action.payload,
       };
     default:
       return state;

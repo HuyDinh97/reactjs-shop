@@ -90,3 +90,17 @@ export const signUpDataReturn = (payload) => {
     payload,
   };
 };
+
+export const logInData = (payload) => {
+  return {
+    type: 'LOGIN_DATA',
+    payload,
+  };
+};
+
+export const logInDataReturn = (payload) => {
+  return {
+    type: 'LOGIN_DATA_RETURN',
+    payload,
+  };
+};

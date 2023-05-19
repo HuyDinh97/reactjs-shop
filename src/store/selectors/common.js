@@ -41,3 +41,9 @@ export const useGetSignUpData = () =>
 
 export const useGetSignUpDataReturn = () =>
   useSelector((state) => state.common?.signUpDataReturn);
+
+export const useGetLogInData = () =>
+  useSelector((state) => state.common?.logInData);
+
+export const useGetLogInDataReturn = () =>
+  useSelector((state) => state.common?.logInDataReturn);
