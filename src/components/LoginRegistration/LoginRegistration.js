@@ -5,7 +5,6 @@ import React, { useCallback, useRef, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { logInData, signUpData } from 'store/actions/common';
-import { useGetLogInDataReturn } from 'store/selectors/common';
 import classes from './LoginRegistration.module.css';
 import DoSignUp from './doSignUp';
 import DoLogIn from './doLogin';
@@ -26,47 +25,6 @@ function LoginRegistration() {
   const [errorLoginData, setErrorLoginData] = useState([]);
   const [errorSignUpData, setErrorSignUpData] = useState([]);
 
-  const logInCheck = useGetLogInDataReturn();
-  console.log(logInCheck);
-
-  // const doLogin = async () => {
-  //   const userEmail = emailLogIn.current.value;
-  //   const userPassword = passwordLogIn.current.value;
-  //   const remember = loginRemember.checked ? 5 : 1;
-
-  //   const login = await postData(
-  //     'https://vnguyen.xyz/huy/day17/apis/index.php?type=login',
-  //     {
-  //       email: userEmail,
-  //       password: userPassword,
-  //     }
-  //   );
-  //   const data = login.errors;
-  //   const error = data ? JSON.parse(data) : null;
-  //   const check = error ? error.fields : [];
-
-  //   if (login.status === true) {
-  //     setCookie('email', userEmail, remember);
-  //     window.location.href = '/';
-  //     return;
-  //   }
-  //   if (check?.email) {
-  //     if (check?.email?.required) {
-  //       setErrorLoginData(check?.email?.required);
-  //     } else {
-  //       setErrorLoginData(check?.email.email);
-  //     }
-  //     return;
-  //   }
-  //   if (check?.password) {
-  //     setErrorLoginData(check?.password.required);
-  //     console.log(check?.email.required);
-  //     return;
-  //   }
-  //   if (login?.message) {
-  //     setErrorLoginData(login?.message);
-  //   }
-  // };
   const doLogIn = useCallback(
     () => {
       const remember = loginRemember?.checked ? 1 : 0;
@@ -76,9 +34,6 @@ function LoginRegistration() {
         remember,
       };
       dispatch(logInData(data));
-      // if (logInCheck === true) {
-      //   window.location.to = '/';
-      // }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
