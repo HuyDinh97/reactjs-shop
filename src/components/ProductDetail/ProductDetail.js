@@ -46,6 +46,8 @@ import classes from './ProductDetail.module.css';
 
 function ProductDetail() {
   const { productId } = useParams();
+  useFetchProductDetail(productId);
+  useFetchComment(productId);
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
   const dispatch = useDispatch();
@@ -72,8 +74,6 @@ function ProductDetail() {
   let [producQuantity, setProductQuantity] = useState(
     isProductExist?.quantity || 1
   );
-  useFetchProductDetail(productId);
-  useFetchComment(productId);
   const getComments = useGetComments();
   const getCommentsDetail = getComments.filter((comment) =>
     productId.match(comment.product_id)
