@@ -9,6 +9,7 @@ import MyCart from 'pages/MyCart';
 import Login from 'pages/LoginPage';
 import useFetchHome from 'Hooks/useFetchHome';
 import ProductDetailPage from 'pages/ProductDetailPage';
+import CategoryPage from 'pages/CategoryPage';
 import Layout from './pages/Layout';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           path="/product-detail/:productId"
           element={<ProductDetailPage />}
         />
+        <Route path="/categorypage/:category" element={<CategoryPage />} />
       </Routes>
     </Layout>
   );
