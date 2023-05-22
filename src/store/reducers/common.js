@@ -14,7 +14,6 @@ const initialState = {
     totalCost: 0,
   },
   productDetail: [],
-  quantityDetail: 0,
   comment: [],
 };
 
@@ -114,12 +113,12 @@ export default (state = initialState, action) => {
     case 'PRODUCT_DETAIL':
       const productDetail = action.payload;
       const afterSalesPriceDetail =
-        productDetail.price * (1 - productDetail.sales / 100);
-      const available = productDetail.quantity > 0 ? 'In Stock' : 'Sold out';
-      productDetail.available = available;
-      productDetail.afterSalesPriceDetail = afterSalesPriceDetail;
+        productDetail[0].price * (1 - productDetail[0].sales / 100);
+      const available = productDetail[0].quantity > 0 ? 'In Stock' : 'Sold out';
+      productDetail[0].available = available;
+      productDetail[0].afterSalesPriceDetail = afterSalesPriceDetail;
 
-      const newProductDetail = productDetail;
+      const newProductDetail = productDetail[0];
       return {
         ...state,
         productDetail: [newProductDetail],

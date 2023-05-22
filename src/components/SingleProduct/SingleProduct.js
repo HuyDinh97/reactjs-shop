@@ -28,12 +28,12 @@ function SingleProduct({ popularProduct }) {
     [dispatch]
   );
 
-  const uploadInfo = useCallback(
-    (data) => () => {
-      dispatch(productDetail(data));
-    },
-    [dispatch]
-  );
+  // const uploadInfo = useCallback(
+  //   (data) => () => {
+  //     dispatch(productDetail(data));
+  //   },
+  //   [dispatch]
+  // );
 
   return (
     <div>
@@ -62,10 +62,7 @@ function SingleProduct({ popularProduct }) {
                     <HiHeart />
                   </span>
                   <span>
-                    <Link
-                      to={`/product-detail/${popularProduct._id}`}
-                      onClick={uploadInfo(popularProduct)}
-                    >
+                    <Link to={`/product-detail/${popularProduct._id}`}>
                       <BsFillEyeFill />
                     </Link>
                   </span>
@@ -81,7 +78,9 @@ function SingleProduct({ popularProduct }) {
       </div>
       <div className="card-body d-flex justify-content-center my-2 mb-2 flex-column text-center">
         <div className={classes.product_name}>
-          <a href="/">{popularProduct.name}</a>
+          <Link to={`/product-detail/${popularProduct._id}`}>
+            {popularProduct.name}
+          </Link>
         </div>
         <div className={classes.product_price}>
           <span className={popularProduct.sales === 0 ? priceCheck : null}>
