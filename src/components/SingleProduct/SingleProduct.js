@@ -28,13 +28,6 @@ function SingleProduct({ popularProduct }) {
     [dispatch]
   );
 
-  // const uploadInfo = useCallback(
-  //   (data) => () => {
-  //     dispatch(productDetail(data));
-  //   },
-  //   [dispatch]
-  // );
-
   return (
     <div>
       <div className={classes.apperance}>
