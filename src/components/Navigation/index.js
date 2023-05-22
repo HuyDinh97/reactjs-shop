@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { useGetCategories } from 'store/selectors/common';
 import { GoThreeBars } from 'react-icons/go';
+import { Link } from 'react-router-dom';
 import classes from './navigation.module.css';
 
 function Navigation() {
@@ -31,20 +32,23 @@ function Navigation() {
             placement="top"
           >
             <Nav className={classes.navbarNav}>
-              <Nav.Link className={`${navClass}`} to="/">
+              <Link className={`${navClass}`} to="/">
                 Home
-              </Nav.Link>
+              </Link>
               {categories &&
                 categories.map((category) => (
-                  <Nav.Item key={category._id} as="li">
-                    <Nav.Link className={classes.nav_categories} href="/">
+                  <Nav.Item key={category._id}>
+                    <Link
+                      className={navClass}
+                      to={`/categorypage/${category.name}`}
+                    >
                       {category.name}
-                    </Nav.Link>
+                    </Link>
                   </Nav.Item>
                 ))}
-              <Nav.Link to="/about-us" className={navClass}>
+              <Link to="/about-us" className={navClass}>
                 About
-              </Nav.Link>
+              </Link>
             </Nav>
           </Navbar.Offcanvas>
         </Container>
