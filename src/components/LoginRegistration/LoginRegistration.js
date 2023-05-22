@@ -41,7 +41,7 @@ function LoginRegistration() {
   );
   const doSignUp = useCallback(
     () => {
-      const acceptSignUpCheck = acceptSignUp?.checked ? 1 : 0;
+      const acceptSignUpCheck = acceptSignUp?.checked === true ? 1 : 0;
       const data = {
         name: nameSignUpRef.current.value,
         email: emailSignUpRef.current.value,
