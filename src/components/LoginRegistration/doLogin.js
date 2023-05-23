@@ -18,12 +18,13 @@ const DoLogIn = async () => {
       password,
     }
   );
-  dispatch(logInDataReturn(login.status));
+
+  dispatch(logInDataReturn({ status: login.status }));
   if (login.status === true) {
     navigate('/');
+    // eslint-disable-next-line no-alert
+    window.alert(login.message);
   }
-  // eslint-disable-next-line no-alert
-  window.alert(login.message);
 };
 
 export default DoLogIn;
