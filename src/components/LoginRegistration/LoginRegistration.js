@@ -3,7 +3,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useCallback, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { logInData, signUpData } from 'store/actions/common';
@@ -26,7 +25,6 @@ function LoginRegistration() {
   const acceptSignUp = document.getElementById('acceptSignUp');
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [errorLoginData, setErrorLoginData] = useState([]);
   const [errorSignUpData, setErrorSignUpData] = useState([]);
