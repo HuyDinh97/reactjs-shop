@@ -26,7 +26,7 @@ function LoginRegistration() {
 
   const dispatch = useDispatch();
 
-  const [errorLoginData, setErrorLoginData] = useState([]);
+  const errorLoginData = useGetLogInDataReturn();
   const [errorSignUpData, setErrorSignUpData] = useState([]);
 
   const doLogIn = useCallback(
@@ -61,7 +61,6 @@ function LoginRegistration() {
 
   DoLogIn();
   DoSignUp();
-  console.log(logInDataRedux);
   const errorSignUp = errorSignUpData?.length <= 0 ? 'd-none' : 'd-block';
   const errorLogin = errorLoginData?.length <= 0 ? 'd-none' : 'd-block';
 
