@@ -39,7 +39,6 @@ function LoginRegistration() {
       };
       dispatch(logInData(data));
       setCookie('email', emailLogIn.current.value, remember);
-      setErrorLoginData(logInDataRedux);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
@@ -74,7 +73,7 @@ function LoginRegistration() {
           xs={12}
           className={`${classes.loginBlock} d-flex align-items-center mb-5`}
         >
-          <div className="w-75">
+          <form className="w-75">
             <li>
               <h4 className="fw-bold">LOGIN</h4>
             </li>
@@ -88,6 +87,7 @@ function LoginRegistration() {
                 placeholder="Enter Your Email"
                 id="emailLogin"
                 type="email"
+                autoComplete="current-email"
                 ref={emailLogIn}
               />
             </li>
@@ -97,6 +97,7 @@ function LoginRegistration() {
                 placeholder="Enter Your Password"
                 id="passwordLogin"
                 type="password"
+                autoComplete="current-password"
                 ref={passwordLogIn}
               />
             </li>
@@ -125,7 +126,7 @@ function LoginRegistration() {
               </button>
             </li>
             <div />
-          </div>
+          </form>
         </Col>
 
         <Col
@@ -133,7 +134,7 @@ function LoginRegistration() {
           xs={12}
           className={`${classes.loginBlock} d-flex align-items-center border-0`}
         >
-          <div className="w-75">
+          <form className="w-75">
             <li>
               <h4 className="fw-bold">REGISTRATION</h4>
             </li>
@@ -154,6 +155,7 @@ function LoginRegistration() {
                 className={classes.inputText}
                 placeholder="Enter Your Email"
                 id="emailSignUp"
+                autoComplete="current-email"
                 ref={emailSignUpRef}
               />
             </li>
@@ -163,6 +165,7 @@ function LoginRegistration() {
                 className={classes.inputText}
                 placeholder="Enter Your Password"
                 id="passwordSignUp"
+                autoComplete="current-password"
                 ref={passwordSignUpRef}
               />
             </li>
@@ -172,6 +175,7 @@ function LoginRegistration() {
                 className={classes.inputText}
                 placeholder="Comfirm Your Password"
                 id="passwordComfirmSignUp"
+                autoComplete="current-password"
                 ref={passwordComfirmSignUpRef}
               />
             </li>
@@ -192,7 +196,7 @@ function LoginRegistration() {
                 Sign Up
               </button>
             </li>
-          </div>
+          </form>
         </Col>
       </Row>
     </div>
