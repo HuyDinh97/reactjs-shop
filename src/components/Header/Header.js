@@ -34,7 +34,7 @@ function Header() {
         <div className={classes.header_user}>
           <ul>
             <li className={classes.header_border_end}>
-              {logInData.status === true ? (
+              {logInData?.status === true ? (
                 <a href="/" onClick={Logout}>
                   Logout
                 </a>
