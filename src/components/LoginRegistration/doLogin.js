@@ -1,7 +1,8 @@
 import { useGetLogInData } from 'store/selectors/common';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { logInDataReturn } from 'store/actions/common';
 import { postData } from './LoginCheck';
 
 const DoLogIn = async () => {
@@ -26,6 +27,7 @@ const DoLogIn = async () => {
         // eslint-disable-next-line no-alert
         window.alert(login?.message);
       }
+      dispatch(logInDataReturn(login));
     };
     post();
     // eslint-disable-next-line react-hooks/exhaustive-deps
