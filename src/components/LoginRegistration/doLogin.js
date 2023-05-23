@@ -2,6 +2,7 @@ import { useGetLogInData } from 'store/selectors/common';
 import { useDispatch } from 'react-redux';
 import { logInDataReturn } from 'store/actions/common';
 import { useNavigate } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 import { postData } from './LoginCheck';
 
 const DoLogIn = async () => {
@@ -22,6 +23,8 @@ const DoLogIn = async () => {
   if (login.status === true) {
     navigate('/');
   }
+  // eslint-disable-next-line no-alert
+  window.alert(login.message);
 };
 
 export default DoLogIn;
