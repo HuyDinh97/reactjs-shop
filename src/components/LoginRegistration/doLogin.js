@@ -1,6 +1,6 @@
 import { useGetLogInData } from 'store/selectors/common';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { logInDataReturn } from 'store/actions/common';
 import { useNavigate } from 'react-router-dom';
 import { postData } from './LoginCheck';
 
@@ -9,22 +9,27 @@ const DoLogIn = async () => {
   const { email, password } = useGetLogInData();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  if (dataLogin.length <= 0) return;
 
-  const login = await postData(
-    'https://vnguyen.xyz/huy/day17/apis/index.php?type=login',
-    {
-      email,
-      password,
-    }
-  );
+  React.useEffect(() => {
+    if (dataLogin.length <= 0) return;
 
-  dispatch(logInDataReturn({ status: login.status }));
-  if (login.status === true) {
-    navigate('/');
-    // eslint-disable-next-line no-alert
-    window.alert(login.message);
-  }
+    const post = async () => {
+      const login = await postData(
+        'https://vnguyen.xyz/huy/day17/apis/index.php?type=login',
+        {
+          email,
+          password,
+        }
+      );
+      if (login?.status === true) {
+        navigate('/');
+        // eslint-disable-next-line no-alert
+        window.alert(login?.message);
+      }
+    };
+    post();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [email, password]);
 };
 
 export default DoLogIn;
