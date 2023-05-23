@@ -2,7 +2,6 @@ import { useGetLogInData } from 'store/selectors/common';
 import { useDispatch } from 'react-redux';
 import { logInDataReturn } from 'store/actions/common';
 import { useNavigate } from 'react-router-dom';
-import { Alert } from 'react-bootstrap';
 import { postData } from './LoginCheck';
 
 const DoLogIn = async () => {
