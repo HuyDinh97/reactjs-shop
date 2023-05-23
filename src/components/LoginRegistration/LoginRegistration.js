@@ -6,7 +6,10 @@ import React, { useCallback, useRef, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { logInData, signUpData } from 'store/actions/common';
-import { useGetLogInDataReturn } from 'store/selectors/common';
+import {
+  useGetLogInDataReturn,
+  useGetSignUpDataReturn,
+} from 'store/selectors/common';
 import DoSignUp from './doSignUp';
 import DoLogIn from './doLogin';
 import classes from './LoginRegistration.module.css';
@@ -27,7 +30,7 @@ function LoginRegistration() {
   const dispatch = useDispatch();
 
   const errorLoginData = useGetLogInDataReturn();
-  const [errorSignUpData, setErrorSignUpData] = useState([]);
+  const errorSignUpData = useGetSignUpDataReturn();
 
   const doLogIn = useCallback(
     () => {
