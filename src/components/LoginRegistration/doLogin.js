@@ -1,5 +1,5 @@
 import { useGetLogInData } from 'store/selectors/common';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logInDataReturn } from 'store/actions/common';
@@ -8,8 +8,6 @@ import { postData } from './LoginCheck';
 const DoLogIn = async () => {
   const dataLogin = useGetLogInData();
   const { email, password } = useGetLogInData();
-  const [errorLoginData, setErrorLoginData] = useState([]);
-  console.log(errorLoginData);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
