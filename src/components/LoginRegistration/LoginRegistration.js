@@ -39,6 +39,7 @@ function LoginRegistration() {
       };
       dispatch(logInData(data));
       setCookie('email', emailLogIn.current.value, remember);
+      setErrorLoginData(logInDataRedux);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
@@ -61,6 +62,7 @@ function LoginRegistration() {
 
   DoLogIn();
   DoSignUp();
+  console.log(logInDataRedux);
   const errorSignUp = errorSignUpData?.length <= 0 ? 'd-none' : 'd-block';
   const errorLogin = errorLoginData?.length <= 0 ? 'd-none' : 'd-block';
 
