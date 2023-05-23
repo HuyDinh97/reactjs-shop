@@ -3,14 +3,18 @@
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useCallback, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { logInData, signUpData } from 'store/actions/common';
+import { useGetLogInDataReturn } from 'store/selectors/common';
 import DoSignUp from './doSignUp';
 import DoLogIn from './doLogin';
 import classes from './LoginRegistration.module.css';
+import { setCookie } from './LoginCheck';
 
 function LoginRegistration() {
+  const logInDataRedux = useGetLogInDataReturn();
   const emailLogIn = useRef();
   const passwordLogIn = useRef();
   const loginRemember = document.getElementById('loginRemember');
@@ -22,6 +26,7 @@ function LoginRegistration() {
   const acceptSignUp = document.getElementById('acceptSignUp');
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [errorLoginData, setErrorLoginData] = useState([]);
   const [errorSignUpData, setErrorSignUpData] = useState([]);
@@ -35,6 +40,7 @@ function LoginRegistration() {
         remember,
       };
       dispatch(logInData(data));
+      setCookie('email', emailLogIn.current.value, remember);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
@@ -54,6 +60,7 @@ function LoginRegistration() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
+
   DoLogIn();
   DoSignUp();
   const errorSignUp = errorSignUpData?.length <= 0 ? 'd-none' : 'd-block';
