@@ -17,7 +17,6 @@ function Header() {
     dispatch(logInDataReturn([]));
     dispatch(logInData([]));
   };
-  console.log(logInDataRedux);
 
   return (
     <header className={`${classes.header_color} py-3`}>
