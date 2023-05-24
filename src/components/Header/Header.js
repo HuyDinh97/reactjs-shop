@@ -38,7 +38,7 @@ function Header() {
         <div className={classes.header_user}>
           <ul>
             <li className={classes.header_border_end}>
-              {logInDataRedux.length !== 0 ? (
+              {logInDataRedux?.length !== 0 ? (
                 <Link to="/" onClick={Logout}>
                   Logout
                 </Link>
