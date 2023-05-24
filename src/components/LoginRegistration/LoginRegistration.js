@@ -46,21 +46,19 @@ function LoginRegistration() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
-  const doSignUp = useCallback(
-    () => {
-      const acceptSignUpCheck = acceptSignUp?.checked === true ? 1 : 0;
-      const data = {
-        name: nameSignUpRef.current.value,
-        email: emailSignUpRef.current.value,
-        password: passwordSignUpRef.current.value,
-        confirm_password: passwordComfirmSignUpRef.current.value,
-        agree: acceptSignUpCheck,
-      };
-      dispatch(signUpData(data));
-    },
+  const doSignUp = useCallback(() => {
+    const agree = acceptSignUp?.checked === true ? 1 : 0;
+    console.log(agree);
+    const data = {
+      name: nameSignUpRef.current.value,
+      email: emailSignUpRef.current.value,
+      password: passwordSignUpRef.current.value,
+      confirm_password: passwordComfirmSignUpRef.current.value,
+      agree,
+    };
+    dispatch(signUpData(data));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
+  }, [acceptSignUp]);
 
   DoLogIn();
   DoSignUp();

@@ -57,6 +57,10 @@ const DoSignUp = async () => {
       }
       if (check?.agree) {
         dispatch(signUpDataReturn('You must accept the terms and conditions'));
+        return;
+      }
+      if (signUp?.message) {
+        dispatch(signUpDataReturn(signUp?.message));
       }
     };
     doSignUp();
