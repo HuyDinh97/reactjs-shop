@@ -2,7 +2,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { logInData, signUpData } from 'store/actions/common';
@@ -16,7 +16,6 @@ import classes from './LoginRegistration.module.css';
 import { setCookie } from './LoginCheck';
 
 function LoginRegistration() {
-  const logInDataRedux = useGetLogInDataReturn();
   const emailLogIn = useRef();
   const passwordLogIn = useRef();
   const loginRemember = document.getElementById('loginRemember');
