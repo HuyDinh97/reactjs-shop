@@ -19,7 +19,6 @@ const DoLogIn = async () => {
 
   React.useEffect(() => {
     if (dataLogin.length <= 0 && !emailToPost && !passwordToPost) return;
-    console.log(remember);
     const post = async () => {
       const login = await postData(
         'https://vnguyen.xyz/huy/day17/apis/index.php?type=login',
