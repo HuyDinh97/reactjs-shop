@@ -58,7 +58,6 @@ function LoginRegistration() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [acceptSignUp]);
 
-  DoLogIn();
   DoSignUp();
   const errorSignUp = errorSignUpData?.length <= 0 ? 'd-none' : 'd-block';
   const errorLogin = errorLoginData?.length <= 0 ? 'd-none' : 'd-block';
