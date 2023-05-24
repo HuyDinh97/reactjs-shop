@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logInDataReturn } from 'store/actions/common';
-import { postData } from './LoginCheck';
+import { postData, setCookie } from './LoginCheck';
 
 const DoLogIn = async () => {
   const dataLogin = useGetLogInData();
@@ -27,7 +27,7 @@ const DoLogIn = async () => {
       const check = error ? error.fields : [];
       if (login?.status === true) {
         navigate('/');
-        dispatch(logInDataReturn({ status: true }));
+        setCookie('email', email);
         return;
       }
       if (check?.email) {

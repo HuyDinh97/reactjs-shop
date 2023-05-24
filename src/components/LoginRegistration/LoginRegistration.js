@@ -41,7 +41,6 @@ function LoginRegistration() {
         remember,
       };
       dispatch(logInData(data));
-      setCookie('email', emailLogIn.current.value, remember);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []

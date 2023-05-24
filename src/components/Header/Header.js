@@ -2,18 +2,22 @@ import React from 'react';
 import { BsTelephoneFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
 
-import { useGetLogInDataReturn } from 'store/selectors/common';
+import { useGetLogInData } from 'store/selectors/common';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { logInData, logInDataReturn } from 'store/actions/common';
 import classes from './Header.module.css';
 
 function Header() {
-  const logInData = useGetLogInDataReturn();
+  const logInDataRedux = useGetLogInData();
   const dispatch = useDispatch();
 
   const Logout = () => {
     document.cookie = 'email=; expires=Thu, 18 Dec 2013 12:00:00 UTC';
-    dispatch(logInData(false));
+    dispatch(logInDataReturn([]));
+    dispatch(logInData([]));
   };
+  console.log(logInDataRedux);
 
   return (
     <header className={`${classes.header_color} py-3`}>
@@ -34,19 +38,19 @@ function Header() {
         <div className={classes.header_user}>
           <ul>
             <li className={classes.header_border_end}>
-              {logInData?.status === true ? (
-                <a href="/" onClick={Logout}>
+              {logInDataRedux.length !== 0 ? (
+                <Link to="/" onClick={Logout}>
                   Logout
-                </a>
+                </Link>
               ) : (
-                <a href="/login">Login</a>
+                <Link to="/login">Login</Link>
               )}
             </li>
             <li className={classes.header_border_end}>
-              <a href="/">Wishlist</a>
+              <Link to="/">Wishlist</Link>
             </li>
             <li>
-              <a href="/">My Acount</a>
+              <Link to="/">My Acount</Link>
             </li>
           </ul>
         </div>
