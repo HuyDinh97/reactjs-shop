@@ -47,3 +47,6 @@ export const useGetLogInData = () =>
 
 export const useGetLogInDataReturn = () =>
   useSelector((state) => state.common?.logInDataReturn);
+
+export const useGetLogInStatus = () =>
+  useSelector((state) => state.common?.logInStatus);

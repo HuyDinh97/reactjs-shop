@@ -104,3 +104,10 @@ export const logInDataReturn = (payload) => {
     payload,
   };
 };
+
+export const logInStatus = (payload) => {
+  return {
+    type: 'LOGIN_STATUS',
+    payload,
+  };
+};
