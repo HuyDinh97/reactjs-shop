@@ -19,7 +19,6 @@ const DoLogIn = async () => {
 
   React.useEffect(() => {
     if (dataLogin.length <= 0 && !emailToPost && !passwordToPost) return;
-    console.log(passwordToPost);
     const post = async () => {
       const login = await postData(
         'https://vnguyen.xyz/huy/day17/apis/index.php?type=login',
@@ -31,7 +30,6 @@ const DoLogIn = async () => {
       const data = login.errors;
       const error = data ? JSON.parse(data) : null;
       const check = error ? error.fields : [];
-      console.log(login);
       if (login?.status === true) {
         navigate('/');
         dispatch(logInStatus(login?.status));
