@@ -13,7 +13,6 @@ import {
 import DoSignUp from './doSignUp';
 import DoLogIn from './doLogin';
 import classes from './LoginRegistration.module.css';
-import { setCookie } from './LoginCheck';
 
 function LoginRegistration() {
   const emailLogIn = useRef();
@@ -35,23 +34,22 @@ function LoginRegistration() {
     () => {
       const remember = loginRemember?.checked ? 1 : 0;
       const data = {
-        email: emailLogIn.current.value,
-        password: passwordLogIn.current.value,
+        emailTo: emailLogIn?.current.value,
+        passwordTo: passwordLogIn?.current.value,
         remember,
       };
       dispatch(logInData(data));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [loginRemember]
   );
   const doSignUp = useCallback(() => {
     const agree = acceptSignUp?.checked === true ? 1 : 0;
-    console.log(agree);
     const data = {
-      name: nameSignUpRef.current.value,
-      email: emailSignUpRef.current.value,
-      password: passwordSignUpRef.current.value,
-      confirm_password: passwordComfirmSignUpRef.current.value,
+      name: nameSignUpRef?.current.value,
+      email: emailSignUpRef?.current.value,
+      password: passwordSignUpRef?.current.value,
+      confirm_password: passwordComfirmSignUpRef?.current.value,
       agree,
     };
     dispatch(signUpData(data));

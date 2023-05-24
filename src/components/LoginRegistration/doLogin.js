@@ -8,17 +8,18 @@ import { postData } from './LoginCheck';
 
 const DoLogIn = async () => {
   const dataLogin = useGetLogInData();
-  const { email, password } = useGetLogInData();
+  const { emailTo, passwordTo, remember } = useGetLogInData();
   const emailCookie = Cookies.get('email');
   const passwordCookie = Cookies.get('password');
-  const emailToPost = emailCookie || email;
-  const passwordToPost = passwordCookie || password;
+  const emailToPost = emailCookie || emailTo;
+  const passwordToPost = passwordCookie || passwordTo;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     if (dataLogin.length <= 0 && !emailToPost && !passwordToPost) return;
+    console.log(remember);
     const post = async () => {
       const login = await postData(
         'https://vnguyen.xyz/huy/day17/apis/index.php?type=login',
@@ -33,15 +34,17 @@ const DoLogIn = async () => {
       if (login?.status === true) {
         navigate('/');
         dispatch(logInStatus(login?.status));
-        Cookies.set('email', emailToPost, { expires: 1 });
-        Cookies.set('password', passwordToPost, { expires: 1 });
+        if (remember === 1) {
+          Cookies.set('email', emailToPost, { expires: 1 });
+          Cookies.set('password', passwordToPost, { expires: 1 });
+        }
         return;
       }
       if (check?.email) {
         if (check?.email?.required) {
           dispatch(logInDataReturn(check?.email?.required));
         } else {
-          dispatch(logInDataReturn(check?.email.email));
+          dispatch(logInDataReturn(check?.email?.email));
         }
         return;
       }
@@ -55,7 +58,7 @@ const DoLogIn = async () => {
     };
     post();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [email, password, emailCookie, passwordCookie]);
+  }, [emailTo, passwordTo, emailCookie, passwordCookie]);
 };
 
 export default DoLogIn;

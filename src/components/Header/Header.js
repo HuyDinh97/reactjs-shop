@@ -1,7 +1,6 @@
 import React from 'react';
 import { BsTelephoneFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
-
 import { useGetLogInStatus } from 'store/selectors/common';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -12,12 +11,6 @@ import classes from './Header.module.css';
 function Header() {
   const logInStatusData = useGetLogInStatus();
   const dispatch = useDispatch();
-
-  // const checkLogIn = () => {
-  //   const email = Cookies.get('email');
-  //   const password = Cookies.get('password');
-  //   console.log(password);
-  // };
 
   const Logout = () => {
     document.cookie = 'email=; expires=Thu, 18 Dec 2013 12:00:00 UTC';
