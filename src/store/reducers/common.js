@@ -18,7 +18,7 @@ const initialState = {
   comment: [],
   signUpData: [],
   signUpDataReturn: [],
-  logInData: [],
+  logInData: undefined,
   logInDataReturn: [],
   logInStatus: undefined,
 };
