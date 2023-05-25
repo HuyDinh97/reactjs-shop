@@ -9,10 +9,8 @@ import {
 /* eslint-disable no-case-declarations */
 
 const localStorageId = 'productInCart';
-const localStorageTotalCost = 'totalCost';
 
 const localStorageData = getData(localStorageId);
-const localStorageTotalCostData = getData(localStorageTotalCost);
 
 const initialState = {
   home: undefined,
@@ -21,8 +19,8 @@ const initialState = {
   bestSellers: [],
   testtimonials: [],
   productInCart: {
-    products: localStorageData || [],
-    totalCost: localStorageTotalCostData || 0,
+    products: localStorageData?.products || [],
+    totalCost: localStorageData?.totalCost || 0,
   },
   productDetail: [],
   comment: [],
@@ -77,7 +75,7 @@ export default (state = initialState, action) => {
         ...state,
         home: action.payload.data,
       };
-    case 'ADD_PRODUCTTOCART':
+    case 'ADD_PRODUCTTOCART': {
       const productIndex = products.findIndex(
         (product) => product._id === action.payload._id
       );
@@ -105,15 +103,16 @@ export default (state = initialState, action) => {
       } else {
         newProductList.push(newProduct);
       }
-      setLocalStorage(localStorageId, localStorageTotalCost, newProductList);
-
+      const productInCart = {
+        products: newProductList,
+        totalCost: calculateTotalCost(newProductList),
+      };
+      setLocalStorage(localStorageId, productInCart);
       return {
         ...state,
-        productInCart: {
-          products: newProductList,
-          totalCost: calculateTotalCost(newProductList),
-        },
+        productInCart,
       };
+    }
     case 'PRODUCT_DETAIL':
       const productDetail = action.payload;
       const afterSalesPriceDetail =
@@ -127,20 +126,22 @@ export default (state = initialState, action) => {
         ...state,
         productDetail: [newProductDetail],
       };
-    case 'DELETE_PRODUCTINCART':
+    case 'DELETE_PRODUCTINCART': {
       const productDelete = products.filter(
         (product) => product._id !== action.id
       );
-      setLocalStorage(localStorageId, localStorageTotalCost, productDelete);
+      const productInCart = {
+        products: productDelete,
+        totalCost: calculateTotalCost(productDelete),
+      };
+      setLocalStorage(localStorageId, productInCart);
 
       return {
         ...state,
-        productInCart: {
-          products: productDelete,
-          totalCost: calculateTotalCost(productDelete),
-        },
+        productInCart,
       };
-    case 'ADJUST_PRODUCTINCART':
+    }
+    case 'ADJUST_PRODUCTINCART': {
       const updateInCreaseProduct = products.map((curProd) => {
         let quantityUpdate;
         let newAfterSalesPrice = [];
@@ -160,19 +161,16 @@ export default (state = initialState, action) => {
         }
         return curProd;
       });
-      setLocalStorage(
-        localStorageId,
-        localStorageTotalCost,
-        updateInCreaseProduct
-      );
+      const productInCart = {
+        products: updateInCreaseProduct,
+        totalCost: calculateTotalCost(updateInCreaseProduct),
+      };
+      setLocalStorage(localStorageId, productInCart);
       return {
         ...state,
-        productInCart: {
-          ...state.productInCart,
-          products: updateInCreaseProduct,
-          totalCost: calculateTotalCost(updateInCreaseProduct),
-        },
+        productInCart,
       };
+    }
     case 'UPDATE_MYCART':
       const updateMyCart = products.map((curProd) => {
         if (curProd._id.toString() === action.payload._id) {
@@ -187,14 +185,15 @@ export default (state = initialState, action) => {
         }
         return curProd;
       });
-      setLocalStorage(localStorageId, localStorageTotalCost, updateMyCart);
+      const productInCart = {
+        ...state.productInCart,
+        products: updateMyCart,
+        totalCost: calculateTotalCost(updateMyCart),
+      };
+      setLocalStorage(localStorageId, productInCart);
       return {
         ...state,
-        productInCart: {
-          ...state.productInCart,
-          products: updateMyCart,
-          totalCost: calculateTotalCost(updateMyCart),
-        },
+        productInCart,
       };
     case 'ADD_COMMENT':
       try {

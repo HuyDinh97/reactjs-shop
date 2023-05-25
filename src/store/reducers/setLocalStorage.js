@@ -7,13 +7,12 @@ export const calculateTotalCost = (products) =>
     )
     .toFixed(2);
 
-export const getData = (data) => {
-  const commentsData = localStorage.getItem(data);
-  if (!commentsData) return false;
-  return JSON.parse(commentsData);
+export const getData = (key) => {
+  const localStorageData = localStorage.getItem(key);
+  if (!localStorageData) return false;
+  return JSON.parse(localStorageData);
 };
 
-export const setLocalStorage = (name, cost, data) => {
-  localStorage.setItem(name, JSON.stringify(data));
-  localStorage.setItem(cost, JSON.stringify(calculateTotalCost(data)));
+export const setLocalStorage = (key, data) => {
+  localStorage.setItem(key, JSON.stringify(data));
 };
