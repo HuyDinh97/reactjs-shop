@@ -1,15 +1,15 @@
 /* eslint-disable no-plusplus */
 
 import { format, fromUnixTime } from 'date-fns';
+import {
+  getData,
+  setLocalStorage,
+  calculateTotalCost,
+} from './setLocalStorage';
 /* eslint-disable no-case-declarations */
 
 const localStorageId = 'productInCart';
 const localStorageTotalCost = 'totalCost';
-const getData = (data) => {
-  const commentsData = localStorage.getItem(data);
-  if (!commentsData) return false;
-  return JSON.parse(commentsData);
-};
 
 const localStorageData = getData(localStorageId);
 const localStorageTotalCostData = getData(localStorageTotalCost);
@@ -28,14 +28,6 @@ const initialState = {
   comment: [],
 };
 
-const calculateTotalCost = (products) =>
-  products
-    .reduce(
-      (prevValue, currProduct) =>
-        prevValue + (currProduct?.afterSalesPrice ?? 0),
-      0
-    )
-    .toFixed(2);
 // eslint-disable-next-line default-param-last
 export default (state = initialState, action) => {
   const { products } = state.productInCart ? state.productInCart : [];
@@ -113,12 +105,7 @@ export default (state = initialState, action) => {
       } else {
         newProductList.push(newProduct);
       }
-
-      localStorage.setItem(localStorageId, JSON.stringify(newProductList));
-      localStorage.setItem(
-        localStorageTotalCost,
-        JSON.stringify(calculateTotalCost(newProductList))
-      );
+      setLocalStorage(localStorageId, localStorageTotalCost, newProductList);
 
       return {
         ...state,
@@ -144,6 +131,7 @@ export default (state = initialState, action) => {
       const productDelete = products.filter(
         (product) => product._id !== action.id
       );
+      setLocalStorage(localStorageId, localStorageTotalCost, productDelete);
 
       return {
         ...state,
@@ -172,6 +160,11 @@ export default (state = initialState, action) => {
         }
         return curProd;
       });
+      setLocalStorage(
+        localStorageId,
+        localStorageTotalCost,
+        updateInCreaseProduct
+      );
       return {
         ...state,
         productInCart: {
@@ -194,6 +187,7 @@ export default (state = initialState, action) => {
         }
         return curProd;
       });
+      setLocalStorage(localStorageId, localStorageTotalCost, updateMyCart);
       return {
         ...state,
         productInCart: {
