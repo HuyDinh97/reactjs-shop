@@ -24,7 +24,6 @@ const initialState = {
     products: localStorageData || [],
     totalCost: localStorageTotalCostData || 0,
   },
-  productDetail: [],
   comment: [],
 };
 
