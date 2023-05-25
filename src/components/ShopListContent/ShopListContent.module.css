@@ -1,0 +1,10 @@
+.shopListCategory li{
+  border-bottom: 1px solid #cdcdcd;
+  border-bottom-style: dashed;
+  color: #7a7a7a;
+}
+
+.shopListCategory li:first-child{
+  border-bottom: 1px solid #cdcdcd;
+  color: black;
+}
