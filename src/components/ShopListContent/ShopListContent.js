@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Slider } from '@mui/material';
@@ -52,6 +53,11 @@ function ShopListContent() {
                     onChange={handleChange}
                     valueLabelDisplay="auto"
                   />
+                </li>
+                <li>
+                  <span>
+                    Price: ${value[0]} - ${value[1]}
+                  </span>
                 </li>
               </ul>
             </div>
