@@ -48,16 +48,19 @@ function ShopListContent() {
                 </li>
                 <li>
                   <Slider
-                    getAriaLabel={() => 'Temperature range'}
                     value={value}
                     onChange={handleChange}
                     valueLabelDisplay="auto"
+                    max={1000}
                   />
                 </li>
                 <li>
-                  <span>
-                    Price: ${value[0]} - ${value[1]}
-                  </span>
+                  <div className="fw-semibold fs-5">
+                    <span className={classes.filterPrice}>PRICE </span>
+                    <span className="text-black">
+                      ${value[0]} - ${value[1]}
+                    </span>
+                  </div>
                 </li>
               </ul>
             </div>
