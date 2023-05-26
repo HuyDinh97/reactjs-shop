@@ -2,6 +2,9 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Slider } from '@mui/material';
+import { FaComments } from 'react-icons/fa';
+import img from '../PopularProduct/Product/product-img-1.jpg';
+
 import classes from './ShopListContent.module.css';
 
 function ShopListContent() {
@@ -17,11 +20,8 @@ function ShopListContent() {
     '& .MuiSlider-track': {
       color: 'black',
     },
-    '& .MuiSlider-root ': {
-      width: '94%!important',
-    },
     '& .MuiSlider-rail  ': {
-      color: 'black',
+      color: '#c3bbbb',
     },
   };
 
@@ -32,7 +32,7 @@ function ShopListContent() {
           <Col xl={3} className={classes.shopListCategory}>
             <div>
               <ul className="list-unstyled">
-                <li className="py-3">
+                <li className="py-2">
                   <span className="fw-bold fs-5">CATEGORIES</span>
                 </li>
                 <li className="d-flex justify-content-between py-2 fw-semibold fs-5 pt-3">
@@ -59,7 +59,7 @@ function ShopListContent() {
             </div>
             <div>
               <ul className="list-unstyled">
-                <li className="py-3">
+                <li className="py-2">
                   <span className="fw-bold fs-5">FILTERS </span>
                 </li>
                 <li className="border-0 pt-4 pb-2 d-flex justify-content-center">
@@ -84,7 +84,7 @@ function ShopListContent() {
             </div>
             <div>
               <ul className="list-unstyled">
-                <li className="py-3">
+                <li className="py-2">
                   <span className="fw-bold fs-5">COLOR</span>
                 </li>
                 <li className="d-flex justify-content-between py-2 fw-semibold fs-5 pt-3">
@@ -111,10 +111,87 @@ function ShopListContent() {
             </div>
             <div>
               <ul className="list-unstyled">
-                <li className="py-3">
+                <li className="py-2">
                   <span className="fw-bold fs-5">RECENT PRODUCT </span>
                 </li>
-                <li>a</li>
+                <li className="py-3">
+                  <Container>
+                    <Row>
+                      <Col xs={3} className="ps-0">
+                        <div
+                          className={classes.recentImg}
+                          // eslint-disable-next-line react/forbid-dom-props
+                          style={{
+                            background: `url(${img})`,
+                          }}
+                        />
+                      </Col>
+                      <Col xs={9} className="ps-4">
+                        <div className="text-black fw-semibold">
+                          Product name
+                        </div>
+                        <div>
+                          <span>
+                            <FaComments className={classes.commentColor} />
+                          </span>
+                          <span className="ps-1 fw-semibold">5 Comments</span>
+                        </div>
+                      </Col>
+                    </Row>
+                  </Container>
+                </li>
+                <li className="py-3">
+                  <Container>
+                    <Row>
+                      <Col xs={3} className="ps-0">
+                        <div
+                          className={classes.recentImg}
+                          // eslint-disable-next-line react/forbid-dom-props
+                          style={{
+                            background: `url(${img})`,
+                          }}
+                        />
+                      </Col>
+                      <Col xs={9} className="ps-4">
+                        <div className="text-black fw-semibold">
+                          Product name
+                        </div>
+                        <div>
+                          <span>
+                            <FaComments className={classes.commentColor} />
+                          </span>
+                          <span className="ps-1 fw-semibold">5 Comments</span>
+                        </div>
+                      </Col>
+                    </Row>
+                  </Container>
+                </li>
+                <li className="py-3">
+                  <Container>
+                    <Row>
+                      <Col xs={3} className="ps-0">
+                        <div
+                          className={classes.recentImg}
+                          // eslint-disable-next-line react/forbid-dom-props
+                          style={{
+                            background: `url(${img})`,
+                          }}
+                        />
+                      </Col>
+                      <Col xs={9} className="ps-4">
+                        <div className="text-black fw-semibold">
+                          Product name
+                        </div>
+                        <div>
+                          <span>
+                            <FaComments className={classes.commentColor} />
+                          </span>
+                          <span className="ps-1 fw-semibold">5 Comments</span>
+                        </div>
+                      </Col>
+                    </Row>
+                  </Container>
+                </li>
               </ul>
             </div>
           </Col>

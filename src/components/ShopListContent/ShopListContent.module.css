@@ -12,3 +12,20 @@
 .filterPrice {
   color: #3f3e3e
 }
+
+.recentImg {
+  height: 77px;
+  width: 87px;
+  background-repeat: no-repeat!important;
+  display: flex;
+  justify-content: center;
+  background-size: cover !important;
+}
+
+.filterSlider {
+  width: 94%!important  ;
+}
+
+.commentColor {
+  color: #eb3d32;
+}
