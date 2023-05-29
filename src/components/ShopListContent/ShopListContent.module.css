@@ -29,3 +29,44 @@
 .commentColor {
   color: #eb3d32;
 }
+
+.textGreyColor {
+  color: #7a7a7a!important;
+  text-shadow: -1px 0px #7a7a7a;
+}
+
+.formSelect select {
+  border-radius: 4px!important;
+  height: 46px;
+}
+
+.formSelect select:focus {
+  border-color: black!important;
+  box-shadow: none!important;
+  border: 2px solid black!important;
+}
+
+.sortIcon {
+  background-color: #363f4e;
+  color: white;
+}
+
+.sortButton button:focus  {
+  background-color: #eb3d32;
+}
+
+.pagination li a{
+  background-color: black;
+  color: white;
+}
+
+.pagination li a:hover{
+  background-color: #eb3d32;
+  color: white;
+}
+
+.pagination li a:focus{
+  background-color: #eb3d32;
+  color: white;
+  box-shadow: none!important;
+}
