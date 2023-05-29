@@ -1,8 +1,17 @@
 /* eslint-disable no-plusplus */
 
 import { format, fromUnixTime } from 'date-fns';
-
+import {
+  getData,
+  setLocalStorage,
+  calculateTotalCost,
+} from './setLocalStorage';
 /* eslint-disable no-case-declarations */
+
+const localStorageId = 'productInCart';
+
+const localStorageData = getData(localStorageId);
+
 const initialState = {
   home: undefined,
   categories: [],
@@ -10,11 +19,10 @@ const initialState = {
   bestSellers: [],
   testtimonials: [],
   productInCart: {
-    products: [],
-    totalCost: 0,
+    products: localStorageData?.products || [],
+    totalCost: localStorageData?.totalCost || 0,
   },
   productDetail: [],
-  quantityDetail: 0,
   comment: [],
   signUpData: [],
   signUpDataReturn: [],
@@ -23,14 +31,6 @@ const initialState = {
   logInStatus: undefined,
 };
 
-const calculateTotalCost = (products) =>
-  products
-    .reduce(
-      (prevValue, currProduct) =>
-        prevValue + (currProduct?.afterSalesPrice ?? 0),
-      0
-    )
-    .toFixed(2);
 // eslint-disable-next-line default-param-last
 export default (state = initialState, action) => {
   const { products } = state.productInCart ? state.productInCart : [];
@@ -80,7 +80,7 @@ export default (state = initialState, action) => {
         ...state,
         home: action.payload.data,
       };
-    case 'ADD_PRODUCTTOCART':
+    case 'ADD_PRODUCTTOCART': {
       const productIndex = products.findIndex(
         (product) => product._id === action.payload._id
       );
@@ -108,40 +108,45 @@ export default (state = initialState, action) => {
       } else {
         newProductList.push(newProduct);
       }
-
+      const productInCart = {
+        products: newProductList,
+        totalCost: calculateTotalCost(newProductList),
+      };
+      setLocalStorage(localStorageId, productInCart);
       return {
         ...state,
-        productInCart: {
-          products: newProductList,
-          totalCost: calculateTotalCost(newProductList),
-        },
+        productInCart,
       };
+    }
     case 'PRODUCT_DETAIL':
       const productDetail = action.payload;
       const afterSalesPriceDetail =
-        productDetail.price * (1 - productDetail.sales / 100);
-      const available = productDetail.quantity > 0 ? 'In Stock' : 'Sold out';
-      productDetail.available = available;
-      productDetail.afterSalesPriceDetail = afterSalesPriceDetail;
+        productDetail[0].price * (1 - productDetail[0].sales / 100);
+      const available = productDetail[0].quantity > 0 ? 'In Stock' : 'Sold out';
+      productDetail[0].available = available;
+      productDetail[0].afterSalesPriceDetail = afterSalesPriceDetail;
 
-      const newProductDetail = productDetail;
+      const newProductDetail = productDetail[0];
       return {
         ...state,
         productDetail: [newProductDetail],
       };
-    case 'DELETE_PRODUCTINCART':
+    case 'DELETE_PRODUCTINCART': {
       const productDelete = products.filter(
         (product) => product._id !== action.id
       );
+      const productInCart = {
+        products: productDelete,
+        totalCost: calculateTotalCost(productDelete),
+      };
+      setLocalStorage(localStorageId, productInCart);
 
       return {
         ...state,
-        productInCart: {
-          products: productDelete,
-          totalCost: calculateTotalCost(productDelete),
-        },
+        productInCart,
       };
-    case 'ADJUST_PRODUCTINCART':
+    }
+    case 'ADJUST_PRODUCTINCART': {
       const updateInCreaseProduct = products.map((curProd) => {
         let quantityUpdate;
         let newAfterSalesPrice = [];
@@ -161,14 +166,16 @@ export default (state = initialState, action) => {
         }
         return curProd;
       });
+      const productInCart = {
+        products: updateInCreaseProduct,
+        totalCost: calculateTotalCost(updateInCreaseProduct),
+      };
+      setLocalStorage(localStorageId, productInCart);
       return {
         ...state,
-        productInCart: {
-          ...state.productInCart,
-          products: updateInCreaseProduct,
-          totalCost: calculateTotalCost(updateInCreaseProduct),
-        },
+        productInCart,
       };
+    }
     case 'UPDATE_MYCART':
       const updateMyCart = products.map((curProd) => {
         if (curProd._id.toString() === action.payload._id) {
@@ -183,13 +190,15 @@ export default (state = initialState, action) => {
         }
         return curProd;
       });
+      const productInCart = {
+        ...state.productInCart,
+        products: updateMyCart,
+        totalCost: calculateTotalCost(updateMyCart),
+      };
+      setLocalStorage(localStorageId, productInCart);
       return {
         ...state,
-        productInCart: {
-          ...state.productInCart,
-          products: updateMyCart,
-          totalCost: calculateTotalCost(updateMyCart),
-        },
+        productInCart,
       };
     case 'ADD_COMMENT':
       try {
