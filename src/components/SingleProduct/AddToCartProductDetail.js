@@ -11,8 +11,10 @@ function AddToCartProductDetail({ popularProduct, display }) {
   const dispatch = useDispatch();
   const changeDisplay =
     display === false
-      ? 'd-flex flex-column align-items-center justify-content-between'
-      : 'd-flex flex-column align-items-start justify-content-between';
+      ? 'align-items-center'
+      : 'flex-column align-items-start justify-content-between position-absolute mb-3';
+
+  const marginLeft = display === false ? 'ms-5' : '';
 
   const addProduct = useCallback(
     (productInCart) => () => {
@@ -29,7 +31,7 @@ function AddToCartProductDetail({ popularProduct, display }) {
     [dispatch]
   );
   return (
-    <div className={`${classes.opacity_layer} ${changeDisplay}`}>
+    <div className={`${classes.opacity_layer} ${changeDisplay} d-flex`}>
       <div>
         <button
           className="border-0 search-btn-color fs-6 fw-semibold px-4 py-2 rounded-pill"
@@ -39,18 +41,12 @@ function AddToCartProductDetail({ popularProduct, display }) {
           Add to cart
         </button>
       </div>
-      <div className={classes.opacity_icon}>
-        <span>
-          <HiHeart />
-        </span>
-        <span>
-          <Link to={`/product-detail/${popularProduct._id}`}>
-            <BsFillEyeFill />
-          </Link>
-        </span>
-        <span>
-          <TbRefresh />
-        </span>
+      <div className={`${classes.opacity_icon} ${marginLeft}`}>
+        <HiHeart className="px-2" />
+        <Link className="px-2" to={`/product-detail/${popularProduct._id}`}>
+          <BsFillEyeFill />
+        </Link>
+        <TbRefresh className="px-2" />
       </div>
     </div>
   );

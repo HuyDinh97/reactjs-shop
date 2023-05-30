@@ -22,7 +22,7 @@ function ShopListContent() {
   const [productDisplay, setproductDisplay] = useState(4);
   const [imgProductCol, setImgProduct] = useState(12);
   const [detailProductCol, setDetailProduct] = useState(12);
-  const [rowDisplayCheck, setRowDisplayCheck] = useState(true);
+  const [rowDisplayCheck, setRowDisplayCheck] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

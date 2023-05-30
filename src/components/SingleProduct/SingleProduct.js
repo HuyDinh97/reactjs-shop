@@ -13,11 +13,11 @@ function SingleProduct({
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
 
-  const display = rowDisplay;
-
   const productDetailRowDisplay =
-    display === true ? 'align-items-start mb-2' : 'justify-content-center my-2';
-
+    rowDisplay === true
+      ? 'align-items-start mb-2'
+      : 'justify-content-center my-2';
+  console.log(rowDisplay);
   return (
     <div>
       <Container>
@@ -31,10 +31,12 @@ function SingleProduct({
                   background: `url(${linkIMG + popularProduct.thumb})`,
                 }}
               >
-                <div className={classes.hide}>
-                  <AddToCartProductDetail popularProduct={popularProduct} />
-                  <div className={classes.white_overlay} />
-                </div>
+                {rowDisplay === false ? (
+                  <div className={classes.hide}>
+                    <AddToCartProductDetail popularProduct={popularProduct} />
+                    <div className={classes.white_overlay} />
+                  </div>
+                ) : null}
               </div>
             </div>
           </Col>
@@ -59,10 +61,22 @@ function SingleProduct({
                 {popularProduct.realPrice}
               </span>
             </div>
-            <AddToCartProductDetail
-              popularProduct={popularProduct}
-              display={display}
-            />
+            {rowDisplay === true ? (
+              <div>
+                <div className="text-start">
+                  Nullam ullamcorper in leo vitae finibus. In mattis aliquam
+                  diam ut lobortis. Aenean non ultrices purus, vel tempor orci.
+                  Vestibulum ullamcorper dolor vel nulla gravida, ac
+                  sollicitudin eros lacinia. Pellentesque vitae diam nec nulla
+                  porttitor semper. Nullam tincidunt ante sit amet est bibendum
+                  efficitur.
+                </div>
+                <AddToCartProductDetail
+                  popularProduct={popularProduct}
+                  display={false}
+                />
+              </div>
+            ) : null}
           </Col>
         </Row>
       </Container>

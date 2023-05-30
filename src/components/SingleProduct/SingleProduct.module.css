@@ -1,5 +1,4 @@
 .opacity_layer {
-  position: absolute;
   z-index: 1;
   height: 200px;
 }
@@ -40,21 +39,16 @@
   opacity: 100%;
 }
 
-.opacity_icon {
-  margin-bottom: 5%;
-}
-
-.opacity_icon span {
+.opacity_icon svg {
   font-size: 40px;
   color: white;
-  margin: 5px;
 }
 
-.opacity_icon span a {
+.opacity_icon a {
   color: white;
 }
 
-.opacity_icon span a:hover {
+.opacity_icon svg:hover {
   color: #eb3d32;
 }
 
