@@ -15,6 +15,7 @@ function LoginRegistration() {
   const emailLogIn = useRef();
   const passwordLogIn = useRef();
 
+  const formRef = useRef(null);
   const nameSignUpRef = useRef();
   const emailSignUpRef = useRef();
   const passwordSignUpRef = useRef();
@@ -57,6 +58,7 @@ function LoginRegistration() {
     setRegistrationError(data);
     if (data.status === true) {
       setRegistrationError();
+      formRef.current.reset();
       alert(data.message);
     }
   }, []);
@@ -133,7 +135,7 @@ function LoginRegistration() {
           xs={12}
           className={`${classes.loginBlock} d-flex align-items-center border-0`}
         >
-          <form className="w-75">
+          <form ref={formRef} className="w-75">
             <li>
               <h4 className="fw-bold">REGISTRATION</h4>
             </li>
