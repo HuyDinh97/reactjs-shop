@@ -12,7 +12,6 @@ const userLogin = async ({ email, password, remember }) => {
   const data = login.errors;
   const error = data ? JSON.parse(data) : null;
   const check = error ? error.fields : [];
-  console.log(remember);
   if (login?.status === true) {
     if (remember === 1) {
       Cookies.set('isUserLogin', true, { expires: 7 });
