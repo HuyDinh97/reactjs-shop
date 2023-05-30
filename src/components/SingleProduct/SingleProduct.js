@@ -17,7 +17,6 @@ function SingleProduct({
     rowDisplay === true
       ? 'align-items-start mb-2'
       : 'justify-content-center my-2';
-  console.log(rowDisplay);
   return (
     <div>
       <Container>
