@@ -11,7 +11,7 @@ function AddToCartProductDetail({ popularProduct, display }) {
   const dispatch = useDispatch();
   const changeDisplay =
     display === false
-      ? 'align-items-center'
+      ? 'align-items-center h-75'
       : 'flex-column align-items-start justify-content-between position-absolute mb-3';
 
   const marginLeft = display === false ? 'ms-5' : '';
