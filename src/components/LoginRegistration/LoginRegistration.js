@@ -15,13 +15,11 @@ import userRegistration from './resgistration';
 function LoginRegistration() {
   const emailLogIn = useRef();
   const passwordLogIn = useRef();
-  const loginRemember = document.getElementById('loginRemember');
 
   const nameSignUpRef = useRef();
   const emailSignUpRef = useRef();
   const passwordSignUpRef = useRef();
   const passwordComfirmSignUpRef = useRef();
-  const acceptSignUp = document.getElementById('acceptSignUp');
   const [loginError, setLoginError] = useState();
   const [resgistrationError, setRegistrationError] = useState();
 
@@ -30,10 +28,12 @@ function LoginRegistration() {
 
   const doLogIn = useCallback(
     async () => {
-      // const remember = loginRemember?.checked ? 1 : 0;
+      const loginRemember = document.getElementById('loginRemember');
+      const remember = loginRemember?.checked === true ? 1 : 0;
       const data = await userLogin({
         email: emailLogIn?.current.value,
         password: passwordLogIn?.current.value,
+        remember,
       });
       setLoginError(data);
       if (data === true) {
@@ -46,6 +46,7 @@ function LoginRegistration() {
     []
   );
   const doSignUp = useCallback(async () => {
+    const acceptSignUp = document.getElementById('acceptSignUp');
     const agree = acceptSignUp?.checked === true ? 1 : 0;
     const data = await userRegistration({
       name: nameSignUpRef?.current.value,
@@ -54,6 +55,7 @@ function LoginRegistration() {
       confirm_password: passwordComfirmSignUpRef?.current.value,
       agree,
     });
+    console.log(agree);
     setRegistrationError(data);
     if (data.status === true) {
       setRegistrationError();
