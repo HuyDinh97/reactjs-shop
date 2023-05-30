@@ -36,19 +36,10 @@ export const useGetComments = () =>
     state?.common?.comment?.length > 0 ? state.common.comment : []
   );
 
-export const useGetSignUpData = () =>
-  useSelector((state) => state.common?.signUpData);
-
-export const useGetSignUpDataReturn = () =>
-  useSelector((state) => state.common?.signUpDataReturn);
-
 export const useGetLogInData = () =>
   useSelector((state) =>
     state?.common?.logInData ? state.common.logInData : []
   );
-
-export const useGetLogInDataReturn = () =>
-  useSelector((state) => state.common?.logInDataReturn);
 
 export const useGetLogInStatus = () =>
   useSelector((state) => state.common?.logInStatus);

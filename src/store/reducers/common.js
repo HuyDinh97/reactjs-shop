@@ -214,25 +214,10 @@ export default (state = initialState, action) => {
         console.log(e);
       }
       return state;
-    case 'SIGNUP_DATA':
-      return {
-        ...state,
-        signUpData: action.payload,
-      };
-    case 'SIGNUP_DATA_RETURN':
-      return {
-        ...state,
-        signUpDataReturn: action.payload,
-      };
     case 'LOGIN_DATA':
       return {
         ...state,
         logInData: action.payload,
-      };
-    case 'LOGIN_DATA_RETURN':
-      return {
-        ...state,
-        logInDataReturn: action.payload,
       };
     case 'LOGIN_STATUS':
       return {

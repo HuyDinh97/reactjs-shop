@@ -2,16 +2,13 @@
 /* eslint-disable no-alert */
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { logInData, signUpData } from 'store/actions/common';
-import {
-  useGetLogInDataReturn,
-  useGetSignUpDataReturn,
-} from 'store/selectors/common';
-import DoSignUp from './doSignUp';
-import DoLogIn from './doLogin';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import { logInStatus } from 'store/actions/common';
+import userLogin from './login';
 import classes from './LoginRegistration.module.css';
 
 function LoginRegistration() {
@@ -24,24 +21,27 @@ function LoginRegistration() {
   const passwordSignUpRef = useRef();
   const passwordComfirmSignUpRef = useRef();
   const acceptSignUp = document.getElementById('acceptSignUp');
+  const [loginError, setLoginError] = useState();
 
   const dispatch = useDispatch();
-
-  const errorLoginData = useGetLogInDataReturn();
-  const errorSignUpData = useGetSignUpDataReturn();
+  const navigate = useNavigate();
 
   const doLogIn = useCallback(
-    () => {
-      const remember = loginRemember?.checked ? 1 : 0;
-      const data = {
-        emailTo: emailLogIn?.current.value,
-        passwordTo: passwordLogIn?.current.value,
-        remember,
-      };
-      dispatch(logInData(data));
+    async () => {
+      // const remember = loginRemember?.checked ? 1 : 0;
+      const data = await userLogin({
+        email: emailLogIn?.current.value,
+        password: passwordLogIn?.current.value,
+      });
+      setLoginError(data);
+      if (data === true) {
+        Cookies.set('isUserLogin', data);
+        dispatch(logInStatus('true'));
+        navigate('/');
+      }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [loginRemember]
+    []
   );
   const doSignUp = useCallback(() => {
     const agree = acceptSignUp?.checked === true ? 1 : 0;
@@ -52,13 +52,8 @@ function LoginRegistration() {
       confirm_password: passwordComfirmSignUpRef?.current.value,
       agree,
     };
-    dispatch(signUpData(data));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [acceptSignUp]);
-
-  DoSignUp();
-  const errorSignUp = errorSignUpData?.length <= 0 ? 'd-none' : 'd-block';
-  const errorLogin = errorLoginData?.length <= 0 ? 'd-none' : 'd-block';
 
   return (
     <div className="container">
@@ -72,10 +67,13 @@ function LoginRegistration() {
             <li>
               <h4 className="fw-bold">LOGIN</h4>
             </li>
-            <li className={`${classes.subTitle} ${errorLogin}`}>
-              <span className={classes.subTitle_color}>Error:</span>
-              <span className={classes.grayText_color}>{errorLoginData}</span>
-            </li>
+            {loginError ? (
+              <li className={`${classes.subTitle}`}>
+                <span className={classes.subTitle_color}>Error:</span>
+                <span className={classes.grayText_color}>{loginError}</span>
+              </li>
+            ) : null}
+
             <li>
               <input
                 className={classes.inputText}
@@ -133,9 +131,9 @@ function LoginRegistration() {
             <li>
               <h4 className="fw-bold">REGISTRATION</h4>
             </li>
-            <li className={`${classes.subTitle} ${errorSignUp}`}>
+            <li className={`${classes.subTitle}`}>
               <span className={classes.subTitle_color}>Error:</span>
-              <span className={classes.grayText_color}>{errorSignUpData}</span>
+              <span className={classes.grayText_color}>d</span>
             </li>
             <li>
               <input

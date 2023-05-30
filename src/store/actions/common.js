@@ -77,30 +77,9 @@ export const addComment = (payload) => {
   };
 };
 
-export const signUpData = (payload) => {
-  return {
-    type: 'SIGNUP_DATA',
-    payload,
-  };
-};
-
-export const signUpDataReturn = (payload) => {
-  return {
-    type: 'SIGNUP_DATA_RETURN',
-    payload,
-  };
-};
-
 export const logInData = (payload) => {
   return {
     type: 'LOGIN_DATA',
-    payload,
-  };
-};
-
-export const logInDataReturn = (payload) => {
-  return {
-    type: 'LOGIN_DATA_RETURN',
     payload,
   };
 };
