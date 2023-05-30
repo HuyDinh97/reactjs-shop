@@ -50,7 +50,7 @@ function ShopListContent() {
     '& .MuiSlider-track': {
       color: 'black',
     },
-    '& .MuiSlider-rail  ': {
+    '& .MuiSlider-rail': {
       color: '#c3bbbb',
     },
   };
