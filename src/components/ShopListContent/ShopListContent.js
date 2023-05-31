@@ -65,23 +65,23 @@ function ShopListContent() {
                 <li className="py-2">
                   <span className="fw-bold fs-5">CATEGORIES</span>
                 </li>
-                <li className="d-flex justify-content-between py-2 fw-semibold fs-5 pt-3">
+                <li className="d-flex justify-content-between py-2 fs-5 pt-3">
                   <span>Women</span>
                   <span>(1)</span>
                 </li>
-                <li className="d-flex justify-content-between fw-semibold py-2 fs-5">
+                <li className="d-flex justify-content-between py-2 fs-5">
                   <span>Men</span>
                   <span>(1)</span>
                 </li>
-                <li className="d-flex justify-content-between fw-semibold py-2 fs-5">
+                <li className="d-flex justify-content-between py-2 fs-5">
                   <span>Footwear</span>
                   <span>(1)</span>
                 </li>
-                <li className="d-flex justify-content-between fw-semibold py-2 fs-5">
+                <li className="d-flex justify-content-between py-2 fs-5">
                   <span>Bag And Backpacks</span>
                   <span>(1)</span>
                 </li>
-                <li className="d-flex justify-content-between fw-semibold py-2 fs-5">
+                <li className="d-flex justify-content-between py-2 fs-5">
                   <span>Accessories</span>
                   <span>(1)</span>
                 </li>
@@ -117,23 +117,23 @@ function ShopListContent() {
                 <li className="py-2">
                   <span className="fw-bold fs-5">COLOR</span>
                 </li>
-                <li className="d-flex justify-content-between py-2 fw-semibold fs-5 pt-3">
+                <li className="d-flex justify-content-between py-2 fs-5 pt-3">
                   <span>Black</span>
                   <span>(1)</span>
                 </li>
-                <li className="d-flex justify-content-between fw-semibold py-2 fs-5">
+                <li className="d-flex justify-content-between py-2 fs-5">
                   <span>Blue</span>
                   <span>(1)</span>
                 </li>
-                <li className="d-flex justify-content-between fw-semibold py-2 fs-5">
+                <li className="d-flex justify-content-between py-2 fs-5">
                   <span>Red</span>
                   <span>(1)</span>
                 </li>
-                <li className="d-flex justify-content-between fw-semibold py-2 fs-5">
+                <li className="d-flex justify-content-between py-2 fs-5">
                   <span>White</span>
                   <span>(1)</span>
                 </li>
-                <li className="d-flex justify-content-between fw-semibold py-2 fs-5">
+                <li className="d-flex justify-content-between py-2 fs-5">
                   <span>Gray</span>
                   <span>(1)</span>
                 </li>
