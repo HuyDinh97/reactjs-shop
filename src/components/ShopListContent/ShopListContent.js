@@ -2,7 +2,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState, useCallback } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { Slider } from '@mui/material';
 import { FaComments } from 'react-icons/fa';
 import { BsFillGrid3X3GapFill } from 'react-icons/bs';
 import { VscThreeBars } from 'react-icons/vsc';
@@ -13,20 +12,17 @@ import Form from 'react-bootstrap/Form';
 import { useGetPopularProduct } from 'store/selectors/common';
 import SingleProduct from 'components/SingleProduct/SingleProduct';
 import img from '../PopularProduct/Product/product-img-1.jpg';
+import SelectionBlock from './SelectionBlock';
+import PriceFilter from './PriceFilter';
 
 import classes from './ShopListContent.module.css';
 
 function ShopListContent() {
   const products = useGetPopularProduct();
-  const [value, setValue] = React.useState([20, 37]);
   const [productDisplay, setproductDisplay] = useState(4);
   const [imgProductCol, setImgProduct] = useState(12);
   const [detailProductCol, setDetailProduct] = useState(12);
   const [rowDisplayCheck, setRowDisplayCheck] = useState(false);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   const gridDisplay = useCallback(() => {
     setproductDisplay(4);
@@ -42,103 +38,30 @@ function ShopListContent() {
     setRowDisplayCheck(true);
   }, []);
 
-  const CustomSliderStyles = {
-    '& .MuiSlider-thumb': {
-      color: 'white',
-      border: '3px solid black',
-    },
-    '& .MuiSlider-track': {
-      color: 'black',
-    },
-    '& .MuiSlider-rail': {
-      color: '#c3bbbb',
-    },
-  };
+  const categorySelection = [
+    { name: 'Women' },
+    { name: 'Men' },
+    { name: 'Footwear' },
+    { name: 'Bags And Backpacks' },
+    { name: 'Accessories' },
+  ];
+
+  const colorSelection = [
+    { name: 'Black' },
+    { name: 'Blue' },
+    { name: 'Red' },
+    { name: 'White' },
+    { name: 'Gray' },
+  ];
 
   return (
     <div className="my-5">
       <Container>
         <Row>
           <Col xl={3} className={classes.shopListCategory}>
-            <div>
-              <ul className="list-unstyled">
-                <li className="py-2">
-                  <span className="fw-bold fs-5">CATEGORIES</span>
-                </li>
-                <li className="d-flex justify-content-between py-2 fs-5 pt-3">
-                  <span>Women</span>
-                  <span>(1)</span>
-                </li>
-                <li className="d-flex justify-content-between py-2 fs-5">
-                  <span>Men</span>
-                  <span>(1)</span>
-                </li>
-                <li className="d-flex justify-content-between py-2 fs-5">
-                  <span>Footwear</span>
-                  <span>(1)</span>
-                </li>
-                <li className="d-flex justify-content-between py-2 fs-5">
-                  <span>Bag And Backpacks</span>
-                  <span>(1)</span>
-                </li>
-                <li className="d-flex justify-content-between py-2 fs-5">
-                  <span>Accessories</span>
-                  <span>(1)</span>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <ul className="list-unstyled">
-                <li className="py-2">
-                  <span className="fw-bold fs-5">FILTERS </span>
-                </li>
-                <li className="border-0 pt-4 pb-2 d-flex justify-content-center">
-                  <Slider
-                    sx={CustomSliderStyles}
-                    className={classes.filterSlider}
-                    value={value}
-                    onChange={handleChange}
-                    valueLabelDisplay="auto"
-                    max={1000}
-                  />
-                </li>
-                <li className="border-0">
-                  <div className="fw-semibold fs-5">
-                    <span className={classes.filterPrice}>PRICE </span>
-                    <span className="text-black">
-                      ${value[0]} - ${value[1]}
-                    </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <ul className="list-unstyled">
-                <li className="py-2">
-                  <span className="fw-bold fs-5">COLOR</span>
-                </li>
-                <li className="d-flex justify-content-between py-2 fs-5 pt-3">
-                  <span>Black</span>
-                  <span>(1)</span>
-                </li>
-                <li className="d-flex justify-content-between py-2 fs-5">
-                  <span>Blue</span>
-                  <span>(1)</span>
-                </li>
-                <li className="d-flex justify-content-between py-2 fs-5">
-                  <span>Red</span>
-                  <span>(1)</span>
-                </li>
-                <li className="d-flex justify-content-between py-2 fs-5">
-                  <span>White</span>
-                  <span>(1)</span>
-                </li>
-                <li className="d-flex justify-content-between py-2 fs-5">
-                  <span>Gray</span>
-                  <span>(1)</span>
-                </li>
-              </ul>
-            </div>
+            <SelectionBlock title="CATEGORY" selection={categorySelection} />
+            <PriceFilter />
+            <SelectionBlock title="COLOR" selection={colorSelection} />
             <div>
               <ul className="list-unstyled">
                 <li className="py-2">
