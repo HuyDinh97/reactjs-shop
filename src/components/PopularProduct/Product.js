@@ -86,7 +86,10 @@ function PopularProduct({ name }) {
         {products &&
           products.map((popularProduct) => (
             <SwiperSlide key={popularProduct._id}>
-              <SingleProduct popularProduct={popularProduct} />
+              <SingleProduct
+                popularProduct={popularProduct}
+                rowDisplay={false}
+              />
             </SwiperSlide>
           ))}
         <div className={classes.swiperButton}>
