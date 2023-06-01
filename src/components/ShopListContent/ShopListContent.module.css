@@ -69,3 +69,20 @@
   color: white;
   box-shadow: none!important;
 }
+
+.product_name {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+
+.product_name a {
+  color:#000;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.product_name a:hover {
+  color: #eb3d32;
+}

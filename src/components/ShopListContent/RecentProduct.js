@@ -3,6 +3,7 @@ import React from 'react';
 import { FaComments } from 'react-icons/fa';
 import { Col, Container, Row } from 'react-bootstrap';
 
+import { Link } from 'react-router-dom';
 import classes from './ShopListContent.module.css';
 
 function RecentProduct(recentProductData) {
@@ -35,7 +36,13 @@ function RecentProduct(recentProductData) {
                     />
                   </Col>
                   <Col xs={9} className="ps-4">
-                    <div className="text-black fw-semibold">{prod.name}</div>
+                    <div
+                      className={`${classes.product_name} text-black fw-semibold `}
+                    >
+                      <Link to={`/product-detail/${prod._id}`}>
+                        {prod.name}
+                      </Link>
+                    </div>
                     <div>
                       <span>
                         <FaComments className={classes.commentColor} />
