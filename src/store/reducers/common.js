@@ -1,7 +1,6 @@
 /* eslint-disable no-plusplus */
 
 import { format, fromUnixTime } from 'date-fns';
-import React from 'react';
 
 /* eslint-disable no-case-declarations */
 const initialState = {

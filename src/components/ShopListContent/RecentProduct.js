@@ -12,6 +12,7 @@ function RecentProduct(recentProductData) {
     recentProduct.length <= 3
       ? recentProduct
       : recentProduct.slice(Math.max(recentProduct.length - 3, 1)).reverse();
+  console.log(recentProductLimit);
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
 
   return (
@@ -21,8 +22,9 @@ function RecentProduct(recentProductData) {
           <span className="fw-bold fs-5">RECENT PRODUCT </span>
         </li>
         {recentProductLimit?.length > 0 &&
-          recentProductLimit?.map((prod) => (
-            <li key={prod._id} className="py-3">
+          recentProductLimit?.map((prod, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <li key={index} className="py-3">
               <Container>
                 <Row>
                   <Col xs={3} className="ps-0">

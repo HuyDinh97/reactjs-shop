@@ -11,14 +11,13 @@ const useFetchProductDetail = (id) => {
       dispatch(recentProduct({ data, _id: id }));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+  }, [data, id]);
 
   React.useEffect(() => {
     fetch(`https://vnguyen.xyz/huy/day17/apis/index.php?type=product&id=${id}`)
       .then((res) => res.json())
       .then((productDetailData) => setData(productDetailData.data))
       .catch(() => console.log());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 };
