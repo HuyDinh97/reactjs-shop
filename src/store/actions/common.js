@@ -76,3 +76,10 @@ export const addComment = (payload) => {
     payload,
   };
 };
+
+export const recentProduct = (payload) => {
+  return {
+    type: 'RECENT_PRODUCT',
+    payload,
+  };
+};

@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus */
 
 import { format, fromUnixTime } from 'date-fns';
+import React from 'react';
 
 /* eslint-disable no-case-declarations */
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   },
   productDetail: [],
   comment: [],
+  recentProduct: '',
 };
 
 const calculateTotalCost = (products) =>
@@ -119,9 +121,11 @@ export default (state = initialState, action) => {
       productDetail[0].afterSalesPriceDetail = afterSalesPriceDetail;
 
       const newProductDetail = productDetail[0];
+      // const recentProductLastest = productDetail;
       return {
         ...state,
         productDetail: [newProductDetail],
+        // recentProduct: [...state.recentProduct, ...recentProductLastest],
       };
     case 'DELETE_PRODUCTINCART':
       const productDelete = products.filter(
@@ -191,6 +195,17 @@ export default (state = initialState, action) => {
           ...comment,
           created_at: format(fromUnixTime(comment.created_at), 'MMMM dd, yyyy'),
         }));
+        // const recentProductData = state?.recentProduct;
+        // const [commentId] = action.payload.map((product) => product.product_id);
+        // const recentProduct = recentProductData?.map((prevProduct) => {
+        //   if (prevProduct._id === commentId) {
+        //     return {
+        //       ...prevProduct,
+        //       comment: commentData?.length,
+        //     };
+        //   }
+        //   return prevProduct;
+        // });
         return {
           ...state,
           comment: [...state.comment, ...commentData],
@@ -199,6 +214,25 @@ export default (state = initialState, action) => {
         console.log(e);
       }
       return state;
+    case 'RECENT_PRODUCT':
+      const { data, _id } = action.payload;
+      const stateComment = state.comment;
+      const recentProductComment = data.map((comment) => {
+        if (comment._id.toString() === _id) {
+          const commentFilters = stateComment?.filter(
+            (commentFilter) => commentFilter.product_id.toString() === _id
+          );
+          return {
+            ...comment,
+            comment: commentFilters,
+          };
+        }
+        return comment;
+      });
+      return {
+        ...state,
+        recentProduct: [...state.recentProduct, ...recentProductComment],
+      };
     default:
       return state;
   }

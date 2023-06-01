@@ -35,3 +35,6 @@ export const useGetComments = () =>
   useSelector((state) =>
     state?.common?.comment?.length > 0 ? state.common.comment : []
   );
+
+export const useGetRecentProduct = () =>
+  useSelector((state) => state.common?.recentProduct);

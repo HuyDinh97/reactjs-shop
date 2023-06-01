@@ -9,7 +9,10 @@ function SelectionBlock({ title, selection }) {
         </li>
         {selection &&
           selection.map((select) => (
-            <li className="d-flex justify-content-between py-2 fs-5 pt-3">
+            <li
+              key={select.name}
+              className="d-flex justify-content-between py-2 fs-5 pt-3"
+            >
               <span>{select.name}</span>
               <span>(1)</span>
             </li>

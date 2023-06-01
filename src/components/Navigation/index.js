@@ -46,6 +46,9 @@ function Navigation() {
                     </Link>
                   </Nav.Item>
                 ))}
+              <Link to="/shop-list" className={navClass}>
+                ShopList
+              </Link>
               <Link to="/about-us" className={navClass}>
                 About
               </Link>

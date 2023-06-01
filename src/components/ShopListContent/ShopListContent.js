@@ -2,23 +2,27 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState, useCallback } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { FaComments } from 'react-icons/fa';
 import { BsFillGrid3X3GapFill } from 'react-icons/bs';
 import { VscThreeBars } from 'react-icons/vsc';
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr';
 
 import Form from 'react-bootstrap/Form';
 
-import { useGetPopularProduct } from 'store/selectors/common';
+import {
+  useGetPopularProduct,
+  useGetRecentProduct,
+} from 'store/selectors/common';
 import SingleProduct from 'components/SingleProduct/SingleProduct';
-import img from '../PopularProduct/Product/product-img-1.jpg';
 import SelectionBlock from './SelectionBlock';
 import PriceFilter from './PriceFilter';
+import RecentProduct from './RecentProduct';
 
 import classes from './ShopListContent.module.css';
 
 function ShopListContent() {
   const products = useGetPopularProduct();
+  const recentProduct = useGetRecentProduct();
+
   const [productDisplay, setproductDisplay] = useState(4);
   const [imgProductCol, setImgProduct] = useState(12);
   const [detailProductCol, setDetailProduct] = useState(12);
@@ -62,91 +66,7 @@ function ShopListContent() {
             <SelectionBlock title="CATEGORY" selection={categorySelection} />
             <PriceFilter />
             <SelectionBlock title="COLOR" selection={colorSelection} />
-            <div>
-              <ul className="list-unstyled">
-                <li className="py-2">
-                  <span className="fw-bold fs-5">RECENT PRODUCT </span>
-                </li>
-                <li className="py-3">
-                  <Container>
-                    <Row>
-                      <Col xs={3} className="ps-0">
-                        <div
-                          className={classes.recentImg}
-                          // eslint-disable-next-line react/forbid-dom-props
-                          style={{
-                            background: `url(${img})`,
-                          }}
-                        />
-                      </Col>
-                      <Col xs={9} className="ps-4">
-                        <div className="text-black fw-semibold">
-                          Product name
-                        </div>
-                        <div>
-                          <span>
-                            <FaComments className={classes.commentColor} />
-                          </span>
-                          <span className="ps-1 fw-semibold">5 Comments</span>
-                        </div>
-                      </Col>
-                    </Row>
-                  </Container>
-                </li>
-                <li className="py-3">
-                  <Container>
-                    <Row>
-                      <Col xs={3} className="ps-0">
-                        <div
-                          className={classes.recentImg}
-                          // eslint-disable-next-line react/forbid-dom-props
-                          style={{
-                            background: `url(${img})`,
-                          }}
-                        />
-                      </Col>
-                      <Col xs={9} className="ps-4">
-                        <div className="text-black fw-semibold">
-                          Product name
-                        </div>
-                        <div>
-                          <span>
-                            <FaComments className={classes.commentColor} />
-                          </span>
-                          <span className="ps-1 fw-semibold">5 Comments</span>
-                        </div>
-                      </Col>
-                    </Row>
-                  </Container>
-                </li>
-                <li className="py-3">
-                  <Container>
-                    <Row>
-                      <Col xs={3} className="ps-0">
-                        <div
-                          className={classes.recentImg}
-                          // eslint-disable-next-line react/forbid-dom-props
-                          style={{
-                            background: `url(${img})`,
-                          }}
-                        />
-                      </Col>
-                      <Col xs={9} className="ps-4">
-                        <div className="text-black fw-semibold">
-                          Product name
-                        </div>
-                        <div>
-                          <span>
-                            <FaComments className={classes.commentColor} />
-                          </span>
-                          <span className="ps-1 fw-semibold">5 Comments</span>
-                        </div>
-                      </Col>
-                    </Row>
-                  </Container>
-                </li>
-              </ul>
-            </div>
+            <RecentProduct recentProduct={recentProduct} />
           </Col>
           <Col xl={9}>
             <Row>
