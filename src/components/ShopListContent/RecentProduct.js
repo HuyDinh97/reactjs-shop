@@ -8,11 +8,11 @@ import classes from './ShopListContent.module.css';
 
 function RecentProduct(recentProductData) {
   const { recentProduct } = recentProductData;
-  // const recentProductLimit = [
-  //   recentProduct[recentProduct.length - 1],
-  //   recentProduct[recentProduct.length - 2],
-  //   recentProduct[recentProduct.length - 3],
-  // ];
+  const recentProductLimit =
+    recentProduct.length <= 3
+      ? recentProduct
+      : recentProduct.slice(Math.max(recentProduct.length - 3, 1));
+
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
 
   return (
@@ -21,8 +21,8 @@ function RecentProduct(recentProductData) {
         <li className="py-2">
           <span className="fw-bold fs-5">RECENT PRODUCT </span>
         </li>
-        {recentProduct?.length > 0 &&
-          recentProduct?.map((prod) => (
+        {recentProductLimit?.length > 0 &&
+          recentProductLimit?.map((prod) => (
             <li key={prod._id} className="py-3">
               <Container>
                 <Row>
