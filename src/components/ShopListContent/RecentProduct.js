@@ -11,8 +11,7 @@ function RecentProduct(recentProductData) {
   const recentProductLimit =
     recentProduct.length <= 3
       ? recentProduct
-      : recentProduct.slice(Math.max(recentProduct.length - 3, 1));
-
+      : recentProduct.slice(Math.max(recentProduct.length - 3, 1)).reverse();
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
 
   return (
