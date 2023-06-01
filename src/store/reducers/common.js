@@ -215,13 +215,13 @@ export default (state = initialState, action) => {
       }
       return state;
     case 'RECENT_PRODUCT':
-      const { data, _id } = action.payload;
       const stateComment = state.comment;
+      const { data, _id } = action.payload;
       const recentProductComment = data.map((comment) => {
+        const commentFilters = stateComment?.filter(
+          (commentFilter) => commentFilter.product_id.toString() === _id
+        );
         if (comment._id.toString() === _id) {
-          const commentFilters = stateComment?.filter(
-            (commentFilter) => commentFilter.product_id.toString() === _id
-          );
           return {
             ...comment,
             comment: commentFilters,
