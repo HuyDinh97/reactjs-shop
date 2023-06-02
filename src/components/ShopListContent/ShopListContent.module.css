@@ -86,3 +86,7 @@
 .product_name a:hover {
   color: #eb3d32;
 }
+
+.selectionBlockButton {
+  background-color: white;
+}

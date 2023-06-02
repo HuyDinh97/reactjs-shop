@@ -16,6 +16,7 @@ const initialState = {
   productDetail: [],
   comment: [],
   recentProduct: '',
+  shoplistSortProduct: '',
 };
 
 const calculateTotalCost = (products) =>
@@ -231,6 +232,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         recentProduct: [...state.recentProduct, ...recentProductComment],
+      };
+    case 'SHOPLIST_SORT_PRODUCT':
+      const idInput = action.selectedId;
+      const productState = state?.popularProducts;
+      const productSort = productState?.filter(
+        (prod) => prod.category === idInput || prod.color === idInput
+      );
+      return {
+        ...state,
+        shoplistSortProduct: productSort,
       };
     default:
       return state;

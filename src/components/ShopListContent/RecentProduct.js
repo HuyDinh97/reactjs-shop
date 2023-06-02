@@ -12,7 +12,7 @@ function RecentProduct(recentProductData) {
     recentProduct.length <= 3
       ? recentProduct
       : recentProduct.slice(Math.max(recentProduct.length - 3, 1)).reverse();
-  console.log(recentProductLimit);
+
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
 
   return (
@@ -49,7 +49,7 @@ function RecentProduct(recentProductData) {
                         <FaComments className={classes.commentColor} />
                       </span>
                       <span className="ps-1 fw-semibold">
-                        {prod?.comment.length} Comments
+                        {prod?.comment?.length} Comments
                       </span>
                     </div>
                   </Col>

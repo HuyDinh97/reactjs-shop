@@ -38,3 +38,6 @@ export const useGetComments = () =>
 
 export const useGetRecentProduct = () =>
   useSelector((state) => state.common?.recentProduct);
+
+export const useGetShopListSortProduct = () =>
+  useSelector((state) => state.common?.shoplistSortProduct);

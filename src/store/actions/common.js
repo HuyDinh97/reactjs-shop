@@ -83,3 +83,10 @@ export const recentProduct = (payload) => {
     payload,
   };
 };
+
+export const shoplistSortProduct = (selectedId) => {
+  return {
+    type: 'SHOPLIST_SORT_PRODUCT',
+    selectedId,
+  };
+};

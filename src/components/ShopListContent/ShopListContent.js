@@ -11,6 +11,7 @@ import Form from 'react-bootstrap/Form';
 import {
   useGetPopularProduct,
   useGetRecentProduct,
+  useGetShopListSortProduct,
 } from 'store/selectors/common';
 import SingleProduct from 'components/SingleProduct/SingleProduct';
 import SelectionBlock from './SelectionBlock';
@@ -18,9 +19,12 @@ import PriceFilter from './PriceFilter';
 import RecentProduct from './RecentProduct';
 
 import classes from './ShopListContent.module.css';
+import { categoryChange, colorChange } from './SimpleCount';
 
 function ShopListContent() {
-  const products = useGetPopularProduct();
+  const popularProducts = useGetPopularProduct();
+  const shoplistSortProduct = useGetShopListSortProduct();
+  const sortedProduct = shoplistSortProduct || popularProducts;
   const recentProduct = useGetRecentProduct();
 
   const [productDisplay, setproductDisplay] = useState(4);
@@ -41,30 +45,16 @@ function ShopListContent() {
     setDetailProduct(8);
     setRowDisplayCheck(true);
   }, []);
-
-  const categorySelection = [
-    { name: 'Women' },
-    { name: 'Men' },
-    { name: 'Footwear' },
-    { name: 'Bags And Backpacks' },
-    { name: 'Accessories' },
-  ];
-
-  const colorSelection = [
-    { name: 'Black' },
-    { name: 'Blue' },
-    { name: 'Red' },
-    { name: 'White' },
-    { name: 'Gray' },
-  ];
+  const categoriesSelection = categoryChange;
+  const colorSelection = colorChange;
 
   return (
     <div className="my-5">
       <Container>
         <Row>
           <Col xl={3} className={classes.shopListCategory}>
-            <SelectionBlock title="CATEGORY" selection={categorySelection} />
-            <PriceFilter />
+            <SelectionBlock title="CATEGORY" selection={categoriesSelection} />
+            <PriceFilter productList={sortedProduct} />
             <SelectionBlock title="COLOR" selection={colorSelection} />
             <RecentProduct recentProduct={recentProduct} />
           </Col>
@@ -113,8 +103,8 @@ function ShopListContent() {
               </Col>
               <Col xl={12}>
                 <Row className="mt-5">
-                  {products &&
-                    products.map((popularProduct) => (
+                  {sortedProduct &&
+                    sortedProduct.map((popularProduct) => (
                       <Col
                         xl={productDisplay}
                         className="mt-4"
