@@ -14,8 +14,6 @@ import {
   useGetShopListSortProduct,
 } from 'store/selectors/common';
 import SingleProduct from 'components/SingleProduct/SingleProduct';
-import { shoplistOptionSelection } from 'store/actions/common';
-import { useDispatch } from 'react-redux';
 import SelectionBlock from './SelectionBlock';
 import PriceFilter from './PriceFilter';
 import RecentProduct from './RecentProduct';
@@ -85,7 +83,7 @@ function ShopListContent() {
                 className="d-flex align-items-center justify-content-end px-0"
               >
                 <div className={`${classes.textGreyColor} pe-3`}>
-                  Showing 1-9 of 15 results
+                  Showing 1-9 of {sortData?.length} results
                 </div>
               </Col>
               <Col xl={2}>
