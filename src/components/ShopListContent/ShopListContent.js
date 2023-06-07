@@ -54,7 +54,7 @@ function ShopListContent() {
         <Row>
           <Col xl={3} className={classes.shopListCategory}>
             <SelectionBlock title="CATEGORY" selection={categoriesSelection} />
-            <PriceFilter productList={sortedProduct} />
+            <PriceFilter />
             <SelectionBlock title="COLOR" selection={colorSelection} />
             <RecentProduct recentProduct={recentProduct} />
           </Col>

@@ -14,19 +14,17 @@ export const categoryChange = [
 ];
 
 export const idCount = (products, selection) => {
-  const nameCount = selection?.map((color) => {
-    const productColor = products?.map(
+  const nameTransfer = selection?.map((color) => {
+    const productId = products?.map(
       (item) => item.color === color.id || item.category === color.id
     );
-    const countCategoryColor = productColor?.filter(
-      (value) => value === true
-    ).length;
+    const countCategory = productId?.filter((value) => value === true).length;
     const newA = {
       id: color.id,
       name: color.name,
-      num: countCategoryColor,
+      num: countCategory,
     };
     return newA;
   });
-  return nameCount;
+  return nameTransfer;
 };
