@@ -14,12 +14,14 @@ import {
   useGetShopListSortProduct,
 } from 'store/selectors/common';
 import SingleProduct from 'components/SingleProduct/SingleProduct';
+import { shoplistOptionSelection } from 'store/actions/common';
+import { useDispatch } from 'react-redux';
 import SelectionBlock from './SelectionBlock';
 import PriceFilter from './PriceFilter';
 import RecentProduct from './RecentProduct';
 
 import classes from './ShopListContent.module.css';
-import { categoryChange, colorChange } from './SimpleCount';
+import { categoryChange, colorChange, optionSelected } from './SimpleCount';
 
 function ShopListContent() {
   const popularProducts = useGetPopularProduct();
@@ -31,6 +33,7 @@ function ShopListContent() {
   const [imgProductCol, setImgProduct] = useState(12);
   const [detailProductCol, setDetailProduct] = useState(12);
   const [rowDisplayCheck, setRowDisplayCheck] = useState(false);
+  const [option, setOption] = useState();
 
   const gridDisplay = useCallback(() => {
     setproductDisplay(4);
@@ -47,6 +50,7 @@ function ShopListContent() {
   }, []);
   const categoriesSelection = categoryChange;
   const colorSelection = colorChange;
+  const sortData = optionSelected(option, sortedProduct);
 
   return (
     <div className="my-5">
@@ -63,15 +67,16 @@ function ShopListContent() {
               <Col xl={7}>
                 <div className={`${classes.formSelect} w-50`}>
                   <Form.Select
+                    onChange={(e) => setOption(e.target.value)}
                     className={`${classes.textGreyColor} form-select`}
                     aria-label="Default select example"
                   >
                     <option>Default sorting</option>
-                    <option defaultValue="1">Best seller</option>
-                    <option defaultValue="2">Popular</option>
-                    <option defaultValue="3">Latest</option>
-                    <option defaultValue="4">Price: Low -{`>`} High</option>
-                    <option defaultValue="5">Price: High -{`>`} Low</option>
+                    <option value="Bestseller">Best seller</option>
+                    <option value="Popular">Popular</option>
+                    <option value="Latest">Latest</option>
+                    <option value="PriceLow">Price: Low -{`>`} High</option>
+                    <option value="PriceHigh">Price: High -{`>`} Low</option>
                   </Form.Select>
                 </div>
               </Col>
@@ -103,8 +108,8 @@ function ShopListContent() {
               </Col>
               <Col xl={12}>
                 <Row className="mt-5">
-                  {sortedProduct &&
-                    sortedProduct.map((popularProduct) => (
+                  {sortData &&
+                    sortData.map((popularProduct) => (
                       <Col
                         xl={productDisplay}
                         className="mt-4"

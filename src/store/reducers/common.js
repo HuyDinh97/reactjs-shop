@@ -240,7 +240,6 @@ export default (state = initialState, action) => {
     case 'SHOPLIST_PRICE_FILTER': {
       const { price, id } = action.value;
       const productState = state?.popularProducts;
-      console.log(id);
       const productSort =
         productState.length <= 0
           ? ''
@@ -254,6 +253,61 @@ export default (state = initialState, action) => {
       return {
         ...state,
         shoplistSortProduct: productSort,
+      };
+    }
+    case 'SHOPLIST_OPTION_SELECTION': {
+      const { option } = action.payload;
+      const shopListProduct = state?.shoplistSortProduct;
+      let productSorted;
+      switch (option) {
+        case 'Bestseller':
+          shopListProduct.sort((a, b) => {
+            return a.order - b.order;
+          });
+          productSorted = shopListProduct;
+          break;
+        case 'Popular':
+          shopListProduct.sort((a, b) => {
+            return a.visit - b.visit;
+          });
+          productSorted = shopListProduct;
+          break;
+        case 'Latest':
+          shopListProduct.sort((a, b) => {
+            return a.visit - b.visit;
+          });
+          productSorted = shopListProduct;
+          break;
+        case 'PriceHigh':
+          shopListProduct.sort((a, b) => {
+            return b.realPrice - a.realPrice;
+          });
+          productSorted = shopListProduct;
+          break;
+        case 'PriceLow':
+          shopListProduct.sort((a, b) => {
+            return a.realPrice - b.realPrice;
+          });
+          productSorted = shopListProduct;
+          break;
+        default:
+          shopListProduct.sort((a, b) => {
+            const fa = a.name.toLowerCase();
+            const fb = b.name.toLowerCase();
+
+            if (fa < fb) {
+              return -1;
+            }
+            if (fa > fb) {
+              return 1;
+            }
+            return 0;
+          });
+          productSorted = shopListProduct;
+      }
+      return {
+        ...state,
+        shoplistSortProduct: productSorted,
       };
     }
     default:

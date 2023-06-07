@@ -98,3 +98,10 @@ export const shoplistPriceFilter = (value, id) => {
     id,
   };
 };
+
+export const shoplistOptionSelection = (payload) => {
+  return {
+    type: 'SHOPLIST_OPTION_SELECTION',
+    payload,
+  };
+};
