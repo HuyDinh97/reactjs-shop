@@ -1,14 +1,23 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Slider } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { shoplistPriceFilter } from 'store/actions/common';
+import { useParams } from 'react-router-dom';
 import classes from './ShopListContent.module.css';
 
 function PriceFilter() {
-  const [value, setValue] = React.useState([20, 37]);
+  const { id } = useParams();
+  const [value, setValue] = React.useState([0, 1000]);
+  const dispatch = useDispatch();
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  useEffect(() => {
+    dispatch(shoplistPriceFilter({ price: value, id }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value, id]);
   const CustomSliderStyles = {
     '& .MuiSlider-thumb': {
       color: 'white',

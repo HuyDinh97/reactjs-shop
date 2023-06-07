@@ -76,7 +76,7 @@ export default (state = initialState, action) => {
         ...state,
         home: action.payload.data,
       };
-    case 'ADD_PRODUCTTOCART':
+    case 'ADD_PRODUCTTOCART': {
       const productIndex = products.findIndex(
         (product) => product._id === action.payload._id
       );
@@ -112,20 +112,19 @@ export default (state = initialState, action) => {
           totalCost: calculateTotalCost(newProductList),
         },
       };
+    }
     case 'PRODUCT_DETAIL':
-      const productDetail = action.payload;
+      const [productDetail] = action.payload;
       const afterSalesPriceDetail =
-        productDetail[0].price * (1 - productDetail[0].sales / 100);
-      const available = productDetail[0].quantity > 0 ? 'In Stock' : 'Sold out';
-      productDetail[0].available = available;
-      productDetail[0].afterSalesPriceDetail = afterSalesPriceDetail;
+        productDetail.price * (1 - productDetail.sales / 100);
+      const available = productDetail.quantity > 0 ? 'In Stock' : 'Sold out';
+      productDetail.available = available;
+      productDetail.afterSalesPriceDetail = afterSalesPriceDetail;
 
-      const newProductDetail = productDetail[0];
-      // const recentProductLastest = productDetail;
+      const newProductDetail = productDetail;
       return {
         ...state,
         productDetail: [newProductDetail],
-        // recentProduct: [...state.recentProduct, ...recentProductLastest],
       };
     case 'DELETE_PRODUCTINCART':
       const productDelete = products.filter(
@@ -195,17 +194,6 @@ export default (state = initialState, action) => {
           ...comment,
           created_at: format(fromUnixTime(comment.created_at), 'MMMM dd, yyyy'),
         }));
-        // const recentProductData = state?.recentProduct;
-        // const [commentId] = action.payload.map((product) => product.product_id);
-        // const recentProduct = recentProductData?.map((prevProduct) => {
-        //   if (prevProduct._id === commentId) {
-        //     return {
-        //       ...prevProduct,
-        //       comment: commentData?.length,
-        //     };
-        //   }
-        //   return prevProduct;
-        // });
         return {
           ...state,
           comment: [...state.comment, ...commentData],
@@ -233,16 +221,41 @@ export default (state = initialState, action) => {
         ...state,
         recentProduct: [...state.recentProduct, ...recentProductComment],
       };
-    case 'SHOPLIST_SORT_PRODUCT':
-      const idInput = action.selectedId;
+    case 'SHOPLIST_SORT_PRODUCT': {
+      const { selectedId } = action;
       const productState = state?.popularProducts;
-      const productSort = productState?.filter(
-        (prod) => prod.category === idInput || prod.color === idInput
-      );
+      const productSort =
+        selectedId === 'all'
+          ? productState
+          : productState?.filter(
+              (prod) =>
+                prod.category.toString() === selectedId ||
+                prod.color.toString() === selectedId
+            );
       return {
         ...state,
         shoplistSortProduct: productSort,
       };
+    }
+    case 'SHOPLIST_PRICE_FILTER': {
+      const { price, id } = action.value;
+      const productState = state?.popularProducts;
+      console.log(id);
+      const productSort =
+        productState.length <= 0
+          ? ''
+          : productState?.filter(
+              (prod) =>
+                price[0] <= prod.price &&
+                prod.price <= price[1] &&
+                (prod.category.toString() === id ||
+                  prod.color.toString() === id)
+            );
+      return {
+        ...state,
+        shoplistSortProduct: productSort,
+      };
+    }
     default:
       return state;
   }

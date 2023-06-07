@@ -90,3 +90,11 @@ export const shoplistSortProduct = (selectedId) => {
     selectedId,
   };
 };
+
+export const shoplistPriceFilter = (value, id) => {
+  return {
+    type: 'SHOPLIST_PRICE_FILTER',
+    value,
+    id,
+  };
+};
