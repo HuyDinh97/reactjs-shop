@@ -48,7 +48,10 @@ function ShopListContent() {
   }, []);
   const categoriesSelection = categoryChange;
   const colorSelection = colorChange;
-  const sortData = optionSelected(option, sortedProduct);
+  const OptionSelectedData = optionSelected(option, sortedProduct);
+
+  // const pageSize = 9;
+  // const totalPage = Math.ceil(OptionSelectedData.length / pageSize);
 
   return (
     <div className="my-5">
@@ -83,7 +86,7 @@ function ShopListContent() {
                 className="d-flex align-items-center justify-content-end px-0"
               >
                 <div className={`${classes.textGreyColor} pe-3`}>
-                  Showing 1-9 of {sortData?.length} results
+                  Showing 1-9 of {OptionSelectedData?.length} results
                 </div>
               </Col>
               <Col xl={2}>
@@ -106,8 +109,8 @@ function ShopListContent() {
               </Col>
               <Col xl={12}>
                 <Row className="mt-5">
-                  {sortData &&
-                    sortData.map((popularProduct) => (
+                  {OptionSelectedData &&
+                    OptionSelectedData.map((popularProduct) => (
                       <Col
                         xl={productDisplay}
                         className="mt-4"

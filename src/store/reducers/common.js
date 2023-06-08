@@ -16,6 +16,7 @@ const initialState = {
   productDetail: [],
   comment: [],
   recentProduct: '',
+  filterPrice: '',
   shoplistSortProduct: '',
 };
 
@@ -223,14 +224,17 @@ export default (state = initialState, action) => {
       };
     case 'SHOPLIST_SORT_PRODUCT': {
       const { selectedId } = action;
+      const { filterPrice } = state;
       const productState = state?.popularProducts;
       const productSort =
         selectedId === 'all'
           ? productState
           : productState?.filter(
               (prod) =>
-                prod.category.toString() === selectedId ||
-                prod.color.toString() === selectedId
+                filterPrice[0] <= prod.price &&
+                prod.price <= filterPrice[1] &&
+                (prod.category.toString() === selectedId ||
+                  prod.color.toString() === selectedId)
             );
       return {
         ...state,
@@ -241,8 +245,10 @@ export default (state = initialState, action) => {
       const { price, id } = action.value;
       const productState = state?.popularProducts;
       const productSort =
-        productState.length <= 0
-          ? ''
+        id === 'all'
+          ? productState?.filter(
+              (prod) => price[0] <= prod.price && prod.price <= price[1]
+            )
           : productState?.filter(
               (prod) =>
                 price[0] <= prod.price &&
@@ -252,62 +258,8 @@ export default (state = initialState, action) => {
             );
       return {
         ...state,
+        filterPrice: price,
         shoplistSortProduct: productSort,
-      };
-    }
-    case 'SHOPLIST_OPTION_SELECTION': {
-      const { option } = action.payload;
-      const shopListProduct = state?.shoplistSortProduct;
-      let productSorted;
-      switch (option) {
-        case 'Bestseller':
-          shopListProduct.sort((a, b) => {
-            return a.order - b.order;
-          });
-          productSorted = shopListProduct;
-          break;
-        case 'Popular':
-          shopListProduct.sort((a, b) => {
-            return a.visit - b.visit;
-          });
-          productSorted = shopListProduct;
-          break;
-        case 'Latest':
-          shopListProduct.sort((a, b) => {
-            return a.visit - b.visit;
-          });
-          productSorted = shopListProduct;
-          break;
-        case 'PriceHigh':
-          shopListProduct.sort((a, b) => {
-            return b.realPrice - a.realPrice;
-          });
-          productSorted = shopListProduct;
-          break;
-        case 'PriceLow':
-          shopListProduct.sort((a, b) => {
-            return a.realPrice - b.realPrice;
-          });
-          productSorted = shopListProduct;
-          break;
-        default:
-          shopListProduct.sort((a, b) => {
-            const fa = a.name.toLowerCase();
-            const fb = b.name.toLowerCase();
-
-            if (fa < fb) {
-              return -1;
-            }
-            if (fa > fb) {
-              return 1;
-            }
-            return 0;
-          });
-          productSorted = shopListProduct;
-      }
-      return {
-        ...state,
-        shoplistSortProduct: productSorted,
       };
     }
     default:
