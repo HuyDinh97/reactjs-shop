@@ -84,10 +84,10 @@ export const recentProduct = (payload) => {
   };
 };
 
-export const shoplistSortProduct = (selectedId) => {
+export const shoplistSortProduct = (id) => {
   return {
     type: 'SHOPLIST_SORT_PRODUCT',
-    selectedId,
+    id,
   };
 };
 

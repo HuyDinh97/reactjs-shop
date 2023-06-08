@@ -16,7 +16,7 @@ const initialState = {
   productDetail: [],
   comment: [],
   recentProduct: '',
-  filterPrice: '',
+  filterPrice: [0, 1000],
   shoplistSortProduct: '',
 };
 
@@ -223,19 +223,15 @@ export default (state = initialState, action) => {
         recentProduct: [...state.recentProduct, ...recentProductComment],
       };
     case 'SHOPLIST_SORT_PRODUCT': {
-      const { selectedId } = action;
+      const { id } = action;
       const { filterPrice } = state;
       const productState = state?.popularProducts;
-      const productSort =
-        selectedId === 'all'
-          ? productState
-          : productState?.filter(
-              (prod) =>
-                filterPrice[0] <= prod.price &&
-                prod.price <= filterPrice[1] &&
-                (prod.category.toString() === selectedId ||
-                  prod.color.toString() === selectedId)
-            );
+      const productSort = productState?.filter(
+        (prod) =>
+          filterPrice[0] <= prod.price &&
+          prod.price <= filterPrice[1] &&
+          (prod.category === id || prod.color === id)
+      );
       return {
         ...state,
         shoplistSortProduct: productSort,

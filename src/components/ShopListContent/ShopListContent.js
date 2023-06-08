@@ -4,7 +4,6 @@ import React, { useState, useCallback } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { BsFillGrid3X3GapFill } from 'react-icons/bs';
 import { VscThreeBars } from 'react-icons/vsc';
-import { GrFormNext, GrFormPrevious } from 'react-icons/gr';
 
 import Form from 'react-bootstrap/Form';
 
@@ -14,6 +13,8 @@ import {
   useGetShopListSortProduct,
 } from 'store/selectors/common';
 import SingleProduct from 'components/SingleProduct/SingleProduct';
+import { Pagination, PaginationItem } from '@mui/material';
+import { Link, useParams } from 'react-router-dom';
 import SelectionBlock from './SelectionBlock';
 import PriceFilter from './PriceFilter';
 import RecentProduct from './RecentProduct';
@@ -22,6 +23,7 @@ import classes from './ShopListContent.module.css';
 import { categoryChange, colorChange, optionSelected } from './SimpleCount';
 
 function ShopListContent() {
+  const { id, page } = useParams();
   const popularProducts = useGetPopularProduct();
   const shoplistSortProduct = useGetShopListSortProduct();
   const sortedProduct = shoplistSortProduct || popularProducts;
@@ -31,6 +33,7 @@ function ShopListContent() {
   const [imgProductCol, setImgProduct] = useState(12);
   const [detailProductCol, setDetailProduct] = useState(12);
   const [rowDisplayCheck, setRowDisplayCheck] = useState(false);
+  const [pageSize, setPagetSize] = useState(9);
   const [option, setOption] = useState();
 
   const gridDisplay = useCallback(() => {
@@ -38,6 +41,7 @@ function ShopListContent() {
     setImgProduct(12);
     setDetailProduct(12);
     setRowDisplayCheck(false);
+    setPagetSize(9);
   }, []);
 
   const rowDisplay = useCallback(() => {
@@ -45,13 +49,27 @@ function ShopListContent() {
     setImgProduct(4);
     setDetailProduct(8);
     setRowDisplayCheck(true);
+    setPagetSize(6);
   }, []);
   const categoriesSelection = categoryChange;
   const colorSelection = colorChange;
   const OptionSelectedData = optionSelected(option, sortedProduct);
+  const dataSelected = OptionSelectedData || popularProducts;
 
-  // const pageSize = 9;
-  // const totalPage = Math.ceil(OptionSelectedData.length / pageSize);
+  const CustomPaginationStyles = {
+    '& .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected': {
+      backgroundColor: '#eb3d32',
+    },
+    '& .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-disabled': {
+      opacity: '0',
+    },
+  };
+
+  const itemStart = (page - 1) * pageSize;
+  const itemEnd = page * pageSize;
+  const productEachPage = dataSelected?.slice(itemStart, itemEnd);
+  // eslint-disable-next-line no-unsafe-optional-chaining
+  const totalPage = Math.ceil(dataSelected?.length / pageSize);
 
   return (
     <div className="my-5">
@@ -86,7 +104,7 @@ function ShopListContent() {
                 className="d-flex align-items-center justify-content-end px-0"
               >
                 <div className={`${classes.textGreyColor} pe-3`}>
-                  Showing 1-9 of {OptionSelectedData?.length} results
+                  Showing 1-9 of {dataSelected?.length} results
                 </div>
               </Col>
               <Col xl={2}>
@@ -109,8 +127,8 @@ function ShopListContent() {
               </Col>
               <Col xl={12}>
                 <Row className="mt-5">
-                  {OptionSelectedData &&
-                    OptionSelectedData.map((popularProduct) => (
+                  {productEachPage &&
+                    productEachPage.map((popularProduct) => (
                       <Col
                         xl={productDisplay}
                         className="mt-4"
@@ -128,42 +146,20 @@ function ShopListContent() {
                     <div
                       className={`${classes.pagination} d-flex justify-content-center`}
                     >
-                      <nav aria-label="Page navigation example">
-                        <ul className="pagination">
-                          <li className="page-item">
-                            <a
-                              className="page-link rounded-0 me-1 px-2"
-                              href="#"
-                            >
-                              <span aria-hidden="true">
-                                <GrFormPrevious className="fs-5" />
-                              </span>
-                            </a>
-                          </li>
-                          <li className="page-item">
-                            <a className="page-link me-1" href="#">
-                              1
-                            </a>
-                          </li>
-                          <li className="page-item">
-                            <a className="page-link me-1" href="#">
-                              2
-                            </a>
-                          </li>
-                          <li className="page-item">
-                            <a className="page-link me-1" href="#">
-                              3
-                            </a>
-                          </li>
-                          <li className="page-item">
-                            <a className="page-link rounded-0 px-2" href="#">
-                              <span aria-hidden="true">
-                                <GrFormNext className="fs-5" />
-                              </span>
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
+                      <Pagination
+                        sx={CustomPaginationStyles}
+                        count={totalPage || 1}
+                        renderItem={(item) => (
+                          <PaginationItem
+                            sx={CustomPaginationStyles}
+                            component={Link}
+                            to={`/shop-list/page=${
+                              item.page === 1 ? '1' : `${item.page}`
+                            }&&id=${id}`}
+                            {...item}
+                          />
+                        )}
+                      />
                     </div>
                   </Col>
                 </Row>

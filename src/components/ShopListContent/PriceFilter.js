@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Slider } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { shoplistPriceFilter } from 'store/actions/common';
@@ -14,7 +14,7 @@ function PriceFilter() {
     setValue(newValue);
   };
 
-  useEffect(() => {
+  const sortByFilterPrice = useCallback(() => {
     dispatch(shoplistPriceFilter({ price: value, id }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, id]);
@@ -41,6 +41,7 @@ function PriceFilter() {
             sx={CustomSliderStyles}
             className={classes.filterSlider}
             value={value}
+            onClick={sortByFilterPrice}
             onChange={handleChange}
             valueLabelDisplay="auto"
             max={1000}

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useGetPopularProduct } from 'store/selectors/common';
 import { useDispatch } from 'react-redux';
 import { shoplistSortProduct } from 'store/actions/common';
@@ -13,11 +13,13 @@ function SelectionBlock({ title, selection }) {
   const getNameCount = idCount(products, selection);
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
-    dispatch(shoplistSortProduct(selectedId));
+  const sortById = useCallback(
+    (id) => () => {
+      dispatch(shoplistSortProduct(id));
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedId]);
-
+    [selectedId]
+  );
   return (
     <div>
       <ul className="list-unstyled">
@@ -32,8 +34,9 @@ function SelectionBlock({ title, selection }) {
               className="d-flex justify-content-between py-2 fs-5 pt-3"
             >
               <Link
-                to={`/shop-list/${name.id}`}
+                to={`/shop-list/page=1&&id=${name.id}`}
                 className={`${classes.selectionBlockLink} border-0 text-decoration-none`}
+                onClick={sortById(name.id)}
               >
                 {name.name}
               </Link>
