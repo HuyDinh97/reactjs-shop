@@ -62,6 +62,8 @@ function ShopListContent() {
   const itemStart = (page - 1) * pageSize;
   const itemEnd = page * pageSize;
   const productEachPage = dataSelected?.slice(itemStart, itemEnd);
+  const itemEndCheck =
+    itemEnd < dataSelected?.length ? itemEnd : dataSelected?.length;
   // eslint-disable-next-line no-unsafe-optional-chaining
   const totalPage = Math.ceil(dataSelected?.length / pageSize);
 
@@ -99,7 +101,8 @@ function ShopListContent() {
                 className={`${classes.showingResult} d-flex align-items-center py-2 px-0`}
               >
                 <div className={`${classes.textGreyColor}`}>
-                  Showing 1-9 of {dataSelected?.length} results
+                  Showing {itemStart + 1}-{itemEndCheck} of{' '}
+                  {dataSelected?.length} results
                 </div>
               </Col>
               <Col xl={1} xs={12}>
