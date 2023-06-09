@@ -51,19 +51,11 @@ function ShopListContent() {
     setRowDisplayCheck(true);
     setPagetSize(6);
   }, []);
+
   const categoriesSelection = categoryChange;
   const colorSelection = colorChange;
   const OptionSelectedData = optionSelected(option, sortedProduct);
   const dataSelected = OptionSelectedData || popularProducts;
-
-  const CustomPaginationStyles = {
-    '& .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected': {
-      backgroundColor: '#eb3d32',
-    },
-    '& .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-disabled': {
-      opacity: '0',
-    },
-  };
 
   const itemStart = (page - 1) * pageSize;
   const itemEnd = page * pageSize;
@@ -147,15 +139,22 @@ function ShopListContent() {
                       className={`${classes.pagination} d-flex justify-content-center`}
                     >
                       <Pagination
-                        sx={CustomPaginationStyles}
                         count={totalPage || 1}
                         renderItem={(item) => (
                           <PaginationItem
-                            sx={CustomPaginationStyles}
                             component={Link}
+                            selected
                             to={`/shop-list/page=${
                               item.page === 1 ? '1' : `${item.page}`
                             }&&id=${id}`}
+                            sx={{
+                              '&.Mui-selected': {
+                                backgroundColor: '#eb3d32',
+                              },
+                              '&.Mui-disabled': {
+                                opacity: '0',
+                              },
+                            }}
                             {...item}
                           />
                         )}

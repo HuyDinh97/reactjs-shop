@@ -54,20 +54,20 @@
   background-color: #eb3d32;
 }
 
-.pagination button{
+.pagination a{
   background-color: black;
   color: white;
   border-radius: 0;
   margin: 2px;
 }
 
-.pagination button:hover{
-  background-color: #eb3d32!important;
+.pagination a:hover{
+  background-color: #eb3d32;
   color: white;
 }
 
-.pagination button:focus{
-  background-color: #eb3d32!important;
+.pagination a:focus{
+  background-color: #eb3d32;
   color: white;
   box-shadow: none!important;
 }
