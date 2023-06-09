@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 import { Slider } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { shoplistPriceFilter } from 'store/actions/common';
