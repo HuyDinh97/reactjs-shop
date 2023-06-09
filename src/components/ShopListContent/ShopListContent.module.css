@@ -32,6 +32,7 @@
 
 .textGreyColor {
   color: #7a7a7a!important;
+  padding-right: 2rem;
 }
 
 .formSelect select {
@@ -50,7 +51,7 @@
   color: white;
 }
 
-.sortButton button:focus  {
+.sortButton button:active  {
   background-color: #eb3d32;
 }
 
@@ -91,4 +92,25 @@
 
 .selectionBlockLink {
   color: #7a7a7a;
+}
+
+.showingResult {
+  justify-content: end!important;
+}
+
+.active {
+  background-color: #eb3d32;
+}
+
+@media screen and (max-width: 1199px) {
+  .centerDisplay {
+    display: flex;
+    justify-content: center;
+  }
+  .showingResult {
+    justify-content: center!important;
+  }
+  .textGreyColor {
+    padding-right: 0;
+  }
 }

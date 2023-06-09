@@ -12,12 +12,9 @@ function PriceFilter() {
   const dispatch = useDispatch();
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    dispatch(shoplistPriceFilter({ price: newValue, id }));
   };
 
-  const sortByFilterPrice = useCallback(() => {
-    dispatch(shoplistPriceFilter({ price: value, id }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, id]);
   const CustomSliderStyles = {
     '& .MuiSlider-thumb': {
       color: 'white',
@@ -41,7 +38,7 @@ function PriceFilter() {
             sx={CustomSliderStyles}
             className={classes.filterSlider}
             value={value}
-            onClick={sortByFilterPrice}
+            // onClick={sortByFilterPrice}
             onChange={handleChange}
             valueLabelDisplay="auto"
             max={1000}

@@ -35,6 +35,7 @@ function ShopListContent() {
   const [rowDisplayCheck, setRowDisplayCheck] = useState(false);
   const [pageSize, setPagetSize] = useState(9);
   const [option, setOption] = useState();
+  const [displayActive, setDisplayActive] = useState('grid');
 
   const gridDisplay = useCallback(() => {
     setproductDisplay(4);
@@ -42,6 +43,7 @@ function ShopListContent() {
     setDetailProduct(12);
     setRowDisplayCheck(false);
     setPagetSize(9);
+    setDisplayActive('grid');
   }, []);
 
   const rowDisplay = useCallback(() => {
@@ -50,8 +52,8 @@ function ShopListContent() {
     setDetailProduct(8);
     setRowDisplayCheck(true);
     setPagetSize(6);
+    setDisplayActive('row');
   }, []);
-
   const categoriesSelection = categoryChange;
   const colorSelection = colorChange;
   const OptionSelectedData = optionSelected(option, sortedProduct);
@@ -74,8 +76,8 @@ function ShopListContent() {
             <RecentProduct recentProduct={recentProduct} />
           </Col>
           <Col xl={9}>
-            <Row>
-              <Col xl={7}>
+            <Row className="d-flex align-items-center">
+              <Col className={classes.centerDisplay} xl={7} xs={12}>
                 <div className={`${classes.formSelect} w-50`}>
                   <Form.Select
                     onChange={(e) => setOption(e.target.value)}
@@ -92,26 +94,33 @@ function ShopListContent() {
                 </div>
               </Col>
               <Col
-                xl={3}
-                className="d-flex align-items-center justify-content-end px-0"
+                xl={4}
+                xs={12}
+                className={`${classes.showingResult} d-flex align-items-center py-2 px-0`}
               >
-                <div className={`${classes.textGreyColor} pe-3`}>
+                <div className={`${classes.textGreyColor}`}>
                   Showing 1-9 of {dataSelected?.length} results
                 </div>
               </Col>
-              <Col xl={2}>
-                <div className={`${classes.sortButton} d-flex`}>
+              <Col xl={1} xs={12}>
+                <div
+                  className={`${classes.sortButton} ${classes.showingResult}  d-flex`}
+                >
                   <button
                     type="button"
-                    className={`${classes.sortIcon} fs-3 p-1 me-1 d-flex align-items-center`}
-                    onClick={gridDisplay}
+                    className={`${classes.sortIcon} ${
+                      displayActive === 'row' ? classes.active : ''
+                    } fs-3 p-1 me-1 d-flex align-items-center border-0`}
+                    onClick={rowDisplay}
                   >
                     <VscThreeBars />
                   </button>
                   <button
                     type="button"
-                    className={`${classes.sortIcon} fs-5 p-1 px-2 me-1 d-flex align-items-center`}
-                    onClick={rowDisplay}
+                    className={`${classes.sortIcon} ${
+                      displayActive === 'grid' ? classes.active : ''
+                    } fs-5 p-1 px-2 me-1 d-flex align-items-center border-0`}
+                    onClick={gridDisplay}
                   >
                     <BsFillGrid3X3GapFill />
                   </button>
@@ -149,7 +158,7 @@ function ShopListContent() {
                             }&&id=${id}`}
                             sx={{
                               '&.Mui-selected': {
-                                backgroundColor: '#eb3d32',
+                                backgroundColor: '#eb3d32!important',
                               },
                               '&.Mui-disabled': {
                                 opacity: '0',
