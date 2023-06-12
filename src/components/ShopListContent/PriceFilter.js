@@ -30,8 +30,8 @@ function PriceFilter() {
   return (
     <div>
       <ul className="list-unstyled">
-        <li className="py-2">
-          <span className="fw-bold fs-5">FILTERS </span>
+        <li className="py-2 fs-5">
+          <span className="fw-bold">FILTERS </span>
         </li>
         <li className="border-0 pt-4 pb-2 d-flex justify-content-center">
           <Slider

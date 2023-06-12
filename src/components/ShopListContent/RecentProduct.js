@@ -18,8 +18,8 @@ function RecentProduct(recentProductData) {
   return (
     <div>
       <ul className="list-unstyled">
-        <li className="py-2">
-          <span className="fw-bold fs-5">RECENT PRODUCT </span>
+        <li className="py-2 fs-5">
+          <span className="fw-bold">RECENT PRODUCT </span>
         </li>
         {recentProductLimit?.length > 0 &&
           recentProductLimit?.map((prod, index) => (

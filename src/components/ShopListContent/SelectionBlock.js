@@ -23,8 +23,8 @@ function SelectionBlock({ title, selection }) {
   return (
     <div>
       <ul className="list-unstyled">
-        <li className="py-2">
-          <span className="fw-bold fs-5">{title}</span>
+        <li className="py-2 fs-5">
+          <span className="fw-bold">{title}</span>
         </li>
         {getNameCount &&
           getNameCount?.map((name, index) => (
