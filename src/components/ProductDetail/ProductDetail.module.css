@@ -94,6 +94,14 @@
   .hiddenIcon {
     display: block;
   }
+  .paddingRight_0 {
+    padding-right: calc(var(--bs-gutter-x) * .5)!important;
+  }
+  .paddingNone {
+    padding-right: calc(var(--bs-gutter-x) * .5)!important;
+    padding-left: calc(var(--bs-gutter-x) * .5)!important;
+    margin-left: 0!important;
+  }
 }
 
 @media screen and (max-width: 447px) {
