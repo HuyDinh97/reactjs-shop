@@ -16,13 +16,13 @@ function SingleProduct({
   const productDetailRowDisplay =
     rowDisplay === true
       ? 'align-items-start mb-2'
-      : 'justify-content-center my-2';
+      : 'justify-content-center my-2 text-center';
   return (
     <div>
       <Container>
         <Row>
-          <Col xs={imgProductCol} className={classes.apperance}>
-            <div>
+          <Col md={imgProductCol} xs={12} className={classes.apperance}>
+            <div className="d-flex justify-content-center">
               <div
                 className={classes.product_img}
                 // eslint-disable-next-line react/forbid-dom-props
@@ -40,8 +40,9 @@ function SingleProduct({
             </div>
           </Col>
           <Col
-            xs={detailProductCol}
-            className={`${productDetailRowDisplay} card-body d-flex mb-2 flex-column text-center`}
+            md={detailProductCol}
+            xs={12}
+            className={`${productDetailRowDisplay} card-body d-flex mb-2 flex-column`}
           >
             <div className={classes.product_name}>
               <Link to={`/product-detail/${popularProduct._id}`}>
@@ -61,8 +62,8 @@ function SingleProduct({
               </span>
             </div>
             {rowDisplay === true ? (
-              <div>
-                <div className="text-start">
+              <Col>
+                <div className={classes.productDescripton}>
                   Nullam ullamcorper in leo vitae finibus. In mattis aliquam
                   diam ut lobortis. Aenean non ultrices purus, vel tempor orci.
                   Vestibulum ullamcorper dolor vel nulla gravida, ac
@@ -74,7 +75,7 @@ function SingleProduct({
                   popularProduct={popularProduct}
                   display={false}
                 />
-              </div>
+              </Col>
             ) : null}
           </Col>
         </Row>

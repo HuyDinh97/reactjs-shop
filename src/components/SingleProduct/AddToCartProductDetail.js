@@ -11,7 +11,7 @@ function AddToCartProductDetail({ popularProduct, display }) {
   const dispatch = useDispatch();
   const changeDisplay =
     display === false
-      ? 'align-items-center h-75'
+      ? 'h-75'
       : 'flex-column align-items-start justify-content-between position-absolute mb-3';
 
   const marginLeft = display === false ? 'ms-5' : '';
@@ -31,7 +31,7 @@ function AddToCartProductDetail({ popularProduct, display }) {
     [dispatch]
   );
   return (
-    <div className={`${classes.opacity_layer} ${changeDisplay} d-flex`}>
+    <div className={`${classes.opacity_layer} ${changeDisplay} d-flex mt-3`}>
       <div>
         <button
           className="border-0 search-btn-color fs-6 fw-semibold px-4 py-2 rounded-pill"

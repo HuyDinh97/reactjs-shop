@@ -90,6 +90,16 @@
   color: #eb3d32;
 }
 
+.recentProductName a {
+  color:#000;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.recentProductName a:hover {
+  color: #eb3d32;
+}
+
 .selectionBlockLink {
   color: #7a7a7a;
 }

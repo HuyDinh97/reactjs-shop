@@ -71,13 +71,13 @@ function ShopListContent() {
     <div className="my-5">
       <Container>
         <Row>
-          <Col xl={3} className={classes.shopListCategory}>
+          <Col md={3} className={classes.shopListCategory}>
             <SelectionBlock title="CATEGORY" selection={categoriesSelection} />
             <PriceFilter />
             <SelectionBlock title="COLOR" selection={colorSelection} />
             <RecentProduct recentProduct={recentProduct} />
           </Col>
-          <Col xl={9}>
+          <Col md={9} xs={12}>
             <Row className="d-flex align-items-center">
               <Col className={classes.centerDisplay} xl={7} xs={12}>
                 <div className={`${classes.formSelect} w-50`}>
@@ -97,6 +97,7 @@ function ShopListContent() {
               </Col>
               <Col
                 xl={4}
+                md={6}
                 xs={12}
                 className={`${classes.showingResult} d-flex align-items-center py-2 px-0`}
               >
@@ -105,7 +106,7 @@ function ShopListContent() {
                   {dataSelected?.length} results
                 </div>
               </Col>
-              <Col xl={1} xs={12}>
+              <Col xl={1} md={6} xs={12}>
                 <div
                   className={`${classes.sortButton} ${classes.showingResult}  d-flex`}
                 >
@@ -129,7 +130,7 @@ function ShopListContent() {
                   </button>
                 </div>
               </Col>
-              <Col xl={12}>
+              <Col sm={12}>
                 <Row className="mt-5">
                   {productEachPage &&
                     productEachPage.map((popularProduct) => (

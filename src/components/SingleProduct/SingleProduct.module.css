@@ -21,6 +21,7 @@
 
 .product_img {
   height: 350px;
+  width: 280px;
   background-repeat: no-repeat!important;
   background-position: center!important;
   display: flex;
@@ -89,8 +90,25 @@
   display: none;
 }
 
-@media screen and (max-width:576px) {
+@media screen and (max-width:767px) {
   .product_img {
-    height: 230px;
+    height: 250px;
+    width: 180px;
+  }
+  .product_name {
+    width: 100%;
+    text-align: center;
+  }
+  .product_price {
+    width: 100%;
+  }
+  .opacity_layer {
+    justify-content: center;
+  }
+  .productDescripton {
+    text-align: center;
+  }
+  div {
+    font-size: 0.8rem;
   }
 }
