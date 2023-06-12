@@ -9,26 +9,24 @@ const userLogin = async ({ email, password, remember }) => {
       password,
     }
   );
-  const data = login.errors;
-  const error = data ? JSON.parse(data) : null;
-  const check = error ? error.fields : [];
-  if (login?.status === true) {
-    if (remember === 1) {
-      Cookies.set('isUserLogin', true, { expires: 7 });
-      return login?.status;
+  const { errors, status, message } = login;
+  const errorFields = errors ? JSON.parse(errors)?.fields : message;
+  const [_, firstError] = Object.entries(errorFields).find(([_key, error]) => {
+    if (error) {
+      return error;
     }
-    Cookies.set('isUserLogin', true, { expires: 1 });
-    return login?.status;
+    return [];
+  });
+  const errorFormat = firstError ? Object.values(firstError)?.[0] : undefined;
+
+  if (status === true) {
+    Cookies.set('isUserLogin', true, { expires: remember ? 7 : 1 });
+    return status;
   }
-  if (check?.email) {
-    if (check?.email?.required) {
-      return check?.email?.required;
-    }
-    return check?.email?.email;
+
+  if (message) {
+    return message;
   }
-  if (check?.password) {
-    return check?.password.required;
-  }
-  return login?.message;
+  return errorFormat ?? '';
 };
 export default userLogin;

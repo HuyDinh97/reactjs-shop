@@ -56,10 +56,10 @@ function LoginRegistration() {
       agree,
     });
     setRegistrationError(data);
-    if (data.status === true) {
+    if (data === 'Sign up successfully!') {
       setRegistrationError();
       formRef.current.reset();
-      alert(data.message);
+      alert(data);
     }
   }, []);
 
