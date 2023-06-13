@@ -111,4 +111,7 @@
   div {
     font-size: 0.8rem;
   }
+  .rowBox {
+    border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+  }
 }

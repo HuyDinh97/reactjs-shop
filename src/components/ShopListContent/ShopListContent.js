@@ -149,7 +149,7 @@ function ShopListContent() {
                     ))}
                   <Col xs={12}>
                     <div
-                      className={`${classes.pagination} d-flex justify-content-center`}
+                      className={`${classes.pagination} d-flex justify-content-center mt-5`}
                     >
                       <Pagination
                         count={totalPage || 1}

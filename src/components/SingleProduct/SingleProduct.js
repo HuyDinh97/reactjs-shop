@@ -20,7 +20,11 @@ function SingleProduct({
   return (
     <div>
       <Container>
-        <Row>
+        <Row
+          className={`${classes.rowBox} ${
+            rowDisplay === true ? 'border-bottom pb-4' : 'none'
+          }`}
+        >
           <Col md={imgProductCol} xs={12} className={classes.apperance}>
             <div className="d-flex justify-content-center">
               <div
@@ -63,7 +67,9 @@ function SingleProduct({
             </div>
             {rowDisplay === true ? (
               <Col>
-                <div className={classes.productDescripton}>
+                <div
+                  className={`${classes.productDescripton} ${classes.gray_price}`}
+                >
                   Nullam ullamcorper in leo vitae finibus. In mattis aliquam
                   diam ut lobortis. Aenean non ultrices purus, vel tempor orci.
                   Vestibulum ullamcorper dolor vel nulla gravida, ac
