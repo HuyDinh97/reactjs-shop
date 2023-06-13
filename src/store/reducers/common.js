@@ -190,19 +190,14 @@ export default (state = initialState, action) => {
         },
       };
     case 'ADD_COMMENT':
-      try {
-        const commentData = action.payload.map((comment) => ({
-          ...comment,
-          created_at: format(fromUnixTime(comment.created_at), 'MMMM dd, yyyy'),
-        }));
-        return {
-          ...state,
-          comment: [...state.comment, ...commentData],
-        };
-      } catch (e) {
-        console.log(e);
-      }
-      return state;
+      const commentData = action.payload.map((comment) => ({
+        ...comment,
+        created_at: format(fromUnixTime(comment.created_at), 'MMMM dd, yyyy'),
+      }));
+      return {
+        ...state,
+        comment: [...state.comment, ...commentData],
+      };
     case 'RECENT_PRODUCT':
       const stateComment = state.comment;
       const { data, _id } = action.payload;
