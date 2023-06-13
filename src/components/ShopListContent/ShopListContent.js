@@ -12,15 +12,14 @@ import {
   useGetRecentProduct,
   useGetShopListSortProduct,
 } from 'store/selectors/common';
-import SingleProduct from 'components/SingleProduct/SingleProduct';
-import { Pagination, PaginationItem } from '@mui/material';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import SelectionBlock from './SelectionBlock';
 import PriceFilter from './PriceFilter';
 import RecentProduct from './RecentProduct';
 
 import classes from './ShopListContent.module.css';
 import { categoryChange, colorChange, optionSelected } from './SimpleCount';
+import GridListDisplay from './GridListDisplay';
 
 function ShopListContent() {
   const { id, page } = useParams();
@@ -131,50 +130,15 @@ function ShopListContent() {
                 </div>
               </Col>
               <Col sm={12}>
-                <Row className="mt-5">
-                  {productEachPage &&
-                    productEachPage.map((popularProduct) => (
-                      <Col
-                        xl={productDisplay}
-                        className="mt-4"
-                        key={popularProduct._id}
-                      >
-                        <SingleProduct
-                          popularProduct={popularProduct}
-                          imgProductCol={imgProductCol}
-                          detailProductCol={detailProductCol}
-                          rowDisplay={rowDisplayCheck}
-                        />
-                      </Col>
-                    ))}
-                  <Col xs={12}>
-                    <div
-                      className={`${classes.pagination} d-flex justify-content-center mt-5`}
-                    >
-                      <Pagination
-                        count={totalPage || 1}
-                        renderItem={(item) => (
-                          <PaginationItem
-                            component={Link}
-                            selected
-                            to={`/shop-list/page=${
-                              item.page === 1 ? '1' : `${item.page}`
-                            }&&id=${id}`}
-                            sx={{
-                              '&.Mui-selected': {
-                                backgroundColor: '#eb3d32!important',
-                              },
-                              '&.Mui-disabled': {
-                                opacity: '0',
-                              },
-                            }}
-                            {...item}
-                          />
-                        )}
-                      />
-                    </div>
-                  </Col>
-                </Row>
+                <GridListDisplay
+                  productEachPage={productEachPage}
+                  productDisplay={productDisplay}
+                  imgProductCol={imgProductCol}
+                  detailProductCol={detailProductCol}
+                  rowDisplayCheck={rowDisplayCheck}
+                  totalPage={totalPage}
+                  id={id}
+                />
               </Col>
             </Row>
           </Col>

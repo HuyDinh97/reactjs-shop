@@ -2,9 +2,8 @@ export const colorChange = [
   { id: 263, name: 'Black' },
   { id: 264, name: 'Blue' },
   { id: 265, name: 'Red' },
-  { id: 266, name: 'White' },
-  { id: 267, name: 'Grey' },
-  { id: 268, name: 'Yellow' },
+  { id: 267, name: 'White' },
+  { id: 268, name: 'Grey' },
 ];
 export const categoryChange = [
   { id: 1001, name: 'Dress' },

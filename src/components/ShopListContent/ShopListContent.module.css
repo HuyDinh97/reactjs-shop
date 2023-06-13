@@ -90,10 +90,15 @@
   color: #eb3d32;
 }
 
+.recentProductName {
+  line-height: 1.2;
+}
+
 .recentProductName a {
   color:#000;
   font-weight: 600;
   text-decoration: none;
+  font-size: 0.8rem!important;
 }
 
 .recentProductName a:hover {

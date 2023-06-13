@@ -38,7 +38,7 @@ function RecentProduct(recentProductData) {
                   </Col>
                   <Col xs={9} className="ps-4">
                     <div
-                      className={`${classes.recentProductName} text-black fw-semibold `}
+                      className={`${classes.recentProductName} text-black fw-semibold mb-1`}
                     >
                       <Link to={`/product-detail/${prod._id}`}>
                         {prod.name}
