@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState, useCallback } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';

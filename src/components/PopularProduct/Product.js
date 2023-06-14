@@ -22,11 +22,11 @@ function PopularProduct({ name, product }) {
   const swiperRef = useRef();
 
   if (!products) {
-    return <p data-testid="popularProducts-error">Loading...</p>;
+    return <p data-testid="products-error">Loading...</p>;
   }
 
   return (
-    <div className="mt-5" data-testid="popularProducts-element">
+    <div className="mt-5" data-testid="products-element">
       <Row className={classes.mg_bot}>
         <Col xs lg="2" />
         <TitleUnderline name={name} />
