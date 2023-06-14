@@ -16,8 +16,8 @@ import 'swiper/swiper.min.css';
 
 import classes from './Product.module.css';
 
-function PopularProduct({ name }) {
-  const products = useGetPopularProduct();
+function PopularProduct({ name, product }) {
+  const products = product;
 
   const swiperRef = useRef();
 
