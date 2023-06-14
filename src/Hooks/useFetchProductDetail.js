@@ -5,13 +5,6 @@ import { productDetail, recentProduct } from 'store/actions/common';
 const useFetchProductDetail = (id) => {
   const dispatch = useDispatch();
   const [data, setData] = React.useState();
-  useEffect(() => {
-    if (data) {
-      dispatch(productDetail(data));
-      dispatch(recentProduct({ data, _id: id }));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, id]);
 
   React.useEffect(() => {
     fetch(`https://vnguyen.xyz/huy/day17/apis/index.php?type=product&id=${id}`)
@@ -20,6 +13,13 @@ const useFetchProductDetail = (id) => {
       .catch(() => console.log());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+  useEffect(() => {
+    if (data) {
+      dispatch(productDetail(data));
+      dispatch(recentProduct({ data, _id: id }));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 };
 
 export default useFetchProductDetail;
