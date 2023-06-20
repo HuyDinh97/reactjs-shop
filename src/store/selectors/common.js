@@ -41,12 +41,3 @@ export const useGetRecentProduct = () =>
 
 export const useGetShopListSortProduct = () =>
   useSelector((state) => state.common?.shoplistSortProduct);
-
-export const useGetLogInData = () =>
-  useSelector((state) =>
-    state?.common?.logInData ? state.common.logInData : []
-  );
-
-export const useGetLogInStatus = () =>
-  useSelector((state) => state.common?.logInStatus);
-

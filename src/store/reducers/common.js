@@ -1,17 +1,8 @@
 /* eslint-disable no-plusplus */
 
 import { format, fromUnixTime } from 'date-fns';
-import {
-  getData,
-  setLocalStorage,
-  calculateTotalCost,
-} from './setLocalStorage';
+
 /* eslint-disable no-case-declarations */
-
-const localStorageId = 'productInCart';
-
-const localStorageData = getData(localStorageId);
-
 const initialState = {
   home: undefined,
   categories: [],
@@ -19,21 +10,24 @@ const initialState = {
   bestSellers: [],
   testtimonials: [],
   productInCart: {
-    products: localStorageData?.products || [],
-    totalCost: localStorageData?.totalCost || 0,
+    products: [],
+    totalCost: 0,
   },
   productDetail: [],
   comment: [],
   recentProduct: '',
   filterPrice: [0, 1000],
   shoplistSortProduct: '',
-  signUpData: [],
-  signUpDataReturn: [],
-  logInData: undefined,
-  logInDataReturn: [],
-  logInStatus: undefined,
 };
 
+const calculateTotalCost = (products) =>
+  products
+    .reduce(
+      (prevValue, currProduct) =>
+        prevValue + (currProduct?.afterSalesPrice ?? 0),
+      0
+    )
+    .toFixed(2);
 // eslint-disable-next-line default-param-last
 export default (state = initialState, action) => {
   const { products } = state.productInCart ? state.productInCart : [];
@@ -111,14 +105,13 @@ export default (state = initialState, action) => {
       } else {
         newProductList.push(newProduct);
       }
-      const productInCart = {
-        products: newProductList,
-        totalCost: calculateTotalCost(newProductList),
-      };
-      setLocalStorage(localStorageId, productInCart);
+
       return {
         ...state,
-        productInCart,
+        productInCart: {
+          products: newProductList,
+          totalCost: calculateTotalCost(newProductList),
+        },
       };
     }
     case 'PRODUCT_DETAIL':
@@ -134,22 +127,19 @@ export default (state = initialState, action) => {
         ...state,
         productDetail: [newProductDetail],
       };
-    case 'DELETE_PRODUCTINCART': {
+    case 'DELETE_PRODUCTINCART':
       const productDelete = products.filter(
         (product) => product._id !== action.id
       );
-      const productInCart = {
-        products: productDelete,
-        totalCost: calculateTotalCost(productDelete),
-      };
-      setLocalStorage(localStorageId, productInCart);
 
       return {
         ...state,
-        productInCart,
+        productInCart: {
+          products: productDelete,
+          totalCost: calculateTotalCost(productDelete),
+        },
       };
-    }
-    case 'ADJUST_PRODUCTINCART': {
+    case 'ADJUST_PRODUCTINCART':
       const updateInCreaseProduct = products.map((curProd) => {
         let quantityUpdate;
         let newAfterSalesPrice = [];
@@ -169,16 +159,14 @@ export default (state = initialState, action) => {
         }
         return curProd;
       });
-      const productInCart = {
-        products: updateInCreaseProduct,
-        totalCost: calculateTotalCost(updateInCreaseProduct),
-      };
-      setLocalStorage(localStorageId, productInCart);
       return {
         ...state,
-        productInCart,
+        productInCart: {
+          ...state.productInCart,
+          products: updateInCreaseProduct,
+          totalCost: calculateTotalCost(updateInCreaseProduct),
+        },
       };
-    }
     case 'UPDATE_MYCART':
       const updateMyCart = products.map((curProd) => {
         if (curProd._id.toString() === action.payload._id) {
@@ -193,15 +181,13 @@ export default (state = initialState, action) => {
         }
         return curProd;
       });
-      const productInCart = {
-        ...state.productInCart,
-        products: updateMyCart,
-        totalCost: calculateTotalCost(updateMyCart),
-      };
-      setLocalStorage(localStorageId, productInCart);
       return {
         ...state,
-        productInCart,
+        productInCart: {
+          ...state.productInCart,
+          products: updateMyCart,
+          totalCost: calculateTotalCost(updateMyCart),
+        },
       };
     case 'ADD_COMMENT':
       const commentData = action.payload.map((comment) => ({
@@ -267,30 +253,6 @@ export default (state = initialState, action) => {
         shoplistSortProduct: productSort,
       };
     }
-
-      try {
-        const commentData = action.payload.map((comment) => ({
-          ...comment,
-          created_at: format(fromUnixTime(comment.created_at), 'MMMM dd, yyyy'),
-        }));
-        return {
-          ...state,
-          comment: [...state.comment, ...commentData],
-        };
-      } catch (e) {
-        console.log(e);
-      }
-      return state;
-    case 'LOGIN_DATA':
-      return {
-        ...state,
-        logInData: action.payload,
-      };
-    case 'LOGIN_STATUS':
-      return {
-        ...state,
-        logInStatus: action.payload,
-      };
     default:
       return state;
   }
