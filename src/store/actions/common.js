@@ -80,6 +80,9 @@ export const addComment = (payload) => {
 export const recentProduct = (payload) => {
   return {
     type: 'RECENT_PRODUCT',
+export const logInData = (payload) => {
+  return {
+    type: 'LOGIN_DATA',
     payload,
   };
 };
@@ -102,6 +105,11 @@ export const shoplistPriceFilter = (value, id) => {
 export const shoplistOptionSelection = (payload) => {
   return {
     type: 'SHOPLIST_OPTION_SELECTION',
+
+export const logInStatus = (payload) => {
+  return {
+    type: 'LOGIN_STATUS',
+
     payload,
   };
 };
