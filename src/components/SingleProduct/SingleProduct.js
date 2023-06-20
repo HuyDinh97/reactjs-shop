@@ -8,13 +8,13 @@ function SingleProduct({
   popularProduct,
   imgProductCol,
   detailProductCol,
-  rowDisplay,
+  rowDisplayCheck,
 }) {
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
 
   const productDetailRowDisplay =
-    rowDisplay === true
+    rowDisplayCheck === true
       ? 'align-items-start mb-2'
       : 'justify-content-center my-2 text-center';
   return (
@@ -22,7 +22,7 @@ function SingleProduct({
       <Container>
         <Row
           className={`${classes.rowBox} ${
-            rowDisplay === true ? 'border-bottom pb-4' : 'none'
+            rowDisplayCheck === true ? 'border-bottom pb-4' : 'none'
           }`}
         >
           <Col md={imgProductCol} xs={12} className={classes.apperance}>
@@ -34,7 +34,7 @@ function SingleProduct({
                   background: `url(${linkIMG + popularProduct.thumb})`,
                 }}
               >
-                {rowDisplay === false ? (
+                {rowDisplayCheck === false ? (
                   <div className={classes.hide}>
                     <AddToCartProductDetail popularProduct={popularProduct} />
                     <div className={classes.white_overlay} />
@@ -65,7 +65,7 @@ function SingleProduct({
                 {popularProduct.realPrice}
               </span>
             </div>
-            {rowDisplay === true ? (
+            {rowDisplayCheck === true ? (
               <Col>
                 <div
                   className={`${classes.productDescripton} ${classes.gray_price}`}
