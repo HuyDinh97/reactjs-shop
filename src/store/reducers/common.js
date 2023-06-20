@@ -24,6 +24,11 @@ const initialState = {
   },
   productDetail: [],
   comment: [],
+  signUpData: [],
+  signUpDataReturn: [],
+  logInData: undefined,
+  logInDataReturn: [],
+  logInStatus: undefined,
 };
 
 // eslint-disable-next-line default-param-last
@@ -209,6 +214,16 @@ export default (state = initialState, action) => {
         console.log(e);
       }
       return state;
+    case 'LOGIN_DATA':
+      return {
+        ...state,
+        logInData: action.payload,
+      };
+    case 'LOGIN_STATUS':
+      return {
+        ...state,
+        logInStatus: action.payload,
+      };
     default:
       return state;
   }
