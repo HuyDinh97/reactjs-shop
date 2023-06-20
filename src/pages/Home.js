@@ -23,7 +23,7 @@ function Home() {
         <Advertising />
         <Product name="POPULAR PRODUCT" product={popularProducts} />
         <Banner />
-        <Product name="BEST SELLER" product={bestSellers} />
+        {/* <Product name="BEST SELLER" product={bestSellers} /> */}
         <CustomerComment />
         <LastestNews />
       </div>
