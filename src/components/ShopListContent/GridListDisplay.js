@@ -3,7 +3,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Pagination, PaginationItem } from '@mui/material';
 
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import classes from './ShopListContent.module.css';
 
 function GridListDisplay({
@@ -15,6 +15,16 @@ function GridListDisplay({
   totalPage,
   id,
 }) {
+  const { page } = useParams();
+  const muiSelected = {
+    '&.Mui-selected': {
+      backgroundColor: '#eb3d32!important',
+    },
+    '&.Mui-disabled': {
+      opacity: '0',
+    },
+  };
+
   return (
     <Row className="mt-5">
       {productEachPage &&
@@ -38,17 +48,10 @@ function GridListDisplay({
               <PaginationItem
                 component={Link}
                 selected
-                to={`/shop-list/page=${
+                to={`/shop-list/id=${id}&page=${
                   item.page === 1 ? '1' : `${item.page}`
-                }&&id=${id}`}
-                sx={{
-                  '&.Mui-selected': {
-                    backgroundColor: '#eb3d32!important',
-                  },
-                  '&.Mui-disabled': {
-                    opacity: '0',
-                  },
-                }}
+                }`}
+                sx={muiSelected}
                 {...item}
               />
             )}

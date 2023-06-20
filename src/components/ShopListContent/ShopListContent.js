@@ -27,43 +27,46 @@ function ShopListContent() {
   const sortedProduct = shoplistSortProduct || popularProducts;
   const recentProduct = useGetRecentProduct();
 
-  const [productDisplay, setproductDisplay] = useState(4);
-  const [imgProductCol, setImgProduct] = useState(12);
-  const [detailProductCol, setDetailProduct] = useState(12);
-  const [rowDisplayCheck, setRowDisplayCheck] = useState(false);
-  const [pageSize, setPagetSize] = useState(9);
   const [option, setOption] = useState();
-  const [displayActive, setDisplayActive] = useState('grid');
+
+  const productsDisplayGrid = {
+    productDisplay: 4,
+    imgProductCol: 12,
+    detailProductCol: 12,
+    pageSize: 9,
+    rowDisplayCheck: false,
+    displayActive: 'grid',
+  };
+
+  const [dispayConfig, setDisplayConfig] = useState(productsDisplayGrid);
 
   const gridDisplay = useCallback(() => {
-    setproductDisplay(4);
-    setImgProduct(12);
-    setDetailProduct(12);
-    setRowDisplayCheck(false);
-    setPagetSize(9);
-    setDisplayActive('grid');
+    setDisplayConfig(productsDisplayGrid);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const rowDisplay = useCallback(() => {
-    setproductDisplay(12);
-    setImgProduct(4);
-    setDetailProduct(8);
-    setRowDisplayCheck(true);
-    setPagetSize(6);
-    setDisplayActive('row');
+    setDisplayConfig({
+      productDisplay: 12,
+      imgProductCol: 4,
+      detailProductCol: 8,
+      pageSize: 6,
+      rowDisplayCheck: true,
+      displayActive: 'row',
+    });
   }, []);
   const categoriesSelection = categoryChange;
   const colorSelection = colorChange;
   const OptionSelectedData = optionSelected(option, sortedProduct);
   const dataSelected = OptionSelectedData || popularProducts;
 
-  const itemStart = (page - 1) * pageSize;
-  const itemEnd = page * pageSize;
+  const itemStart = (page - 1) * dispayConfig.pageSize;
+  const itemEnd = page * dispayConfig.pageSize;
   const productEachPage = dataSelected?.slice(itemStart, itemEnd);
   const itemEndCheck =
     itemEnd < dataSelected?.length ? itemEnd : dataSelected?.length;
   // eslint-disable-next-line no-unsafe-optional-chaining
-  const totalPage = Math.ceil(dataSelected?.length / pageSize);
+  const totalPage = Math.ceil(dataSelected?.length / dispayConfig.pageSize);
 
   return (
     <div className="my-5">
@@ -111,7 +114,7 @@ function ShopListContent() {
                   <button
                     type="button"
                     className={`${classes.sortIcon} ${
-                      displayActive === 'row' ? classes.active : ''
+                      dispayConfig.displayActive === 'row' ? classes.active : ''
                     } fs-3 p-1 me-1 d-flex align-items-center border-0`}
                     onClick={rowDisplay}
                   >
@@ -120,7 +123,9 @@ function ShopListContent() {
                   <button
                     type="button"
                     className={`${classes.sortIcon} ${
-                      displayActive === 'grid' ? classes.active : ''
+                      dispayConfig.displayActive === 'grid'
+                        ? classes.active
+                        : ''
                     } fs-5 p-1 px-2 me-1 d-flex align-items-center border-0`}
                     onClick={gridDisplay}
                   >
@@ -131,12 +136,9 @@ function ShopListContent() {
               <Col sm={12}>
                 <GridListDisplay
                   productEachPage={productEachPage}
-                  productDisplay={productDisplay}
-                  imgProductCol={imgProductCol}
-                  detailProductCol={detailProductCol}
-                  rowDisplayCheck={rowDisplayCheck}
                   totalPage={totalPage}
                   id={id}
+                  {...dispayConfig}
                 />
               </Col>
             </Row>

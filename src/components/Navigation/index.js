@@ -46,7 +46,7 @@ function Navigation() {
                     </Link>
                   </Nav.Item>
                 ))}
-              <Link to="/shop-list/page=1&&id=all" className={navClass}>
+              <Link to="/shop-list/id=all&page=1" className={navClass}>
                 ShopList
               </Link>
               <Link to="/about-us" className={navClass}>
