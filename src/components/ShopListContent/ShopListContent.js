@@ -21,11 +21,18 @@ import { categoryChange, colorChange, optionSelected } from './SimpleCount';
 import GridListDisplay from './GridListDisplay';
 
 function ShopListContent() {
-  const { id, page } = useParams();
+  const { id: idCategory, page } = useParams();
   const popularProducts = useGetPopularProduct();
   const shoplistSortProduct = useGetShopListSortProduct();
-  const sortedProduct = shoplistSortProduct || popularProducts;
+  const productFilterDefault =
+    idCategory === 'all'
+      ? popularProducts
+      : popularProducts?.filter(
+          (prod) => prod.category.toString() === idCategory
+        );
+  const sortedProduct = shoplistSortProduct || productFilterDefault;
   const recentProduct = useGetRecentProduct();
+  console.log('productFilterDefault', productFilterDefault);
 
   const [option, setOption] = useState();
 
@@ -137,7 +144,7 @@ function ShopListContent() {
                 <GridListDisplay
                   productEachPage={productEachPage}
                   totalPage={totalPage}
-                  id={id}
+                  id={idCategory}
                   {...dispayConfig}
                 />
               </Col>
