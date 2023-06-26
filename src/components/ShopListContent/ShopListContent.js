@@ -13,7 +13,6 @@ import {
 } from 'store/selectors/common';
 import { useParams } from 'react-router-dom';
 import { categoryChange, colorChange, optionSelected } from 'shared/ulti';
-import useQuery from 'Hooks/useQuery';
 import SelectionBlock from './SelectionBlock';
 import PriceFilter from './PriceFilter';
 import RecentProduct from './RecentProduct';
