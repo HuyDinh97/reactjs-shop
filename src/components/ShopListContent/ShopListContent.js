@@ -13,6 +13,7 @@ import {
 } from 'store/selectors/common';
 import { useParams } from 'react-router-dom';
 import { categoryChange, colorChange, optionSelected } from 'shared/ulti';
+import useQuery from 'Hooks/useQuery';
 import SelectionBlock from './SelectionBlock';
 import PriceFilter from './PriceFilter';
 import RecentProduct from './RecentProduct';
@@ -22,6 +23,8 @@ import GridListDisplay from './GridListDisplay';
 
 function ShopListContent() {
   const { id: idCategory, page } = useParams();
+  const pageQuery = useQuery('page');
+  console.log(pageQuery);
   const popularProducts = useGetPopularProduct();
   const shoplistSortProduct = useGetShopListSortProduct();
   const productFilterDefault =
