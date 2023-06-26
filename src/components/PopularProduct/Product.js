@@ -6,7 +6,6 @@ import { GrNext, GrPrevious } from 'react-icons/gr';
 import { Navigation } from 'swiper';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useGetPopularProduct } from 'store/selectors/common';
 
 import SingleProduct from 'components/SingleProduct/SingleProduct';
 import TitleUnderline from './TitleUnderline';
@@ -16,9 +15,7 @@ import 'swiper/swiper.min.css';
 
 import classes from './Product.module.css';
 
-function PopularProduct({ name }) {
-  const products = useGetPopularProduct();
-
+function PopularProduct({ name, products }) {
   const swiperRef = useRef();
 
   if (!products) {
@@ -86,7 +83,7 @@ function PopularProduct({ name }) {
         {products &&
           products.map((popularProduct) => (
             <SwiperSlide key={popularProduct._id}>
-              <SingleProduct popularProduct={popularProduct} />
+              <SingleProduct product={popularProduct} />
             </SwiperSlide>
           ))}
         <div className={classes.swiperButton}>

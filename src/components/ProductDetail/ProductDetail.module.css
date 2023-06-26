@@ -25,6 +25,15 @@
   fill: white;
 }
 
+.leftIconActive {
+  background-color: #eb3d32;
+  fill: white;
+}
+
+.leftIcon:hover {
+  background-color: #eb3d32;
+}
+
 .afterSalePriceColor {
   color: #eb3d32;
 }

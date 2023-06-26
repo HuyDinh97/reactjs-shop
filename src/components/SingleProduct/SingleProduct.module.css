@@ -19,8 +19,6 @@
   
 }
 
-
-
 .apperance:hover .hide {
   display: flex;
 }
@@ -61,8 +59,8 @@
   color: white;
 }
 
-.opacity_icon span a:hover {
-  color: #eb3d32;
+.opacity_icon svg:hover {
+  background-color: #eb3d32;
 }
 
 
@@ -100,6 +98,14 @@
 }
 .swiperButton {
   display: none;
+}
+
+.wishListAdded svg {
+  background-color: #eb3d32;
+}
+
+.wishListAdded svg:hover {
+  background-color: #363f4e;
 }
 
 @media screen and (max-width:576px) {

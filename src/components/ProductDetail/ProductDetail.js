@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-one-expression-per-line */
@@ -27,12 +30,14 @@ import {
   useGetMyCart,
   useGetPopularProduct,
   useGetProductDetail,
+  useGetWishList,
 } from 'store/selectors/common';
 import TitleUnderline from 'components/PopularProduct/TitleUnderline';
 import { useDispatch } from 'react-redux';
 import {
   addComment,
   addProductToCart,
+  addToWishList,
   updateMyCart,
 } from 'store/actions/common';
 import { useParams } from 'react-router-dom';
@@ -53,6 +58,10 @@ function ProductDetail() {
   const dispatch = useDispatch();
 
   const { products } = useGetMyCart();
+  const wishList = useGetWishList();
+  const wishListExist = wishList?.find((prod) =>
+    productId.toString().match(prod._id)
+  );
   const [img, setImg] = useState('no-repeat center');
   const changeIMGtop = () => {
     setImg('no-repeat top');
@@ -147,6 +156,10 @@ function ProductDetail() {
       quantity: updateProductQuantity,
     };
     dispatch(updateMyCart(updateData));
+  });
+
+  const addWishList = useCallback((prod) => () => {
+    dispatch(addToWishList(prod));
   });
 
   return (
@@ -256,9 +269,15 @@ function ProductDetail() {
                 </div>
                 <Row className={`${classes.socialNetworkIcon} fs-6 my-4`}>
                   <Col lg={4} xs={12} className="fs-2 d-flex pb-2">
-                    <FaHeart
-                      className={`${classes.leftIcon} fs-2 p-2 rounded-pill w-auto h-auto`}
-                    />
+                    <a onClick={addWishList(product)}>
+                      <FaHeart
+                        className={`${
+                          wishListExist
+                            ? classes.leftIconActive
+                            : classes.leftIcon
+                        } fs-2 p-2 rounded-pill w-auto h-auto`}
+                      />
+                    </a>
                     <FaSyncAlt
                       className={`${classes.leftIcon} ${classes.hiddenIcon} fs-2 p-2 rounded-pill w-auto h-auto`}
                     />
@@ -441,7 +460,7 @@ function ProductDetail() {
             {relatedProductData &&
               relatedProductData.map((popularProduct) => (
                 <Col lg={3} xs={6} key={popularProduct._id}>
-                  <SingleProduct popularProduct={popularProduct} />
+                  <SingleProduct product={popularProduct} />
                 </Col>
               ))}
           </Row>

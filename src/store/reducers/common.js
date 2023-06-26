@@ -29,6 +29,7 @@ const initialState = {
   logInData: undefined,
   logInDataReturn: [],
   logInStatus: undefined,
+  wishList: [],
 };
 
 // eslint-disable-next-line default-param-last
@@ -224,6 +225,23 @@ export default (state = initialState, action) => {
         ...state,
         logInStatus: action.payload,
       };
+    case 'ADD_TO_WISHLIST': {
+      const { wishList } = state;
+      const productToAdd = action.payload;
+      const productExist = wishList?.find(
+        (prod) => prod._id === action.payload._id
+      );
+      const productFilter = wishList?.filter(
+        (prod) => prod._id !== action.payload._id
+      );
+      const wishListtoAdd = productExist
+        ? [...productFilter]
+        : [...state.wishList, productToAdd];
+      return {
+        ...state,
+        wishList: wishListtoAdd,
+      };
+    }
     default:
       return state;
   }

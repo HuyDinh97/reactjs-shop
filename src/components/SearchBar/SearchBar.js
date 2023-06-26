@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
@@ -28,6 +28,14 @@ function SearchBar() {
     },
     [dispatch]
   );
+  const searchInput = useRef();
+  const [keyword, setKeyword] = useState('');
+  // const keyword = `/search/${searchInput?.current?.value}`;
+
+  const handleSearch = (e) => {
+    searchInput.current = e.target.value;
+    setKeyword(searchInput.current);
+  }
 
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   return (
@@ -46,10 +54,12 @@ function SearchBar() {
                   className={classes.search_Box}
                   data-testid="search-input"
                   placeholder="Search Product..."
+                  ref={searchInput}
+                  onChange={handleSearch}
                 />
-                <button type="button" className={classes.search_Btn}>
+                <Link to={`search/${keyword}`} className={`${classes.search_Btn} d-flex justify-content-center align-items-center text-decoration-none`}>
                   Search
-                </button>
+                </Link>
               </div>
             </Col>
             <Col xl={10} xs={8} className={classes.cartDropdown}>

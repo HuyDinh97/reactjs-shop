@@ -60,7 +60,9 @@ function CartTable() {
                 </div>
               </Col>
               <Col className={classes.productName} lg={5}>
-                {product.name}
+                <Link className="text-decoration-none text-black" to={`/product-detail/${product._id}`}>
+                  {product.name}
+                </Link>
               </Col>
               <Col className={classes.price_sample} lg={1}>
                 $

@@ -43,3 +43,6 @@ export const useGetLogInData = () =>
 
 export const useGetLogInStatus = () =>
   useSelector((state) => state.common?.logInStatus);
+
+export const useGetWishList = () =>
+  useSelector((state) => state.common?.wishList);

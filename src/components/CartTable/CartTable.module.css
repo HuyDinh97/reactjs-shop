@@ -45,6 +45,10 @@ th {
   padding: 0 4rem 0 4rem!important;
 }
 
+.productName a:hover {
+  color: #ea3c31!important;
+}
+
 .quantity_in_cart {
   padding: 0;
   width: 25%;

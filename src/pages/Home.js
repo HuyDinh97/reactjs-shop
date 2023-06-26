@@ -1,9 +1,9 @@
 import React from 'react';
-import BestSeller from 'components/BestSeller/BestSeller';
 import SearchBar from 'components/SearchBar/SearchBar';
 import SubscribeEmail from 'components/SubscribeEmail/SubscribeEmail';
 import ServiceBanner from 'components/ServiceBanner/ServiceBanner';
 import SummerSale from 'components/SummerSale/SummerSale';
+import { useGetBestSeller, useGetPopularProduct } from 'store/selectors/common';
 import Product from '../components/PopularProduct/Product';
 import Advertising from '../components/Advertising/Advertising';
 import Banner from '../components/Banner/Banner';
@@ -11,6 +11,8 @@ import CustomerComment from '../components/Customercomment/CustomerComment';
 import LastestNews from '../components/Lastest News/LastestNews';
 
 function Home() {
+  const popularProduct = useGetPopularProduct();
+  const bestSeller = useGetBestSeller();
   return (
     <div>
       <div>
@@ -19,9 +21,9 @@ function Home() {
       </div>
       <div className="container">
         <Advertising />
-        <Product name="POPULAR PRODUCT" />
+        <Product name="POPULAR PRODUCT" products={popularProduct} />
         <Banner />
-        <BestSeller name="BEST SELLER" />
+        <Product name="BEST SELLER" products={bestSeller} />
         <CustomerComment />
         <LastestNews />
       </div>
