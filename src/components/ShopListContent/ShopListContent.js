@@ -12,12 +12,13 @@ import {
   useGetShopListSortProduct,
 } from 'store/selectors/common';
 import { useParams } from 'react-router-dom';
+import { categoryChange, colorChange, optionSelected } from 'shared/ulti';
+import useQuery from 'Hooks/useQuery';
 import SelectionBlock from './SelectionBlock';
 import PriceFilter from './PriceFilter';
 import RecentProduct from './RecentProduct';
 
 import classes from './ShopListContent.module.css';
-import { categoryChange, colorChange, optionSelected } from './SimpleCount';
 import GridListDisplay from './GridListDisplay';
 
 function ShopListContent() {
@@ -32,7 +33,6 @@ function ShopListContent() {
         );
   const sortedProduct = shoplistSortProduct || productFilterDefault;
   const recentProduct = useGetRecentProduct();
-  console.log('productFilterDefault', productFilterDefault);
 
   const [option, setOption] = useState();
 

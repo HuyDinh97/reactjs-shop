@@ -4,7 +4,7 @@ import { useGetPopularProduct } from 'store/selectors/common';
 import { useDispatch } from 'react-redux';
 import { shoplistSortProduct } from 'store/actions/common';
 import { Link, useParams } from 'react-router-dom';
-import { idCount } from './SimpleCount';
+import { idCount } from 'shared/ulti';
 import classes from './ShopListContent.module.css';
 
 function SelectionBlock({ title, selection }) {
