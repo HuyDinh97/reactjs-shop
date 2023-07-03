@@ -59,7 +59,6 @@
   background-color: black;
   color: white;
   border-radius: 0;
-  margin: 2px;
 }
 
 .pagination a:hover{
@@ -115,6 +114,10 @@
 
 .active {
   background-color: #eb3d32!important;
+}
+
+.nextPrevButton {
+  padding: 6px 9px 6px 9px!important;
 }
 
 @media screen and (max-width: 1199px) {

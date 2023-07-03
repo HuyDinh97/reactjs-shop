@@ -32,7 +32,7 @@ function GridListDisplay({
             <ul className="pagination">
               <li className={`${page === 1 ? 'd-none' : ''}`}>
                 <Link
-                  className="page-link"
+                  className={`${classes.nextPrevButton} page-link`}
                   to={`/shop-list/${id}?page=${page - 1}`}
                 >
                   <FiChevronLeft />
@@ -50,9 +50,9 @@ function GridListDisplay({
                   </Link>
                 </li>
               ))}
-              <li className={`${page === totalPage ? 'd-none' : ''} page-item`}>
+              <li className={`${page === totalPage ? 'd-none' : ''}`}>
                 <Link
-                  className="page-link"
+                  className={`${classes.nextPrevButton} page-link`}
                   to={`/shop-list/${id}?page=${Math.round(page) + 1}`}
                 >
                   <FiChevronRight />
