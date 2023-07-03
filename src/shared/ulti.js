@@ -28,15 +28,12 @@ export const idCount = (products, selection) => {
   return nameTransfer;
 };
 
-export const optionSelected = (option, product) => {
+export const optionSelected = (option, products) => {
   let sortKey;
   let priceHigh = false;
 
   const sortedProduct = (key) => {
-    product?.sort((a, b) => {
-      if (priceHigh === true) {
-        return b[key] - a[key];
-      }
+    products?.sort((a, b) => {
       if (!sortKey) {
         const fa = a.name.toLowerCase();
         const fb = b.name.toLowerCase();
@@ -44,6 +41,9 @@ export const optionSelected = (option, product) => {
         if (fa < fb) return -1;
         if (fa > fb) return 1;
         return 0;
+      }
+      if (priceHigh === true) {
+        return b[key] - a[key];
       }
       return a[key] - b[key];
     });
@@ -68,6 +68,6 @@ export const optionSelected = (option, product) => {
       break;
     default:
   }
-
-  return sortedProduct(sortKey);
+  sortedProduct(sortKey);
+  return products;
 };

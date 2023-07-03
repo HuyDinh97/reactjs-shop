@@ -13,6 +13,7 @@ import {
 } from 'store/selectors/common';
 import { useParams } from 'react-router-dom';
 import { categoryChange, colorChange, optionSelected } from 'shared/ulti';
+import useQuery from 'Hooks/useQuery';
 import SelectionBlock from './SelectionBlock';
 import PriceFilter from './PriceFilter';
 import RecentProduct from './RecentProduct';
@@ -30,7 +31,7 @@ function ShopListContent() {
       : popularProducts?.filter(
           (prod) => prod.category.toString() === idCategory
         );
-  const sortedProduct = shoplistSortProduct || productFilterDefault;
+  const products = shoplistSortProduct || productFilterDefault;
   const recentProduct = useGetRecentProduct();
 
   const [option, setOption] = useState();
@@ -63,7 +64,7 @@ function ShopListContent() {
   }, []);
   const categoriesSelection = categoryChange;
   const colorSelection = colorChange;
-  const OptionSelectedData = optionSelected(option, sortedProduct);
+  const OptionSelectedData = optionSelected(option, products);
   const dataSelected = OptionSelectedData || popularProducts;
 
   const itemStart = (page - 1) * dispayConfig.pageSize;
