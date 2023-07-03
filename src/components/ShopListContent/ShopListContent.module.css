@@ -114,7 +114,7 @@
 }
 
 .active {
-  background-color: #eb3d32;
+  background-color: #eb3d32!important;
 }
 
 @media screen and (max-width: 1199px) {

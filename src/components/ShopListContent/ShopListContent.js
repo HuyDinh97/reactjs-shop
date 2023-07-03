@@ -11,7 +11,7 @@ import {
   useGetRecentProduct,
   useGetShopListSortProduct,
 } from 'store/selectors/common';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { categoryChange, colorChange, optionSelected } from 'shared/ulti';
 import SelectionBlock from './SelectionBlock';
 import PriceFilter from './PriceFilter';
@@ -21,7 +21,9 @@ import classes from './ShopListContent.module.css';
 import GridListDisplay from './GridListDisplay';
 
 function ShopListContent() {
-  const { id: idCategory, page } = useParams();
+  const { id: idCategory } = useParams();
+  const [searchParams] = useSearchParams();
+  const page = searchParams.get('page') || 1;
   const popularProducts = useGetPopularProduct();
   const shoplistSortProduct = useGetShopListSortProduct();
   const productFilterDefault =
