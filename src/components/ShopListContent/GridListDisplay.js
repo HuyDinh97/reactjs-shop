@@ -1,9 +1,9 @@
 import SingleProduct from 'components/SingleProduct/SingleProduct';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Pagination, PaginationItem } from '@mui/material';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
-import { Link, useParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import classes from './ShopListContent.module.css';
 
 function GridListDisplay({
@@ -13,20 +13,9 @@ function GridListDisplay({
   productDisplay,
   ...dispayConfig
 }) {
-  const muiSelected = {
-    '&.Mui-selected': {
-      backgroundColor: '#eb3d32!important',
-    },
-    '&.Mui-disabled': {
-      opacity: '0',
-    },
-  };
-  const { page } = useParams();
-
-  const [pageActive, setPageActive] = React.useState(parseInt(page, 10));
-  const handleChange = (event, value) => {
-    setPageActive(value);
-  };
+  const [searchParams] = useSearchParams();
+  const page = parseInt(searchParams.get('page'), 10) || 1;
+  const pageNumbers = Array.from({ length: totalPage }, (_, i) => i + 1);
   return (
     <Row className="mt-5">
       {productEachPage &&
@@ -39,21 +28,38 @@ function GridListDisplay({
         <div
           className={`${classes.pagination} d-flex justify-content-center mt-5`}
         >
-          <Pagination
-            page={pageActive}
-            count={totalPage || 1}
-            onChange={handleChange}
-            renderItem={(item) => (
-              <PaginationItem
-                sx={muiSelected}
-                component={Link}
-                to={`/shop-list/id=${id}&page=${
-                  item.page === 1 ? '1' : `${item.page}`
-                }`}
-                {...item}
-              />
-            )}
-          />
+          <nav aria-label="Page navigation example">
+            <ul className="pagination">
+              <li className={`${page === 1 ? 'd-none' : ''}`}>
+                <Link
+                  className="page-link"
+                  to={`/shop-list/${id}?page=${page - 1}`}
+                >
+                  <FiChevronLeft />
+                </Link>
+              </li>
+              {pageNumbers.map((number) => (
+                <li className="page-item" key={number}>
+                  <Link
+                    className={`${
+                      page !== number ? '' : classes.active
+                    } page-link`}
+                    to={`/shop-list/${id}?page=${number}`}
+                  >
+                    {number}
+                  </Link>
+                </li>
+              ))}
+              <li className={`${page === totalPage ? 'd-none' : ''} page-item`}>
+                <Link
+                  className="page-link"
+                  to={`/shop-list/${id}?page=${Math.round(page) + 1}`}
+                >
+                  <FiChevronRight />
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
       </Col>
     </Row>
