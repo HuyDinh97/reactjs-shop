@@ -28,15 +28,22 @@ export const idCount = (products, selection) => {
   return nameTransfer;
 };
 
-export const optionSelected = (option, sortedProduct) => {
-  let productSorted;
-  let sortFilter;
+export const optionSelected = (option, product) => {
+  let sortKey;
   let priceHigh = false;
 
-  const sort = (key) => {
-    sortedProduct?.sort((a, b) => {
+  const sortedProduct = (key) => {
+    product?.sort((a, b) => {
       if (priceHigh === true) {
         return b[key] - a[key];
+      }
+      if (!sortKey) {
+        const fa = a.name.toLowerCase();
+        const fb = b.name.toLowerCase();
+
+        if (fa < fb) return -1;
+        if (fa > fb) return 1;
+        return 0;
       }
       return a[key] - b[key];
     });
@@ -44,43 +51,23 @@ export const optionSelected = (option, sortedProduct) => {
 
   switch (option) {
     case 'Bestseller':
-      sortFilter = 'order';
+      sortKey = 'order';
       break;
     case 'Popular':
-      sortFilter = 'visit';
+      sortKey = 'visit';
       break;
     case 'Latest':
-      sortFilter = 'visit';
+      sortKey = 'visit';
       break;
     case 'PriceLow':
-      sortFilter = 'realPrice';
+      sortKey = 'realPrice';
       break;
     case 'PriceHigh':
-      sortFilter = 'realPrice';
+      sortKey = 'realPrice';
       priceHigh = true;
       break;
     default:
-      sortedProduct?.sort((a, b) => {
-        const fa = a.name.toLowerCase();
-        const fb = b.name.toLowerCase();
-
-        if (fa < fb) {
-          return -1;
-        }
-        if (fa > fb) {
-          return 1;
-        }
-        return 0;
-      });
-      productSorted = sortedProduct;
   }
 
-  switch (sortFilter) {
-    case sortFilter:
-      sort(sortFilter);
-      productSorted = sortedProduct;
-      break;
-    default:
-  }
-  return productSorted;
+  return sortedProduct(sortKey);
 };
