@@ -29,8 +29,10 @@ function ShopListContent() {
   const productFilterDefault =
     idCategory === 'all'
       ? popularProducts
-      : popularProducts?.filter(
-          (prod) => prod.category.toString() === idCategory
+      : popularProducts?.filter((prod) =>
+          prod.category.toString() === idCategory
+            ? prod.category.toString() === idCategory
+            : prod.color.toString() === idCategory
         );
   const products = shoplistSortProduct || productFilterDefault;
   const recentProduct = useGetRecentProduct();
