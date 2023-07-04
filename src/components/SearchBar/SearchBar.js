@@ -10,7 +10,7 @@ import Col from 'react-bootstrap/Col';
 import { GrFormClose } from 'react-icons/gr';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useGetMyCart } from 'store/selectors/common';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteProductInCart } from 'store/actions/common';
 import Navigation from 'components/Navigation';
@@ -21,6 +21,7 @@ import classes from './SearchBar.module.css';
 function SearchBar() {
   const { products: productInCart, totalCost } = useGetMyCart();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const deleteProduct = useCallback(
     (id) => () => {
@@ -31,6 +32,13 @@ function SearchBar() {
   const searchInput = useRef();
   const [keyword, setKeyword] = useState('');
   // const keyword = `/search/${searchInput?.current?.value}`;
+
+  const searchEnterKey = (event) => {
+    console.log(event.target.value);
+    if (event.key === "Enter") {
+      navigate(`search/${event.target.value}`);
+    }
+  };
 
   const handleSearch = (e) => {
     searchInput.current = e.target.value;
@@ -55,6 +63,7 @@ function SearchBar() {
                   data-testid="search-input"
                   placeholder="Search Product..."
                   ref={searchInput}
+                  onKeyDown={searchEnterKey}
                   onChange={handleSearch}
                 />
                 <Link to={`search/${keyword}`} className={`${classes.search_Btn} d-flex justify-content-center align-items-center text-decoration-none`}>
