@@ -10,6 +10,7 @@ function SearchResult() {
   const { keyword } = useParams();
   const products = useGetPopularProduct();
   const regexSearch = new RegExp(`${keyword}`, 'i');
+  console.log(keyword);
   return (
     <div>
       <SearchBar />
@@ -21,6 +22,13 @@ function SearchResult() {
           {products ? (
             products?.map((prod) => {
               if (prod.name.match(regexSearch)) {
+                return (
+                  <Col xl={3} xs={12} key={prod._id}>
+                    <SingleProduct product={prod} />
+                  </Col>
+                );
+              }
+              if (!keyword) {
                 return (
                   <Col xl={3} xs={12} key={prod._id}>
                     <SingleProduct product={prod} />
