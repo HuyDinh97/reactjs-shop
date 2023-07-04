@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -6,37 +7,37 @@ import classes from './SubscribeEmail.module.css';
 
 function SubscribeEmail() {
   const emailSubcribe = React.useRef();
-  const [subcribeStatus, setSubcribeStatus] = React.useState();
+  const [subscribeStatus, setSubscribeStatus] = React.useState();
   const subcribe = async () => {
-    const response = await postData(
+    const subscribeResponse = await postData(
       'https://vnguyen.xyz/huy/day17/apis/index.php?type=subscribes',
       {
         email: emailSubcribe.current.value,
       }
     );
-    if (response.status === true) {
-      // eslint-disable-next-line no-alert
-      alert(`${response?.message}`);
+    const { message, errors } = subscribeResponse;
+    const errorFields = errors ? JSON.parse(errors)?.fields : message;
+    const [_, firstError] = Object.entries(errorFields).find(
+      ([_key, error]) => {
+        if (error) {
+          return error;
+        }
+        return [];
+      }
+    );
+    const errorFormat = firstError ? Object.values(firstError)?.[0] : undefined;
+    if (message) {
+      setSubscribeStatus(true);
+      alert(`${message}`);
       return;
     }
-    if (response.message) {
-      setSubcribeStatus(true);
-    }
-    const error = response.errors ? JSON.parse(response.errors) : '';
-    // eslint-disable-next-line no-alert
-    alert(
-      `${
-        error?.fields?.email?.required ||
-        error?.fields?.email?.email ||
-        response?.message
-      }`
-    );
+    alert(`${errorFormat}`);
   };
 
   return (
     <div
       className={`${classes.subscribe_email} ${
-        subcribeStatus === true ? 'd-none' : ''
+        subscribeStatus === true ? 'd-none' : ''
       }`}
     >
       <Row className={classes.container}>
