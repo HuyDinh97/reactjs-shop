@@ -10,6 +10,7 @@ import Login from 'pages/LoginPage';
 import useFetchHome from 'Hooks/useFetchHome';
 import ProductDetailPage from 'pages/ProductDetailPage';
 import CategoryPage from 'pages/CategoryPage';
+import MyAccount from 'pages/MyAccount';
 import Layout from './pages/Layout';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/my-cart" element={<MyCart />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/my-account" element={<MyAccount />} />
         <Route
           path="/product-detail/:productId"
           element={<ProductDetailPage />}
