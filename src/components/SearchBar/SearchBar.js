@@ -10,7 +10,7 @@ import Col from 'react-bootstrap/Col';
 import { GrFormClose } from 'react-icons/gr';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useGetMyCart } from 'store/selectors/common';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteProductInCart } from 'store/actions/common';
 import Navigation from 'components/Navigation';
@@ -23,6 +23,8 @@ function SearchBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const searchParams = useSearchParams();
+
   const deleteProduct = useCallback(
     (id) => () => {
       dispatch(deleteProductInCart(id));
@@ -30,18 +32,17 @@ function SearchBar() {
     [dispatch]
   );
   const searchInput = useRef();
-  const [keyword, setKeyword] = useState('');
+  const keywordDefault = 'all';
   // const keyword = `/search/${searchInput?.current?.value}`;
 
   const searchEnterKey = (event) => {
     if (event.key === "Enter") {
-      navigate(`search/${event.target.value}`);
+      navigate(`../search/${event.target.value || keywordDefault}`, { replace: true });
     }
   };
 
   const handleSearch = (e) => {
-    searchInput.current = e.target.value;
-    setKeyword(searchInput.current);
+    navigate(`../search/${searchInput.current.value || keywordDefault}`, { replace: true });
   }
 
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
@@ -59,15 +60,15 @@ function SearchBar() {
               <div className="d-flex">
                 <input
                   className={classes.search_Box}
+                  type="text"
                   data-testid="search-input"
                   placeholder="Search Product..."
                   ref={searchInput}
                   onKeyDown={searchEnterKey}
-                  onChange={handleSearch}
                 />
-                <Link to={`search/${keyword}`} className={`${classes.search_Btn} d-flex justify-content-center align-items-center text-decoration-none`}>
+                <button onClick={handleSearch} type='button' className={`${classes.search_Btn} d-flex justify-content-center align-items-center text-decoration-none`}>
                   Search
-                </Link>
+                </button>
               </div>
             </Col>
             <Col xl={10} xs={8} className={classes.cartDropdown}>

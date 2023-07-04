@@ -10,12 +10,13 @@ function SearchResult() {
   const { keyword } = useParams();
   const products = useGetPopularProduct();
   const regexSearch = new RegExp(`${keyword}`, 'i');
-  console.log(keyword);
   return (
     <div>
       <SearchBar />
       <div>
-        <p className="fw-semibold fs-1 text-center">Search for: {keyword}</p>
+        <p className="fw-semibold fs-1 text-center">
+          Search for: {`${keyword}`}
+        </p>
       </div>
       <Container className="mt-4 border p-3">
         <Row>
@@ -28,7 +29,7 @@ function SearchResult() {
                   </Col>
                 );
               }
-              if (!keyword) {
+              if (keyword === 'all') {
                 return (
                   <Col xl={3} xs={12} key={prod._id}>
                     <SingleProduct product={prod} />
