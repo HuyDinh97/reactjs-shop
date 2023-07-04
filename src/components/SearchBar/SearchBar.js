@@ -34,7 +34,6 @@ function SearchBar() {
   // const keyword = `/search/${searchInput?.current?.value}`;
 
   const searchEnterKey = (event) => {
-    console.log(event.target.value);
     if (event.key === "Enter") {
       navigate(`search/${event.target.value}`);
     }
