@@ -164,7 +164,7 @@ th {
 .subtotal {
   padding: 0!important;
   display: flex!important;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .mobileVersion {

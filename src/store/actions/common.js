@@ -77,31 +77,16 @@ export const addComment = (payload) => {
   };
 };
 
-export const recentProduct = (payload) => {
+export const logInData = (payload) => {
   return {
-    type: 'RECENT_PRODUCT',
+    type: 'LOGIN_DATA',
     payload,
   };
 };
 
-export const shoplistSortProduct = (id) => {
+export const logInStatus = (payload) => {
   return {
-    type: 'SHOPLIST_SORT_PRODUCT',
-    id,
-  };
-};
-
-export const shoplistPriceFilter = (value, id) => {
-  return {
-    type: 'SHOPLIST_PRICE_FILTER',
-    value,
-    id,
-  };
-};
-
-export const shoplistOptionSelection = (payload) => {
-  return {
-    type: 'SHOPLIST_OPTION_SELECTION',
+    type: 'LOGIN_STATUS',
     payload,
   };
 };
