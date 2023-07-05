@@ -1,20 +1,17 @@
 import React from 'react';
 import { BsTelephoneFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
-import { Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import { useGetLogInStatus } from 'store/selectors/common';
-import { useDispatch } from 'react-redux';
-import { logInStatus } from 'store/actions/common';
+
 import classes from './Header.module.css';
 
 function Header() {
-  const logInStatusRedux = useGetLogInStatus();
-  const dispatch = useDispatch();
-  const statusCheck = logInStatusRedux || Cookies.get('isUserLogin');
+  const checkLoginLogout = document.cookie
+    .split(';')
+    .map((item) => item.includes('email'));
+  const check = checkLoginLogout.find((chec) => chec === true);
+
   const Logout = () => {
-    Cookies.remove('isUserLogin');
-    dispatch(logInStatus('false'));
+    document.cookie = 'email=; expires=Thu, 18 Dec 2013 12:00:00 UTC';
   };
 
   return (
@@ -36,19 +33,19 @@ function Header() {
         <div className={classes.header_user}>
           <ul>
             <li className={classes.header_border_end}>
-              {statusCheck === 'true' ? (
-                <Link to="/" onClick={Logout}>
-                  Logout
-                </Link>
+              {!check ? (
+                <a href="/login">Login</a>
               ) : (
-                <Link to="/login">Login</Link>
+                <a href="/" onClick={Logout}>
+                  Logout
+                </a>
               )}
             </li>
             <li className={classes.header_border_end}>
-              <Link to="/">Wishlist</Link>
+              <a href="/">Wishlist</a>
             </li>
             <li>
-              <Link to="/">My Acount</Link>
+              <a href="/">My Acount</a>
             </li>
           </ul>
         </div>

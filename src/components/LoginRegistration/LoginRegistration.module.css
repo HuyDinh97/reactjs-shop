@@ -1,8 +1,8 @@
 .LoginRegistration {
   display: flex;
   justify-content: center;
-  margin-top: 246px!important;
-  margin-bottom: 246px!important;
+  margin-top: 246px;
+  margin-bottom: 246px;
 }
 
 .LoginRegistration label {
@@ -16,11 +16,10 @@
   padding: 0;
 }
 
-.loginBlock {
+.LoginRegistration ul {
   display: flex;
   flex-direction: column;
   width: 350px;
-  border-right: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)  ;
 }
 
 .LoginRegistration a {
@@ -63,10 +62,4 @@
   border-radius: 50px;
   font-size: 14px;
   color: white;
-}
-
-@media screen and (max-width: 1200px) {
-  .loginBlock {
-    border-right: none;
-  }
 }

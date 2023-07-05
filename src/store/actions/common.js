@@ -77,16 +77,31 @@ export const addComment = (payload) => {
   };
 };
 
-export const logInData = (payload) => {
+export const recentProduct = (payload) => {
   return {
-    type: 'LOGIN_DATA',
+    type: 'RECENT_PRODUCT',
     payload,
   };
 };
 
-export const logInStatus = (payload) => {
+export const shoplistSortProduct = (id) => {
   return {
-    type: 'LOGIN_STATUS',
+    type: 'SHOPLIST_SORT_PRODUCT',
+    id,
+  };
+};
+
+export const shoplistPriceFilter = (value, id) => {
+  return {
+    type: 'SHOPLIST_PRICE_FILTER',
+    value,
+    id,
+  };
+};
+
+export const shoplistOptionSelection = (payload) => {
+  return {
+    type: 'SHOPLIST_OPTION_SELECTION',
     payload,
   };
 };

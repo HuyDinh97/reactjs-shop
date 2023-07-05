@@ -52,6 +52,7 @@ test('Should show cart dropdown', async () => {
       </MemoryRouter>
     </Provider>
   );
+  screen.debug(undefined);
   const buttons = await screen.findAllByRole('button');
   expect(buttons).toHaveLength(3);
 
