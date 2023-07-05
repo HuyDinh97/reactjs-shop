@@ -11,8 +11,6 @@ import CustomerComment from '../components/Customercomment/CustomerComment';
 import LastestNews from '../components/Lastest News/LastestNews';
 
 function Home() {
-  const popularProducts = useGetPopularProduct();
-  const bestSellers = useGetBestSeller();
   return (
     <div>
       <div>
@@ -21,9 +19,9 @@ function Home() {
       </div>
       <div className="container">
         <Advertising />
-        <Product name="POPULAR PRODUCT" product={popularProducts} />
+        <Product name="POPULAR PRODUCT" />
         <Banner />
-        <Product name="BEST SELLER" product={bestSellers} />
+        <Product name="BEST SELLER" />
         <CustomerComment />
         <LastestNews />
       </div>

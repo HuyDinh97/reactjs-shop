@@ -2,7 +2,16 @@
 
 import { format, fromUnixTime } from 'date-fns';
 
+import {
+  getData,
+  setLocalStorage,
+  calculateTotalCost,
+} from './setLocalStorage';
 /* eslint-disable no-case-declarations */
+
+const localStorageId = 'productInCart';
+
+// const localStorageData = getData(localStorageId);
 const initialState = {
   home: undefined,
   categories: [],
@@ -20,15 +29,6 @@ const initialState = {
   shoplistSortProduct: '',
 };
 
-const calculateTotalCost = (products) =>
-  products
-    .reduce(
-      (prevValue, currProduct) =>
-        prevValue + (currProduct?.afterSalesPrice ?? 0),
-      0
-    )
-    .toFixed(2);
-// eslint-disable-next-line default-param-last
 export default (state = initialState, action) => {
   const { products } = state.productInCart ? state.productInCart : [];
   switch (action.type) {

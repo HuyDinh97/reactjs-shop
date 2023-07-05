@@ -105,3 +105,17 @@ export const shoplistOptionSelection = (payload) => {
     payload,
   };
 };
+
+export const logInData = (payload) => {
+  return {
+    type: 'LOGIN_DATA',
+    payload,
+  };
+};
+
+export const logInStatus = (payload) => {
+  return {
+    type: 'LOGIN_STATUS',
+    payload,
+  };
+};
