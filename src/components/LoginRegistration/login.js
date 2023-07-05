@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import { postData } from './LoginCheck';
 
-const userLogin = async ({ email, password, remember }) => {
+const userLogin = async ({ email, password }) => {
   const login = await postData(
     'https://vnguyen.xyz/huy/day17/apis/index.php?type=login',
     {
@@ -12,12 +12,7 @@ const userLogin = async ({ email, password, remember }) => {
   const data = login.errors;
   const error = data ? JSON.parse(data) : null;
   const check = error ? error.fields : [];
-  console.log(remember);
   if (login?.status === true) {
-    if (remember === 1) {
-      Cookies.set('isUserLogin', true, { expires: 7 });
-      return login?.status;
-    }
     Cookies.set('isUserLogin', true, { expires: 1 });
     return login?.status;
   }
