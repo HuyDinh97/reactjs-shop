@@ -18,24 +18,36 @@ const userRegistration = async ({
       agree,
     }
   );
-  const { errors, message } = signUp;
-  const errorFields = errors ? JSON.parse(errors)?.fields : message;
-  const [_, firstError] = Object.entries(errorFields).find(([_key, error]) => {
-    if (error) {
-      return error;
-    }
-    return [];
-  });
-  const errorFormat = firstError ? Object.values(firstError)?.[0] : undefined;
-
-  if (message) {
-    return message;
+  const data = signUp.errors;
+  const error = data ? JSON.parse(data) : null;
+  const check = error ? error.fields : [];
+  if (signUp.status === true) {
+    return signUp;
   }
-
-  if (errorFormat === 'The Agree minimum is 1') {
+  if (check?.name) {
+    if (check?.name.required) {
+      return check?.name.required;
+    }
+    return check?.name.min;
+  }
+  if (check?.email) {
+    if (check?.email?.required) {
+      return check.email.required;
+    }
+    return check.email.email;
+  }
+  if (check?.password) {
+    return check.password.required;
+  }
+  if (check?.confirm_password) {
+    if (check?.confirm_password.same) {
+      return check.confirm_password.same;
+    }
+    return check.confirm_password.required;
+  }
+  if (check?.agree) {
     return 'You must accept the terms and conditions';
   }
-
-  return errorFormat ?? '';
+  return signUp?.message;
 };
 export default userRegistration;
