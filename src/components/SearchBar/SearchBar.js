@@ -78,7 +78,9 @@ function SearchBar() {
                                   <img src={linkIMG + product.thumb} alt="1" />
                                 </span>
                                 <span>
-                                  <div className="fw-semibold">{product.name}</div>
+                                  <Link className={`${classes.productName} fw-semibold text-decoration-none`} to={`/product-detail/${product._id}`}>
+                                    {product.name}
+                                  </Link>
                                   <div>Quantiy: {product.quantity}</div>
                                   <div className={classes.price_color}>
                                     $
