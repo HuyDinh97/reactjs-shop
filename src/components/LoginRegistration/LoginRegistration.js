@@ -55,6 +55,7 @@ function LoginRegistration() {
       confirm_password: passwordComfirmSignUpRef?.current.value,
       agree,
     });
+    console.log(agree);
     setRegistrationError(data);
     if (data.status === true) {
       setRegistrationError();
