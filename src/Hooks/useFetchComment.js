@@ -8,9 +8,9 @@ const useFetchComment = (id) => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    const commentExists = comments?.find(
+    const commentExists = comments.find(
       // eslint-disable-next-line camelcase
-      ({ product_id }) => product_id.toString() === id
+      ({ product_id }) => product_id?.toString() === id
     );
     if (commentExists) return;
     fetch(
