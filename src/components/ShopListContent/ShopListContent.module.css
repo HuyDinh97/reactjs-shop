@@ -1,0 +1,137 @@
+.shopListCategory li{
+  border-bottom: 1px solid #cdcdcd;
+  border-bottom-style: dashed;
+  color: #7a7a7a;
+}
+
+.shopListCategory li:first-child{
+  border-bottom: 1px solid #cdcdcd;
+  color: black;
+}
+
+.filterPrice {
+  color: #3f3e3e
+}
+
+.recentImg {
+  height: 77px;
+  width: 87px;
+  background-repeat: no-repeat!important;
+  display: flex;
+  justify-content: center;
+  background-size: cover !important;
+}
+
+.filterSlider {
+  width: 94%!important  ;
+}
+
+.commentColor {
+  color: #eb3d32;
+}
+
+.textGreyColor {
+  color: #7a7a7a!important;
+  padding-right: 2rem;
+}
+
+.formSelect select {
+  border-radius: 4px!important;
+  height: 46px;
+}
+
+.formSelect select:focus {
+  border-color: black!important;
+  box-shadow: none!important;
+  border: 2px solid black!important;
+}
+
+.sortIcon {
+  background-color: #363f4e;
+  color: white;
+}
+
+.sortButton button:active  {
+  background-color: #eb3d32;
+}
+
+.pagination a{
+  background-color: black;
+  color: white;
+  border-radius: 0;
+}
+
+.pagination a:hover{
+  background-color: #eb3d32;
+  color: white;
+}
+
+.pagination a:focus{
+  background-color: #eb3d32;
+  color: white;
+  box-shadow: none!important;
+}
+
+.product_name {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+
+.product_name a {
+  color:#000;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.product_name a:hover {
+  color: #eb3d32;
+}
+
+.recentProductName {
+  line-height: 1.2;
+}
+
+.recentProductName a {
+  color:#000;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.8rem!important;
+}
+
+.recentProductName a:hover {
+  color: #eb3d32;
+}
+
+.selectionBlockLink {
+  color: #7a7a7a;
+}
+
+.showingResult {
+  justify-content: end!important;
+}
+
+.active {
+  background-color: #eb3d32!important;
+}
+
+.nextPrevButton {
+  padding: 6px 9px 6px 9px!important;
+}
+
+@media screen and (max-width: 1199px) {
+  .centerDisplay {
+    display: flex;
+    justify-content: center;
+  }
+  .showingResult {
+    justify-content: center!important;
+  }
+  .textGreyColor {
+    padding-right: 0;
+  }
+  .shopListCategory li,div,span {
+    font-size: 1rem!important;
+  }
+}

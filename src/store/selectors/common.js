@@ -36,10 +36,8 @@ export const useGetComments = () =>
     state?.common?.comment?.length > 0 ? state.common.comment : []
   );
 
-export const useGetLogInData = () =>
-  useSelector((state) =>
-    state?.common?.logInData ? state.common.logInData : []
-  );
+export const useGetRecentProduct = () =>
+  useSelector((state) => state.common?.recentProduct);
 
-export const useGetLogInStatus = () =>
-  useSelector((state) => state.common?.logInStatus);
+export const useGetShopListSortProduct = () =>
+  useSelector((state) => state.common?.shoplistSortProduct);
