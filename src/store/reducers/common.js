@@ -2,11 +2,7 @@
 
 import { format, fromUnixTime } from 'date-fns';
 
-import {
-  getData,
-  setLocalStorage,
-  calculateTotalCost,
-} from './setLocalStorage';
+import { setLocalStorage, calculateTotalCost } from './setLocalStorage';
 /* eslint-disable no-case-declarations */
 
 const localStorageId = 'productInCart';
@@ -29,6 +25,7 @@ const initialState = {
   shoplistSortProduct: '',
 };
 
+// eslint-disable-next-line default-param-last
 export default (state = initialState, action) => {
   const { products } = state.productInCart ? state.productInCart : [];
   switch (action.type) {
