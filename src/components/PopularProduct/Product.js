@@ -6,7 +6,6 @@ import { GrNext, GrPrevious } from 'react-icons/gr';
 import { Navigation } from 'swiper';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useGetPopularProduct } from 'store/selectors/common';
 
 import SingleProduct from 'components/SingleProduct/SingleProduct';
 import TitleUnderline from './TitleUnderline';
