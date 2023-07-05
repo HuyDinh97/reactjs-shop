@@ -177,14 +177,6 @@ button:first-child:active {
   display: none;
 }
 
-.productName {
-  color: black;
-}
-
-.productName:hover {
-  color: #eb3d32;
-}
-
 @media screen and (max-width: 1399px) {
   .searchSection{
     display: none;

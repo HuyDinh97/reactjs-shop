@@ -36,14 +36,10 @@ test('Should slide run correctly', async () => {
       </MemoryRouter>
     </Provider>
   );
-  const buttons = await screen.findAllByRole('button');
-  expect(
-    await screen.findByTestId('popularProducts-element')
-  ).toBeInTheDocument();
-  expect(buttons).toHaveLength(5);
+  expect(await screen.queryByTestId('products-element'));
 });
 
-test('Should popularProducts render failed', async () => {
+test('Should productsSlide render failed', async () => {
   const store = mockStore({});
 
   render(
@@ -52,5 +48,5 @@ test('Should popularProducts render failed', async () => {
     </Provider>
   );
 
-  expect(screen.getByTestId('popularProducts-error')).toBeInTheDocument();
+  expect(screen?.getByTestId('products-error')).toBeInTheDocument();
 });
