@@ -3,7 +3,7 @@ import SearchBar from 'components/SearchBar/SearchBar';
 import SubscribeEmail from 'components/SubscribeEmail/SubscribeEmail';
 import ServiceBanner from 'components/ServiceBanner/ServiceBanner';
 import SummerSale from 'components/SummerSale/SummerSale';
-import { useGetBestSeller, useGetPopularProduct } from 'store/selectors/common';
+import BestSeller from 'components/BestSeller/BestSeller';
 import Product from '../components/PopularProduct/Product';
 import Advertising from '../components/Advertising/Advertising';
 import Banner from '../components/Banner/Banner';
@@ -21,7 +21,7 @@ function Home() {
         <Advertising />
         <Product name="POPULAR PRODUCT" />
         <Banner />
-        <Product name="BEST SELLER" />
+        <BestSeller name="BEST SELLER" />
         <CustomerComment />
         <LastestNews />
       </div>

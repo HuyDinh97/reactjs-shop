@@ -48,9 +48,7 @@ function Header() {
               <Link to="/">Wishlist</Link>
             </li>
             <li>
-              <Link to={statusCheck === 'true' ? '/my-account' : '/login'}>
-                My Acount
-              </Link>
+              <Link to="/">My Acount</Link>
             </li>
           </ul>
         </div>
