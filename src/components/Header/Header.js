@@ -12,6 +12,7 @@ function Header() {
   const logInStatusRedux = useGetLogInStatus();
   const dispatch = useDispatch();
   const statusCheck = logInStatusRedux || Cookies.get('isUserLogin');
+  console.log(statusCheck);
   const Logout = () => {
     Cookies.remove('isUserLogin');
     dispatch(logInStatus('false'));

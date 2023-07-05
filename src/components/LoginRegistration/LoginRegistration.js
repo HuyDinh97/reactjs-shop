@@ -10,7 +10,6 @@ import Cookies from 'js-cookie';
 import { logInStatus } from 'store/actions/common';
 import userLogin from './login';
 import classes from './LoginRegistration.module.css';
-import userRegistration from './resgistration';
 
 function LoginRegistration() {
   const emailLogIn = useRef();
@@ -23,7 +22,6 @@ function LoginRegistration() {
   const passwordComfirmSignUpRef = useRef();
   const acceptSignUp = document.getElementById('acceptSignUp');
   const [loginError, setLoginError] = useState();
-  const [resgistrationError, setRegistrationError] = useState();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -45,22 +43,17 @@ function LoginRegistration() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
-  const doSignUp = useCallback(async () => {
+  const doSignUp = useCallback(() => {
     const agree = acceptSignUp?.checked === true ? 1 : 0;
-    const data = await userRegistration({
+    const data = {
       name: nameSignUpRef?.current.value,
       email: emailSignUpRef?.current.value,
       password: passwordSignUpRef?.current.value,
       confirm_password: passwordComfirmSignUpRef?.current.value,
       agree,
-    });
-    setRegistrationError(data);
-    if (data.status === true) {
-      setRegistrationError();
-      alert(data.message);
-    }
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [acceptSignUp]);
 
   return (
     <div className="container">
@@ -138,14 +131,10 @@ function LoginRegistration() {
             <li>
               <h4 className="fw-bold">REGISTRATION</h4>
             </li>
-            {resgistrationError ? (
-              <li className={`${classes.subTitle}`}>
-                <span className={classes.subTitle_color}>Error:</span>
-                <span className={classes.grayText_color}>
-                  {resgistrationError}
-                </span>
-              </li>
-            ) : null}
+            <li className={`${classes.subTitle}`}>
+              <span className={classes.subTitle_color}>Error:</span>
+              <span className={classes.grayText_color}>d</span>
+            </li>
             <li>
               <input
                 className={classes.inputText}
