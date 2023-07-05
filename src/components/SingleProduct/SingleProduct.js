@@ -1,91 +1,93 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { HiHeart } from 'react-icons/hi';
+import { BsFillEyeFill } from 'react-icons/bs';
+import { TbRefresh } from 'react-icons/tb';
+import { addProductToCart } from 'store/actions/common';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Col, Container, Row } from 'react-bootstrap';
-import classes from './SingleProduct.module.css';
-import AddToCartProductDetail from './AddToCartProductDetail';
 
-function SingleProduct({
-  popularProduct,
-  imgProductCol,
-  detailProductCol,
-  rowDisplayCheck,
-}) {
+import classes from './SingleProduct.module.css';
+
+function SingleProduct({ popularProduct }) {
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   const priceCheck = 'd-none';
+  const dispatch = useDispatch();
 
-  const productDetailRowDisplay =
-    rowDisplayCheck === true
-      ? 'align-items-start mb-2'
-      : 'justify-content-center my-2 text-center';
+  const addProduct = useCallback(
+    (productInCart) => () => {
+      const data = {
+        _id: productInCart._id,
+        name: productInCart.name,
+        price: productInCart.price,
+        sales: productInCart.sales,
+        thumb: productInCart.thumb,
+        quantity: 1,
+      };
+      dispatch(addProductToCart(data));
+    },
+    [dispatch]
+  );
+
   return (
     <div>
-      <Container>
-        <Row
-          className={`${classes.rowBox} ${
-            rowDisplayCheck === true ? 'border-bottom pb-4' : 'none'
-          }`}
-        >
-          <Col md={imgProductCol} xs={12} className={classes.apperance}>
-            <div className="d-flex justify-content-center">
-              <div
-                className={classes.product_img}
-                // eslint-disable-next-line react/forbid-dom-props
-                style={{
-                  background: `url(${linkIMG + popularProduct.thumb})`,
-                }}
-              >
-                {rowDisplayCheck === false ? (
-                  <div className={classes.hide}>
-                    <AddToCartProductDetail popularProduct={popularProduct} />
-                    <div className={classes.white_overlay} />
-                  </div>
-                ) : null}
-              </div>
-            </div>
-          </Col>
-          <Col
-            md={detailProductCol}
-            xs={12}
-            className={`${productDetailRowDisplay} card-body d-flex mb-2 flex-column`}
+      <div className={classes.apperance}>
+        <div>
+          <div
+            className={classes.product_img}
+            // eslint-disable-next-line react/forbid-dom-props
+            style={{
+              background: `url(${linkIMG + popularProduct.thumb})`,
+            }}
           >
-            <div className={classes.product_name}>
-              <Link to={`/product-detail/${popularProduct._id}`}>
-                {popularProduct.name}
-              </Link>
-            </div>
-            <div className={classes.product_price}>
-              <span className={popularProduct.sales === 0 ? priceCheck : null}>
-                <s className={classes.gray_price}>
-                  {' $ '}
-                  {popularProduct.price}
-                </s>
-              </span>
-              <span className="mx-2">
-                {' $ '}
-                {popularProduct.realPrice}
-              </span>
-            </div>
-            {rowDisplayCheck === true ? (
-              <Col>
-                <div
-                  className={`${classes.productDescripton} ${classes.gray_price}`}
-                >
-                  Nullam ullamcorper in leo vitae finibus. In mattis aliquam
-                  diam ut lobortis. Aenean non ultrices purus, vel tempor orci.
-                  Vestibulum ullamcorper dolor vel nulla gravida, ac
-                  sollicitudin eros lacinia. Pellentesque vitae diam nec nulla
-                  porttitor semper. Nullam tincidunt ante sit amet est bibendum
-                  efficitur.
+            <div className={classes.hide}>
+              <div className={classes.opacity_layer}>
+                <div>
+                  <button
+                    className="border-0 search-btn-color fs-6 fw-semibold px-4 py-2 rounded-pill"
+                    type="button"
+                    onClick={addProduct(popularProduct)}
+                  >
+                    Add to cart
+                  </button>
                 </div>
-                <AddToCartProductDetail
-                  popularProduct={popularProduct}
-                  display={false}
-                />
-              </Col>
-            ) : null}
-          </Col>
-        </Row>
-      </Container>
+                <div className={classes.opacity_icon}>
+                  <span>
+                    <HiHeart />
+                  </span>
+                  <span>
+                    <Link to={`/product-detail/${popularProduct._id}`}>
+                      <BsFillEyeFill />
+                    </Link>
+                  </span>
+                  <span>
+                    <TbRefresh />
+                  </span>
+                </div>
+              </div>
+              <div className={classes.white_overlay} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="card-body d-flex justify-content-center my-2 mb-2 flex-column text-center">
+        <div className={classes.product_name}>
+          <Link to={`/product-detail/${popularProduct._id}`}>
+            {popularProduct.name}
+          </Link>
+        </div>
+        <div className={classes.product_price}>
+          <span className={popularProduct.sales === 0 ? priceCheck : null}>
+            <s className={classes.gray_price}>
+              {' $ '}
+              {popularProduct.price}
+            </s>
+          </span>
+          <span className="mx-2">
+            {' $ '}
+            {popularProduct.realPrice}
+          </span>
+        </div>
+      </div>
     </div>
   );
 }

@@ -63,7 +63,6 @@ test('Should customer comment render failed', async () => {
       <CustomerComment />
     </Provider>
   );
-  screen.debug(undefined, 5000000000000);
 
   waitFor(() =>
     expect(screen.findByTestId('testimotional-error')).toBeTruthy()

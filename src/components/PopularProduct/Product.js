@@ -6,9 +6,9 @@ import { GrNext, GrPrevious } from 'react-icons/gr';
 import { Navigation } from 'swiper';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useGetPopularProduct } from 'store/selectors/common';
 
 import SingleProduct from 'components/SingleProduct/SingleProduct';
+import { useGetPopularProduct } from 'store/selectors/common';
 import TitleUnderline from './TitleUnderline';
 
 import 'swiper/swiper-bundle.min.css';
@@ -16,17 +16,17 @@ import 'swiper/swiper.min.css';
 
 import classes from './Product.module.css';
 
-function PopularProduct({ name, product }) {
-  const products = product;
+function Product({ name }) {
+  const products = useGetPopularProduct();
 
   const swiperRef = useRef();
 
   if (!products) {
-    return <p data-testid="products-error">Loading...</p>;
+    return <p data-testid="popularProducts-error">Loading...</p>;
   }
 
   return (
-    <div className="mt-5" data-testid="products-element">
+    <div className="mt-5" data-testid="popularProducts-element">
       <Row className={classes.mg_bot}>
         <Col xs lg="2" />
         <TitleUnderline name={name} />
@@ -86,10 +86,7 @@ function PopularProduct({ name, product }) {
         {products &&
           products.map((popularProduct) => (
             <SwiperSlide key={popularProduct._id}>
-              <SingleProduct
-                popularProduct={popularProduct}
-                rowDisplay={false}
-              />
+              <SingleProduct popularProduct={popularProduct} />
             </SwiperSlide>
           ))}
         <div className={classes.swiperButton}>
@@ -113,4 +110,4 @@ function PopularProduct({ name, product }) {
   );
 }
 
-export default PopularProduct;
+export default Product;

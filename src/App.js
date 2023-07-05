@@ -11,6 +11,7 @@ import useFetchBestSeller from 'Hooks/useFetchBestSellerProduct';
 import ProductDetailPage from 'pages/ProductDetailPage';
 import CategoryPage from 'pages/CategoryPage';
 import ShopList from 'pages/ShopList';
+import MyAccount from 'pages/MyAccount';
 import Layout from './pages/Layout';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/my-cart" element={<MyCart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/shop-list/:id" element={<ShopList />} />
+        <Route path="/my-account" element={<MyAccount />} />
         <Route
           path="/product-detail/:productId"
           element={<ProductDetailPage />}

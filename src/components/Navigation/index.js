@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { useGetCategories } from 'store/selectors/common';
-import { GoThreeBars } from 'react-icons/go';
+import { GoAlert } from 'react-icons/go';
 import { Link } from 'react-router-dom';
 import classes from './navigation.module.css';
 
@@ -24,7 +24,7 @@ function Navigation() {
             className={classes.navbarToggle}
             aria-controls="offcanvasNavbar-expand-xs"
           >
-            <GoThreeBars />
+            <GoAlert />
           </Navbar.Toggle>
           <Navbar.Offcanvas
             className={classes.offCanvas}
