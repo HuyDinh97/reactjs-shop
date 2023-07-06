@@ -50,7 +50,11 @@ function GridListDisplay({
                   </Link>
                 </li>
               ))}
-              <li className={`${page === totalPage ? 'd-none' : ''}`}>
+              <li
+                className={`${
+                  page === totalPage || productEachPage <= 0 ? 'd-none' : ''
+                }`}
+              >
                 <Link
                   className={`${classes.nextPrevButton} page-link`}
                   to={`/shop-list/${id}?page=${Math.round(page) + 1}`}
