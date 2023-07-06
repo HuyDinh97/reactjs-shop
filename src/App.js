@@ -12,6 +12,7 @@ import ProductDetailPage from 'pages/ProductDetailPage';
 import CategoryPage from 'pages/CategoryPage';
 import ShopList from 'pages/ShopList';
 import MyAccount from 'pages/MyAccount';
+import SearchResult from 'pages/SearchResultPage';
 import Layout from './pages/Layout';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/shop-list/:id" element={<ShopList />} />
         <Route path="/my-account" element={<MyAccount />} />
+        <Route path="/search" element={<SearchResult />} />
         <Route
           path="/product-detail/:productId"
           element={<ProductDetailPage />}
