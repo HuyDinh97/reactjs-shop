@@ -1,13 +1,16 @@
-/* eslint-disable no-alert */
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import { postData } from 'components/LoginRegistration/LoginCheck';
 import classes from './SubscribeEmail.module.css';
 
 function SubscribeEmail() {
   const emailSubcribe = React.useRef();
   const [subscribeStatus, setSubscribeStatus] = React.useState();
+  const [show, setShow] = React.useState(false);
+  const [subscribeErrors, setSubscribeError] = React.useState();
   const subcribe = async () => {
     const subscribeResponse = await postData(
       'https://vnguyen.xyz/huy/day17/apis/index.php?type=subscribes',
@@ -28,11 +31,14 @@ function SubscribeEmail() {
     const errorFormat = firstError ? Object.values(firstError)?.[0] : undefined;
     if (message) {
       setSubscribeStatus(true);
-      alert(`${message}`);
+      setSubscribeError(`${message}`);
       return;
     }
-    alert(`${errorFormat}`);
+    setSubscribeError(`${errorFormat}`);
+    setShow(true);
   };
+
+  const handleClose = () => setShow(false);
 
   return (
     <div
@@ -56,9 +62,18 @@ function SubscribeEmail() {
             placeholder="Enter Your Email"
             data-testid="email-input"
           />
-          <button onClick={subcribe} type="button">
-            Subscribe
-          </button>
+          <Button onClick={subcribe}>Subscribe</Button>
+          <Modal show={show} onHide={handleClose} centered size="md">
+            <Modal.Body className="d-flex justify-content-center fw-semibold py-4">
+              {subscribeErrors}
+            </Modal.Body>
+            <Button
+              className={`${classes.modelButton} border-0 py-2`}
+              onClick={handleClose}
+            >
+              Close
+            </Button>
+          </Modal>
         </Col>
       </Row>
     </div>
