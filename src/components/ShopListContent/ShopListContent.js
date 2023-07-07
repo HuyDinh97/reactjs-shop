@@ -7,7 +7,6 @@ import { VscThreeBars } from 'react-icons/vsc';
 import Form from 'react-bootstrap/Form';
 
 import {
-  useGetPopularProduct,
   useGetRecentProduct,
   useGetShopListSortProduct,
 } from 'store/selectors/common';
