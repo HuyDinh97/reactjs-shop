@@ -23,6 +23,7 @@ const initialState = {
   recentProduct: '',
   filterPrice: [0, 1000],
   shoplistSortProduct: '',
+  searchResultProducts: '',
 };
 
 // eslint-disable-next-line default-param-last
@@ -238,39 +239,70 @@ export default (state = initialState, action) => {
         logInStatus: action.payload,
       };
     case 'SHOPLIST_SORT_PRODUCT': {
-      const { id } = action;
+      const { id, products: productData } = action;
       const { filterPrice } = state;
       const productState = state?.popularProducts;
-      const productSort = productState?.filter(
-        (prod) =>
-          filterPrice[0] <= prod.price &&
-          prod.price <= filterPrice[1] &&
-          (prod.category === id || prod.color === id)
-      );
+      let productSort;
+      if (productData) {
+        productSort = productData?.filter(
+          (prod) => filterPrice[0] <= prod.price && prod.price <= filterPrice[1]
+        );
+      } else {
+        productSort = productState?.filter(
+          (prod) =>
+            filterPrice[0] <= prod.price &&
+            prod.price <= filterPrice[1] &&
+            (prod.category === id || prod.color === id)
+        );
+      }
       return {
         ...state,
         shoplistSortProduct: productSort,
       };
     }
     case 'SHOPLIST_PRICE_FILTER': {
-      const { price, id } = action.value;
+      const { id, price, products: productData } = action;
       const productState = state?.popularProducts;
-      const productSort =
-        id === 'all'
-          ? productState?.filter(
-              (prod) => price[0] <= prod.price && prod.price <= price[1]
-            )
-          : productState?.filter(
-              (prod) =>
-                price[0] <= prod.price &&
-                prod.price <= price[1] &&
-                (prod.category.toString() === id ||
-                  prod.color.toString() === id)
-            );
+      let productSort;
+      if (productData) {
+        productSort = productData?.filter(
+          (prod) => price[0] <= prod.price && prod.price <= price[1]
+        );
+      } else {
+        productSort =
+          id === 'all'
+            ? productState?.filter(
+                (prod) => price[0] <= prod.price && prod.price <= price[1]
+              )
+            : productState?.filter(
+                (prod) =>
+                  price[0] <= prod.price &&
+                  prod.price <= price[1] &&
+                  (prod.category.toString() === id ||
+                    prod.color.toString() === id)
+              );
+      }
       return {
         ...state,
         filterPrice: price,
         shoplistSortProduct: productSort,
+      };
+    }
+    case 'SEARCH_RESULT_PRODUCT': {
+      const searchResult = action.payload;
+      const afterSalesPricesSearchResult = searchResult?.map(
+        (prod) => prod.price * (1 - prod.sales / 100)
+      );
+      let newSearchPrice = [];
+      // eslint-disable-next-line no-unsafe-optional-chaining
+      for (let i = 0; i <= searchResult?.length - 1; i++) {
+        const realPrice = afterSalesPricesSearchResult[i];
+        searchResult[i].realPrice = realPrice;
+        newSearchPrice = searchResult;
+      }
+      return {
+        ...state,
+        searchResultProducts: [...newSearchPrice],
       };
     }
     default:

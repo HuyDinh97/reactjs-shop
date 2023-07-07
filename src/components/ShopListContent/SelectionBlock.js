@@ -15,7 +15,7 @@ function SelectionBlock({ title, selection }) {
 
   const sortById = useCallback(
     (id) => () => {
-      dispatch(shoplistSortProduct(id));
+      dispatch(shoplistSortProduct({ id }));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [selectedId]

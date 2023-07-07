@@ -84,18 +84,20 @@ export const recentProduct = (payload) => {
   };
 };
 
-export const shoplistSortProduct = (id) => {
+export const shoplistSortProduct = ({ id, products }) => {
   return {
     type: 'SHOPLIST_SORT_PRODUCT',
     id,
+    products,
   };
 };
 
-export const shoplistPriceFilter = (value, id) => {
+export const shoplistPriceFilter = ({ id, price, products }) => {
   return {
     type: 'SHOPLIST_PRICE_FILTER',
-    value,
     id,
+    price,
+    products,
   };
 };
 
@@ -116,6 +118,13 @@ export const logInData = (payload) => {
 export const logInStatus = (payload) => {
   return {
     type: 'LOGIN_STATUS',
+    payload,
+  };
+};
+
+export const searchResultProducts = (payload) => {
+  return {
+    type: 'SEARCH_RESULT_PRODUCT',
     payload,
   };
 };

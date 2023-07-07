@@ -4,15 +4,19 @@ import { Slider } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { shoplistPriceFilter } from 'store/actions/common';
 import { useParams } from 'react-router-dom';
+import { useGetSearchProducts } from 'store/selectors/common';
 import classes from './ShopListContent.module.css';
 
 function PriceFilter() {
   const { id } = useParams();
   const [value, setValue] = React.useState([0, 1000]);
+  const searchProducts = useGetSearchProducts();
   const dispatch = useDispatch();
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    dispatch(shoplistPriceFilter({ price: newValue, id }));
+    dispatch(
+      shoplistPriceFilter({ price: newValue, id, products: searchProducts })
+    );
   };
 
   const CustomSliderStyles = {
