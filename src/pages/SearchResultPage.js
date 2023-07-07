@@ -18,7 +18,6 @@ function SearchResult() {
     )
       .then((res) => res.json())
       .then((data) => setDataApi(data.data));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword]);
   React.useEffect(() => {
     dispatch(searchResultProducts(dataApi));
