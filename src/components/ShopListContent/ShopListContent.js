@@ -20,21 +20,12 @@ import RecentProduct from './RecentProduct';
 import classes from './ShopListContent.module.css';
 import GridListDisplay from './GridListDisplay';
 
-function ShopListContent() {
+function ShopListContent({ productTo }) {
   const { id: idCategory } = useParams();
   const [searchParams] = useSearchParams();
   const page = searchParams.get('page') || 1;
-  const popularProducts = useGetPopularProduct();
   const shoplistSortProduct = useGetShopListSortProduct();
-  const productFilterDefault =
-    idCategory === 'all'
-      ? popularProducts
-      : popularProducts?.filter((prod) =>
-          prod.category.toString() === idCategory
-            ? prod.category.toString() === idCategory
-            : prod.color.toString() === idCategory
-        );
-  const products = shoplistSortProduct || productFilterDefault;
+  const products = shoplistSortProduct || productTo;
   const recentProduct = useGetRecentProduct();
 
   const [option, setOption] = useState();
@@ -68,7 +59,7 @@ function ShopListContent() {
   const categoriesSelection = categoryChange;
   const colorSelection = colorChange;
   const OptionSelectedData = optionSelected(option, products);
-  const dataSelected = OptionSelectedData || popularProducts;
+  const dataSelected = OptionSelectedData || productTo;
 
   const itemStart = (page - 1) * dispayConfig.pageSize;
   const itemEnd = page * dispayConfig.pageSize;

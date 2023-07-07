@@ -13,6 +13,7 @@ function GridListDisplay({
   productDisplay,
   ...dispayConfig
 }) {
+  console.log(productEachPage);
   const [searchParams] = useSearchParams();
   const page = parseInt(searchParams.get('page'), 10) || 1;
   const pageNumbers = Array.from({ length: totalPage }, (_, i) => i + 1);
@@ -52,7 +53,7 @@ function GridListDisplay({
               ))}
               <li
                 className={`${
-                  page === totalPage || productEachPage <= 0 ? 'd-none' : ''
+                  page === totalPage || !productEachPage ? 'd-none' : ''
                 }`}
               >
                 <Link

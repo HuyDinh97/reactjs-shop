@@ -29,7 +29,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/shop-list/:id" element={<ShopList />} />
         <Route path="/my-account" element={<MyAccount />} />
-        <Route path="/search" element={<SearchResult />} />
+        <Route path="search" element={<SearchResult />} />
         <Route
           path="/product-detail/:productId"
           element={<ProductDetailPage />}
