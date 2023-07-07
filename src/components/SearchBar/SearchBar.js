@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
@@ -10,7 +10,7 @@ import Col from 'react-bootstrap/Col';
 import { GrFormClose } from 'react-icons/gr';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useGetMyCart } from 'store/selectors/common';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteProductInCart } from 'store/actions/common';
 import Navigation from 'components/Navigation';
