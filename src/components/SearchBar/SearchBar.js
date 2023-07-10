@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
@@ -20,6 +20,7 @@ import classes from './SearchBar.module.css';
 
 function SearchBar() {
   const { products: productInCart, totalCost } = useGetMyCart();
+  const [keyword, setKeyword] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -30,18 +31,20 @@ function SearchBar() {
     [dispatch]
   );
   const searchInput = useRef();
-  
 
+  useEffect(() => {
+    setKeyword(searchInput?.current?.value);
+  }, [searchInput?.current?.value])
+
+// press Enter to search
   const searchEnterKey = (e) => {
-    const keywordRef = searchInput?.current?.value;
     if (e.key === "Enter") {
-      navigate(`../search?query=${keywordRef}`, { replace: true });
+      navigate(`../search?query=${keyword}`, { replace: true });
     }
   };
 
   const handleSearch = () => {
-    const keywordRef = searchInput?.current?.value;
-    navigate(`/search?query=${keywordRef}`, { replace: true })
+    navigate(`/search?query=${keyword}`, { replace: true })
   }
 
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
