@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import PageTitle from 'components/Page Title/PageTitle';
 import SearchBar from 'components/SearchBar/SearchBar';
 import ShopListContent from 'components/ShopListContent/ShopListContent';
