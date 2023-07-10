@@ -26,7 +26,6 @@ function ShopListContent({ productTo }) {
   const shoplistSortProduct = useGetShopListSortProduct();
   const products = shoplistSortProduct || productTo;
   const recentProduct = useGetRecentProduct();
-
   const [option, setOption] = useState();
 
   const productsDisplayGrid = {

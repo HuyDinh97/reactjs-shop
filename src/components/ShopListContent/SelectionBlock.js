@@ -2,7 +2,10 @@
 import React, { useCallback } from 'react';
 import { useGetPopularProduct } from 'store/selectors/common';
 import { useDispatch } from 'react-redux';
-import { shoplistSortProduct } from 'store/actions/common';
+import {
+  searchResultProducts,
+  shoplistSortProduct,
+} from 'store/actions/common';
 import { Link, useParams } from 'react-router-dom';
 import { idCount } from 'shared/ulti';
 import classes from './ShopListContent.module.css';
@@ -16,6 +19,7 @@ function SelectionBlock({ title, selection }) {
   const sortById = useCallback(
     (id) => () => {
       dispatch(shoplistSortProduct({ id }));
+      dispatch(searchResultProducts());
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [selectedId]

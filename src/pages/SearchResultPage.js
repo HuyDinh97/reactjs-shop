@@ -4,11 +4,16 @@ import ShopListContent from 'components/ShopListContent/ShopListContent';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { searchResultProducts } from 'store/actions/common';
+import {
+  searchResultProducts,
+  shoplistSortProduct,
+} from 'store/actions/common';
+import { useGetPopularProduct } from 'store/selectors/common';
 
 function SearchResult() {
   const [searchParams] = useSearchParams();
   const keyword = searchParams.get('query') || 'all';
+  const defaultProducts = useGetPopularProduct();
   const [dataApi, setDataApi] = useState();
   const dispatch = useDispatch();
 
@@ -21,6 +26,12 @@ function SearchResult() {
   }, [keyword]);
   React.useEffect(() => {
     dispatch(searchResultProducts(dataApi));
+    dispatch(
+      shoplistSortProduct({
+        id: '',
+        products: keyword === 'all' ? defaultProducts : dataApi,
+      })
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataApi]);
 

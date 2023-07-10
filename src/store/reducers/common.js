@@ -264,7 +264,7 @@ export default (state = initialState, action) => {
       const { id, price, products: productData } = action;
       const productState = state?.popularProducts;
       let productSort;
-      if (productData) {
+      if (!id) {
         productSort = productData?.filter(
           (prod) => price[0] <= prod.price && prod.price <= price[1]
         );

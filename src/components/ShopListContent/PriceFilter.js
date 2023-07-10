@@ -10,12 +10,16 @@ import classes from './ShopListContent.module.css';
 function PriceFilter() {
   const { id } = useParams();
   const [value, setValue] = React.useState([0, 1000]);
-  const searchProducts = useGetSearchProducts();
   const dispatch = useDispatch();
+  const searchProduct = useGetSearchProducts();
   const handleChange = (event, newValue) => {
     setValue(newValue);
     dispatch(
-      shoplistPriceFilter({ price: newValue, id, products: searchProducts })
+      shoplistPriceFilter({
+        price: newValue,
+        id,
+        products: searchProduct,
+      })
     );
   };
 
