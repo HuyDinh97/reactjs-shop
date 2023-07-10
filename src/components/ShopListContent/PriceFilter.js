@@ -16,7 +16,6 @@ function PriceFilter() {
   const dispatch = useDispatch();
   const searchProduct = useGetSearchProducts();
   const filterPrice = useGetFilterPrice();
-  console.log(filterPrice);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
