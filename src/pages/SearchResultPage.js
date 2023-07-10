@@ -43,7 +43,7 @@ function SearchResult() {
     <div>
       <SearchBar />
       <PageTitle pageTitle={`Search for: ${keyword}`} />
-      <ShopListContent productTo={responsedProducts} />
+      <ShopListContent productTo={productResults} />
     </div>
   );
 }
