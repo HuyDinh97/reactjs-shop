@@ -8,7 +8,9 @@ function PageTitle({ pageTitle, pageLink }) {
       <h1 className={`${classes.pageTitleColor} text-uppercase`}>
         {pageTitle}
       </h1>
-      <p className="fw-semibold">Home / Shop / {pageLink}</p>
+      <p className={`fw-semibold ${!pageLink ? `d-none` : ''}`}>
+        Home / Shop / {pageLink}
+      </p>
     </div>
   );
 }

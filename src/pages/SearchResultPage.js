@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
+import PageTitle from 'components/Page Title/PageTitle';
 import SearchBar from 'components/SearchBar/SearchBar';
 import ShopListContent from 'components/ShopListContent/ShopListContent';
 import React, { useState } from 'react';
@@ -38,9 +39,7 @@ function SearchResult() {
   return (
     <div>
       <SearchBar />
-      <div>
-        <p className="fw-semibold fs-1 text-center">Search for: {keyword}</p>
-      </div>
+      <PageTitle pageTitle={`Search for: ${keyword}`} />
       <ShopListContent productTo={dataApi} />
     </div>
   );
