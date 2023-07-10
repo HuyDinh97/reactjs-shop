@@ -14,32 +14,36 @@ function SearchResult() {
   const [searchParams] = useSearchParams();
   const keyword = searchParams.get('query');
   const defaultProducts = useGetPopularProduct();
-  const [dataApi, setDataApi] = useState();
+  const [responsedProducts, setResponsedProducts] = useState();
   const dispatch = useDispatch();
+
+  const productResults = !responsedProducts
+    ? defaultProducts
+    : responsedProducts;
 
   React.useEffect(() => {
     fetch(
       `https://vnguyen.xyz/huy/day17/apis/index.php?type=search&query=${keyword}`
     )
       .then((res) => res.json())
-      .then((data) => setDataApi(data.data));
+      .then((data) => setResponsedProducts(data.data));
   }, [keyword]);
   React.useEffect(() => {
-    dispatch(searchResultProducts(keyword === '' ? defaultProducts : dataApi));
+    dispatch(searchResultProducts(productResults));
     dispatch(
       shoplistSortProduct({
         id: '',
-        products: keyword === '' ? defaultProducts : dataApi,
+        products: productResults,
       })
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dataApi]);
+  }, [responsedProducts]);
 
   return (
     <div>
       <SearchBar />
       <PageTitle pageTitle={`Search for: ${keyword}`} />
-      <ShopListContent productTo={dataApi} />
+      <ShopListContent productTo={responsedProducts} />
     </div>
   );
 }
