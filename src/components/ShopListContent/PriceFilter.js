@@ -4,7 +4,10 @@ import { Slider } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { shoplistPriceFilter } from 'store/actions/common';
 import { useParams } from 'react-router-dom';
-import { useGetSearchProducts } from 'store/selectors/common';
+import {
+  useGetFilterPrice,
+  useGetSearchProducts,
+} from 'store/selectors/common';
 import classes from './ShopListContent.module.css';
 
 function PriceFilter() {
@@ -12,6 +15,9 @@ function PriceFilter() {
   const [value, setValue] = React.useState([0, 1000]);
   const dispatch = useDispatch();
   const searchProduct = useGetSearchProducts();
+  const filterPrice = useGetFilterPrice();
+  console.log(filterPrice);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
     dispatch(
@@ -45,7 +51,7 @@ function PriceFilter() {
           <Slider
             sx={CustomSliderStyles}
             className={classes.filterSlider}
-            value={value}
+            value={filterPrice || value}
             // onClick={sortByFilterPrice}
             onChange={handleChange}
             valueLabelDisplay="auto"
@@ -56,7 +62,7 @@ function PriceFilter() {
           <div className="fw-semibold fs-5">
             <span className={classes.filterPrice}>PRICE </span>
             <span className="text-black">
-              ${value[0]} - ${value[1]}
+              ${filterPrice[0] || value[0]} - ${filterPrice[1] || value[1]}
             </span>
           </div>
         </li>

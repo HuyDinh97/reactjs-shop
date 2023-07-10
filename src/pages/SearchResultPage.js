@@ -12,7 +12,7 @@ import { useGetPopularProduct } from 'store/selectors/common';
 
 function SearchResult() {
   const [searchParams] = useSearchParams();
-  const keyword = searchParams.get('query') || 'all';
+  const keyword = searchParams.get('query');
   const defaultProducts = useGetPopularProduct();
   const [dataApi, setDataApi] = useState();
   const dispatch = useDispatch();
@@ -25,11 +25,11 @@ function SearchResult() {
       .then((data) => setDataApi(data.data));
   }, [keyword]);
   React.useEffect(() => {
-    dispatch(searchResultProducts(dataApi));
+    dispatch(searchResultProducts(keyword === '' ? defaultProducts : dataApi));
     dispatch(
       shoplistSortProduct({
         id: '',
-        products: keyword === 'all' ? defaultProducts : dataApi,
+        products: keyword === '' ? defaultProducts : dataApi,
       })
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps

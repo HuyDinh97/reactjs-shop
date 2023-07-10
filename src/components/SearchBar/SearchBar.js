@@ -30,15 +30,17 @@ function SearchBar() {
     [dispatch]
   );
   const searchInput = useRef();
-  const keywordRef = searchInput?.current?.value;
+  
 
-  const searchEnterKey = (event) => {
-    if (event.key === "Enter") {
-      navigate(`../search?query=${event.target.value || keywordRef}`, { replace: true });
+  const searchEnterKey = (e) => {
+    const keywordRef = searchInput?.current?.value;
+    if (e.key === "Enter") {
+      navigate(`../search?query=${keywordRef}`, { replace: true });
     }
   };
 
   const handleSearch = () => {
+    const keywordRef = searchInput?.current?.value;
     navigate(`/search?query=${keywordRef}`, { replace: true })
   }
 

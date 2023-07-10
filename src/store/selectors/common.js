@@ -42,6 +42,9 @@ export const useGetRecentProduct = () =>
 export const useGetShopListSortProduct = () =>
   useSelector((state) => state.common?.shoplistSortProduct);
 
+export const useGetFilterPrice = () =>
+  useSelector((state) => state.common?.filterPrice);
+
 export const useGetLogInData = () =>
   useSelector((state) =>
     state?.common?.logInData ? state.common.logInData : []
