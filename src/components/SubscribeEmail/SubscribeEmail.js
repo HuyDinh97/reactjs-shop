@@ -8,9 +8,11 @@ import classes from './SubscribeEmail.module.css';
 
 function SubscribeEmail() {
   const emailSubcribe = React.useRef();
-  const [subscribeStatus, setSubscribeStatus] = React.useState();
   const [show, setShow] = React.useState(false);
   const [subscribeErrors, setSubscribeError] = React.useState();
+
+  const subcribeEmailCheck = localStorage.getItem('subcribeEmailRemember');
+
   const subcribe = async () => {
     const subscribeResponse = await postData(
       'https://vnguyen.xyz/huy/day17/apis/index.php?type=subscribes',
@@ -29,21 +31,21 @@ function SubscribeEmail() {
       }
     );
     const errorFormat = firstError ? Object.values(firstError)?.[0] : undefined;
-    if (message) {
-      setSubscribeStatus(true);
-      setSubscribeError(`${message}`);
+    if (errorFormat !== 'T') {
+      setSubscribeError(`${errorFormat}`);
+      setShow(true);
       return;
     }
-    setSubscribeError(`${errorFormat}`);
+    setSubscribeError(`Thank you for Subcribing`);
+    localStorage.setItem('subcribeEmailRemember', true);
     setShow(true);
   };
-
   const handleClose = () => setShow(false);
 
   return (
     <div
       className={`${classes.subscribe_email} ${
-        subscribeStatus === true ? 'd-none' : ''
+        subcribeEmailCheck === 'true' ? 'd-none' : ''
       }`}
     >
       <Row className={classes.container}>
