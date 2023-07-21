@@ -24,6 +24,7 @@ const initialState = {
   filterPrice: [0, 1000],
   shoplistSortProduct: '',
   searchResultProducts: '',
+  keyword: '',
 };
 
 // eslint-disable-next-line default-param-last
