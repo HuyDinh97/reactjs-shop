@@ -30,6 +30,7 @@ const initialState = {
 // eslint-disable-next-line default-param-last
 export default (state = initialState, action) => {
   const { products } = state.productInCart ? state.productInCart : [];
+  const [fromPrice, toPrice] = state.filterPrice;
   switch (action.type) {
     case 'ADD_CATEGORIES':
       return {
@@ -241,18 +242,17 @@ export default (state = initialState, action) => {
       };
     case 'SHOPLIST_SORT_PRODUCT': {
       const { id, products: productData } = action;
-      const { filterPrice } = state;
       const productState = state?.popularProducts;
       let productSort;
       if (productData) {
         productSort = productData?.filter(
-          (prod) => filterPrice[0] <= prod.price && prod.price <= filterPrice[1]
+          (prod) => fromPrice <= prod.price && prod.price <= toPrice
         );
       } else {
         productSort = productState?.filter(
           (prod) =>
-            filterPrice[0] <= prod.price &&
-            prod.price <= filterPrice[1] &&
+            fromPrice <= prod.price &&
+            prod.price <= toPrice &&
             (prod.category === id || prod.color === id)
         );
       }
@@ -267,18 +267,18 @@ export default (state = initialState, action) => {
       let productSort;
       if (!id) {
         productSort = productData?.filter(
-          (prod) => price[0] <= prod.price && prod.price <= price[1]
+          (prod) => fromPrice <= prod.price && prod.price <= price[1]
         );
       } else {
         productSort =
           id === 'all'
             ? productState?.filter(
-                (prod) => price[0] <= prod.price && prod.price <= price[1]
+                (prod) => fromPrice <= prod.price && prod.price <= toPrice
               )
             : productState?.filter(
                 (prod) =>
-                  price[0] <= prod.price &&
-                  prod.price <= price[1] &&
+                  fromPrice <= prod.price &&
+                  prod.price <= toPrice &&
                   (prod.category.toString() === id ||
                     prod.color.toString() === id)
               );

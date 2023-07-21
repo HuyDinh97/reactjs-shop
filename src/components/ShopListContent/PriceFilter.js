@@ -17,6 +17,13 @@ function PriceFilter() {
   const searchProduct = useGetSearchProducts();
   const filterPrice = useGetFilterPrice();
 
+  const slideFilterPrice = filterPrice ?? value;
+  const [fromPrice, toPrice] = filterPrice;
+  const [fromValue, toValue] = value;
+
+  const slideFilterPriceFrom = fromPrice ?? fromValue;
+  const slideFilterPriceTo = toPrice ?? toValue;
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
     dispatch(
@@ -50,7 +57,7 @@ function PriceFilter() {
           <Slider
             sx={CustomSliderStyles}
             className={classes.filterSlider}
-            value={filterPrice || value}
+            value={slideFilterPrice}
             // onClick={sortByFilterPrice}
             onChange={handleChange}
             valueLabelDisplay="auto"
@@ -61,7 +68,7 @@ function PriceFilter() {
           <div className="fw-semibold fs-5">
             <span className={classes.filterPrice}>PRICE </span>
             <span className="text-black">
-              ${filterPrice[0] || value[0]} - ${filterPrice[1] || value[1]}
+              ${slideFilterPriceFrom} - ${slideFilterPriceTo}
             </span>
           </div>
         </li>

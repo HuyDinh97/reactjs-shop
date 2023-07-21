@@ -4,29 +4,34 @@ import {
   searchResultProducts,
   shoplistSortProduct,
 } from 'store/actions/common';
-import { useGetSearchProducts } from 'store/selectors/common';
 
 const useFetchSearchedkeyword = (keyword) => {
   const dispatch = useDispatch();
-  const searchProductRedux = useGetSearchProducts();
 
   React.useEffect(() => {
-    fetch(
-      `https://vnguyen.xyz/huy/day17/apis/index.php?type=search&query=${keyword}`
-    )
-      .then((res) => res.json())
-      .then((data) => dispatch(searchResultProducts(data.data)));
+    const dataFetch = async () => {
+      try {
+        const response = await fetch(
+          `https://vnguyen.xyz/huy/day17/apis/index.php?type=search&query=${keyword}`
+        );
+        if (!response) {
+          throw new Error(`${response.status}`);
+        }
+        const dataReturn = await response.json();
+        dispatch(searchResultProducts(dataReturn.data));
+        dispatch(
+          shoplistSortProduct({
+            id: '',
+            products: dataReturn.data,
+          })
+        );
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    dataFetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword]);
-  React.useEffect(() => {
-    dispatch(
-      shoplistSortProduct({
-        id: '',
-        products: searchProductRedux,
-      })
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchProductRedux, dispatch]);
 };
 
 export default useFetchSearchedkeyword;
