@@ -30,7 +30,7 @@ const initialState = {
 // eslint-disable-next-line default-param-last
 export default (state = initialState, action) => {
   const { products } = state.productInCart ? state.productInCart : [];
-  const [fromPrice, toPrice] = state.filterPrice;
+  const [fromPrice, toPrice] = state.filterPrice ? state.filterPrice : [];
   switch (action.type) {
     case 'ADD_CATEGORIES':
       return {
