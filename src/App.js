@@ -9,7 +9,6 @@ import useFetchCategory from 'Hooks/useFetchCategory';
 import useFetchPopularProduct from 'Hooks/useFetchPopularProduct';
 import useFetchBestSeller from 'Hooks/useFetchBestSellerProduct';
 import ProductDetailPage from 'pages/ProductDetailPage';
-import CategoryPage from 'pages/CategoryPage';
 import ShopList from 'pages/ShopList';
 import MyAccount from 'pages/MyAccount';
 import SearchResult from 'pages/SearchResultPage';
@@ -27,14 +26,13 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/my-cart" element={<MyCart />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/shop-list/:id" element={<ShopList />} />
+        <Route path="/category/:id" element={<ShopList />} />
         <Route path="/my-account" element={<MyAccount />} />
         <Route path="search" element={<SearchResult />} />
         <Route
           path="/product-detail/:productId"
           element={<ProductDetailPage />}
         />
-        <Route path="/categorypage/:category" element={<CategoryPage />} />
       </Routes>
     </Layout>
   );

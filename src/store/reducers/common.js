@@ -2,12 +2,16 @@
 
 import { format, fromUnixTime } from 'date-fns';
 
-import { setLocalStorage, calculateTotalCost } from './setLocalStorage';
+import {
+  setLocalStorage,
+  calculateTotalCost,
+  getData,
+} from './setLocalStorage';
 /* eslint-disable no-case-declarations */
 
 const localStorageId = 'productInCart';
 
-// const localStorageData = getData(localStorageId);
+const localStorageData = getData(localStorageId);
 const initialState = {
   home: undefined,
   categories: [],
@@ -15,8 +19,8 @@ const initialState = {
   bestSellers: [],
   testtimonials: [],
   productInCart: {
-    products: [],
-    totalCost: 0,
+    products: localStorageData?.products || [],
+    totalCost: localStorageData?.totalCost || 0,
   },
   productDetail: [],
   comment: [],
@@ -24,13 +28,12 @@ const initialState = {
   filterPrice: [0, 1000],
   shoplistSortProduct: '',
   searchResultProducts: '',
-  keyword: '',
+  wishList: [],
 };
 
 // eslint-disable-next-line default-param-last
 export default (state = initialState, action) => {
   const { products } = state.productInCart ? state.productInCart : [];
-  const [fromPrice, toPrice] = state.filterPrice ? state.filterPrice : [];
   switch (action.type) {
     case 'ADD_CATEGORIES':
       return {
@@ -242,17 +245,19 @@ export default (state = initialState, action) => {
       };
     case 'SHOPLIST_SORT_PRODUCT': {
       const { id, products: productData } = action;
+      const { filterPrice } = state;
       const productState = state?.popularProducts;
+      const productToSort = productData || productState;
       let productSort;
-      if (productData) {
-        productSort = productData?.filter(
-          (prod) => fromPrice <= prod.price && prod.price <= toPrice
+      if (productData || id === 'all') {
+        productSort = productToSort?.filter(
+          (prod) => filterPrice[0] <= prod.price && prod.price <= filterPrice[1]
         );
       } else {
         productSort = productState?.filter(
           (prod) =>
-            fromPrice <= prod.price &&
-            prod.price <= toPrice &&
+            filterPrice[0] <= prod.price &&
+            prod.price <= filterPrice[1] &&
             (prod.category === id || prod.color === id)
         );
       }
@@ -264,24 +269,21 @@ export default (state = initialState, action) => {
     case 'SHOPLIST_PRICE_FILTER': {
       const { id, price, products: productData } = action;
       const productState = state?.popularProducts;
+      const productToSort =
+        productData && productData.length > 0 ? productData : productState;
+
       let productSort;
-      if (!id) {
-        productSort = productData?.filter(
-          (prod) => fromPrice <= prod.price && prod.price <= price[1]
+      if (!id || id === 'all') {
+        productSort = productToSort?.filter(
+          (prod) => price[0] <= prod.price && prod.price <= price[1]
         );
       } else {
-        productSort =
-          id === 'all'
-            ? productState?.filter(
-                (prod) => fromPrice <= prod.price && prod.price <= toPrice
-              )
-            : productState?.filter(
-                (prod) =>
-                  fromPrice <= prod.price &&
-                  prod.price <= toPrice &&
-                  (prod.category.toString() === id ||
-                    prod.color.toString() === id)
-              );
+        productSort = productState?.filter(
+          (prod) =>
+            price[0] <= prod.price &&
+            prod.price <= price[1] &&
+            (prod.category === id || prod.color === id)
+        );
       }
       return {
         ...state,
@@ -304,6 +306,23 @@ export default (state = initialState, action) => {
       return {
         ...state,
         searchResultProducts: [...newSearchPrice],
+      };
+    }
+    case 'ADD_TO_WISHLIST': {
+      const { wishList } = state;
+      const productToAdd = action.payload;
+      const productExist = wishList?.find(
+        (prod) => prod._id === action.payload._id
+      );
+      const productFilter = wishList?.filter(
+        (prod) => prod._id !== action.payload._id
+      );
+      const wishListtoAdd = productExist
+        ? [...productFilter]
+        : [...state.wishList, productToAdd];
+      return {
+        ...state,
+        wishList: wishListtoAdd,
       };
     }
     default:

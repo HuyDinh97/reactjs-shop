@@ -38,7 +38,7 @@ function SelectionBlock({ title, selection }) {
               className="d-flex justify-content-between py-2 fs-5 pt-3"
             >
               <Link
-                to={`/shop-list/${name.id}`}
+                to={`/category/${name.name}`}
                 className={`${classes.selectionBlockLink} border-0 text-decoration-none`}
                 onClick={sortById(name.id)}
               >
