@@ -460,7 +460,7 @@ function ProductDetail() {
             {relatedProductData &&
               relatedProductData.map((popularProduct) => (
                 <Col lg={3} xs={6} key={popularProduct._id}>
-                  <SingleProduct product={popularProduct} />
+                  <SingleProduct products={popularProduct} />
                 </Col>
               ))}
           </Row>

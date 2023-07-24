@@ -84,7 +84,7 @@ function Product({ name, products }) {
           products.map((popularProduct) => (
             <SwiperSlide key={popularProduct._id}>
               <SingleProduct
-                popularProduct={popularProduct}
+                products={popularProduct}
                 rowDisplayCheck={false}
               />
             </SwiperSlide>

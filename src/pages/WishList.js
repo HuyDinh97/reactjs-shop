@@ -16,7 +16,7 @@ function WishList() {
           {wishList.length > 0 ? (
             wishList.map((prod) => (
               <Col key={prod._id} xl={3} md={6} xs={12}>
-                <SingleProduct product={prod} />
+                <SingleProduct products={prod} rowDisplayCheck={false} />
               </Col>
             ))
           ) : (

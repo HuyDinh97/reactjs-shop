@@ -3,7 +3,7 @@
   height: 180px;
 }
 
-.opacity_layer button {
+.addProductButton button {
   background-color: #eb3d32;
   color: white;
 }
@@ -45,8 +45,8 @@
   color: white;
 }
 
-.opacity_icon a {
-  color: white;
+.opacity_icon button {
+  background: center;
 }
 
 .opacity_icon svg:hover {
@@ -88,6 +88,10 @@
 }
 .swiperButton {
   display: none;
+}
+
+.wishListAdded svg{
+  color: #eb3d32;
 }
 
 @media screen and (max-width:767px) {

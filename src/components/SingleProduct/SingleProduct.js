@@ -5,7 +5,7 @@ import classes from './SingleProduct.module.css';
 import AddToCartProductDetail from './AddToCartProductDetail';
 
 function SingleProduct({
-  popularProduct,
+  products,
   imgProductCol,
   detailProductCol,
   rowDisplayCheck,
@@ -31,12 +31,12 @@ function SingleProduct({
                 className={classes.product_img}
                 // eslint-disable-next-line react/forbid-dom-props
                 style={{
-                  background: `url(${linkIMG + popularProduct.thumb})`,
+                  background: `url(${linkIMG + products.thumb})`,
                 }}
               >
                 {rowDisplayCheck === false ? (
                   <div className={classes.hide}>
-                    <AddToCartProductDetail popularProduct={popularProduct} />
+                    <AddToCartProductDetail product={products} />
                     <div className={classes.white_overlay} />
                   </div>
                 ) : null}
@@ -49,20 +49,20 @@ function SingleProduct({
             className={`${productDetailRowDisplay} card-body d-flex mb-2 flex-column`}
           >
             <div className={classes.product_name}>
-              <Link to={`/product-detail/${popularProduct._id}`}>
-                {popularProduct.name}
+              <Link to={`/product-detail/${products._id}`}>
+                {products.name}
               </Link>
             </div>
             <div className={classes.product_price}>
-              <span className={popularProduct.sales === 0 ? priceCheck : null}>
+              <span className={products.sales === 0 ? priceCheck : null}>
                 <s className={classes.gray_price}>
                   {' $ '}
-                  {popularProduct.price}
+                  {products.price}
                 </s>
               </span>
               <span className="mx-2">
                 {' $ '}
-                {popularProduct.realPrice}
+                {products.realPrice}
               </span>
             </div>
             {rowDisplayCheck === true ? (
@@ -77,10 +77,7 @@ function SingleProduct({
                   porttitor semper. Nullam tincidunt ante sit amet est bibendum
                   efficitur.
                 </div>
-                <AddToCartProductDetail
-                  popularProduct={popularProduct}
-                  display={false}
-                />
+                <AddToCartProductDetail product={products} display={false} />
               </Col>
             ) : null}
           </Col>
