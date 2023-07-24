@@ -16,9 +16,7 @@ import 'swiper/swiper.min.css';
 
 import classes from './Product.module.css';
 
-function Product({ name }) {
-  const products = useGetPopularProduct();
-
+function Product({ name, products }) {
   const swiperRef = useRef();
 
   if (!products) {
@@ -86,7 +84,10 @@ function Product({ name }) {
         {products &&
           products.map((popularProduct) => (
             <SwiperSlide key={popularProduct._id}>
-              <SingleProduct popularProduct={popularProduct} />
+              <SingleProduct
+                popularProduct={popularProduct}
+                rowDisplayCheck={false}
+              />
             </SwiperSlide>
           ))}
         <div className={classes.swiperButton}>
