@@ -25,6 +25,11 @@
   fill: white;
 }
 
+.leftIconActive {
+  background-color: #363f4e;
+  fill: #eb3d32;
+}
+
 .afterSalePriceColor {
   color: #eb3d32;
 }
