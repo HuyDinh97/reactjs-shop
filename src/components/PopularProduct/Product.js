@@ -8,7 +8,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import SingleProduct from 'components/SingleProduct/SingleProduct';
-import { useGetPopularProduct } from 'store/selectors/common';
 import TitleUnderline from './TitleUnderline';
 
 import 'swiper/swiper-bundle.min.css';
