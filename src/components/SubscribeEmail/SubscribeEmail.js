@@ -44,7 +44,7 @@ function SubscribeEmail() {
 
   return (
     <div>
-      {!subcribeEmailCheck ? (
+      {!subcribeEmailCheck && (
         <div className={classes.subscribe_email}>
           <Row className={classes.container}>
             <Col className={classes.Product_title}>
@@ -66,8 +66,6 @@ function SubscribeEmail() {
             </Col>
           </Row>
         </div>
-      ) : (
-        ''
       )}
       <Modal show={show} onHide={handleClose} centered size="md">
         <Modal.Body className="d-flex justify-content-center fw-semibold py-4">
