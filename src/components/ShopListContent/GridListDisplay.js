@@ -21,7 +21,7 @@ function GridListDisplay({
       {productEachPage &&
         productEachPage.map((popularProduct) => (
           <Col xl={productDisplay} className="mt-4" key={popularProduct._id}>
-            <SingleProduct product={popularProduct} {...dispayConfig} />
+            <SingleProduct popularProduct={popularProduct} {...dispayConfig} />
           </Col>
         ))}
       <Col xs={12}>
