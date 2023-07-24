@@ -33,6 +33,7 @@ export const optionSelected = (option, products) => {
   let priceHigh = false;
 
   const sortedProduct = (key) => {
+    if (!products) return;
     products?.sort((a, b) => {
       if (!sortKey) {
         const fa = a.name.toLowerCase();

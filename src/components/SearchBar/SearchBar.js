@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef} from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
@@ -10,7 +10,7 @@ import Col from 'react-bootstrap/Col';
 import { GrFormClose } from 'react-icons/gr';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useGetMyCart } from 'store/selectors/common';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteProductInCart } from 'store/actions/common';
 import Navigation from 'components/Navigation';
@@ -21,6 +21,7 @@ import classes from './SearchBar.module.css';
 function SearchBar() {
   const { products: productInCart, totalCost } = useGetMyCart();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const deleteProduct = useCallback(
     (id) => () => {
@@ -28,6 +29,21 @@ function SearchBar() {
     },
     [dispatch]
   );
+  const searchInput = useRef();
+
+  const handleNavigate = (key) => {
+    navigate(`../search?query=${key}`, { replace: true });
+  }
+// press Enter to search
+  const searchEnterKey = (e) => {
+    if (e.key === "Enter") {
+      handleNavigate(searchInput?.current?.value)
+    }
+  };
+
+  const handleSearch = () => {
+    handleNavigate(searchInput?.current?.value)
+  }
 
   const linkIMG = 'https://vnguyen.xyz/huy/day17/apis/';
   return (
@@ -46,8 +62,10 @@ function SearchBar() {
                   className={classes.search_Box}
                   data-testid="search-input"
                   placeholder="Search Product..."
+                  ref={searchInput}
+                  onKeyDown={searchEnterKey}
                 />
-                <button type="button" className={classes.search_Btn}>
+                <button type="button" className={`${classes.search_Btn} d-flex justify-content-center align-items-center text-decoration-none`} onClick={handleSearch}>
                   Search
                 </button>
               </div>

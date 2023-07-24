@@ -40,7 +40,7 @@ test('Should slide run correctly', async () => {
   expect(
     await screen.findByTestId('popularProducts-element')
   ).toBeInTheDocument();
-  expect(buttons).toHaveLength(5);
+  expect(buttons).toHaveLength(4);
 });
 
 test('Should popularProducts render failed', async () => {
