@@ -12,6 +12,7 @@ import ProductDetailPage from 'pages/ProductDetailPage';
 import ShopList from 'pages/ShopList';
 import MyAccount from 'pages/MyAccount';
 import SearchResult from 'pages/SearchResultPage';
+import WishList from 'pages/WishList';
 import Layout from './pages/Layout';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/my-cart" element={<MyCart />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/wishlist" element={<WishList />} />
         <Route path="/category/:id" element={<ShopList />} />
         <Route path="/my-account" element={<MyAccount />} />
         <Route path="search" element={<SearchResult />} />

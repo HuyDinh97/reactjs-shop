@@ -55,3 +55,6 @@ export const useGetLogInStatus = () =>
 
 export const useGetSearchProducts = () =>
   useSelector((state) => state.common?.searchResultProducts);
+
+export const useGetWishList = () =>
+  useSelector((state) => state.common?.wishList);

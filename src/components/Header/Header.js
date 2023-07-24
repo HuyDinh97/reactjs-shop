@@ -45,7 +45,7 @@ function Header() {
               )}
             </li>
             <li className={classes.header_border_end}>
-              <Link to="/">Wishlist</Link>
+              <Link to="/wishlist">Wishlist</Link>
             </li>
             <li>
               <Link to={statusCheck === 'true' ? '/my-account' : '/login'}>
