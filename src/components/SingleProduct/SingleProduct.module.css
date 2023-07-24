@@ -4,6 +4,7 @@
 }
 
 .addProductButton button {
+  height: 40px;
   background-color: #eb3d32;
   color: white;
 }
