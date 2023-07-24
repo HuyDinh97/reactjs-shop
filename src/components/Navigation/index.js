@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { useGetCategories } from 'store/selectors/common';
-import { GoAlert } from 'react-icons/go';
+import { VscThreeBars } from 'react-icons/vsc';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import {
+  searchResultProducts,
+  shoplistSortProduct,
+} from 'store/actions/common';
 import classes from './navigation.module.css';
 
 function Navigation() {
   const categories = useGetCategories();
+  const dispatch = useDispatch();
+
+  const handleCategory = useCallback(
+    (id) => () => {
+      dispatch(shoplistSortProduct({ id }));
+      dispatch(searchResultProducts());
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
 
   if (categories.length <= 0) {
     return <p>Loading...</p>;
@@ -24,7 +39,7 @@ function Navigation() {
             className={classes.navbarToggle}
             aria-controls="offcanvasNavbar-expand-xs"
           >
-            <GoAlert />
+            <VscThreeBars />
           </Navbar.Toggle>
           <Navbar.Offcanvas
             className={classes.offCanvas}
@@ -40,13 +55,18 @@ function Navigation() {
                   <Nav.Item key={category._id}>
                     <Link
                       className={navClass}
-                      to={`/categorypage/${category.name}`}
+                      to={`/category/${category.name}`}
+                      onClick={handleCategory(category._id)}
                     >
                       {category.name}
                     </Link>
                   </Nav.Item>
                 ))}
-              <Link to="/shop-list/all" className={navClass}>
+              <Link
+                to="/category/all"
+                className={navClass}
+                onClick={handleCategory('all')}
+              >
                 ShopList
               </Link>
               <Link to="/about-us" className={navClass}>

@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
-import PopularProduct from './Product';
+import Product from './Product';
 
 const mockStore = configureMockStore();
 
@@ -32,7 +32,7 @@ test('Should slide run correctly', async () => {
   render(
     <Provider store={store}>
       <MemoryRouter>
-        <PopularProduct />
+        <Product products={productsAvailableState.common.popularProducts} />
       </MemoryRouter>
     </Provider>
   );
@@ -40,7 +40,7 @@ test('Should slide run correctly', async () => {
   expect(
     await screen.findByTestId('popularProducts-element')
   ).toBeInTheDocument();
-  expect(buttons).toHaveLength(4);
+  expect(buttons).toHaveLength(7);
 });
 
 test('Should popularProducts render failed', async () => {
@@ -48,7 +48,7 @@ test('Should popularProducts render failed', async () => {
 
   render(
     <Provider store={store}>
-      <PopularProduct />
+      <Product />
     </Provider>
   );
 

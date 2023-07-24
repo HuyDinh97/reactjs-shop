@@ -7,8 +7,8 @@ export const colorChange = [
 ];
 export const categoryChange = [
   { id: 1001, name: 'Dress' },
-  { id: 1002, name: 'Sweater' },
-  { id: 1003, name: 'Jackets' },
+  { id: 1003, name: 'Sweater' },
+  { id: 1002, name: 'Jackets' },
   { id: 1004, name: 'Vest' },
 ];
 

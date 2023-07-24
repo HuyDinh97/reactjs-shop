@@ -8,6 +8,7 @@ import {
   useGetFilterPrice,
   useGetSearchProducts,
 } from 'store/selectors/common';
+import { categoryChange, colorChange } from 'shared/ulti';
 import classes from './ShopListContent.module.css';
 
 function PriceFilter() {
@@ -17,19 +18,19 @@ function PriceFilter() {
   const searchProduct = useGetSearchProducts();
   const filterPrice = useGetFilterPrice();
 
-  const slideFilterPrice = filterPrice ?? value;
-  const [fromPrice, toPrice] = filterPrice;
-  const [fromValue, toValue] = value;
-
-  const slideFilterPriceFrom = fromPrice ?? fromValue;
-  const slideFilterPriceTo = toPrice ?? toValue;
+  const [categoryName] = categoryChange.filter((cate) =>
+    cate.name === id ? cate.id : ''
+  );
+  const [colorName] = colorChange.filter((color) =>
+    color.name === id ? color.id : ''
+  );
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
     dispatch(
       shoplistPriceFilter({
         price: newValue,
-        id,
+        id: categoryName?.id || colorName?.id || id,
         products: searchProduct,
       })
     );
@@ -57,7 +58,7 @@ function PriceFilter() {
           <Slider
             sx={CustomSliderStyles}
             className={classes.filterSlider}
-            value={slideFilterPrice}
+            value={filterPrice || value}
             // onClick={sortByFilterPrice}
             onChange={handleChange}
             valueLabelDisplay="auto"
@@ -68,7 +69,7 @@ function PriceFilter() {
           <div className="fw-semibold fs-5">
             <span className={classes.filterPrice}>PRICE </span>
             <span className="text-black">
-              ${slideFilterPriceFrom} - ${slideFilterPriceTo}
+              ${filterPrice[0] || value[0]} - ${filterPrice[1] || value[1]}
             </span>
           </div>
         </li>

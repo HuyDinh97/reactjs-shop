@@ -21,7 +21,7 @@ function GridListDisplay({
       {productEachPage &&
         productEachPage.map((popularProduct) => (
           <Col xl={productDisplay} className="mt-4" key={popularProduct._id}>
-            <SingleProduct popularProduct={popularProduct} {...dispayConfig} />
+            <SingleProduct products={popularProduct} {...dispayConfig} />
           </Col>
         ))}
       <Col xs={12}>
@@ -33,7 +33,7 @@ function GridListDisplay({
               <li className={`${page === 1 ? 'd-none' : ''}`}>
                 <Link
                   className={`${classes.nextPrevButton} page-link`}
-                  to={`/shop-list/${id}?page=${page - 1}`}
+                  to={`/category/${id}?page=${page - 1}`}
                 >
                   <FiChevronLeft />
                 </Link>
@@ -44,7 +44,7 @@ function GridListDisplay({
                     className={`${
                       page !== number ? '' : classes.active
                     } page-link`}
-                    to={`/shop-list/${id}?page=${number}`}
+                    to={`/category/${id}?page=${number}`}
                   >
                     {number}
                   </Link>
@@ -61,7 +61,7 @@ function GridListDisplay({
               >
                 <Link
                   className={`${classes.nextPrevButton} page-link`}
-                  to={`/shop-list/${id}?page=${Math.round(page) + 1}`}
+                  to={`/category/${id}?page=${Math.round(page) + 1}`}
                 >
                   <FiChevronRight />
                 </Link>
